@@ -23,7 +23,7 @@ The release checks:
 - Strict TypeScript compilation.
 - ESLint with no errors or warnings.
 - Production vinext build across all 11 routes, including the homepage.
-- Server-rendered smoke tests for the homepage and 9 principal subpages.
+- Server-rendered smoke tests for the homepage and all 10 principal subpages.
 
 ## Manual functional checklist
 

@@ -28,6 +28,7 @@ test("server-renders the complete INGENIUM+ homepage", async () => {
 for (const [pathname, heading] of [
   ["/opportunities", "Choose your next move"],
   ["/programmes", "Study across one European campus"],
+  ["/build", "Build something that travels"],
   ["/events", "Meet INGENIUM in motion"],
   ["/communities", "Find your people"],
   ["/platforms", "Use the right official platform"],
