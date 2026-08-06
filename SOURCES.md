@@ -49,4 +49,8 @@ The supplied filenames are retained in the research working record. The public s
 - **Medium:** official evidence exists, but live access, recruitment or implementation could not be confirmed on 5 August 2026.
 - **Low:** incomplete, early or conflicting evidence. No low-confidence record is promoted as a current opportunity in v1.4.
 
+## Map asset
+
+The graph basemap is a recoloured derivative of [Europe blank LAEA location map](https://commons.wikimedia.org/wiki/File:Europe_blank_laea_location_map.svg) by Alexrk2, sourced from Wikimedia Commons and licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). It uses the ETRS89-LAEA Europe projection (EPSG:3035). University anchors are projected from the institutional seat or principal-campus coordinates; a single anchor represents each partner, including multi-campus universities.
+
 Always continue to the linked official page and the student’s home-university process before applying.

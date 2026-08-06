@@ -795,35 +795,13 @@ h3 {
 }
 
 .graph-boundary {
-  background:
-    radial-gradient(circle at 50% 46%, rgba(0, 152, 120, 0.055), transparent 25rem),
-    linear-gradient(180deg, #ffffff 0%, #f7fbfa 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f7fbfa 100%);
   border: 1px solid #b9cbc5;
   border-radius: 0 0 20px 20px;
   box-shadow: inset 0 0 0 5px rgba(0, 152, 120, 0.035), 0 16px 40px rgba(6, 29, 28, 0.22);
   min-height: 640px;
   overflow: hidden;
   position: relative;
-}
-
-.graph-boundary::before {
-  border: 1px dashed rgba(0, 152, 120, 0.15);
-  border-radius: 999px;
-  content: "ONE EUROPEAN CAMPUS";
-  color: rgba(41, 49, 51, 0.1);
-  font-size: 0.67rem;
-  font-weight: 800;
-  height: 410px;
-  left: 50%;
-  letter-spacing: 0.35em;
-  line-height: 410px;
-  pointer-events: none;
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 690px;
-  z-index: 0;
 }
 
 .graph-canvas {
@@ -906,6 +884,25 @@ h3 {
   position: absolute;
   right: 1rem;
   z-index: 4;
+}
+
+.graph-map-credit {
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 6px;
+  color: var(--ink-faint);
+  font-size: 0.5rem;
+  left: 1rem;
+  padding: 0.2rem 0.35rem;
+  position: absolute;
+  text-decoration: underline;
+  text-decoration-color: rgba(82, 96, 100, 0.35);
+  text-underline-offset: 2px;
+  top: 1rem;
+  z-index: 4;
+}
+
+.graph-map-credit:hover {
+  color: var(--teal-dark);
 }
 
 .network-list {
@@ -2269,12 +2266,6 @@ h3 {
     min-height: 560px;
   }
 
-  .graph-boundary::before {
-    height: 310px;
-    line-height: 310px;
-    width: 520px;
-  }
-
   .graph-help {
     display: none;
   }
@@ -2382,10 +2373,6 @@ h3 {
   .network-list {
     height: 500px;
     min-height: 500px;
-  }
-
-  .graph-boundary::before {
-    display: none;
   }
 
   .graph-legend {

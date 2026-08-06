@@ -40,6 +40,22 @@ import { StatusBadge } from "./StatusBadge";
 
 const SAVED_KEY = "ingenium-plus-v14-saved";
 const JOURNEY_KEY = "ingenium-plus-v14-journey";
+const EUROPE_MAP_ID = "europe-map-layer";
+const EUROPE_MAP_WIDTH = 1401.34;
+const EUROPE_MAP_HEIGHT = 1198.34;
+
+const campusCoordinates: Record<string, { latitude: number; longitude: number }> = {
+  "university-uniovi": { latitude: 43.3614, longitude: -5.8494 },
+  "university-mus": { latitude: 42.6838, longitude: 23.3117 },
+  "university-uoc": { latitude: 35.3545, longitude: 24.4772 },
+  "university-hka": { latitude: 49.0158, longitude: 8.3901 },
+  "university-xamk": { latitude: 61.6884, longitude: 27.2727 },
+  "university-uda": { latitude: 42.3699, longitude: 14.1492 },
+  "university-hs": { latitude: 58.3912, longitude: 13.853 },
+  "university-mtu": { latitude: 51.8856, longitude: -8.5353 },
+  "university-urn": { latitude: 49.4607, longitude: 1.0684 },
+  "university-tuiasi": { latitude: 47.1544, longitude: 27.5993 },
+};
 
 type ViewMode = "student" | "programmes" | "mobility" | "innovation" | "sustainability" | "communities" | "alliance";
 
@@ -83,6 +99,30 @@ function hashNumber(value: string) {
   return hash;
 }
 
+function campusMapPosition(latitude: number, longitude: number): { x: number; y: number } {
+  const radians = Math.PI / 180;
+  const latitudeRadians = latitude * radians;
+  const centreLatitudeRadians = 52 * radians;
+  const longitudeOffsetRadians = (longitude - 10) * radians;
+  const scale = Math.pow(
+    (1
+      + Math.sin(latitudeRadians) * Math.sin(centreLatitudeRadians)
+      + Math.cos(latitudeRadians) * Math.cos(centreLatitudeRadians) * Math.cos(longitudeOffsetRadians)) * 0.5,
+    -0.5,
+  );
+  const xPercent = 131.579 * Math.cos(latitudeRadians) * Math.sin(longitudeOffsetRadians) * scale + 36.388;
+  const yPercent = 55.11
+    - 153.61
+      * (Math.cos(centreLatitudeRadians) * Math.sin(latitudeRadians)
+        - Math.sin(centreLatitudeRadians) * Math.cos(latitudeRadians) * Math.cos(longitudeOffsetRadians))
+      * scale;
+
+  return {
+    x: (xPercent / 100) * EUROPE_MAP_WIDTH,
+    y: (yPercent / 100) * EUROPE_MAP_HEIGHT,
+  };
+}
+
 function modeIncludes(entity: Entity, mode: ViewMode) {
   if (entity.type === "university") return true;
   if (mode === "alliance") return true;
@@ -103,9 +143,9 @@ function visibleLabel(entity: Entity) {
 
 function graphPosition(entity: Entity, visible: Entity[]): { x: number; y: number } {
   if (entity.type === "university") {
-    const universityIndex = visible.filter((item) => item.type === "university").findIndex((item) => item.id === entity.id);
-    const angle = (Math.PI * 2 * Math.max(universityIndex, 0)) / 10 - Math.PI / 2;
-    return { x: 560 + Math.cos(angle) * 390, y: 370 + Math.sin(angle) * 245 };
+    const coordinates = campusCoordinates[entity.id];
+    if (coordinates) return campusMapPosition(coordinates.latitude, coordinates.longitude);
+    return { x: EUROPE_MAP_WIDTH / 2, y: EUROPE_MAP_HEIGHT / 2 };
   }
 
   const university = entity.hostUniversityId ?? entity.universityIds[0];
@@ -118,13 +158,19 @@ function graphPosition(entity: Entity, visible: Entity[]): { x: number; y: numbe
     const hash = hashNumber(entity.id);
     const angle = ((hash % 360) * Math.PI) / 180;
     const radius = 72 + (Math.max(siblingIndex, 0) % 3) * 42;
-    return { x: anchorPosition.x + Math.cos(angle) * radius, y: anchorPosition.y + Math.sin(angle) * radius };
+    return {
+      x: Math.min(Math.max(anchorPosition.x + Math.cos(angle) * radius, 70), EUROPE_MAP_WIDTH - 70),
+      y: Math.min(Math.max(anchorPosition.y + Math.sin(angle) * radius, 70), EUROPE_MAP_HEIGHT - 70),
+    };
   }
 
   const hash = hashNumber(entity.id);
   const angle = ((hash % 360) * Math.PI) / 180;
   const radius = 80 + (hash % 4) * 48;
-  return { x: 560 + Math.cos(angle) * radius, y: 370 + Math.sin(angle) * radius };
+  return {
+    x: EUROPE_MAP_WIDTH / 2 + Math.cos(angle) * radius,
+    y: EUROPE_MAP_HEIGHT / 2 + Math.sin(angle) * radius,
+  };
 }
 
 function makeIcs(entity: Entity) {
@@ -259,6 +305,14 @@ export function GraphExplorer() {
   );
 
   const graphElements = useMemo<ElementDefinition[]>(() => {
+    const mapElement: ElementDefinition = {
+      data: { id: EUROPE_MAP_ID, type: "map" },
+      position: { x: EUROPE_MAP_WIDTH / 2, y: EUROPE_MAP_HEIGHT / 2 },
+      locked: true,
+      grabbable: false,
+      selectable: false,
+      classes: "map-layer",
+    };
     const nodeElements: ElementDefinition[] = filteredEntities.map((entity) => ({
       data: {
         id: entity.id,
@@ -280,7 +334,7 @@ export function GraphExplorer() {
         relationshipType: relationship.type,
       },
     }));
-    return [...nodeElements, ...edgeElements];
+    return [mapElement, ...nodeElements, ...edgeElements];
   }, [filteredEntities, visibleRelationships]);
 
   const selectEntity = useCallback((id: string | null) => {
@@ -337,6 +391,25 @@ export function GraphExplorer() {
             color: "#293133",
             "border-color": "#dce3e0",
             "border-width": 5,
+          },
+        },
+        {
+          selector: `node#${EUROPE_MAP_ID}`,
+          style: {
+            width: EUROPE_MAP_WIDTH,
+            height: EUROPE_MAP_HEIGHT,
+            shape: "rectangle",
+            label: "",
+            "background-color": "#f7fbfa",
+            "background-image": "/assets/europe-map.svg",
+            "background-fit": "contain",
+            "background-repeat": "no-repeat",
+            "background-image-opacity": 0.88,
+            "border-width": 0,
+            "overlay-opacity": 0,
+            events: "no",
+            "z-index": -10,
+            "z-index-compare": "manual",
           },
         },
         {
@@ -616,6 +689,14 @@ export function GraphExplorer() {
                 ))}
             </div>
             <p className="graph-help">Drag to move · scroll or pinch to zoom · select nodes and connecting lines to understand the network</p>
+            <a
+              className="graph-map-credit"
+              href="https://commons.wikimedia.org/wiki/File:Europe_blank_laea_location_map.svg"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Map: Alexrk2 / Wikimedia Commons · CC BY-SA 3.0
+            </a>
           </>
         ) : (
           <div id="network-list-panel" className="network-list" role="tabpanel" aria-labelledby="list-tab" tabIndex={0}>
