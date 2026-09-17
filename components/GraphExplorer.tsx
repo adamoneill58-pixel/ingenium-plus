@@ -12,6 +12,7 @@ import {
   Copy,
   Focus,
   GitCompareArrows,
+  Globe2,
   List,
   Map,
   Minus,
@@ -22,13 +23,10 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  entities,
-  entityById,
   journeys,
-  relationships,
-  sourceById,
   typeColours,
   typeLabels,
   type Entity,
@@ -36,10 +34,18 @@ import {
   type EntityType,
   type Relationship,
 } from "@/lib/data";
+import {
+  evidenceById as sourceById,
+  networkRelationships as relationships,
+  recordById as entityById,
+  records as entities,
+} from "@/lib/v15-data";
+import { getComputedStatus } from "@/lib/v15-logic";
+import { ClassificationBadge } from "./ClassificationBadge";
 import { StatusBadge } from "./StatusBadge";
 
-const SAVED_KEY = "ingenium-plus-v14-saved";
-const JOURNEY_KEY = "ingenium-plus-v14-journey";
+const SAVED_KEY = "ingenium-plus-v15-saved";
+const JOURNEY_KEY = "ingenium-plus-v15-journey";
 const EUROPE_MAP_ID = "europe-map-layer";
 const EUROPE_MAP_WIDTH = 1401.34;
 const EUROPE_MAP_HEIGHT = 1198.34;
@@ -57,10 +63,13 @@ const campusCoordinates: Record<string, { latitude: number; longitude: number }>
   "university-tuiasi": { latitude: 47.1544, longitude: 27.5993 },
 };
 
-type ViewMode = "student" | "programmes" | "mobility" | "innovation" | "sustainability" | "communities" | "alliance";
+type ViewMode = "student" | "learning" | "people" | "programmes" | "mobility" | "innovation" | "sustainability" | "communities" | "alliance";
+type GraphLayoutMode = "geography" | "network";
 
 const modes: { id: ViewMode; label: string }[] = [
   { id: "student", label: "Student opportunities" },
+  { id: "learning", label: "Learning" },
+  { id: "people", label: "People (sample)" },
   { id: "programmes", label: "Programmes" },
   { id: "mobility", label: "Events & mobility" },
   { id: "innovation", label: "Innovation" },
@@ -81,6 +90,11 @@ const typeShapes: Record<EntityType, string> = {
   opportunity: "vee",
   initiative: "pentagon",
   framework: "triangle",
+  module: "diamond",
+  course: "round-rectangle",
+  microcredential: "hexagon",
+  student: "ellipse",
+  learning_resource: "barrel",
 };
 
 function readStoredList(key: string): string[] {
@@ -126,8 +140,10 @@ function campusMapPosition(latitude: number, longitude: number): { x: number; y:
 function modeIncludes(entity: Entity, mode: ViewMode) {
   if (entity.type === "university") return true;
   if (mode === "alliance") return true;
-  if (mode === "student") return entity.featured || ["bip", "opportunity", "project"].includes(entity.type);
-  if (mode === "programmes") return ["bip", "programme", "pathway", "framework"].includes(entity.type);
+  if (mode === "student") return entity.featured || ["bip", "opportunity", "project", "course", "module", "microcredential", "student"].includes(entity.type);
+  if (mode === "learning") return ["bip", "programme", "pathway", "course", "module", "microcredential", "learning_resource", "platform"].includes(entity.type);
+  if (mode === "people") return ["student", "course", "module", "bip", "project", "programme", "community"].includes(entity.type);
+  if (mode === "programmes") return ["bip", "programme", "pathway", "framework", "course", "module", "microcredential", "learning_resource"].includes(entity.type);
   if (mode === "mobility") return ["bip", "event", "opportunity", "programme"].includes(entity.type);
   if (mode === "innovation") return entity.themes.some((theme) => ["Entrepreneurship", "Innovation", "Artificial intelligence", "Digital learning"].includes(theme)) || ["initiative", "project", "community"].includes(entity.type);
   if (mode === "sustainability") return entity.themes.some((theme) => ["Sustainability", "Waste management", "Circular economy", "Nature", "Mobility"].includes(theme));
@@ -205,12 +221,22 @@ function makeIcs(entity: Entity) {
   URL.revokeObjectURL(href);
 }
 
-export function GraphExplorer() {
+export function GraphExplorer({
+  allowedEntityIds,
+  initialMode = "student",
+  showJourneyPicker = true,
+}: {
+  allowedEntityIds?: string[];
+  initialMode?: ViewMode;
+  showJourneyPicker?: boolean;
+} = {}) {
   const graphRef = useRef<HTMLDivElement>(null);
+  const bgMapRef = useRef<HTMLDivElement>(null);
   const cyRef = useRef<Core | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const filterCloseButtonRef = useRef<HTMLButtonElement>(null);
-  const [mode, setMode] = useState<ViewMode>("student");
+  const [mode, setMode] = useState<ViewMode>(initialMode);
+  const [layoutMode, setLayoutMode] = useState<GraphLayoutMode>("geography");
   const [query, setQuery] = useState("");
   const [typeFilter, setTypeFilter] = useState<EntityType | "all">("all");
   const [universityFilter, setUniversityFilter] = useState("all");
@@ -239,6 +265,7 @@ export function GraphExplorer() {
     const urlMode = params.get("mode") as ViewMode | null;
     const urlType = params.get("type") as EntityType | null;
     const urlStatus = params.get("status") as EntityStatus | null;
+    const urlLayout = params.get("layout") as GraphLayoutMode | null;
     queueMicrotask(() => {
       if (cancelled) return;
       setSavedIds(restoredSavedIds);
@@ -249,7 +276,8 @@ export function GraphExplorer() {
       if (urlType && Object.hasOwn(typeLabels, urlType)) setTypeFilter(urlType);
       if (params.get("university") && entityById.has(params.get("university") ?? "")) setUniversityFilter(params.get("university") ?? "all");
       if (params.get("theme")) setThemeFilter(params.get("theme") ?? "all");
-      if (urlStatus && entities.some((item) => item.status === urlStatus)) setStatusFilter(urlStatus);
+      if (urlStatus && entities.some((item) => getComputedStatus(item) === urlStatus)) setStatusFilter(urlStatus);
+      if (urlLayout === "geography" || urlLayout === "network") setLayoutMode(urlLayout);
       if (params.get("view") === "list") setListView(true);
     });
     return () => { cancelled = true; };
@@ -269,13 +297,14 @@ export function GraphExplorer() {
       : null;
 
     return entities.filter((entity) => {
+      if (allowedEntityIds && !allowedEntityIds.includes(entity.id) && entity.type !== "university") return false;
       if (journeySet && entity.type !== "university" && !journeySet.has(entity.id)) return false;
       if (journeyUniversityIds && entity.type === "university" && !journeyUniversityIds.has(entity.id)) return false;
       if (!activeJourney && !modeIncludes(entity, mode)) return false;
       if (typeFilter !== "all" && entity.type !== typeFilter && entity.type !== "university") return false;
       if (universityFilter !== "all" && entity.type !== "university" && !entity.universityIds.includes(universityFilter)) return false;
       if (themeFilter !== "all" && entity.type !== "university" && !entity.themes.includes(themeFilter)) return false;
-      if (statusFilter !== "all" && entity.type !== "university" && entity.status !== statusFilter) return false;
+      if (statusFilter !== "all" && entity.type !== "university" && getComputedStatus(entity) !== statusFilter) return false;
 
       if (needle) {
         const connectedUniversities = entity.universityIds.map((id) => entityById.get(id)?.title ?? "");
@@ -296,7 +325,7 @@ export function GraphExplorer() {
       }
       return true;
     });
-  }, [activeJourney, mode, query, statusFilter, themeFilter, typeFilter, universityFilter]);
+  }, [activeJourney, allowedEntityIds, mode, query, statusFilter, themeFilter, typeFilter, universityFilter]);
 
   const visibleIds = useMemo(() => new Set(filteredEntities.map((entity) => entity.id)), [filteredEntities]);
   const visibleRelationships = useMemo(
@@ -313,6 +342,7 @@ export function GraphExplorer() {
       selectable: false,
       classes: "map-layer",
     };
+
     const nodeElements: ElementDefinition[] = filteredEntities.map((entity) => ({
       data: {
         id: entity.id,
@@ -334,8 +364,8 @@ export function GraphExplorer() {
         relationshipType: relationship.type,
       },
     }));
-    return [mapElement, ...nodeElements, ...edgeElements];
-  }, [filteredEntities, visibleRelationships]);
+    return layoutMode === "geography" ? [mapElement, ...nodeElements, ...edgeElements] : [...nodeElements, ...edgeElements];
+  }, [filteredEntities, layoutMode, visibleRelationships]);
 
   const selectEntity = useCallback((id: string | null) => {
     setSelectedId(id);
@@ -348,8 +378,10 @@ export function GraphExplorer() {
     const cy = cytoscape({
       container: graphRef.current,
       elements: graphElements,
-      layout: { name: "preset", fit: true, padding: 60 },
-      minZoom: 0.35,
+      layout: layoutMode === "geography"
+        ? { name: "preset", fit: true, padding: 28 }
+        : { name: "cose", fit: true, padding: 44, animate: false, randomize: true, componentSpacing: 70, nodeRepulsion: () => 6800, idealEdgeLength: () => 110 },
+      minZoom: 0.28,
       maxZoom: 2.6,
       wheelSensitivity: 0.18,
       pixelRatio: "auto",
@@ -382,6 +414,18 @@ export function GraphExplorer() {
           },
         },
         {
+          selector: "node.map-layer",
+          style: {
+            shape: "rectangle",
+            width: EUROPE_MAP_WIDTH,
+            height: EUROPE_MAP_HEIGHT,
+            "background-opacity": 0,
+            "border-width": 0,
+            "z-index": -1,
+            "z-index-compare": "manual",
+          },
+        },
+        {
           selector: 'node[type = "university"]',
           style: {
             width: 51,
@@ -391,6 +435,16 @@ export function GraphExplorer() {
             color: "#293133",
             "border-color": "#dce3e0",
             "border-width": 5,
+          },
+        },
+        {
+          selector: 'node[type = "student"]',
+          style: {
+            width: 38,
+            height: 38,
+            "border-color": "#ffe4f3",
+            "border-width": 5,
+            "border-style": "double",
           },
         },
         {
@@ -467,8 +521,46 @@ export function GraphExplorer() {
             "text-background-padding": "4px",
           },
         },
+        {
+          selector: ".context-faded",
+          style: { opacity: 0.1 },
+        },
+        {
+          selector: ".context-secondary",
+          style: { opacity: 0.42 },
+        },
       ],
     });
+
+    let constraining = false;
+    const constrainGeography = () => {
+      if (layoutMode !== "geography" || constraining || !graphRef.current) return;
+      const width = graphRef.current.clientWidth;
+      const height = graphRef.current.clientHeight;
+      const minimum = Math.max(width / EUROPE_MAP_WIDTH, height / EUROPE_MAP_HEIGHT) * 1.015;
+      if (cy.minZoom() !== minimum) cy.minZoom(minimum);
+      if (cy.zoom() < minimum) cy.zoom(minimum);
+      const zoom = cy.zoom();
+      const pan = cy.pan();
+      const minX = width - EUROPE_MAP_WIDTH * zoom;
+      const minY = height - EUROPE_MAP_HEIGHT * zoom;
+      const next = {
+        x: Math.min(0, Math.max(minX, pan.x)),
+        y: Math.min(0, Math.max(minY, pan.y)),
+      };
+      if (next.x !== pan.x || next.y !== pan.y) {
+        constraining = true;
+        cy.pan(next);
+        constraining = false;
+      }
+    };
+    cy.on("pan zoom", constrainGeography);
+    if (layoutMode === "geography") {
+      requestAnimationFrame(() => {
+        cy.fit(cy.getElementById(EUROPE_MAP_ID), 0);
+        constrainGeography();
+      });
+    }
 
     cy.on("tap", "node", (event: EventObject) => selectEntity(event.target.id()));
     cy.on("tap", "edge", (event: EventObject) => {
@@ -481,19 +573,36 @@ export function GraphExplorer() {
     });
 
     cyRef.current = cy;
+
+    const updateMapTransform = () => {
+      if (bgMapRef.current) {
+        const pan = cy.pan();
+        const zoom = cy.zoom();
+        bgMapRef.current.style.transform = `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`;
+      }
+    };
+
+    cy.on("viewport", updateMapTransform);
+    updateMapTransform();
     return () => cy.destroy();
-  }, [graphElements, selectEntity]);
+  }, [graphElements, layoutMode, selectEntity]);
 
   useEffect(() => {
     const cy = cyRef.current;
     if (!cy) return;
     cy.edges().removeClass("highlighted");
+    cy.elements().removeClass("context-faded context-secondary");
     cy.nodes().unselect();
     if (!selectedId) return;
     const node = cy.getElementById(selectedId);
     if (node.nonempty()) {
       node.select();
-      node.connectedEdges().addClass("highlighted");
+      const edges = node.connectedEdges();
+      const neighbours = edges.connectedNodes();
+      cy.elements().difference(node.union(edges).union(neighbours)).addClass("context-faded");
+      neighbours.addClass("context-secondary");
+      edges.addClass("highlighted");
+      cy.animate({ center: { eles: node }, zoom: Math.max(cy.zoom(), 1.15) }, { duration: 360 });
     }
   }, [graphElements, selectedId]);
 
@@ -510,6 +619,7 @@ export function GraphExplorer() {
   useEffect(() => {
     const params = new URLSearchParams();
     params.set("mode", mode);
+    params.set("layout", layoutMode);
     if (selectedId) params.set("node", selectedId);
     if (journeyId) params.set("journey", journeyId);
     if (query) params.set("q", query);
@@ -519,7 +629,7 @@ export function GraphExplorer() {
     if (statusFilter !== "all") params.set("status", statusFilter);
     if (listView) params.set("view", "list");
     window.history.replaceState({}, "", `${window.location.pathname}?${params.toString()}`);
-  }, [journeyId, listView, mode, query, selectedId, statusFilter, themeFilter, typeFilter, universityFilter]);
+  }, [journeyId, layoutMode, listView, mode, query, selectedId, statusFilter, themeFilter, typeFilter, universityFilter]);
 
   useEffect(() => {
     if (filtersOpen) filterCloseButtonRef.current?.focus();
@@ -587,7 +697,7 @@ export function GraphExplorer() {
   };
 
   return (
-    <section className="explorer" aria-labelledby="explorer-title">
+    <section className="explorer" aria-label="Interactive INGENIUM network explorer">
       <div className="explorer__topbar">
         <label className="graph-search">
           <Search aria-hidden="true" />
@@ -595,7 +705,14 @@ export function GraphExplorer() {
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search programmes, universities, themes…"
+            onKeyDown={(event) => {
+              if (event.key !== "Enter") return;
+              const needle = query.trim().toLocaleLowerCase();
+              const match = filteredEntities.find((entity) => entity.title.toLocaleLowerCase() === needle)
+                ?? filteredEntities.find((entity) => entity.title.toLocaleLowerCase().includes(needle));
+              if (match) selectEntity(match.id);
+            }}
+            placeholder="Search courses, people, universities…"
             list="network-search-suggestions"
           />
           <datalist id="network-search-suggestions">
@@ -651,8 +768,16 @@ export function GraphExplorer() {
       )}
 
       <div className="explorer__view-tabs" role="tablist" aria-label="Network representation">
+        <span className="graph-layout-switch" aria-label="Graph layout">
+          <button type="button" className={layoutMode === "geography" ? "is-active" : ""} aria-pressed={layoutMode === "geography"} onClick={() => setLayoutMode("geography")}>
+            <Globe2 aria-hidden="true" /> Geography
+          </button>
+          <button type="button" className={layoutMode === "network" ? "is-active" : ""} aria-pressed={layoutMode === "network"} onClick={() => setLayoutMode("network")}>
+            <Map aria-hidden="true" /> Network
+          </button>
+        </span>
         <button id="graph-tab" type="button" role="tab" aria-selected={!listView} aria-controls="network-graph-panel" tabIndex={listView ? -1 : 0} onClick={() => setListView(false)}>
-          <Map aria-hidden="true" /> Graph
+          <Map aria-hidden="true" /> Visual
         </button>
         <button id="list-tab" type="button" role="tab" aria-selected={listView} aria-controls="network-list-panel" tabIndex={listView ? 0 : -1} onClick={() => setListView(true)}>
           <List aria-hidden="true" /> Accessible list
@@ -660,13 +785,32 @@ export function GraphExplorer() {
         <span>{visibleResultCount} results · {visibleUniversityCount} campus anchors · {visibleRelationships.length} relationships</span>
       </div>
 
-      <div className="graph-boundary">
+      <div className="graph-boundary" style={{ position: "relative", overflow: "hidden" }}>
         {!listView ? (
           <>
+            {layoutMode === "geography" && (
+              <div
+                ref={bgMapRef}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: `${EUROPE_MAP_WIDTH}px`,
+                  height: `${EUROPE_MAP_HEIGHT}px`,
+                  backgroundImage: "url('/assets/europe-map.svg')",
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                  transformOrigin: "0 0",
+                  zIndex: 0,
+                  pointerEvents: "none"
+                }}
+              />
+            )}
             <div
               id="network-graph-panel"
               ref={graphRef}
               className="graph-canvas"
+              style={{ position: "relative", zIndex: 1 }}
               role="tabpanel"
               aria-labelledby="graph-tab"
               tabIndex={0}
@@ -675,8 +819,8 @@ export function GraphExplorer() {
             <div className="graph-controls" aria-label="Graph controls">
               <button type="button" aria-label="Zoom in" onClick={() => cyRef.current?.zoom({ level: Math.min((cyRef.current?.zoom() ?? 1) * 1.25, 2.6), renderedPosition: { x: 550, y: 360 } })}><Plus aria-hidden="true" /></button>
               <button type="button" aria-label="Zoom out" onClick={() => cyRef.current?.zoom({ level: Math.max((cyRef.current?.zoom() ?? 1) / 1.25, 0.35), renderedPosition: { x: 550, y: 360 } })}><Minus aria-hidden="true" /></button>
-              <button type="button" aria-label="Fit visible network" onClick={() => cyRef.current?.fit(undefined, 60)}><Focus aria-hidden="true" /></button>
-              <button type="button" aria-label="Reset network view" onClick={() => { cyRef.current?.reset(); cyRef.current?.fit(undefined, 60); }}><RotateCcw aria-hidden="true" /></button>
+              <button type="button" aria-label="Fit visible network" onClick={() => cyRef.current?.fit(undefined, layoutMode === "geography" ? 0 : 60)}><Focus aria-hidden="true" /></button>
+              <button type="button" aria-label="Reset network view" onClick={() => { selectEntity(null); cyRef.current?.fit(undefined, layoutMode === "geography" ? 0 : 60); }}><RotateCcw aria-hidden="true" /></button>
             </div>
             <div className="graph-legend" aria-label="Node type legend">
               {["university", "bip", "programme", "pathway", "project", "event", "community", "platform"]
@@ -689,18 +833,20 @@ export function GraphExplorer() {
                 ))}
             </div>
             <p className="graph-help">Drag to move · scroll or pinch to zoom · select nodes and connecting lines to understand the network</p>
-            <a
-              className="graph-map-credit"
-              href="https://commons.wikimedia.org/wiki/File:Europe_blank_laea_location_map.svg"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Map: Alexrk2 / Wikimedia Commons · CC BY-SA 3.0
-            </a>
+            {layoutMode === "geography" && (
+              <a
+                className="graph-map-credit"
+                href="https://commons.wikimedia.org/wiki/File:Europe_blank_laea_location_map.svg"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Map: Alexrk2 / Wikimedia Commons · CC BY-SA 3.0
+              </a>
+            )}
           </>
         ) : (
           <div id="network-list-panel" className="network-list" role="tabpanel" aria-labelledby="list-tab" tabIndex={0}>
-            {filteredEntities.map((entity) => (
+              {filteredEntities.filter((entity) => entity.id !== EUROPE_MAP_ID).map((entity) => (
               <button key={entity.id} type="button" className="network-list__item" onClick={() => selectEntity(entity.id)}>
                 <span className="network-list__marker" style={{ background: typeColours[entity.type] }}>{entity.shortTitle?.slice(0, 2) ?? typeLabels[entity.type].slice(0, 1)}</span>
                 <span>
@@ -708,7 +854,7 @@ export function GraphExplorer() {
                   <strong>{entity.title}</strong>
                   <span>{entity.studentSummary}</span>
                 </span>
-                <StatusBadge status={entity.status} />
+                <StatusBadge status={getComputedStatus(entity)} />
                 <ChevronRight aria-hidden="true" />
               </button>
             ))}
@@ -729,7 +875,7 @@ export function GraphExplorer() {
         )}
       </div>
 
-      <div className="journey-picker" aria-labelledby="journey-picker-title">
+      {showJourneyPicker && <div className="journey-picker" aria-labelledby="journey-picker-title">
         <div>
           <span className="eyebrow">Guided discovery</span>
           <h2 id="journey-picker-title">Start with what you want to do</h2>
@@ -744,7 +890,7 @@ export function GraphExplorer() {
             </button>
           ))}
         </div>
-      </div>
+      </div>}
 
       {filtersOpen && (
         <div className="drawer-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setFiltersOpen(false); }}>
@@ -756,7 +902,7 @@ export function GraphExplorer() {
             <label>Type<select value={typeFilter} onChange={(event) => setTypeFilter(event.target.value as EntityType | "all")}><option value="all">All types</option>{Object.entries(typeLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
             <label>University<select value={universityFilter} onChange={(event) => setUniversityFilter(event.target.value)}><option value="all">All universities</option>{universities.map((university) => <option key={university.id} value={university.id}>{university.shortTitle} — {university.title}</option>)}</select></label>
             <label>Theme<select value={themeFilter} onChange={(event) => setThemeFilter(event.target.value)}><option value="all">All themes</option>{themes.map((theme) => <option key={theme} value={theme}>{theme}</option>)}</select></label>
-            <label>Status<select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value as EntityStatus | "all")}><option value="all">All statuses</option>{[...new Set(entities.map((entity) => entity.status))].map((status) => <option key={status} value={status}>{status}</option>)}</select></label>
+            <label>Status<select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value as EntityStatus | "all")}><option value="all">All statuses</option>{[...new Set(entities.map((entity) => getComputedStatus(entity)))].map((status) => <option key={status} value={status}>{status}</option>)}</select></label>
             <div className="filter-drawer__actions">
               <button className="button button--secondary" type="button" onClick={clearFilters}>Clear all</button>
               <button className="button button--primary" type="button" onClick={() => setFiltersOpen(false)}>Show {filteredEntities.length} nodes</button>
@@ -780,7 +926,8 @@ export function GraphExplorer() {
             </div>
           ) : selected ? (
             <>
-              <div className="detail-drawer__meta"><span>{selected.subtype ?? typeLabels[selected.type]}</span><StatusBadge status={selected.status} /></div>
+              <div className="detail-drawer__meta"><span>{selected.subtype ?? typeLabels[selected.type]}</span><StatusBadge status={getComputedStatus(selected)} /></div>
+              <ClassificationBadge classification={selected.dataClassification} />
               <h2 id="detail-title">{selected.title}</h2>
               <p className="detail-drawer__lead">{selected.studentSummary}</p>
               {selected.fullDescription && <p>{selected.fullDescription}</p>}
@@ -799,6 +946,7 @@ export function GraphExplorer() {
               </dl>
               <div className="detail-themes">{selected.themes.map((theme) => <span key={theme}>{theme}</span>)}</div>
               <div className="detail-actions">
+                <Link className="button button--dark" href={`/records/${selected.slug}`}>View full record<ArrowRight aria-hidden="true" /></Link>
                 {selected.officialUrl && <a className="button button--primary" href={selected.officialUrl} target="_blank" rel="noreferrer">{selected.actionLabel ?? "View official source"}<ArrowRight aria-hidden="true" /></a>}
                 {!selected.officialUrl && selectedSource?.url && <a className="button button--primary" href={selectedSource.url} target="_blank" rel="noreferrer">View official evidence<ArrowRight aria-hidden="true" /></a>}
                 <button className="button button--secondary" type="button" onClick={() => toggleSaved(selected.id)}>{savedIds.includes(selected.id) ? <BookmarkCheck aria-hidden="true" /> : <Bookmark aria-hidden="true" />}{savedIds.includes(selected.id) ? "Saved" : "Save"}</button>

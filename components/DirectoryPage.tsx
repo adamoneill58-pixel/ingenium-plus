@@ -4,6 +4,7 @@ import { Search, SlidersHorizontal } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { Entity, EntityStatus, EntityType } from "@/lib/data";
 import { typeLabels } from "@/lib/data";
+import { getComputedStatus } from "@/lib/v15-logic";
 import { EntityCard } from "./EntityCard";
 
 interface DirectoryPageProps {
@@ -25,7 +26,7 @@ export function DirectoryPage({ eyebrow, title, introduction, entities, showType
     [entities],
   );
   const types = useMemo(() => [...new Set(entities.map((entity) => entity.type))], [entities]);
-  const statuses = useMemo(() => [...new Set(entities.map((entity) => entity.status))], [entities]);
+  const statuses = useMemo(() => [...new Set(entities.map((entity) => getComputedStatus(entity)))], [entities]);
 
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
@@ -37,7 +38,7 @@ export function DirectoryPage({ eyebrow, title, introduction, entities, showType
       return (
         (!needle || haystack.includes(needle)) &&
         (type === "all" || entity.type === type) &&
-        (status === "all" || entity.status === status) &&
+        (status === "all" || getComputedStatus(entity) === status) &&
         (theme === "all" || entity.themes.includes(theme))
       );
     });

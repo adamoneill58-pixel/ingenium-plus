@@ -11,7 +11,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 export const metadata: Metadata = {
   metadataBase: new URL("https://ingenium-plus.pages.dev"),
   title: {
-    default: "INGENIUM+ — Find your path through one European campus",
+    default: "INGENIUM+ v1.5 — Find your path through one European campus",
     template: "%s — INGENIUM+",
   },
   description:
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     shortcut: "/assets/brand/ingenium-main-colour.svg",
   },
   openGraph: {
-    title: "INGENIUM+ — Find your path through one European campus",
+    title: "INGENIUM+ v1.5 — Find your path through one European campus",
     description:
       "Explore verified programmes, mobility, projects, communities and student opportunities across INGENIUM.",
     type: "website",

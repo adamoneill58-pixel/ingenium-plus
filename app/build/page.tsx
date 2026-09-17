@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { DirectoryPage } from "@/components/DirectoryPage";
-import { entities } from "@/lib/data";
+import { records as entities } from "@/lib/v15-data";
 
 export const metadata: Metadata = {
   title: "Build | INGENIUM+",

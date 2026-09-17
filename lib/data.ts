@@ -9,7 +9,12 @@ export type EntityType =
   | "platform"
   | "opportunity"
   | "initiative"
-  | "framework";
+  | "framework"
+  | "module"
+  | "course"
+  | "microcredential"
+  | "student"
+  | "learning_resource";
 
 export type EntityStatus =
   | "Open"
@@ -21,7 +26,16 @@ export type EntityStatus =
   | "Under development"
   | "Archived"
   | "Access unverified"
-  | "Verification required";
+  | "Verification required"
+  | "Open now"
+  | "Opens soon"
+  | "Coming soon"
+  | "Closed"
+  | "Past"
+  | "Historical"
+  | "In development";
+
+export type DataClassification = "verified" | "calculated" | "sample";
 
 export type Confidence = "High" | "Medium" | "Low";
 
@@ -31,6 +45,9 @@ export interface Source {
   kind: string;
   url?: string;
   published?: string;
+  publisher?: string;
+  verifiedAt?: string;
+  notes?: string;
 }
 
 export interface Entity {
@@ -56,6 +73,7 @@ export interface Entity {
   endDate?: string;
   dateLabel?: string;
   applicationDeadline?: string;
+  applicationOpenDate?: string;
   ects?: number;
   eqfLevel?: string;
   workload?: string;
@@ -71,6 +89,21 @@ export interface Entity {
   workPackage?: string;
   featured?: boolean;
   aliases?: string[];
+  dataClassification?: DataClassification;
+  sourceIds?: string[];
+  statusOverride?: EntityStatus;
+  recurrence?: "recurring";
+  moduleCode?: string;
+  studyLevels?: string[];
+  languages?: string[];
+  semester?: string;
+  prerequisites?: string[];
+  learningOutcomes?: string[];
+  assessment?: string;
+  whyItMatters?: string;
+  imageUrl?: string;
+  imageAlt?: string;
+  history?: { label: string; date?: string; note?: string }[];
 }
 
 export interface Relationship {
@@ -80,6 +113,9 @@ export interface Relationship {
   type: string;
   label: string;
   explanation: string;
+  sourceIds?: string[];
+  dataClassification?: DataClassification;
+  date?: string;
 }
 
 export interface Journey {
@@ -893,6 +929,11 @@ export const typeLabels: Record<EntityType, string> = {
   opportunity: "Opportunity",
   initiative: "Initiative",
   framework: "Framework",
+  module: "Module",
+  course: "Course",
+  microcredential: "Microcredential",
+  student: "Student",
+  learning_resource: "Learning resource",
 };
 
 export const typeColours: Record<EntityType, string> = {
@@ -907,4 +948,9 @@ export const typeColours: Record<EntityType, string> = {
   opportunity: "#007b65",
   initiative: "#ad3e82",
   framework: "#687a13",
+  module: "#00a3c7",
+  course: "#147e72",
+  microcredential: "#9ab300",
+  student: "#e5007e",
+  learning_resource: "#7763bf",
 };

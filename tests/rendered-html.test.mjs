@@ -19,9 +19,9 @@ test("server-renders the complete INGENIUM+ homepage", async () => {
   const html = await response.text();
   assert.match(html, /Your European campus/);
   assert.match(html, /made visible/);
-  assert.match(html, /The European Campus map/);
+  assert.match(html, /The European Campus graph/);
   assert.match(html, /Accessible list/);
-  assert.match(html, /Research checked/);
+  assert.match(html, /current refresh/i);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview|react-loading-skeleton/i);
 });
 
@@ -36,6 +36,10 @@ for (const [pathname, heading] of [
   ["/my-journey", "Turn discovery into a plan"],
   ["/research", "See what the network is built on"],
   ["/about", "A clearer way into your European campus"],
+  ["/explore", "Explore all of INGENIUM"],
+  ["/learning", "Build a European semester"],
+  ["/my-campus", "Make the campus yours"],
+  ["/records/sustainable-wellbeing-changing-society", "Sustainable Wellbeing in Changing Society"],
 ]) {
   test(`server-renders ${pathname}`, async () => {
     const response = await render(pathname);

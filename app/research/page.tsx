@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { entities, RESEARCH_DATE, sources } from "@/lib/data";
+import { evidenceSources as sources, records as entities, V15_RESEARCH_DATE } from "@/lib/v15-data";
 
 export const metadata: Metadata = {
   title: "Research & sources | INGENIUM+",
@@ -17,7 +17,7 @@ export default function ResearchPage() {
           <span className="eyebrow">Evidence ledger</span>
           <h1>See what the network is built on</h1>
           <p>
-            Every INGENIUM+ record is tied to an official alliance page, programme page or deliverable. The evidence was last checked on {RESEARCH_DATE}.
+            Every INGENIUM+ record is tied to an official alliance page, programme page or deliverable. The current-data refresh was checked on {V15_RESEARCH_DATE}; retained historical sources keep their own dates.
           </p>
         </div>
         <div className="page-hero__signal" aria-label={`${sources.length} evidence sources`}>
@@ -54,7 +54,8 @@ export default function ResearchPage() {
             <article key={source.id} className="entity-card entity-card--framework">
               <span className="eyebrow">{source.kind}</span>
               <h3>{source.title}</h3>
-              <p>{source.published ? `Published or revised ${source.published}.` : "Current official web source."}</p>
+              <p>{source.published ? `Published or revised ${source.published}.` : source.verifiedAt ? `Verified ${source.verifiedAt}.` : "Official web or project-library source."}</p>
+              {source.notes && <p>{source.notes}</p>}
               <div className="entity-card__actions">
                 {source.url ? (
                   <a className="text-link" href={source.url} target="_blank" rel="noreferrer">

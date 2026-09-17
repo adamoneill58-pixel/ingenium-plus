@@ -7,15 +7,18 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const primaryLinks = [
-  { href: "/", label: "Graph" },
-  { href: "/opportunities", label: "Opportunities" },
-  { href: "/programmes", label: "Programmes" },
-  { href: "/events", label: "Events & mobility" },
-  { href: "/communities", label: "Communities" },
+  { href: "/", label: "Network" },
+  { href: "/explore", label: "Explore" },
+  { href: "/learning", label: "Learning" },
+  { href: "/my-campus", label: "My Campus" },
 ];
 
 const secondaryLinks = [
   { href: "/build", label: "Build & innovate" },
+  { href: "/opportunities", label: "Opportunities" },
+  { href: "/programmes", label: "Programmes" },
+  { href: "/events", label: "Events & mobility" },
+  { href: "/communities", label: "Communities" },
   { href: "/platforms", label: "Platforms" },
   { href: "/universities", label: "Universities" },
   { href: "/my-journey", label: "My journey" },
@@ -35,7 +38,7 @@ export function SiteHeader() {
         <Link className="brand-lockup" href="/" aria-label="INGENIUM+ home">
           {/* The image is an unmodified official INGENIUM media-kit asset. */}
           <Image src="/assets/brand/ingenium-horizontal-colour.svg" alt="INGENIUM European University" width={219} height={87} priority />
-          <span className="version-chip">PLUS · 1.4</span>
+          <span className="version-chip">PLUS · 1.5</span>
         </Link>
 
         <nav className="desktop-nav" aria-label="Main navigation">

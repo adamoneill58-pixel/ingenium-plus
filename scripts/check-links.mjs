@@ -31,7 +31,7 @@ for (let index = 0; index < urls.length; index += 6) {
         method: "GET",
         redirect: "follow",
         signal: AbortSignal.timeout(15000),
-        headers: { "user-agent": "INGENIUM-Plus-Research-Link-Check/1.4" },
+        headers: { "user-agent": "INGENIUM-Plus-Research-Link-Check/1.5" },
       });
       return { url, status: response.status, ok: response.ok };
     } catch (error) {

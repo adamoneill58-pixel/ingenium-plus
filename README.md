@@ -1,41 +1,54 @@
-# INGENIUM+ v1.4
+# INGENIUM+ v1.5
 
-A student-first discovery layer for the INGENIUM European University. The interactive graph connects official programmes, BIPs, mobility, student projects, communities, platforms and research opportunities across ten partner universities.
+INGENIUM+ is a student-first discovery and planning layer for the INGENIUM European University. Its main interface is one evidence graph with two representations: a geographic European-campus map and a relationship-led network. Explore, Learning, full record pages and My Campus all use the same underlying records.
 
 ## Run locally
 
-Requires Node.js 22.13 or newer.
+Use Node.js 22 LTS (22.13 or newer).
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open the local URL printed by Vite, normally `http://localhost:3000`. If that port is occupied, Vite selects the next available port.
 
-For a production check:
+For a production-equivalent check:
 
 ```bash
 npm test
 npm run start
 ```
 
+## Product areas
+
+- `/` — graph-first Network workspace with Geography and Network layouts.
+- `/explore` — cross-dataset search and filters with cards or graph results.
+- `/learning` — learning catalogue and browser-local semester builder.
+- `/records/[slug]` — evidence-rich record pages, connections, history where available, sample people and contextual sample Chats.
+- `/my-campus` — optional browser-local profile, You node, sample degree network, tasks, activity and explained recommendations.
+- `/research` — source ledger and freshness model.
+
 ## Useful commands
 
-- `npm run dev` — development server
-- `npm run validate:data` — entity, source, journey and relationship integrity checks
-- `npm run typecheck` — strict TypeScript check
-- `npm run lint` — React and Next.js linting
-- `npm run build` — production build
-- `npm test` — complete validation and server-rendered route tests
+- `npm run validate:data` — v1.4 base-archive entity, source, journey and relationship integrity.
+- `npm run test:logic` — v1.5 status, degrees, recommendations, semester and aggregate-data tests.
+- `npm run typecheck` — strict TypeScript check.
+- `npm run lint` — React and Next linting.
+- `npm run build` — production Cloudflare Worker build.
+- `npm test` — full data, logic, TypeScript, build and rendered-route regression suite.
+- `npm run check:links:live` — optional live HTTP check for official links.
 
-## Product boundaries
+## Trust and privacy boundaries
 
-- Research is frozen to 5 August 2026; official application and university systems remain authoritative.
-- Statuses distinguish open, upcoming, recurring, ongoing, completed, developing and access-unverified records.
-- Saved items, ordered journey steps and private notes use browser storage only. There are no accounts, public student profiles or private-student data.
-- The official INGENIUM logo files in `public/assets/brand/` are unmodified media-kit assets.
+- Explicit dates drive statuses when available; stale “open” badges do not override passed deadlines.
+- Conflicting official claims are shown as `Verification required` rather than silently resolved.
+- Every record is classified as verified, INGENIUM+ calculated or sample information.
+- Official application, enrolment, nomination and recognition systems remain authoritative.
+- Profiles, saved records, joined markers, semester plans, tasks, connections and correction notes stay in browser local storage. There is no INGENIUM account or private-student backend.
+- Student profiles and Chats in the public dataset are fictional, visibly labelled samples.
+- The current official-data refresh date is 13 September 2026; retained evidence has source-specific dates.
 
-## Evidence
+## Deployment
 
-The source ledger is available at `/research`. It combines current official INGENIUM pages with the project evidence library, including D1.3, D3.3, D4.1, D5.1, D5.7, D7.4, D8.2, D8.4, D10.1 and D10.2. Records that could not be confirmed as live are labelled accordingly rather than being promoted as active opportunities.
+The Sites project link is stored in `.openai/hosting.json`. Saving or committing in VS Code does not publish. Build and review the exact local version, create a named saved version, then explicitly deploy that saved version through Sites. See `docs/TESTING.md` and `docs/RELEASE_NOTES_V1.5.md` before publishing.
