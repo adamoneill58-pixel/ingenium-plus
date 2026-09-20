@@ -2,6 +2,8 @@
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
 import { setRuntimeBindings } from "../lib/v151/bindings";
+import { chatGPTUserFromHeaders } from "../lib/v151/chatgpt-user";
+import { getOrCreateSession } from "../lib/v151/repository";
 
 interface Env {
   ASSETS: Fetcher;
@@ -42,6 +44,15 @@ const worker = {
           return result.response();
         },
       }, allowedWidths);
+    }
+
+    // Initialize the owner's profile, roles, and checked-in dataset before the
+    // first private HTML page renders. This removes a first-load race between
+    // the interface and its client-side session request while remaining a
+    // no-op for anonymous or non-owner requests.
+    if (env?.DB && request.method === "GET" && request.headers.get("accept")?.includes("text/html")) {
+      const user = chatGPTUserFromHeaders(request.headers);
+      if (user) await getOrCreateSession(env.DB, user);
     }
 
     return handler.fetch(request, env, ctx);

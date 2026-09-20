@@ -1,4 +1,4 @@
-import type { ChatGPTUser } from "@/app/chatgpt-auth";
+import type { ChatGPTUser } from "./chatgpt-user";
 import seedSql from "../../db/seed/v151.sql?raw";
 
 const SEED_BATCH_SIZE = 60;

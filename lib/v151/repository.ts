@@ -1,5 +1,5 @@
 import type { AppRole } from "@/db/schema";
-import type { ChatGPTUser } from "@/app/chatgpt-auth";
+import type { ChatGPTUser } from "./chatgpt-user";
 import type { SessionContext } from "./types";
 import { EMBEDDING_DIMENSIONS, EMBEDDING_MODEL, EMBEDDING_PROVIDER, embedText } from "./embeddings";
 import { sha256Hex } from "./upload-security";
@@ -30,8 +30,10 @@ export async function getOrCreateSession(database: D1Database, user: ChatGPTUser
       .bind(user.email, user.displayName, profile.id).run();
   }
   await bootstrapPrivateOwner(database, user, profile.id, getRuntimeBindings().BOOTSTRAP_OWNER_EMAIL);
+  const currentProfile = await database.prepare("SELECT mode FROM profiles WHERE id = ?").bind(profile.id)
+    .first<{ mode: "student" | "staff" }>();
   const roleRows = await database.prepare("SELECT role FROM memberships WHERE profile_id = ? AND status = 'active'").bind(profile.id).all<{ role: AppRole }>();
-  return { profileId: profile.id, authSubject: profile.authSubject, email: user.email, displayName: user.displayName, mode: profile.mode, roles: roleRows.results.map((row) => row.role) };
+  return { profileId: profile.id, authSubject: profile.authSubject, email: user.email, displayName: user.displayName, mode: currentProfile?.mode ?? profile.mode, roles: roleRows.results.map((row) => row.role) };
 }
 
 export async function saveMode(database: D1Database, profileId: string, mode: "student" | "staff") {

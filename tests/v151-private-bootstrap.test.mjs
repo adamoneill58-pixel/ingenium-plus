@@ -6,6 +6,9 @@ import { createServer } from "vite";
 
 const server = await createServer({ configFile: false, cacheDir: ".vite-v151-private-bootstrap-cache", server: { middlewareMode: true }, appType: "custom", logLevel: "silent" });
 const bootstrap = await server.ssrLoadModule("/lib/v151/private-bootstrap.ts");
+const repository = await server.ssrLoadModule("/lib/v151/repository.ts");
+const bindings = await server.ssrLoadModule("/lib/v151/bindings.ts");
+const chatgptUser = await server.ssrLoadModule("/lib/v151/chatgpt-user.ts");
 const schema = await readFile(new URL("../drizzle/0000_v151_production.sql", import.meta.url), "utf8");
 after(async () => server.close());
 
@@ -57,4 +60,38 @@ test("a non-owner cannot trigger private bootstrap", async () => {
   assert.equal(sqlite.prepare("SELECT COUNT(*) AS count FROM content_records").get().count, 0);
   assert.equal(sqlite.prepare("SELECT COUNT(*) AS count FROM memberships").get().count, 0);
   sqlite.close();
+});
+
+test("the first owner session is immediately returned in Staff mode", async () => {
+  const sqlite = new DatabaseSync(":memory:");
+  sqlite.exec(schema);
+  const database = new D1TestDatabase(sqlite);
+  bindings.setRuntimeBindings({ DB: database, BOOTSTRAP_OWNER_EMAIL: "owner@example.invalid" });
+
+  const session = await repository.getOrCreateSession(database, {
+    userId: "auth-owner",
+    email: "owner@example.invalid",
+    displayName: "Owner",
+    fullName: "Owner",
+  });
+
+  assert.equal(session.mode, "staff");
+  assert.deepEqual(new Set(session.roles), new Set(["student", "staff", "administrator"]));
+  assert.equal(sqlite.prepare("SELECT COUNT(*) AS count FROM content_records").get().count, 104);
+  sqlite.close();
+});
+
+test("trusted Sites identity headers are parsed without leaking malformed names", () => {
+  const requestHeaders = new Headers({
+    "oai-authenticated-user-id": "auth-owner",
+    "oai-authenticated-user-email": "owner@example.invalid",
+    "oai-authenticated-user-full-name": "Adam%20O%27Neill",
+    "oai-authenticated-user-full-name-encoding": "percent-encoded-utf-8",
+  });
+  assert.deepEqual(chatgptUser.chatGPTUserFromHeaders(requestHeaders), {
+    userId: "auth-owner",
+    email: "owner@example.invalid",
+    displayName: "Adam O'Neill",
+    fullName: "Adam O'Neill",
+  });
 });
