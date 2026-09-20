@@ -53,7 +53,6 @@ export default defineConfig(async ({ command }) => {
       : null;
 
   return {
-    cacheDir: ".vite-cache",
     resolve: {
       alias: [
         {
