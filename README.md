@@ -4,14 +4,21 @@ INGENIUM+ is a graph-first discovery and collaboration platform for the INGENIUM
 
 ## Run locally
 
-Use Node.js 22 LTS (22.13 or newer).
+Use Node.js 22 LTS. The checked-in `.nvmrc` selects the verified version when
+`nvm` is installed.
 
 ```bash
-npm install
+nvm install
+nvm use
+npm ci
 npm run dev
 ```
 
 Open the local URL printed by Vite, normally `http://localhost:3000`. If that port is occupied, Vite selects the next available port.
+
+Local development intentionally runs without D1, R2 or trusted deployment
+identity bindings. The public graph uses its labelled verified-seed fallback;
+protected Student and Staff mutations require the provisioned staging runtime.
 
 For a production-equivalent check:
 

@@ -45,4 +45,5 @@ next-env.d.ts
 *.tsbuildinfo
 *.zip
 /.vite-*-cache/
+/.vite-cache/
 /.sites-runtime/
