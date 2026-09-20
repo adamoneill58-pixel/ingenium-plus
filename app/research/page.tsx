@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import { evidenceSources as sources, records as entities, V15_RESEARCH_DATE } from "@/lib/v15-data";
+import { V15_RESEARCH_DATE } from "@/lib/v15-data";
+import { getRuntimeDataset } from "@/lib/v151/runtime-data";
 
 export const metadata: Metadata = {
   title: "Research & sources | INGENIUM+",
   description: "See the official evidence, confidence model and verification date behind INGENIUM+.",
 };
 
-const highConfidenceRecords = entities.filter((entity) => entity.confidence === "High").length;
-const verificationRequiredRecords = entities.filter((entity) => entity.status === "Verification required").length;
-
-export default function ResearchPage() {
+export default async function ResearchPage() {
+  const dataset = await getRuntimeDataset();
+  const sources = dataset.sources;
+  const highConfidenceRecords = dataset.records.filter((entity) => entity.confidence === "High").length;
+  const verificationRequiredRecords = dataset.records.filter((entity) => entity.status === "Verification required").length;
   return (
     <main id="main-content" className="page-shell">
       <section className="page-hero">

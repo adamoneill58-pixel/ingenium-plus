@@ -34,12 +34,8 @@ import {
   type EntityType,
   type Relationship,
 } from "@/lib/data";
-import {
-  evidenceById as sourceById,
-  networkRelationships as relationships,
-  recordById as entityById,
-  records as entities,
-} from "@/lib/v15-data";
+import { evidenceSources as staticSources, networkRelationships as staticRelationships, records as staticEntities } from "@/lib/v15-data";
+import type { Source } from "@/lib/data";
 import { getComputedStatus } from "@/lib/v15-logic";
 import { ClassificationBadge } from "./ClassificationBadge";
 import { StatusBadge } from "./StatusBadge";
@@ -225,10 +221,16 @@ export function GraphExplorer({
   allowedEntityIds,
   initialMode = "student",
   showJourneyPicker = true,
+  entities: suppliedEntities = staticEntities,
+  relationships: suppliedRelationships = staticRelationships,
+  sources: suppliedSources = staticSources,
 }: {
   allowedEntityIds?: string[];
   initialMode?: ViewMode;
   showJourneyPicker?: boolean;
+  entities?: Entity[];
+  relationships?: Relationship[];
+  sources?: Source[];
 } = {}) {
   const graphRef = useRef<HTMLDivElement>(null);
   const bgMapRef = useRef<HTMLDivElement>(null);
@@ -251,6 +253,10 @@ export function GraphExplorer({
   const [compareIds, setCompareIds] = useState<string[]>([]);
   const [toast, setToast] = useState<string | null>(null);
   const [journeyExpanded, setJourneyExpanded] = useState(false);
+  const entities = suppliedEntities;
+  const relationships = suppliedRelationships;
+  const entityById = useMemo(() => new globalThis.Map<string, Entity>(entities.map((entity) => [entity.id, entity])), [entities]);
+  const sourceById = useMemo(() => new globalThis.Map<string, Source>(suppliedSources.map((source) => [source.id, source])), [suppliedSources]);
 
   const themes = useMemo(() => [...new Set(entities.flatMap((entity) => entity.themes))].sort(), []);
   const universities = useMemo(() => entities.filter((entity) => entity.type === "university"), []);

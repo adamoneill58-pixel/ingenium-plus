@@ -7,6 +7,7 @@ import { createServer } from "vite";
 // unnecessary for pure selector and data-integrity tests.
 const server = await createServer({
   configFile: false,
+  cacheDir: ".vite-test-cache",
   server: { middlewareMode: true },
   appType: "custom",
   logLevel: "silent",

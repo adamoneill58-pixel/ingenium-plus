@@ -1,6 +1,6 @@
 {
   "name": "ingenium-plus-v1-5",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "private": true,
   "engines": {
     "node": ">=22.13.0"
@@ -9,14 +9,17 @@
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
     "build": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
-    "test": "npm run validate:data && npm run test:logic && npm run typecheck && npm run build && node --test tests/rendered-html.test.mjs",
+    "test": "npm run validate:data && npm run test:logic && npm run test:v151 && npm run typecheck && npm run build && node --test tests/rendered-html.test.mjs",
     "test:logic": "node --test tests/v15-logic.test.mjs",
+    "test:v151": "node --test tests/v151-recommendations.test.mjs tests/v151-database.test.mjs tests/v151-security.test.mjs tests/v151-workflows.test.mjs && node scripts/verify-backup-restore.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "typecheck": "tsc --noEmit --incremental false",
     "validate:data": "node scripts/validate-data.mjs",
     "check:links": "node scripts/check-links.mjs",
     "check:links:live": "node scripts/check-links.mjs --live",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "db:seed:generate": "node scripts/generate-v151-seed.mjs",
+    "recommendations:evaluate": "node scripts/evaluate-recommendations.mjs"
   },
   "dependencies": {
     "@fontsource/montserrat": "^5.3.0",

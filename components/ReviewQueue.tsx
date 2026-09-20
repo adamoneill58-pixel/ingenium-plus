@@ -1,0 +1,26 @@
+"use client";
+
+import { Check, FileSearch, X } from "lucide-react";
+import { useEffect, useState } from "react";
+
+type Proposal = { id: string; targetType: string; targetId?: string; proposedByName?: string; rationale: string; submittedAt: string; proposed?: Record<string, unknown> | null; current?: Record<string, unknown> | null };
+type Document = { id: string; originalName: string; mimeType: string; byteSize: number; scanStatus: string; reviewStatus: string };
+const formatKey = (value: string) => value.replace(/([a-z])([A-Z])/g, "$1 $2").replaceAll("_", " ").replace(/^./, (letter) => letter.toUpperCase());
+const formatValue = (value: unknown) => Array.isArray(value) ? value.join(", ") : value && typeof value === "object" ? JSON.stringify(value) : String(value ?? "Not provided");
+
+export function ReviewQueue() {
+  const [proposals, setProposals] = useState<Proposal[]>([]); const [documents, setDocuments] = useState<Document[]>([]); const [message, setMessage] = useState("Loading the review queue…");
+  useEffect(() => { void load(); }, []);
+  async function load() { const response = await fetch("/api/v151/reviews", { cache: "no-store" }); const body = await response.json().catch(() => ({})); if (!response.ok) return setMessage(body.error ?? "Review queue unavailable."); setProposals(body.proposals ?? []); setDocuments(body.documents ?? []); setMessage(""); }
+  async function decide(proposalId: string, decision: "approved" | "rejected" | "changes_requested") {
+    const reason = window.prompt(`Reason for ${decision.replaceAll("_", " ")}:`); if (!reason?.trim()) return;
+    const response = await fetch("/api/v151/reviews", { method: "PATCH", headers: { "content-type": "application/json" }, body: JSON.stringify({ proposalId, decision, reason }) });
+    const body = await response.json().catch(() => ({})); setMessage(response.ok ? `Proposal ${decision}.` : body.error ?? "Decision failed."); if (response.ok) await load();
+  }
+  async function decideDocument(document: Document, decision: "approved_private" | "approved_alliance" | "rejected") {
+    const reason = window.prompt(`Reason for ${decision.replaceAll("_", " ")}:`); if (!reason?.trim()) return;
+    const response = await fetch(`/api/v151/documents/${encodeURIComponent(document.id)}`, { method: "PATCH", headers: { "content-type": "application/json" }, body: JSON.stringify({ decision, reason }) });
+    const body = await response.json().catch(() => ({})); setMessage(response.ok ? `Document ${decision.replaceAll("_", " ")}.` : body.error ?? "Document decision failed."); if (response.ok) await load();
+  }
+  return <>{message && <p className="portal-notice portal-notice--compact" aria-live="polite">{message}</p>}<section className="review-layout"><div className="portal-panel"><span className="eyebrow">Human gate</span><h2>Pending content changes</h2>{proposals.length ? <div className="review-list">{proposals.map((proposal) => <article key={proposal.id}><div><strong>{proposal.targetType.replaceAll("_", " ")}</strong><span>{proposal.proposedByName ?? "Automated source monitor"} · {new Date(proposal.submittedAt).toLocaleDateString()}</span><p>{proposal.rationale}</p>{proposal.proposed && <details><summary>Inspect proposed values</summary><dl>{Object.entries(proposal.proposed).map(([key, value]) => <div key={key}><dt>{formatKey(key)}</dt><dd>{formatValue(value)}</dd></div>)}</dl></details>}{proposal.current && <details><summary>Compare current published values</summary><dl>{Object.entries(proposal.current).map(([key, value]) => <div key={key}><dt>{formatKey(key)}</dt><dd>{formatValue(value)}</dd></div>)}</dl></details>}</div><div><button className="review-approve" type="button" onClick={() => decide(proposal.id, "approved")}><Check aria-hidden="true" />Approve</button><button className="review-reject" type="button" onClick={() => decide(proposal.id, "changes_requested")}><FileSearch aria-hidden="true" />Changes</button><button className="review-reject" type="button" onClick={() => decide(proposal.id, "rejected")}><X aria-hidden="true" />Reject</button></div></article>)}</div> : <p>No proposals are waiting.</p>}</div><aside className="portal-panel"><span className="eyebrow">Quarantine</span><h2><FileSearch aria-hidden="true" />Documents awaiting checks</h2>{documents.map((document) => <article className="document-row" key={document.id}><strong>{document.originalName}</strong><span>{Math.ceil(document.byteSize / 1024)} KB · {document.mimeType}</span><small>Scan: {document.scanStatus} · Review: {document.reviewStatus}</small><div className="match-actions"><a href={`/api/v151/documents/${encodeURIComponent(document.id)}`} target="_blank" rel="noreferrer">Open evidence</a><button type="button" onClick={() => decideDocument(document, "rejected")}>Reject</button>{document.scanStatus === "clean" && <><button type="button" onClick={() => decideDocument(document, "approved_private")}>Approve private</button><button type="button" onClick={() => decideDocument(document, "approved_alliance")}>Approve alliance</button></>}</div></article>)}{!documents.length && <p>No documents are waiting.</p>}<p className="safety-note">A reviewer cannot publish an unscanned document. Scanner integration is a deployment prerequisite.</p></aside></section></>;
+}

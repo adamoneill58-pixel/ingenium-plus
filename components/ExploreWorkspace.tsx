@@ -2,16 +2,15 @@
 
 import { Grid2X2, Network, Search, SlidersHorizontal, X } from "lucide-react";
 import { useMemo, useState } from "react";
-import type { EntityStatus, EntityType } from "@/lib/data";
+import type { Entity, EntityStatus, EntityType, Relationship, Source } from "@/lib/data";
 import { typeLabels } from "@/lib/data";
-import { records } from "@/lib/v15-data";
 import { filterRecords, getComputedStatus } from "@/lib/v15-logic";
 import { EntityCard } from "./EntityCard";
 import { GraphExplorer } from "./GraphExplorer";
 
 type Representation = "cards" | "graph";
 
-export function ExploreWorkspace() {
+export function ExploreWorkspace({ records, relationships, sources }: { records: Entity[]; relationships: Relationship[]; sources: Source[] }) {
   const [query, setQuery] = useState("");
   const [type, setType] = useState<EntityType | "all">("all");
   const [universityId, setUniversityId] = useState("all");
@@ -70,7 +69,7 @@ export function ExploreWorkspace() {
 
       {representation === "graph" ? (
         <section className="explore-graph" aria-label="Filtered graph results">
-          <GraphExplorer allowedEntityIds={filtered.map((record) => record.id)} initialMode="alliance" showJourneyPicker={false} />
+          <GraphExplorer allowedEntityIds={filtered.map((record) => record.id)} initialMode="alliance" showJourneyPicker={false} entities={records} relationships={relationships} sources={sources} />
         </section>
       ) : filtered.length > 0 ? (
         <section className="card-grid" aria-label="Explore results">

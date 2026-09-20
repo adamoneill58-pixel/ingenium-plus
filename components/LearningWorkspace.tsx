@@ -3,8 +3,7 @@
 import { ArrowDown, ArrowUp, BookOpen, CalendarPlus, Check, Search, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useMemo, useState, useSyncExternalStore } from "react";
-import type { EntityStatus } from "@/lib/data";
-import { recordById, records } from "@/lib/v15-data";
+import type { Entity, EntityStatus } from "@/lib/data";
 import {
   addSemesterItem,
   filterRecords,
@@ -18,7 +17,7 @@ import { readProfile, readSemester, SEMESTER_KEY, storeSnapshot, subscribeStore,
 import { ClassificationBadge } from "./ClassificationBadge";
 import { StatusBadge } from "./StatusBadge";
 
-export function LearningWorkspace() {
+export function LearningWorkspace({ records }: { records: Entity[] }) {
   useSyncExternalStore(subscribeStore, storeSnapshot, () => "");
   const [query, setQuery] = useState("");
   const [level, setLevel] = useState("all");
@@ -26,7 +25,8 @@ export function LearningWorkspace() {
   const [language, setLanguage] = useState("all");
   const [universityId, setUniversityId] = useState("all");
   const [status, setStatus] = useState<EntityStatus | "all">("all");
-  const learning = useMemo(() => getLearningOpportunities(), []);
+  const learning = useMemo(() => getLearningOpportunities(records), [records]);
+  const recordById = useMemo(() => new Map(records.map((record) => [record.id, record])), [records]);
   const semester = readSemester();
   const profile = readProfile();
 

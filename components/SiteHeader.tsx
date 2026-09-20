@@ -5,12 +5,13 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { ModeSwitcher } from "./ModeSwitcher";
 
 const primaryLinks = [
   { href: "/", label: "Network" },
   { href: "/explore", label: "Explore" },
   { href: "/learning", label: "Learning" },
-  { href: "/my-campus", label: "My Campus" },
+  { href: "/student", label: "My Campus" },
 ];
 
 const secondaryLinks = [
@@ -38,8 +39,10 @@ export function SiteHeader() {
         <Link className="brand-lockup" href="/" aria-label="INGENIUM+ home">
           {/* The image is an unmodified official INGENIUM media-kit asset. */}
           <Image src="/assets/brand/ingenium-horizontal-colour.svg" alt="INGENIUM European University" width={219} height={87} priority />
-          <span className="version-chip">PLUS · 1.5</span>
+          <span className="version-chip">PLUS · 1.5.1</span>
         </Link>
+
+        <ModeSwitcher />
 
         <nav className="desktop-nav" aria-label="Main navigation">
           {primaryLinks.map((link) => (
@@ -73,7 +76,7 @@ export function SiteHeader() {
 
       {open && (
         <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation">
-          {[...primaryLinks, ...secondaryLinks].map((link) => (
+          {[...primaryLinks, ...secondaryLinks, { href: "/staff", label: "Staff workspace" }].map((link) => (
             <Link key={link.href} className={active(link.href) ? "is-active" : ""} href={link.href} onClick={() => setOpen(false)}>
               {link.label}
             </Link>

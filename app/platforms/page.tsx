@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
 import { DirectoryPage } from "@/components/DirectoryPage";
-import { records as entities } from "@/lib/v15-data";
+import { getRuntimeDataset } from "@/lib/v151/runtime-data";
 
 export const metadata: Metadata = {
   title: "Platforms | INGENIUM+",
   description: "Understand the official digital platforms and application routes used across INGENIUM.",
 };
 
-const platformEntities = entities.filter(
-  (entity) => entity.type === "platform" || entity.id === "opportunity-digital-applications",
-);
-
-export default function PlatformsPage() {
+export default async function PlatformsPage() {
+  const platformEntities = (await getRuntimeDataset()).records.filter((entity) => entity.type === "platform" || entity.id === "opportunity-digital-applications");
   return (
     <DirectoryPage
       eyebrow="Digital campus"

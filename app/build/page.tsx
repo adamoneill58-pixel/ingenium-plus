@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { DirectoryPage } from "@/components/DirectoryPage";
-import { records as entities } from "@/lib/v15-data";
+import { getRuntimeDataset } from "@/lib/v151/runtime-data";
 
 export const metadata: Metadata = {
   title: "Build | INGENIUM+",
@@ -8,11 +8,8 @@ export const metadata: Metadata = {
 };
 
 const buildStoryIds = new Set(["event-sdg-hackathon-2024", "event-science-factory-2024"]);
-const buildEntities = entities.filter(
-  (entity) => entity.type === "project" || entity.type === "initiative" || buildStoryIds.has(entity.id),
-);
-
-export default function BuildPage() {
+export default async function BuildPage() {
+  const buildEntities = (await getRuntimeDataset()).records.filter((entity) => entity.type === "project" || entity.type === "initiative" || buildStoryIds.has(entity.id));
   return (
     <DirectoryPage
       eyebrow="Ideas into action"

@@ -11,11 +11,13 @@ npm run lint
 
 `npm test` validates the preserved v1.4 archive, v1.5 aggregate integrity, date-driven statuses, sample degree logic, recommendations, semester operations, strict TypeScript, the production Worker build and server rendering for all key routes.
 
-### Release-candidate result — 13 September 2026
+### v1.5.1 release-candidate result — 20 September 2026
 
-- `npm test`: passed (five v1.5 logic tests and 15 rendered routes).
-- Safari smoke test: passed for the graph layouts, Explore search/view switch, Learning planner add/remove and ECTS total, rich record evidence/sample Chat, and the optional My Campus form.
-- `npm run lint`: environment-blocked. `eslint-config-next@16.2.6` stalls while importing `eslint-plugin-react-hooks@7.1.1` under both Node 22.22.0 and Node 26.0.0, before source linting starts or emits diagnostics. Re-run after the framework dependency is updated or repaired; this is the only unchecked release gate.
+- `npm test`: passed: data validation, five v1.5 logic tests, ten v1.5.1 tests, clean migration/seed, backup/restore, strict TypeScript, production Worker build and 19 rendered routes.
+- `npm run recommendations:evaluate`: passed with zero synthetic eligibility violations; see `RECOMMENDATION_EVALUATION.md` for the non-production metrics.
+- Portable production server: home, Student and Staff routes returned HTTP 200.
+- `npm run lint`: environment-blocked. The inherited Next.js ESLint preset stalls before source analysis or diagnostics, even for one file. Re-run after the framework dependency is repaired; the compiler, build and route checks pass.
+- Automated localhost visual inspection: blocked by an unavailable admin-enforced in-app browser security check. No bypass was attempted.
 
 ## Manual interaction checklist
 

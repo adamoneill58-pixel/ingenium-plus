@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { DirectoryPage } from "@/components/DirectoryPage";
-import { records as entities } from "@/lib/v15-data";
+import { getRuntimeDataset } from "@/lib/v151/runtime-data";
 
 export const metadata: Metadata = {
   title: "Events | INGENIUM+",
@@ -8,11 +8,8 @@ export const metadata: Metadata = {
 };
 
 const mobilityRouteIds = new Set(["opportunity-short-mobility", "opportunity-long-mobility"]);
-const eventEntities = entities.filter(
-  (entity) => entity.type === "event" || entity.type === "bip" || mobilityRouteIds.has(entity.id),
-);
-
-export default function EventsPage() {
+export default async function EventsPage() {
+  const eventEntities = (await getRuntimeDataset()).records.filter((entity) => entity.type === "event" || entity.type === "bip" || mobilityRouteIds.has(entity.id));
   return (
     <DirectoryPage
       eyebrow="Meet the alliance"

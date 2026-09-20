@@ -13,7 +13,8 @@ export function SiteFooter() {
         <nav aria-label="Footer navigation">
           <Link href="/explore">Explore</Link>
           <Link href="/learning">Learning</Link>
-          <Link href="/my-campus">My Campus</Link>
+          <Link href="/student">Student mode</Link>
+          <Link href="/staff">Staff mode</Link>
           <Link href="/events">Events & mobility</Link>
           <Link href="/platforms">Official platforms</Link>
           <Link href="/research">Sources</Link>
@@ -21,8 +22,8 @@ export function SiteFooter() {
         </nav>
       </div>
       <div className="site-footer__bottom">
-        <span>INGENIUM+ v1.5 · Current refresh {V15_RESEARCH_DATE}</span>
-        <span>Official systems remain authoritative · Profiles stay in your browser</span>
+        <span>INGENIUM+ v1.5.1 · Seed evidence refreshed {V15_RESEARCH_DATE}</span>
+        <span>Official systems remain authoritative · Private by default</span>
         <span>Co-funded by the European Union</span>
       </div>
     </footer>

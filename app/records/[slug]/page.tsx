@@ -8,8 +8,9 @@ import { GraphExplorer } from "@/components/GraphExplorer";
 import { RecordActions } from "@/components/RecordActions";
 import { StatusBadge } from "@/components/StatusBadge";
 import { typeLabels } from "@/lib/data";
-import { evidenceById, recordById, recordBySlug, records, sampleChats, sampleStudents } from "@/lib/v15-data";
+import { records, sampleChats, sampleStudents } from "@/lib/v15-data";
 import { getComputedStatus, getNeighbours, getRelationshipsForEntity, getUniversitySubgraph } from "@/lib/v15-logic";
+import { getRuntimeDataset } from "@/lib/v151/runtime-data";
 
 export function generateStaticParams() {
   return records.map((record) => ({ slug: record.slug }));
@@ -17,21 +18,25 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const entity = recordBySlug.get(slug);
+  const dataset = await getRuntimeDataset();
+  const entity = dataset.records.find((record) => record.slug === slug);
   return entity ? { title: entity.title, description: entity.studentSummary } : {};
 }
 
 export default async function RecordPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const entity = recordBySlug.get(slug);
+  const dataset = await getRuntimeDataset();
+  const recordById = new Map(dataset.records.map((record) => [record.id, record]));
+  const evidenceById = new Map(dataset.sources.map((source) => [source.id, source]));
+  const entity = dataset.records.find((record) => record.slug === slug);
   if (!entity) notFound();
 
-  const relationships = getRelationshipsForEntity(entity.id);
-  const neighbours = getNeighbours(entity.id).filter((item) => item.type !== "university").slice(0, 6);
+  const relationships = getRelationshipsForEntity(entity.id, dataset.relationships);
+  const neighbours = getNeighbours(entity.id, dataset.records, dataset.relationships).filter((item) => item.type !== "university").slice(0, 6);
   const sources = [...new Set([entity.sourceId, ...(entity.sourceIds ?? [])])].map((id) => evidenceById.get(id)).filter(Boolean);
   const chat = sampleChats.find((item) => item.entityId === entity.id);
   const people = sampleStudents.filter((student) => student.joinedEntityIds.includes(entity.id));
-  const universityGraph = entity.type === "university" ? getUniversitySubgraph(entity.id).map((item) => item.id) : null;
+  const universityGraph = entity.type === "university" ? getUniversitySubgraph(entity.id, dataset.records).map((item) => item.id) : null;
   const host = entity.hostUniversityId ? recordById.get(entity.hostUniversityId) : undefined;
 
   return (
@@ -83,7 +88,7 @@ export default async function RecordPage({ params }: { params: Promise<{ slug: s
         </aside>
       </div>
 
-      {universityGraph && <section className="record-subgraph" aria-labelledby="university-network-title"><span className="eyebrow">University hub</span><h2 id="university-network-title">Explore this campus subnetwork</h2><GraphExplorer allowedEntityIds={universityGraph} initialMode="alliance" showJourneyPicker={false} /></section>}
+      {universityGraph && <section className="record-subgraph" aria-labelledby="university-network-title"><span className="eyebrow">University hub</span><h2 id="university-network-title">Explore this campus subnetwork</h2><GraphExplorer allowedEntityIds={universityGraph} initialMode="alliance" showJourneyPicker={false} entities={dataset.records} relationships={dataset.relationships} sources={dataset.sources} /></section>}
       {neighbours.length > 0 && <section className="related-records"><div className="section-heading"><div><span className="eyebrow">Continue exploring</span><h2>Related records</h2></div></div><div className="card-grid card-grid--three">{neighbours.map((item) => <EntityCard key={item.id} entity={item} compact />)}</div></section>}
     </main>
   );

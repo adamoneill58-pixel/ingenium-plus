@@ -80,13 +80,13 @@ export function getRelationshipsForEntity(id: string, source: Relationship[] = n
   return source.filter((relationship) => relationship.source === id || relationship.target === id);
 }
 
-export function getNeighbours(id: string): Entity[] {
-  const ids = new Set(getRelationshipsForEntity(id).map((relationship) => relationship.source === id ? relationship.target : relationship.source));
-  return records.filter((record) => ids.has(record.id));
+export function getNeighbours(id: string, recordSource: Entity[] = records, relationshipSource: Relationship[] = networkRelationships): Entity[] {
+  const ids = new Set(getRelationshipsForEntity(id, relationshipSource).map((relationship) => relationship.source === id ? relationship.target : relationship.source));
+  return recordSource.filter((record) => ids.has(record.id));
 }
 
-export function getUniversitySubgraph(universityId: string): Entity[] {
-  return records.filter((record) => record.id === universityId || record.universityIds.includes(universityId));
+export function getUniversitySubgraph(universityId: string, source: Entity[] = records): Entity[] {
+  return source.filter((record) => record.id === universityId || record.universityIds.includes(universityId));
 }
 
 export function filterRecords(source: Entity[], filters: RecordFilters, today: Date | string = new Date()): Entity[] {
@@ -126,12 +126,12 @@ export function getEntitiesByStatus(status: EntityStatus, today: Date | string =
   return records.filter((record) => getComputedStatus(record, today) === status);
 }
 
-export function getLearningOpportunities(): Entity[] {
-  return records.filter((record) => ["module", "course", "microcredential", "learning_resource", "bip", "programme", "pathway"].includes(record.type));
+export function getLearningOpportunities(source: Entity[] = records): Entity[] {
+  return source.filter((record) => ["module", "course", "microcredential", "learning_resource", "bip", "programme", "pathway"].includes(record.type));
 }
 
-export function getActionableRecords(today: Date | string = new Date()): Entity[] {
-  return records
+export function getActionableRecords(today: Date | string = new Date(), source: Entity[] = records): Entity[] {
+  return source
     .filter((record) => ["Open now", "Opens soon", "Coming soon", "Recurring"].includes(getComputedStatus(record, today)))
     .sort((left, right) => (left.applicationDeadline ?? left.startDate ?? "9999").localeCompare(right.applicationDeadline ?? right.startDate ?? "9999"));
 }

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { DirectoryPage } from "@/components/DirectoryPage";
 import { type Entity, type EntityStatus } from "@/lib/data";
-import { records as entities } from "@/lib/v15-data";
 import { getComputedStatus } from "@/lib/v15-logic";
+import { getRuntimeDataset } from "@/lib/v151/runtime-data";
 
 export const metadata: Metadata = {
   title: "Opportunities | INGENIUM+",
@@ -28,16 +28,10 @@ const statusOrder: Partial<Record<EntityStatus, number>> = {
   Archived: 11,
 };
 
-const opportunityEntities: Entity[] = entities
-  .filter((entity) =>
-    entity.type === "opportunity" ||
-    entity.type === "bip" ||
-    getComputedStatus(entity) === "Open now" ||
-    ["initiative-bmc", "community-sustainability-hub"].includes(entity.id),
-  )
-  .sort((a, b) => (statusOrder[getComputedStatus(a)] ?? 99) - (statusOrder[getComputedStatus(b)] ?? 99) || a.title.localeCompare(b.title));
-
-export default function OpportunitiesPage() {
+export default async function OpportunitiesPage() {
+  const opportunityEntities: Entity[] = (await getRuntimeDataset()).records
+    .filter((entity) => entity.type === "opportunity" || entity.type === "bip" || getComputedStatus(entity) === "Open now" || ["initiative-bmc", "community-sustainability-hub"].includes(entity.id))
+    .sort((a, b) => (statusOrder[getComputedStatus(a)] ?? 99) - (statusOrder[getComputedStatus(b)] ?? 99) || a.title.localeCompare(b.title));
   return (
     <DirectoryPage
       eyebrow="Start here"

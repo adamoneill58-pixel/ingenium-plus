@@ -39,6 +39,10 @@ for (const [pathname, heading] of [
   ["/explore", "Explore all of INGENIUM"],
   ["/learning", "Build a European semester"],
   ["/my-campus", "Make the campus yours"],
+  ["/student", "Your INGENIUM journey"],
+  ["/staff", "Find collaborators"],
+  ["/staff/review", "Review before publication"],
+  ["/staff/data-health", "Data health and refresh"],
   ["/records/sustainable-wellbeing-changing-society", "Sustainable Wellbeing in Changing Society"],
 ]) {
   test(`server-renders ${pathname}`, async () => {

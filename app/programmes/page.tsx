@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { DirectoryPage } from "@/components/DirectoryPage";
-import { records as entities } from "@/lib/v15-data";
+import { getRuntimeDataset } from "@/lib/v151/runtime-data";
 
 export const metadata: Metadata = {
   title: "Programmes | INGENIUM+",
@@ -8,9 +8,8 @@ export const metadata: Metadata = {
 };
 
 const programmeTypes = new Set(["bip", "programme", "pathway", "framework"]);
-const programmeEntities = entities.filter((entity) => programmeTypes.has(entity.type));
-
-export default function ProgrammesPage() {
+export default async function ProgrammesPage() {
+  const programmeEntities = (await getRuntimeDataset()).records.filter((entity) => programmeTypes.has(entity.type));
   return (
     <DirectoryPage
       eyebrow="Study across borders"

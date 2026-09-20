@@ -13,9 +13,7 @@ export default function AboutPage() {
         <div>
           <span className="eyebrow">About INGENIUM+</span>
           <h1>A clearer way into your European campus</h1>
-          <p>
-            INGENIUM+ is a student-led discovery layer that connects verified programmes, mobility, projects, communities and platforms across the ten INGENIUM universities.
-          </p>
+          <p>INGENIUM+ is a student-led platform that connects verified learning, mobility, research, projects, communities and people across the ten INGENIUM universities.</p>
         </div>
         <div className="page-hero__signal" aria-label="Ten partner universities">
           <strong>10</strong>
@@ -60,10 +58,8 @@ export default function AboutPage() {
         </article>
         <article className="entity-card entity-card--community">
           <span className="eyebrow">Privacy boundary</span>
-          <h2>No invented social layer</h2>
-          <p>
-            This version creates no student accounts, public personal profiles or unofficial group chats. Saved items stay on the user’s own device, and no private student directory is implied.
-          </p>
+          <h2>Accounts with deliberate visibility</h2>
+          <p>Student profiles are private by default. Staff can separately opt in to verified-academic discovery. Public sample profiles remain fictional and visibly labelled; no private student directory is exposed.</p>
         </article>
       </section>
     </main>

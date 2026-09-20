@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import { DirectoryPage } from "@/components/DirectoryPage";
-import { records as entities } from "@/lib/v15-data";
+import { getRuntimeDataset } from "@/lib/v151/runtime-data";
 
 export const metadata: Metadata = {
   title: "Universities | INGENIUM+",
   description: "Meet the ten partner universities that form the INGENIUM European University.",
 };
 
-const universityEntities = entities.filter((entity) => entity.type === "university");
-
-export default function UniversitiesPage() {
+export default async function UniversitiesPage() {
+  const universityEntities = (await getRuntimeDataset()).records.filter((entity) => entity.type === "university");
   return (
     <DirectoryPage
       eyebrow="The alliance"

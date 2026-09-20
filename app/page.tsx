@@ -3,21 +3,24 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Compass, Network, ShieldCheck } from "lucide-react";
 import { EntityCard } from "@/components/EntityCard";
 import { GraphExplorer } from "@/components/GraphExplorer";
-import { networkRelationships as relationships, records as entities, V15_RESEARCH_DATE } from "@/lib/v15-data";
+import { V15_RESEARCH_DATE } from "@/lib/v15-data";
 import { getActionableRecords, getComputedStatus } from "@/lib/v15-logic";
+import { getRuntimeDataset } from "@/lib/v151/runtime-data";
 
 export const metadata: Metadata = {
   title: { absolute: "INGENIUM+ | Your European campus, made visible" },
   description: "Explore verified programmes, mobility, projects, communities and opportunities across the ten INGENIUM universities.",
 };
 
-const spotlightIds = ["course-sustainable-wellbeing", "initiative-bmc", "bip-clarity-ai"];
-const spotlights = spotlightIds.map((id) => entities.find((entity) => entity.id === id)).filter(Boolean);
-const actionable = getActionableRecords().slice(0, 3);
-const openCount = entities.filter((entity) => getComputedStatus(entity) === "Open now").length;
-const verifiedCount = entities.filter((entity) => entity.confidence === "High").length;
-
-export default function Home() {
+export default async function Home() {
+  const dataset = await getRuntimeDataset();
+  const entities = dataset.records;
+  const relationships = dataset.relationships;
+  const spotlightIds = ["course-sustainable-wellbeing", "initiative-bmc", "bip-clarity-ai"];
+  const spotlights = spotlightIds.map((id) => entities.find((entity) => entity.id === id)).filter(Boolean);
+  const actionable = getActionableRecords(new Date(), entities).slice(0, 3);
+  const openCount = entities.filter((entity) => getComputedStatus(entity) === "Open now").length;
+  const verifiedCount = entities.filter((entity) => entity.confidence === "High").length;
   return (
     <main id="main-content" className="home-shell">
       <section className="home-hero">
@@ -27,9 +30,9 @@ export default function Home() {
           <p>Follow real connections between study, mobility, projects and people across ten universities—then continue through the right official route.</p>
           <div className="home-hero__actions">
             <a className="button button--primary" href="#network">Explore the network <ArrowRight aria-hidden="true" /></a>
-            <Link className="button button--secondary" href="/my-campus">Set up My Campus</Link>
+            <Link className="button button--secondary" href="/student">Open Student mode</Link>
           </div>
-          <p className="trust-line"><ShieldCheck aria-hidden="true" /> Official evidence attached · current refresh {V15_RESEARCH_DATE}</p>
+          <p className="trust-line"><ShieldCheck aria-hidden="true" /> Official evidence attached · {dataset.storage === "database" ? "published database" : "verified seed fallback"} · current refresh {V15_RESEARCH_DATE}</p>
         </div>
 
         <aside className="now-panel" aria-labelledby="now-title">
@@ -55,7 +58,7 @@ export default function Home() {
             <span><strong>{verifiedCount}</strong> high confidence</span>
           </div>
         </div>
-        <GraphExplorer />
+        <GraphExplorer entities={entities} relationships={relationships} sources={dataset.sources} />
       </section>
 
       <section className="home-spotlight" aria-labelledby="spotlight-title">

@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import { DirectoryPage } from "@/components/DirectoryPage";
-import { records as entities } from "@/lib/v15-data";
+import { getRuntimeDataset } from "@/lib/v151/runtime-data";
 
 export const metadata: Metadata = {
   title: "Communities | INGENIUM+",
   description: "Find verified INGENIUM student communities and participation routes.",
 };
 
-const communityEntities = entities.filter((entity) => entity.type === "community");
-
-export default function CommunitiesPage() {
+export default async function CommunitiesPage() {
+  const communityEntities = (await getRuntimeDataset()).records.filter((entity) => entity.type === "community");
   return (
     <DirectoryPage
       eyebrow="Belong across borders"
