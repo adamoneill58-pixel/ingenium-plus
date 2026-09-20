@@ -7,6 +7,7 @@ interface Env {
   ASSETS: Fetcher;
   DB: D1Database;
   DOCUMENTS: R2Bucket;
+  BOOTSTRAP_OWNER_EMAIL?: string;
   IMAGES: {
     input(stream: ReadableStream): {
       transform(options: Record<string, unknown>): {
@@ -29,7 +30,7 @@ interface ExecutionContext {
 
 const worker = {
   async fetch(request: Request, env: Env | undefined, ctx: ExecutionContext): Promise<Response> {
-    setRuntimeBindings({ DB: env?.DB, DOCUMENTS: env?.DOCUMENTS });
+    setRuntimeBindings({ DB: env?.DB, DOCUMENTS: env?.DOCUMENTS, BOOTSTRAP_OWNER_EMAIL: env?.BOOTSTRAP_OWNER_EMAIL });
     const url = new URL(request.url);
 
     if (url.pathname === "/_vinext/image" && env?.ASSETS && env.IMAGES) {
@@ -46,7 +47,7 @@ const worker = {
     return handler.fetch(request, env, ctx);
   },
   async scheduled(_controller: unknown, env: Env, ctx: ExecutionContext) {
-    setRuntimeBindings({ DB: env.DB, DOCUMENTS: env.DOCUMENTS });
+    setRuntimeBindings({ DB: env.DB, DOCUMENTS: env.DOCUMENTS, BOOTSTRAP_OWNER_EMAIL: env.BOOTSTRAP_OWNER_EMAIL });
     const { runScheduledRefresh } = await import("../lib/v151/refresh-service");
     ctx.waitUntil(runScheduledRefresh(env.DB));
   },

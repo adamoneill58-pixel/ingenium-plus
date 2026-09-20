@@ -258,8 +258,8 @@ export function GraphExplorer({
   const entityById = useMemo(() => new globalThis.Map<string, Entity>(entities.map((entity) => [entity.id, entity])), [entities]);
   const sourceById = useMemo(() => new globalThis.Map<string, Source>(suppliedSources.map((source) => [source.id, source])), [suppliedSources]);
 
-  const themes = useMemo(() => [...new Set(entities.flatMap((entity) => entity.themes))].sort(), []);
-  const universities = useMemo(() => entities.filter((entity) => entity.type === "university"), []);
+  const themes = useMemo(() => [...new Set(entities.flatMap((entity) => entity.themes))].sort(), [entities]);
+  const universities = useMemo(() => entities.filter((entity) => entity.type === "university"), [entities]);
   const activeJourney = journeyId ? journeys.find((journey) => journey.id === journeyId) : undefined;
 
   useEffect(() => {
@@ -287,7 +287,7 @@ export function GraphExplorer({
       if (params.get("view") === "list") setListView(true);
     });
     return () => { cancelled = true; };
-  }, []);
+  }, [entities, entityById]);
 
   useEffect(() => {
     const listener = () => setSavedIds(readStoredList(SAVED_KEY));
@@ -331,12 +331,12 @@ export function GraphExplorer({
       }
       return true;
     });
-  }, [activeJourney, allowedEntityIds, mode, query, statusFilter, themeFilter, typeFilter, universityFilter]);
+  }, [activeJourney, allowedEntityIds, entities, entityById, mode, query, statusFilter, themeFilter, typeFilter, universityFilter]);
 
   const visibleIds = useMemo(() => new Set(filteredEntities.map((entity) => entity.id)), [filteredEntities]);
   const visibleRelationships = useMemo(
     () => relationships.filter((relationship) => visibleIds.has(relationship.source) && visibleIds.has(relationship.target)),
-    [visibleIds],
+    [relationships, visibleIds],
   );
 
   const graphElements = useMemo<ElementDefinition[]>(() => {
@@ -591,7 +591,7 @@ export function GraphExplorer({
     cy.on("viewport", updateMapTransform);
     updateMapTransform();
     return () => cy.destroy();
-  }, [graphElements, layoutMode, selectEntity]);
+  }, [graphElements, layoutMode, relationships, selectEntity]);
 
   useEffect(() => {
     const cy = cyRef.current;

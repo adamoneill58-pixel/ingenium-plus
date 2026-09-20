@@ -30,7 +30,7 @@ The supplied filenames are retained in the research working record. The public s
 - [INGENIUM partner universities](https://ingenium-university.eu/about-us/partners/)
 - [BIPs 2026/27 catalogue](https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/)
 - [Joint Master’s in Chemical and Biochemical Process Technology](https://ingenium-university.eu/students/ingenium-european-campus/study-programmes/joint-masters-programme-in-chemical-and-biochemical-process-technology/)
-- [Joint Doctoral Programme in Human-Centred AI](https://ingenium-university.eu/research/joint-doctorate-programmes/joint-doctoral-programme-in-human-centred-artificial-intelligence-foundations-and-applications/)
+- [Joint Doctoral Programme in Human-Centred AI](https://ingenium-university.eu/doctoral-ecosystems/joint-doctorate-programmes/joint-doctoral-programme-in-human-centred-artificial-intelligence-foundations-and-applications/)
 - [PhD Mobility and Co-Supervision Scholarships](https://ingenium-university.eu/call-for-ingenium-phd-mobility-and-co-supervision-scholarships-is-now-open/)
 - [INGENIUM Pathway Framework](https://ingenium-university.eu/iec-faculty/ingenium-pathway-framework/)
 - [Business Model Canvas course](https://elearn.ingenium-university.eu/course/view.php?id=28)

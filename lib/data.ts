@@ -226,7 +226,7 @@ export const sources: Source[] = [
     id: "human-centred-ai-doctorate",
     title: "Joint Doctoral Programme in Human-Centred Artificial Intelligence",
     kind: "Official INGENIUM programme and call page",
-    url: "https://ingenium-university.eu/research/joint-doctorate-programmes/joint-doctoral-programme-in-human-centred-artificial-intelligence-foundations-and-applications/",
+    url: "https://ingenium-university.eu/doctoral-ecosystems/joint-doctorate-programmes/joint-doctoral-programme-in-human-centred-artificial-intelligence-foundations-and-applications/",
   },
   {
     id: "phd-mobility-2026",

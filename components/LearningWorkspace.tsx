@@ -30,7 +30,7 @@ export function LearningWorkspace({ records }: { records: Entity[] }) {
   const semester = readSemester();
   const profile = readProfile();
 
-  const universities = useMemo(() => records.filter((record) => record.type === "university"), []);
+  const universities = useMemo(() => records.filter((record) => record.type === "university"), [records]);
   const statuses = useMemo(() => [...new Set(learning.map((record) => getComputedStatus(record)))].sort(), [learning]);
   const filtered = useMemo(() => filterRecords(learning, {
     query,

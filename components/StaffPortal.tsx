@@ -2,7 +2,7 @@
 
 import { Database, FileUp, Network, Save, ShieldCheck, Sparkles } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useState, type FormEvent } from "react";
 
 type Recommendation = { id: string; candidateTitle: string; score: number; label: string; explanations: string[] };
 type PublishedCall = { id: string; title: string; summary: string; deadline?: string; disciplines?: string };
@@ -16,8 +16,7 @@ export function StaffPortal() {
   const [collaborators, setCollaborators] = useState<Recommendation[]>([]);
   const [submissions, setSubmissions] = useState<{ proposals: { id: string; targetType: string; targetId?: string; status: string; submittedAt: string }[]; documents: { id: string; originalName: string; scanStatus: string; reviewStatus: string }[] }>({ proposals: [], documents: [] });
 
-  useEffect(() => { void load(); }, []);
-  async function load() {
+  const load = useCallback(async () => {
     const sessionResponse = await fetch("/api/v151/session", { cache: "no-store" });
     if (sessionResponse.status === 401) return setState("signed-out");
     if (!sessionResponse.ok) { setNotice((await sessionResponse.json().catch(() => ({}))).error ?? "Database unavailable"); return setState("unavailable"); }
@@ -29,7 +28,8 @@ export function StaffPortal() {
     if (recommendationResponse.ok) setRecommendations((await recommendationResponse.json()).results ?? []);
     if (collaboratorResponse.ok) setCollaborators((await collaboratorResponse.json()).results ?? []);
     if (submissionResponse.ok) setSubmissions(await submissionResponse.json());
-  }
+  }, []);
+  useEffect(() => { const timer = window.setTimeout(() => { void load(); }, 0); return () => window.clearTimeout(timer); }, [load]);
 
   async function submitJson(event: FormEvent<HTMLFormElement>, endpoint: string | ((form: FormData) => string), mapper: (form: FormData) => Record<string, unknown>, success: string) {
     event.preventDefault(); setNotice("Submitting…");

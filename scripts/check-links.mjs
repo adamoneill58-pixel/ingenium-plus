@@ -33,7 +33,11 @@ for (let index = 0; index < urls.length; index += 6) {
         signal: AbortSignal.timeout(15000),
         headers: { "user-agent": "INGENIUM-Plus-Research-Link-Check/1.5" },
       });
-      return { url, status: response.status, ok: response.ok };
+      // A 401/403 still proves the endpoint exists; some partner sites block
+      // automated requests even though the same official URL opens normally
+      // in a browser. Redirects and true missing/error responses still fail.
+      const reachable = response.ok || response.status === 401 || response.status === 403;
+      return { url, status: response.status, ok: reachable };
     } catch (error) {
       return { url, status: 0, ok: false, error: error instanceof Error ? error.message : String(error) };
     }

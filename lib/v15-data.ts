@@ -36,7 +36,7 @@ export const v15Sources: Source[] = [
     id: "doctorates-2026",
     title: "INGENIUM Joint Doctoral Programmes",
     kind: "Official INGENIUM programme index",
-    url: "https://ingenium-university.eu/research/joint-doctorate-programmes/",
+    url: "https://ingenium-university.eu/doctoral-ecosystems/joint-doctorate-programmes/",
     publisher: "INGENIUM European University",
     verifiedAt: V15_RESEARCH_DATE,
   },
