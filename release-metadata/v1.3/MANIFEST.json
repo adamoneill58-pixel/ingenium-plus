@@ -1,0 +1,15 @@
+{
+  "version": "1.3",
+  "status": "recovered-static-archive",
+  "sourcePath": "/Users/adamoneill/Downloads/INGENIUM+_1.3",
+  "gitCommit": null,
+  "deploymentUrl": null,
+  "deploymentVersion": null,
+  "researchOrSnapshotDate": "2026-08-05",
+  "archiveFile": "INGENIUM+_v1.3_SOURCE.zip",
+  "archiveSha256": "1cdb5945e4fb097a3f18eca10532444fb667b73460b5420b2a58e9539ff1cad3",
+  "fileCount": 21,
+  "originalArchive": {"file": "INGENIUM+_v1.3_ORIGINAL.zip", "sha256": "0b6851c94ae6c7fd23fe5ef82fae9e34afd1dfda0b37da0adad9f6b665bbbbf8", "fileCount": 15},
+  "verification": {"sourceInspected": true, "archiveValidated": true, "testsPassed": true, "deploymentVerified": false},
+  "limitations": ["Folder/archive says v1.3 while internal documents say v1.4", "Several recovered placeholder files are empty"]
+}

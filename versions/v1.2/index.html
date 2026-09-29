@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>INGENIUM+ European Campus Graph</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#network-list">Skip to network list</a>
+
+    <div class="app-shell">
+      <header class="site-header">
+        <div class="brand-area">
+          <span class="brand-mark" aria-hidden="true">I+</span>
+          <div class="brand-copy">
+            <strong>INGENIUM+</strong>
+            <span>European campus graph</span>
+          </div>
+        </div>
+
+        <nav class="primary-nav" aria-label="INGENIUM+ sections">
+          <button type="button" class="nav-button is-active" data-nav="map">Map</button>
+          <button type="button" class="nav-button" data-nav="profile">My Profile</button>
+          <button type="button" class="nav-button" data-nav="groupchat">Group Chats</button>
+          <button type="button" class="nav-button" data-nav="module">Modules</button>
+          <button type="button" class="nav-button" data-nav="society">Societies</button>
+          <button type="button" class="nav-button" data-nav="bip">BIPs</button>
+          <button type="button" class="nav-button" data-nav="project">Projects</button>
+          <button type="button" class="nav-button" data-nav="event">Events</button>
+        </nav>
+
+        <div class="header-actions">
+          <span id="visible-count" class="count-pill" aria-live="polite">Loading</span>
+          <button id="reset-view" class="button compact" type="button">Reset</button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="control-panel" aria-label="Map controls">
+          <section class="intro-panel">
+            <h1>No endless feed.</h1>
+            <p>INGENIUM+ helps students discover people, group chats, modules, societies, BIPs, projects, events and opportunities through a living map of the INGENIUM European Campus.</p>
+          </section>
+
+          <section class="panel-section">
+            <label class="control-label" for="search-input">Search</label>
+            <input id="search-input" class="text-input" type="search" autocomplete="off" placeholder="Name, campus, chat, BIP">
+          </section>
+
+          <section class="panel-section">
+            <label class="select-label" for="university-filter">
+              <span>University</span>
+              <select id="university-filter"></select>
+            </label>
+            <label class="select-label" for="topic-filter">
+              <span>Topic</span>
+              <select id="topic-filter"></select>
+            </label>
+          </section>
+
+          <section class="panel-section">
+            <h2>Show on map</h2>
+            <div id="type-filters" class="type-list"></div>
+          </section>
+
+          <section class="panel-section">
+            <h2>Explore routes</h2>
+            <div class="journey-stack">
+              <button class="journey-button" type="button" data-journey="my-route">My route</button>
+              <button class="journey-button" type="button" data-journey="bip-finder">BIP finder</button>
+              <button class="journey-button" type="button" data-journey="sustainability">Sustainability network</button>
+              <button class="journey-button" type="button" data-journey="groupchats">Group chats near me</button>
+              <button class="journey-button" type="button" data-journey="mtu-projects">MTU projects</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <h2>Access</h2>
+            <label class="toggle-row">
+              <input id="list-toggle" type="checkbox" checked>
+              <span>List fallback</span>
+            </label>
+          </section>
+        </aside>
+
+        <section class="map-column" aria-label="European campus map">
+          <div class="map-toolbar">
+            <div class="mode-group" role="group" aria-label="Graph mode">
+              <button class="mode-button" type="button" data-mode="explore" aria-pressed="true">Explore</button>
+              <button class="mode-button" type="button" data-mode="trace" aria-pressed="false">Trace Connections</button>
+              <button class="mode-button" type="button" data-mode="mine" aria-pressed="false">My Network</button>
+            </div>
+            <div class="legend" aria-label="Map legend">
+              <span><i class="legend-dot type-university"></i>University</span>
+              <span><i class="legend-dot type-student"></i>Student</span>
+              <span><i class="legend-dot type-bip"></i>BIP</span>
+              <span><i class="legend-dot type-module"></i>Module</span>
+              <span><i class="legend-dot type-society"></i>Society</span>
+              <span><i class="legend-dot type-groupchat"></i>Group Chat</span>
+              <span><i class="legend-dot type-project"></i>Project</span>
+              <span><i class="legend-dot type-event"></i>Event</span>
+              <span><i class="legend-dot type-opportunity"></i>Opportunity</span>
+            </div>
+          </div>
+
+          <div id="map-stage" class="map-stage">
+            <svg id="graph-svg" role="img" aria-label="Interactive map-based INGENIUM European campus graph"></svg>
+            <div class="map-controls" aria-label="Map zoom controls">
+              <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+              <button id="zoom-out" type="button" aria-label="Zoom out">-</button>
+              <button id="map-reset" type="button">Reset map</button>
+              <button id="fit-selected" type="button">Fit selected</button>
+            </div>
+            <div id="node-tooltip" class="node-tooltip" role="status" aria-live="polite" hidden></div>
+            <div id="empty-state" class="empty-state" hidden>No matching map nodes</div>
+          </div>
+
+          <section id="network-list" class="list-panel" aria-label="Network list">
+            <div class="list-header">
+              <h2>Network list</h2>
+              <span id="list-count">0 items</span>
+            </div>
+            <div id="node-list" class="node-list"></div>
+          </section>
+        </section>
+
+        <aside class="detail-panel" aria-label="Selected map node">
+          <div id="detail-content"></div>
+        </aside>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <span class="logo-placeholder">INGENIUM+</span>
+          <span class="logo-placeholder">INGENIUM Alliance</span>
+          <span class="status-pill">Student Partnership Prototype 2026</span>
+        </div>
+        <div class="partner-row" aria-label="Partner university logo placeholders">
+          <span>MTU</span>
+          <span>XAMK</span>
+          <span>TUIASI</span>
+          <span>Oviedo</span>
+          <span>Karlsruhe</span>
+          <span>Crete</span>
+          <span>Skovde</span>
+          <span>Rouen</span>
+          <span>Chieti-Pescara</span>
+          <span>Poznan</span>
+        </div>
+        <p>Built as a student-led pilot for the INGENIUM European University Alliance.</p>
+      </footer>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

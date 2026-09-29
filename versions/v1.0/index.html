@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>INGENIUM+ Graph Discovery Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#network-list">Skip to network list</a>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">I+</span>
+          <div>
+            <strong>INGENIUM+</strong>
+            <span>Graph discovery prototype</span>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <span id="visible-count" class="count-pill" aria-live="polite">Loading</span>
+          <button id="reset-view" class="button compact" type="button">Reset</button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="control-panel" aria-label="Network controls">
+          <section class="panel-section">
+            <label class="control-label" for="search-input">Search</label>
+            <input id="search-input" class="text-input" type="search" autocomplete="off" placeholder="Name, skill, project">
+          </section>
+
+          <section class="panel-section">
+            <div class="split-fields">
+              <label class="select-label" for="university-filter">
+                <span>University</span>
+                <select id="university-filter"></select>
+              </label>
+              <label class="select-label" for="topic-filter">
+                <span>Topic</span>
+                <select id="topic-filter"></select>
+              </label>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <h2>Node Types</h2>
+            <div id="type-filters" class="type-list"></div>
+          </section>
+
+          <section class="panel-section">
+            <h2>Journeys</h2>
+            <div class="journey-stack">
+              <button class="journey-button" type="button" data-journey="mtu-projects">MTU projects</button>
+              <button class="journey-button" type="button" data-journey="sustainability">Sustainability collaborators</button>
+              <button class="journey-button" type="button" data-journey="mobility">Mobility route</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <h2>View</h2>
+            <label class="toggle-row">
+              <input id="list-toggle" type="checkbox" checked>
+              <span>List fallback</span>
+            </label>
+          </section>
+        </aside>
+
+        <section class="graph-column" aria-label="Graph workspace">
+          <div class="graph-toolbar">
+            <div class="mode-group" role="group" aria-label="Graph mode">
+              <button class="mode-button" type="button" data-mode="explore" aria-pressed="true">Explore</button>
+              <button class="mode-button" type="button" data-mode="path" aria-pressed="false">Trace</button>
+              <button class="mode-button" type="button" data-mode="mine" aria-pressed="false">My Network</button>
+            </div>
+            <div class="legend" aria-label="Node legend">
+              <span><i class="legend-dot type-student"></i>Student</span>
+              <span><i class="legend-dot type-project"></i>Project</span>
+              <span><i class="legend-dot type-event"></i>Event</span>
+              <span><i class="legend-dot type-skill"></i>Skill</span>
+              <span><i class="legend-dot type-opportunity"></i>Opportunity</span>
+            </div>
+          </div>
+
+          <div class="graph-stage">
+            <svg id="graph-svg" role="img" aria-label="INGENIUM+ alliance graph"></svg>
+            <div id="empty-state" class="empty-state" hidden>No matching nodes</div>
+          </div>
+
+          <section id="network-list" class="list-panel" aria-label="Network list">
+            <div class="list-header">
+              <h2>Network List</h2>
+              <span id="list-count">0 items</span>
+            </div>
+            <div id="node-list" class="node-list"></div>
+          </section>
+        </section>
+
+        <aside class="detail-panel" aria-label="Selected node">
+          <div id="detail-content"></div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

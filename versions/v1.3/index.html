@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#009878">
+    <meta name="description" content="Explore real BIPs, projects, events and student communities across the ten INGENIUM universities.">
+    <title>INGENIUM+ — Your European campus, made visible</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-page="graph">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-site-header></header>
+
+    <main id="main-content" class="graph-page">
+      <section class="graph-hero" aria-labelledby="graph-title">
+        <div class="graph-intro">
+          <p class="eyebrow">INGENIUM+ v1.4</p>
+          <h1 id="graph-title">Your European campus,<br> <span>made visible.</span></h1>
+          <p>Explore verified programmes, projects, communities and opportunities across ten universities.</p>
+        </div>
+
+        <div class="graph-toolbar" aria-label="Network tools">
+          <label class="graph-search">
+            <span class="sr-only">Search the network</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.3-4.3m2.3-5.2a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+            <input id="graph-search" type="search" placeholder="Search BIPs, projects, universities…" autocomplete="off">
+          </label>
+          <button class="button button-primary" id="journey-open" type="button">Explore a journey</button>
+          <button class="button button-secondary" id="filters-open" type="button" aria-expanded="false">Filters <span id="filter-count"></span></button>
+          <button class="icon-button" id="share-view" type="button" aria-label="Copy a link to this network view" title="Share view">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8.6 13.8 15.4 10M8.6 10.2l6.8 3.8M6 14.5a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm12-4a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/></svg>
+          </button>
+        </div>
+
+        <div class="active-journey" id="active-journey" hidden>
+          <div><span>Journey</span><strong id="active-journey-name"></strong></div>
+          <button type="button" id="journey-clear" aria-label="Clear journey">×</button>
+        </div>
+
+        <div class="view-switch" role="tablist" aria-label="Network view">
+          <button id="graph-tab" class="is-active" type="button" role="tab" aria-selected="true">Graph</button>
+          <button id="list-tab" type="button" role="tab" aria-selected="false">Accessible list</button>
+          <span id="visible-count" aria-live="polite"></span>
+        </div>
+
+        <div class="network-frame" id="network-frame">
+          <svg id="network-svg" role="img" aria-label="Interactive network of the INGENIUM European University"></svg>
+          <div id="graph-tooltip" class="graph-tooltip" hidden></div>
+          <div id="graph-empty" class="graph-empty" hidden>
+            <strong>No matching connections</strong>
+            <span>Clear a filter or try a broader search.</span>
+            <button id="empty-clear" class="text-button" type="button">Clear filters</button>
+          </div>
+          <div class="zoom-controls" aria-label="Graph controls">
+            <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+            <button id="zoom-out" type="button" aria-label="Zoom out">−</button>
+            <button id="zoom-reset" type="button" aria-label="Reset graph view">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.6M4 4v4.6h4.6"/></svg>
+            </button>
+          </div>
+          <div class="graph-key" aria-label="Node legend">
+            <span><i class="key-university"></i>University</span>
+            <span><i class="key-bip"></i>BIP</span>
+            <span><i class="key-project"></i>Project</span>
+            <span><i class="key-event"></i>Event</span>
+            <span><i class="key-community"></i>Community</span>
+            <span><i class="key-opportunity"></i>Opportunity</span>
+          </div>
+          <p class="graph-help">Drag to move · scroll or pinch to zoom · select a node to explore</p>
+        </div>
+
+        <section id="network-list" class="network-list" hidden aria-label="Filtered network results"></section>
+      </section>
+    </main>
+
+    <aside class="drawer filter-drawer" id="filter-drawer" aria-labelledby="filter-title" aria-hidden="true">
+      <div class="drawer-head">
+        <div><p class="eyebrow">Refine the network</p><h2 id="filter-title">Filters</h2></div>
+        <button class="drawer-close" type="button" data-close-drawer aria-label="Close filters">×</button>
+      </div>
+      <form id="filter-form">
+        <fieldset><legend>What are you looking for?</legend><div id="type-filters" class="choice-grid"></div></fieldset>
+        <label class="field"><span>University</span><select id="university-filter"></select></label>
+        <label class="field"><span>Theme</span><select id="theme-filter"></select></label>
+        <label class="field"><span>Timing</span><select id="status-filter"><option value="all">Any time</option><option value="upcoming">Upcoming</option><option value="past">Past</option><option value="current">Current</option></select></label>
+        <div class="drawer-actions"><button id="filters-clear" class="button button-secondary" type="button">Clear all</button><button class="button button-primary" type="button" data-close-drawer>Show results</button></div>
+      </form>
+    </aside>
+
+    <aside class="drawer detail-drawer" id="detail-drawer" aria-labelledby="detail-title" aria-hidden="true">
+      <button class="drawer-close detail-close" type="button" data-close-drawer aria-label="Close details">×</button>
+      <div id="detail-content"></div>
+    </aside>
+
+    <dialog id="journey-dialog" class="journey-dialog">
+      <form method="dialog" class="dialog-shell">
+        <div class="drawer-head">
+          <div><p class="eyebrow">Guided exploration</p><h2>Choose a journey</h2></div>
+          <button class="drawer-close" value="cancel" aria-label="Close journey chooser">×</button>
+        </div>
+        <p class="dialog-intro">See one meaningful route at a time. Everything else falls gently into the background.</p>
+        <div id="journey-options" class="journey-options"></div>
+      </form>
+    </dialog>
+
+    <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <footer class="site-footer" data-site-footer></footer>
+    <script src="data.js"></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>

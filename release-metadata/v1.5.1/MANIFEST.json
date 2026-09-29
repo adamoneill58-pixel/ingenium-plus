@@ -1,0 +1,15 @@
+{
+  "version": "1.5.1",
+  "status": "current-private",
+  "sourcePath": "Git commit 74ebdee75bcc153dfe71de2f328acc38c5a1c266",
+  "gitCommit": "74ebdee75bcc153dfe71de2f328acc38c5a1c266",
+  "deploymentUrl": "https://ingenium-plus-v151-private.a0n720x.chatgpt.site",
+  "deploymentVersion": 3,
+  "researchOrSnapshotDate": "2026-09-20",
+  "archiveFile": "INGENIUM+_v1.5.1_SOURCE.zip",
+  "archiveSha256": "f9e8a449e6c6bad12e459f383010447b1564ef007e3e4c3d60deae3cbc08b0f5",
+  "fileCount": 146,
+  "dataCounts": {"records": 104, "relationships": 404, "sources": 34, "organizations": 10, "featureVectors": 104, "refreshSchedules": 25},
+  "verification": {"sourceInspected": true, "archiveValidated": true, "testsPassed": true, "deploymentVerified": true},
+  "limitations": ["Owner-only private access", "No approved malware scanner", "No OCR/extractor", "Automatic scheduler not attached", "No real-user pilot evidence"]
+}

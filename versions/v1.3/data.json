@@ -1,0 +1,2951 @@
+{
+  "version": "1.4",
+  "researchDate": "2026-08-05",
+  "sources": {
+    "partners": {
+      "title": "INGENIUM partner universities",
+      "url": "https://ingenium-university.eu/about-us/partners/",
+      "kind": "Official INGENIUM webpage"
+    },
+    "bips": {
+      "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+      "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+      "kind": "Official INGENIUM call"
+    },
+    "partnerships": {
+      "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+      "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+      "kind": "Official INGENIUM news"
+    },
+    "summer2026": {
+      "title": "10 Days of INGENIUM Summer 2026",
+      "url": "https://ingenium-university.eu/10-days-of-ingenium-summer-2026/",
+      "kind": "Official INGENIUM event page"
+    },
+    "winter2026": {
+      "title": "10 Days of INGENIUM Winter 2026",
+      "url": "https://ingenium-university.eu/10-days-of-ingenium-winter-2026/",
+      "kind": "Official INGENIUM event page"
+    },
+    "studentBoard": {
+      "title": "Students at the Centre: INGENIUM Student Board",
+      "url": "https://ingenium-university.eu/students-at-the-centre/",
+      "kind": "Official INGENIUM feature"
+    },
+    "founders": {
+      "title": "INGENIUM Founders HUB",
+      "url": "https://ingenium-university.eu/ingenium-student-partnerships/ingenium-founders-hub/",
+      "kind": "Official INGENIUM project page"
+    },
+    "europeanCampus": {
+      "title": "INGENIUM European Campus",
+      "url": "https://ingenium-university.eu/students/ingenium-european-campus/",
+      "kind": "Official INGENIUM webpage"
+    },
+    "shortMobility": {
+      "title": "Short-term Mobility Opportunities",
+      "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/",
+      "kind": "Official INGENIUM webpage"
+    },
+    "longMobility": {
+      "title": "Long-term Mobility Opportunities",
+      "url": "https://ingenium-university.eu/students/ingenium-european-campus/student-mobility/",
+      "kind": "Official INGENIUM webpage"
+    },
+    "digitalPlatforms": {
+      "title": "Digital Student Platforms",
+      "url": "https://ingenium-university.eu/students/digital-ingenium/digital-student-platforms/",
+      "kind": "Official INGENIUM webpage"
+    },
+    "registry": {
+      "title": "Virtual Student Registry",
+      "url": "https://ingenium-university.eu/students/digital-ingenium/virtual-student-registry/",
+      "kind": "Official INGENIUM webpage"
+    },
+    "jointMaster": {
+      "title": "Joint Master’s Programme in Chemical and Biochemical Process Technology",
+      "url": "https://ingenium-university.eu/students/ingenium-european-campus/study-programmes/joint-masters-programme-in-chemical-and-biochemical-process-technology/",
+      "kind": "Official programme page"
+    },
+    "style": {
+      "title": "INGENIUM Visual Identity Styleguide 2024",
+      "url": "https://ingenium-university.eu/wp-content/uploads/2025/08/INGENIUM-Styleguide-2024-weboptimized.pdf",
+      "kind": "Official brand guide"
+    },
+    "progress": {
+      "title": "INGENIUM Alliance Progress Report 2",
+      "url": "https://ingenium-university.eu/wp-content/uploads/2025/03/D1.3-INGENIUM-alliance-Progress-Report-2.pdf",
+      "kind": "Official deliverable"
+    }
+  },
+  "universities": [
+    {
+      "id": "university-uniodv",
+      "short": "UNIOVI",
+      "name": "University of Oviedo",
+      "city": "Oviedo",
+      "country": "Spain",
+      "lat": 43.36,
+      "lon": -5.85,
+      "url": "https://www.uniovi.es/en/",
+      "description": "INGENIUM partner university in Asturias, Spain.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-uniodv"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-mus",
+      "short": "MUS",
+      "name": "Medical University Sofia",
+      "city": "Sofia",
+      "country": "Bulgaria",
+      "lat": 42.68,
+      "lon": 23.32,
+      "url": "https://mu-sofia.bg/en/",
+      "description": "INGENIUM partner university specialising in health and medical education.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-mus"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-uoc",
+      "short": "UoC",
+      "name": "University of Crete",
+      "city": "Heraklion",
+      "country": "Greece",
+      "lat": 35.31,
+      "lon": 25.08,
+      "url": "https://www.uoc.gr/en/",
+      "description": "INGENIUM partner university on Crete, Greece.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-uoc"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-hka",
+      "short": "HKA",
+      "name": "Karlsruhe University of Applied Sciences",
+      "city": "Karlsruhe",
+      "country": "Germany",
+      "lat": 49.01,
+      "lon": 8.4,
+      "url": "https://www.h-ka.de/en/",
+      "description": "INGENIUM partner university of applied sciences in Karlsruhe.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-hka"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-xamk",
+      "short": "Xamk",
+      "name": "South-Eastern Finland University of Applied Sciences",
+      "city": "Mikkeli",
+      "country": "Finland",
+      "lat": 61.69,
+      "lon": 27.27,
+      "url": "https://www.xamk.fi/en/",
+      "description": "INGENIUM partner university with campuses in south-eastern Finland.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-xamk"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-uda",
+      "short": "Ud’A",
+      "name": "University G. d’Annunzio of Chieti–Pescara",
+      "city": "Chieti–Pescara",
+      "country": "Italy",
+      "lat": 42.35,
+      "lon": 14.17,
+      "url": "https://en.unich.it/",
+      "description": "INGENIUM partner university in the Abruzzo region of Italy.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-uda"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-his",
+      "short": "HIS",
+      "name": "University of Skövde",
+      "city": "Skövde",
+      "country": "Sweden",
+      "lat": 58.39,
+      "lon": 13.85,
+      "url": "https://www.his.se/en/",
+      "description": "INGENIUM partner university in Skövde, Sweden.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-his"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-mtu",
+      "short": "MTU",
+      "name": "Munster Technological University",
+      "city": "Cork",
+      "country": "Ireland",
+      "lat": 51.89,
+      "lon": -8.49,
+      "url": "https://www.mtu.ie/",
+      "description": "INGENIUM partner technological university in south-west Ireland.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-mtu"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-urn",
+      "short": "URN",
+      "name": "University of Rouen Normandy",
+      "city": "Rouen",
+      "country": "France",
+      "lat": 49.44,
+      "lon": 1.1,
+      "url": "https://www.univ-rouen.fr/",
+      "description": "INGENIUM partner university in Normandy, France.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-urn"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-tuiasi",
+      "short": "TUIASI",
+      "name": "Gheorghe Asachi Technical University of Iași",
+      "city": "Iași",
+      "country": "Romania",
+      "lat": 47.16,
+      "lon": 27.59,
+      "url": "https://www.tuiasi.ro/?lang=en",
+      "description": "INGENIUM partner technical university in Iași, Romania.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    }
+  ],
+  "bips": [
+    {
+      "id": "bip-academic-communication",
+      "type": "bip",
+      "name": "Academic Communication",
+      "hostId": "university-hka",
+      "universityIds": [
+        "university-hka"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Karlsruhe, Germany",
+      "startDate": "2026-11-01",
+      "dateLabel": "November–December 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 5,
+      "bipType": "Transversal",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Communication",
+        "Intercultural learning"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–20 students"
+    },
+    {
+      "id": "bip-engage-enjoy",
+      "type": "bip",
+      "name": "Engage & Enjoy: an Inclusive and Multicultural INGENIUM Experience",
+      "hostId": "university-uniodv",
+      "universityIds": [
+        "university-uniodv"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Oviedo, Spain",
+      "startDate": "2027-04-01",
+      "dateLabel": "April 2027",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Transversal",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Inclusion",
+        "Intercultural learning"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "1–5 participants per partner university"
+    },
+    {
+      "id": "bip-clarity-ai",
+      "type": "bip",
+      "name": "CLARITY-AI: Critical Learning in the Technology Age of AI",
+      "hostId": "university-tuiasi",
+      "universityIds": [
+        "university-tuiasi"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Iași, Romania",
+      "startDate": "2026-09-01",
+      "dateLabel": "September 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Transversal",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Artificial intelligence",
+        "Critical thinking",
+        "Digital learning"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "bip-ethical-ai-health",
+      "type": "bip",
+      "name": "Exploring Ethical, Effective and Efficient Uses of AI to Support Health and Social Sciences Researchers",
+      "hostId": "university-mtu",
+      "universityIds": [
+        "university-mtu"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Cork, Ireland",
+      "startDate": "2026-10-01",
+      "dateLabel": "October 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Transversal",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Artificial intelligence",
+        "Health",
+        "Research"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "bip-international-project-challenge",
+      "type": "bip",
+      "name": "International Project Challenge",
+      "hostId": "university-xamk",
+      "universityIds": [
+        "university-xamk"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Mikkeli, Finland",
+      "startDate": "2027-04-01",
+      "dateLabel": "April 2027",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 5,
+      "bipType": "Cross-disciplinary",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Collaboration",
+        "Innovation",
+        "Project work"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "bip-medchem",
+      "type": "bip",
+      "name": "MedChem BIP: Exploring Medicinal Chemistry",
+      "hostId": "university-uda",
+      "universityIds": [
+        "university-uda"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Pescara, Italy",
+      "startDate": "2027-06-01",
+      "dateLabel": "June 2027",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Discipline-specific",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Chemistry",
+        "Health",
+        "Laboratory learning"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "bip-digital-health",
+      "type": "bip",
+      "name": "Multidisciplinary Approaches to Digital Competence and Innovation in Health and Social Care",
+      "hostId": "university-his",
+      "universityIds": [
+        "university-his"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Skövde, Sweden",
+      "startDate": "2026-11-01",
+      "dateLabel": "November 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Cross-disciplinary",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Digital skills",
+        "Health",
+        "Innovation"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "30 students"
+    },
+    {
+      "id": "bip-nature-wellbeing",
+      "type": "bip",
+      "name": "Nature-Based Wellbeing Experience",
+      "hostId": "university-xamk",
+      "universityIds": [
+        "university-xamk"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Savonlinna, Finland",
+      "startDate": "2027-05-01",
+      "dateLabel": "May 2027",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Transversal",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Wellbeing",
+        "Nature",
+        "Sustainability"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–30 students"
+    },
+    {
+      "id": "bip-accounting-skills",
+      "type": "bip",
+      "name": "Non-technical Skills for Accountants",
+      "hostId": "university-mtu",
+      "universityIds": [
+        "university-mtu"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Cork, Ireland",
+      "startDate": "2026-11-01",
+      "dateLabel": "November 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 5,
+      "bipType": "Discipline-specific",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Business",
+        "Communication",
+        "Professional skills"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "bip-community-youth",
+      "type": "bip",
+      "name": "School Community Development and Youth Work Approaches",
+      "hostId": "university-xamk",
+      "universityIds": [
+        "university-xamk"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Mikkeli, Finland",
+      "startDate": "2027-05-01",
+      "dateLabel": "May 2027",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Transversal — conditions apply",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Community",
+        "Youth work",
+        "Inclusion"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "bip-seismicx",
+      "type": "bip",
+      "name": "SeismicX: Engineering Structures for the Real World",
+      "hostId": "university-tuiasi",
+      "universityIds": [
+        "university-tuiasi"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Iași, Romania",
+      "startDate": "2026-11-01",
+      "dateLabel": "November 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Discipline-specific — conditions apply",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Engineering",
+        "Infrastructure",
+        "Built environment"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "bip-sustainable-cosmetics",
+      "type": "bip",
+      "name": "Sustainable Cosmetics & Entrepreneurship",
+      "hostId": "university-tuiasi",
+      "universityIds": [
+        "university-tuiasi"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Iași, Romania",
+      "startDate": "2026-09-01",
+      "dateLabel": "September 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Discipline-specific",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Sustainability",
+        "Entrepreneurship",
+        "Chemistry"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "bip-corporate-responsibility",
+      "type": "bip",
+      "name": "Sustainable Development and Corporate Responsibility",
+      "hostId": "university-uoc",
+      "universityIds": [
+        "university-uoc"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Heraklion, Greece",
+      "startDate": "2026-11-01",
+      "dateLabel": "November–December 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Cross-disciplinary",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Sustainability",
+        "Business",
+        "Responsibility"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    }
+  ],
+  "projects": [
+    {
+      "id": "project-futureproof",
+      "type": "project",
+      "name": "FutureProof Escape",
+      "universityIds": [
+        "university-tuiasi",
+        "university-uniodv",
+        "university-his",
+        "university-uda",
+        "university-uoc",
+        "university-xamk",
+        "university-mus",
+        "university-hka",
+        "university-mtu"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "€10,000 awarded",
+      "description": "An interactive escape-room experience using teamwork and gamification to explore sustainability challenges on university campuses.",
+      "themes": [
+        "Sustainability",
+        "Gamification",
+        "Collaboration"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "project-ecocommute",
+      "type": "project",
+      "name": "EcoCommute",
+      "universityIds": [
+        "university-uniodv",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "€7,800 awarded",
+      "description": "A student initiative exploring more sustainable and accessible transport choices for internships and international exchanges.",
+      "themes": [
+        "Sustainability",
+        "Mobility",
+        "Accessibility"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "project-leadership-lab",
+      "type": "project",
+      "name": "Student Leadership & Entrepreneurship Lab",
+      "universityIds": [
+        "university-mus",
+        "university-uda",
+        "university-xamk"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "€10,000 awarded",
+      "description": "International practical learning designed to strengthen leadership, entrepreneurship and work-ready skills.",
+      "themes": [
+        "Entrepreneurship",
+        "Leadership",
+        "Professional skills"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "project-immunobattle",
+      "type": "project",
+      "name": "ImmunoBattle — The Warriors Within You",
+      "universityIds": [
+        "university-uniodv",
+        "university-his",
+        "university-uda"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "€10,000 awarded",
+      "description": "An interdisciplinary health-education project making the immune system and public-health topics engaging and accessible.",
+      "themes": [
+        "Health",
+        "Science communication",
+        "Gamification"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "project-ingenium-platform",
+      "type": "project",
+      "name": "INGENIUM Platform",
+      "universityIds": [
+        "university-uniodv",
+        "university-tuiasi",
+        "university-his"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "€7,550 awarded",
+      "description": "An intensive Oviedo programme for ESN volunteers combining workshops, intercultural learning, field visits and organisational skills.",
+      "themes": [
+        "Intercultural learning",
+        "Mobility",
+        "Student organisations"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "project-infrastructurelink",
+      "type": "project",
+      "name": "InfrastructureLink",
+      "universityIds": [
+        "university-tuiasi",
+        "university-mtu",
+        "university-hka",
+        "university-uda",
+        "university-his"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "€8,200 awarded",
+      "description": "A transnational exchange connecting students around infrastructure, engineering and innovative responses to shared challenges.",
+      "themes": [
+        "Engineering",
+        "Infrastructure",
+        "Collaboration"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "project-ingenium-plus",
+      "type": "project",
+      "name": "INGENIUM+",
+      "universityIds": [
+        "university-mtu",
+        "university-tuiasi",
+        "university-xamk"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "Supported to identify alternative funding",
+      "description": "A student-led graph-based platform that makes programmes, projects, communities and collaboration routes across INGENIUM easier to discover.",
+      "themes": [
+        "Digital learning",
+        "Student connection",
+        "Data visualisation"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "featured": true,
+      "url": "about.html"
+    },
+    {
+      "id": "project-resqdrone",
+      "type": "project",
+      "name": "ResQDrone",
+      "universityIds": [
+        "university-hka",
+        "university-his",
+        "university-uniodv"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "Supported to identify alternative funding",
+      "description": "A proposal using AI-powered drones to support local rescue authorities, alongside hands-on AI, robotics and engineering workshops.",
+      "themes": [
+        "Artificial intelligence",
+        "Robotics",
+        "Public safety"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    }
+  ],
+  "events": [
+    {
+      "id": "event-winter-iasi",
+      "type": "event",
+      "name": "Senior Winter School 2026 — Science Meets Industry",
+      "hostId": "university-tuiasi",
+      "universityIds": [
+        "university-tuiasi"
+      ],
+      "city": "Iași, Romania",
+      "startDate": "2026-01-26",
+      "endDate": "2026-01-30",
+      "dateLabel": "26–30 January 2026",
+      "status": "past",
+      "themes": [
+        "Research",
+        "Industry",
+        "Innovation"
+      ],
+      "description": "Part of 10 Days of INGENIUM Winter 2026, bringing advanced students and researchers together around science–industry connections.",
+      "source": {
+        "title": "10 Days of INGENIUM Winter 2026",
+        "url": "https://ingenium-university.eu/10-days-of-ingenium-winter-2026/",
+        "kind": "Official INGENIUM event page"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "event-winter-skovde",
+      "type": "event",
+      "name": "Junior Winter School 2026 — Sustainability in Action",
+      "hostId": "university-his",
+      "universityIds": [
+        "university-his"
+      ],
+      "city": "Skövde, Sweden",
+      "startDate": "2026-02-02",
+      "endDate": "2026-02-06",
+      "dateLabel": "2–6 February 2026",
+      "status": "past",
+      "themes": [
+        "Sustainability",
+        "Collaboration",
+        "Student learning"
+      ],
+      "description": "A Junior Winter School focused on practical sustainability, interdisciplinary learning and student collaboration.",
+      "source": {
+        "title": "10 Days of INGENIUM Winter 2026",
+        "url": "https://ingenium-university.eu/10-days-of-ingenium-winter-2026/",
+        "kind": "Official INGENIUM event page"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "event-summer-cork",
+      "type": "event",
+      "name": "Senior Summer School 2026 — Enabling Research for Impact",
+      "hostId": "university-mtu",
+      "universityIds": [
+        "university-mtu"
+      ],
+      "city": "Cork, Ireland",
+      "startDate": "2026-05-25",
+      "endDate": "2026-05-29",
+      "dateLabel": "25–29 May 2026",
+      "status": "past",
+      "themes": [
+        "Research",
+        "Sustainability",
+        "Entrepreneurship"
+      ],
+      "description": "Five days of interdisciplinary workshops and collaboration on sustainable innovation, entrepreneurship and research impact.",
+      "source": {
+        "title": "10 Days of INGENIUM Summer 2026",
+        "url": "https://ingenium-university.eu/10-days-of-ingenium-summer-2026/",
+        "kind": "Official INGENIUM event page"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "event-summer-sofia",
+      "type": "event",
+      "name": "Junior Summer School 2026 — Health Promotion in the New Era",
+      "hostId": "university-mus",
+      "universityIds": [
+        "university-mus"
+      ],
+      "city": "Sofia, Bulgaria",
+      "startDate": "2026-06-01",
+      "endDate": "2026-06-05",
+      "dateLabel": "1–5 June 2026",
+      "status": "past",
+      "themes": [
+        "Health",
+        "Artificial intelligence",
+        "Emergency medicine"
+      ],
+      "description": "A Junior Summer School built around two BIPs: AI and Labour Market Transformation, and Emergency Medicine in a Changing World.",
+      "source": {
+        "title": "10 Days of INGENIUM Summer 2026",
+        "url": "https://ingenium-university.eu/10-days-of-ingenium-summer-2026/",
+        "kind": "Official INGENIUM event page"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    }
+  ],
+  "communities": [
+    {
+      "id": "community-student-board",
+      "type": "community",
+      "name": "INGENIUM Student Board",
+      "universityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "access": "Contact your local INGENIUM coordinator",
+      "platform": "Official alliance governance and student network",
+      "themes": [
+        "Student voice",
+        "Governance",
+        "Intercultural learning"
+      ],
+      "description": "The official student voice within INGENIUM, with representation and voting rights in alliance governance. Participation begins through a local INGENIUM coordinator.",
+      "source": {
+        "title": "Students at the Centre: INGENIUM Student Board",
+        "url": "https://ingenium-university.eu/students-at-the-centre/",
+        "kind": "Official INGENIUM feature"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "community-founders-hub",
+      "type": "community",
+      "name": "INGENIUM Founders HUB",
+      "universityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "access": "Use the official project page",
+      "platform": "Student-led entrepreneurship network",
+      "themes": [
+        "Entrepreneurship",
+        "Mentoring",
+        "Collaboration"
+      ],
+      "description": "A student-led entrepreneurship network designed to help students find co-founders, mentors and opportunities across INGENIUM.",
+      "source": {
+        "title": "INGENIUM Founders HUB",
+        "url": "https://ingenium-university.eu/ingenium-student-partnerships/ingenium-founders-hub/",
+        "kind": "Official INGENIUM project page"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "opportunity-european-campus",
+      "type": "opportunity",
+      "subtype": "Service",
+      "name": "INGENIUM European Campus",
+      "universityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "themes": [
+        "European campus",
+        "Study",
+        "Mobility"
+      ],
+      "description": "The alliance-wide route into teaching, research, mobility and collaboration opportunities offered across the ten partner institutions.",
+      "source": {
+        "title": "INGENIUM European Campus",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "opportunity-short-mobility",
+      "type": "opportunity",
+      "subtype": "Mobility",
+      "name": "Short-term Mobility Opportunities",
+      "universityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "themes": [
+        "Mobility",
+        "Junior School",
+        "Senior School"
+      ],
+      "description": "Short international learning routes including Junior and Senior Schools and other intensive alliance activities.",
+      "source": {
+        "title": "Short-term Mobility Opportunities",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "opportunity-long-mobility",
+      "type": "opportunity",
+      "subtype": "Mobility",
+      "name": "Long-term Mobility Opportunities",
+      "universityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "themes": [
+        "Mobility",
+        "Study abroad",
+        "European campus"
+      ],
+      "description": "Semester-scale mobility and flexible alternatives coordinated through each student’s local international office.",
+      "source": {
+        "title": "Long-term Mobility Opportunities",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/student-mobility/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "opportunity-digital-platforms",
+      "type": "opportunity",
+      "subtype": "Digital service",
+      "name": "Digital Student Platforms",
+      "universityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "themes": [
+        "Applications",
+        "Digital learning",
+        "Student services"
+      ],
+      "description": "Official routes for selected student submissions and applications, including alliance schools, hackathons and other calls.",
+      "source": {
+        "title": "Digital Student Platforms",
+        "url": "https://ingenium-university.eu/students/digital-ingenium/digital-student-platforms/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "opportunity-registry",
+      "type": "opportunity",
+      "subtype": "Digital service",
+      "name": "Virtual Student Registry",
+      "universityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "themes": [
+        "Student services",
+        "Courses",
+        "Digital learning"
+      ],
+      "description": "The developing alliance student-information environment for curriculum, course registration, examinations and student records.",
+      "source": {
+        "title": "Virtual Student Registry",
+        "url": "https://ingenium-university.eu/students/digital-ingenium/virtual-student-registry/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "opportunity-joint-master",
+      "type": "opportunity",
+      "subtype": "Study programme",
+      "name": "Joint Master’s in Chemical and Biochemical Process Technology",
+      "universityIds": [
+        "university-tuiasi",
+        "university-uniodv",
+        "university-urn"
+      ],
+      "hostId": "university-tuiasi",
+      "status": "upcoming",
+      "startDate": "2026-09-01",
+      "dateLabel": "Applications: 6 July–6 September 2026",
+      "applicationDeadline": "2026-09-06",
+      "ects": 120,
+      "themes": [
+        "Chemical engineering",
+        "Biotechnology",
+        "Sustainability"
+      ],
+      "description": "A two-year, 120 ECTS English-language joint programme with a structured study journey across Romania, Spain and France.",
+      "funding": "At least ten scholarships of up to €20,000 are announced for the first cohort, subject to official conditions.",
+      "source": {
+        "title": "Joint Master’s Programme in Chemical and Biochemical Process Technology",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/study-programmes/joint-masters-programme-in-chemical-and-biochemical-process-technology/",
+        "kind": "Official programme page"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "university-uniodv",
+      "short": "UNIOVI",
+      "name": "University of Oviedo",
+      "city": "Oviedo",
+      "country": "Spain",
+      "lat": 43.36,
+      "lon": -5.85,
+      "url": "https://www.uniovi.es/en/",
+      "description": "INGENIUM partner university in Asturias, Spain.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-uniodv"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-mus",
+      "short": "MUS",
+      "name": "Medical University Sofia",
+      "city": "Sofia",
+      "country": "Bulgaria",
+      "lat": 42.68,
+      "lon": 23.32,
+      "url": "https://mu-sofia.bg/en/",
+      "description": "INGENIUM partner university specialising in health and medical education.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-mus"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-uoc",
+      "short": "UoC",
+      "name": "University of Crete",
+      "city": "Heraklion",
+      "country": "Greece",
+      "lat": 35.31,
+      "lon": 25.08,
+      "url": "https://www.uoc.gr/en/",
+      "description": "INGENIUM partner university on Crete, Greece.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-uoc"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-hka",
+      "short": "HKA",
+      "name": "Karlsruhe University of Applied Sciences",
+      "city": "Karlsruhe",
+      "country": "Germany",
+      "lat": 49.01,
+      "lon": 8.4,
+      "url": "https://www.h-ka.de/en/",
+      "description": "INGENIUM partner university of applied sciences in Karlsruhe.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-hka"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-xamk",
+      "short": "Xamk",
+      "name": "South-Eastern Finland University of Applied Sciences",
+      "city": "Mikkeli",
+      "country": "Finland",
+      "lat": 61.69,
+      "lon": 27.27,
+      "url": "https://www.xamk.fi/en/",
+      "description": "INGENIUM partner university with campuses in south-eastern Finland.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-xamk"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-uda",
+      "short": "Ud’A",
+      "name": "University G. d’Annunzio of Chieti–Pescara",
+      "city": "Chieti–Pescara",
+      "country": "Italy",
+      "lat": 42.35,
+      "lon": 14.17,
+      "url": "https://en.unich.it/",
+      "description": "INGENIUM partner university in the Abruzzo region of Italy.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-uda"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-his",
+      "short": "HIS",
+      "name": "University of Skövde",
+      "city": "Skövde",
+      "country": "Sweden",
+      "lat": 58.39,
+      "lon": 13.85,
+      "url": "https://www.his.se/en/",
+      "description": "INGENIUM partner university in Skövde, Sweden.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-his"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-mtu",
+      "short": "MTU",
+      "name": "Munster Technological University",
+      "city": "Cork",
+      "country": "Ireland",
+      "lat": 51.89,
+      "lon": -8.49,
+      "url": "https://www.mtu.ie/",
+      "description": "INGENIUM partner technological university in south-west Ireland.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-mtu"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-urn",
+      "short": "URN",
+      "name": "University of Rouen Normandy",
+      "city": "Rouen",
+      "country": "France",
+      "lat": 49.44,
+      "lon": 1.1,
+      "url": "https://www.univ-rouen.fr/",
+      "description": "INGENIUM partner university in Normandy, France.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-urn"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "university-tuiasi",
+      "short": "TUIASI",
+      "name": "Gheorghe Asachi Technical University of Iași",
+      "city": "Iași",
+      "country": "Romania",
+      "lat": 47.16,
+      "lon": 27.59,
+      "url": "https://www.tuiasi.ro/?lang=en",
+      "description": "INGENIUM partner technical university in Iași, Romania.",
+      "type": "university",
+      "themes": [
+        "European campus"
+      ],
+      "universityIds": [
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "source": {
+        "title": "INGENIUM partner universities",
+        "url": "https://ingenium-university.eu/about-us/partners/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "bip-academic-communication",
+      "type": "bip",
+      "name": "Academic Communication",
+      "hostId": "university-hka",
+      "universityIds": [
+        "university-hka"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Karlsruhe, Germany",
+      "startDate": "2026-11-01",
+      "dateLabel": "November–December 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 5,
+      "bipType": "Transversal",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Communication",
+        "Intercultural learning"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–20 students"
+    },
+    {
+      "id": "bip-engage-enjoy",
+      "type": "bip",
+      "name": "Engage & Enjoy: an Inclusive and Multicultural INGENIUM Experience",
+      "hostId": "university-uniodv",
+      "universityIds": [
+        "university-uniodv"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Oviedo, Spain",
+      "startDate": "2027-04-01",
+      "dateLabel": "April 2027",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Transversal",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Inclusion",
+        "Intercultural learning"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "1–5 participants per partner university"
+    },
+    {
+      "id": "bip-clarity-ai",
+      "type": "bip",
+      "name": "CLARITY-AI: Critical Learning in the Technology Age of AI",
+      "hostId": "university-tuiasi",
+      "universityIds": [
+        "university-tuiasi"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Iași, Romania",
+      "startDate": "2026-09-01",
+      "dateLabel": "September 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Transversal",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Artificial intelligence",
+        "Critical thinking",
+        "Digital learning"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "bip-ethical-ai-health",
+      "type": "bip",
+      "name": "Exploring Ethical, Effective and Efficient Uses of AI to Support Health and Social Sciences Researchers",
+      "hostId": "university-mtu",
+      "universityIds": [
+        "university-mtu"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Cork, Ireland",
+      "startDate": "2026-10-01",
+      "dateLabel": "October 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Transversal",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Artificial intelligence",
+        "Health",
+        "Research"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "bip-international-project-challenge",
+      "type": "bip",
+      "name": "International Project Challenge",
+      "hostId": "university-xamk",
+      "universityIds": [
+        "university-xamk"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Mikkeli, Finland",
+      "startDate": "2027-04-01",
+      "dateLabel": "April 2027",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 5,
+      "bipType": "Cross-disciplinary",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Collaboration",
+        "Innovation",
+        "Project work"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "bip-medchem",
+      "type": "bip",
+      "name": "MedChem BIP: Exploring Medicinal Chemistry",
+      "hostId": "university-uda",
+      "universityIds": [
+        "university-uda"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Pescara, Italy",
+      "startDate": "2027-06-01",
+      "dateLabel": "June 2027",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Discipline-specific",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Chemistry",
+        "Health",
+        "Laboratory learning"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "bip-digital-health",
+      "type": "bip",
+      "name": "Multidisciplinary Approaches to Digital Competence and Innovation in Health and Social Care",
+      "hostId": "university-his",
+      "universityIds": [
+        "university-his"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Skövde, Sweden",
+      "startDate": "2026-11-01",
+      "dateLabel": "November 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Cross-disciplinary",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Digital skills",
+        "Health",
+        "Innovation"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "30 students"
+    },
+    {
+      "id": "bip-nature-wellbeing",
+      "type": "bip",
+      "name": "Nature-Based Wellbeing Experience",
+      "hostId": "university-xamk",
+      "universityIds": [
+        "university-xamk"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Savonlinna, Finland",
+      "startDate": "2027-05-01",
+      "dateLabel": "May 2027",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Transversal",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Wellbeing",
+        "Nature",
+        "Sustainability"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–30 students"
+    },
+    {
+      "id": "bip-accounting-skills",
+      "type": "bip",
+      "name": "Non-technical Skills for Accountants",
+      "hostId": "university-mtu",
+      "universityIds": [
+        "university-mtu"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Cork, Ireland",
+      "startDate": "2026-11-01",
+      "dateLabel": "November 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 5,
+      "bipType": "Discipline-specific",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Business",
+        "Communication",
+        "Professional skills"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "bip-community-youth",
+      "type": "bip",
+      "name": "School Community Development and Youth Work Approaches",
+      "hostId": "university-xamk",
+      "universityIds": [
+        "university-xamk"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Mikkeli, Finland",
+      "startDate": "2027-05-01",
+      "dateLabel": "May 2027",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Transversal — conditions apply",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Community",
+        "Youth work",
+        "Inclusion"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "bip-seismicx",
+      "type": "bip",
+      "name": "SeismicX: Engineering Structures for the Real World",
+      "hostId": "university-tuiasi",
+      "universityIds": [
+        "university-tuiasi"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Iași, Romania",
+      "startDate": "2026-11-01",
+      "dateLabel": "November 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Discipline-specific — conditions apply",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Engineering",
+        "Infrastructure",
+        "Built environment"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "bip-sustainable-cosmetics",
+      "type": "bip",
+      "name": "Sustainable Cosmetics & Entrepreneurship",
+      "hostId": "university-tuiasi",
+      "universityIds": [
+        "university-tuiasi"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Iași, Romania",
+      "startDate": "2026-09-01",
+      "dateLabel": "September 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Discipline-specific",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Sustainability",
+        "Entrepreneurship",
+        "Chemistry"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "bip-corporate-responsibility",
+      "type": "bip",
+      "name": "Sustainable Development and Corporate Responsibility",
+      "hostId": "university-uoc",
+      "universityIds": [
+        "university-uoc"
+      ],
+      "eligibleUniversityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "city": "Heraklion, Greece",
+      "startDate": "2026-11-01",
+      "dateLabel": "November–December 2026",
+      "datePrecision": "month",
+      "status": "upcoming",
+      "ects": 3,
+      "bipType": "Cross-disciplinary",
+      "delivery": "Blended: virtual learning plus physical mobility",
+      "funding": "Erasmus+ support is available; arrangements and deadlines are managed by each home university.",
+      "application": "Apply through your home university’s INGENIUM or international office.",
+      "description": "A verified INGENIUM Blended Intensive Programme combining online collaboration with a short physical mobility period.",
+      "themes": [
+        "Sustainability",
+        "Business",
+        "Responsibility"
+      ],
+      "source": {
+        "title": "INGENIUM Blended Intensive Programmes 2026/2027",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/",
+        "kind": "Official INGENIUM call"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "capacity": "15–25 students"
+    },
+    {
+      "id": "project-futureproof",
+      "type": "project",
+      "name": "FutureProof Escape",
+      "universityIds": [
+        "university-tuiasi",
+        "university-uniodv",
+        "university-his",
+        "university-uda",
+        "university-uoc",
+        "university-xamk",
+        "university-mus",
+        "university-hka",
+        "university-mtu"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "€10,000 awarded",
+      "description": "An interactive escape-room experience using teamwork and gamification to explore sustainability challenges on university campuses.",
+      "themes": [
+        "Sustainability",
+        "Gamification",
+        "Collaboration"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "project-ecocommute",
+      "type": "project",
+      "name": "EcoCommute",
+      "universityIds": [
+        "university-uniodv",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "€7,800 awarded",
+      "description": "A student initiative exploring more sustainable and accessible transport choices for internships and international exchanges.",
+      "themes": [
+        "Sustainability",
+        "Mobility",
+        "Accessibility"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "project-leadership-lab",
+      "type": "project",
+      "name": "Student Leadership & Entrepreneurship Lab",
+      "universityIds": [
+        "university-mus",
+        "university-uda",
+        "university-xamk"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "€10,000 awarded",
+      "description": "International practical learning designed to strengthen leadership, entrepreneurship and work-ready skills.",
+      "themes": [
+        "Entrepreneurship",
+        "Leadership",
+        "Professional skills"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "project-immunobattle",
+      "type": "project",
+      "name": "ImmunoBattle — The Warriors Within You",
+      "universityIds": [
+        "university-uniodv",
+        "university-his",
+        "university-uda"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "€10,000 awarded",
+      "description": "An interdisciplinary health-education project making the immune system and public-health topics engaging and accessible.",
+      "themes": [
+        "Health",
+        "Science communication",
+        "Gamification"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "project-ingenium-platform",
+      "type": "project",
+      "name": "INGENIUM Platform",
+      "universityIds": [
+        "university-uniodv",
+        "university-tuiasi",
+        "university-his"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "€7,550 awarded",
+      "description": "An intensive Oviedo programme for ESN volunteers combining workshops, intercultural learning, field visits and organisational skills.",
+      "themes": [
+        "Intercultural learning",
+        "Mobility",
+        "Student organisations"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "project-infrastructurelink",
+      "type": "project",
+      "name": "InfrastructureLink",
+      "universityIds": [
+        "university-tuiasi",
+        "university-mtu",
+        "university-hka",
+        "university-uda",
+        "university-his"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "€8,200 awarded",
+      "description": "A transnational exchange connecting students around infrastructure, engineering and innovative responses to shared challenges.",
+      "themes": [
+        "Engineering",
+        "Infrastructure",
+        "Collaboration"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "project-ingenium-plus",
+      "type": "project",
+      "name": "INGENIUM+",
+      "universityIds": [
+        "university-mtu",
+        "university-tuiasi",
+        "university-xamk"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "Supported to identify alternative funding",
+      "description": "A student-led graph-based platform that makes programmes, projects, communities and collaboration routes across INGENIUM easier to discover.",
+      "themes": [
+        "Digital learning",
+        "Student connection",
+        "Data visualisation"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05",
+      "featured": true,
+      "url": "about.html"
+    },
+    {
+      "id": "project-resqdrone",
+      "type": "project",
+      "name": "ResQDrone",
+      "universityIds": [
+        "university-hka",
+        "university-his",
+        "university-uniodv"
+      ],
+      "status": "current",
+      "dateLabel": "Implementation through 15 December 2026",
+      "funding": "Supported to identify alternative funding",
+      "description": "A proposal using AI-powered drones to support local rescue authorities, alongside hands-on AI, robotics and engineering workshops.",
+      "themes": [
+        "Artificial intelligence",
+        "Robotics",
+        "Public safety"
+      ],
+      "source": {
+        "title": "The INGENIUM Student Partnerships 2026 Call selects six innovative student-led projects",
+        "url": "https://ingenium-university.eu/the-ingenium-student-partnerships-2026-call-selects-six-innovative-student-led-projects-across-the-alliance/",
+        "kind": "Official INGENIUM news"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "event-winter-iasi",
+      "type": "event",
+      "name": "Senior Winter School 2026 — Science Meets Industry",
+      "hostId": "university-tuiasi",
+      "universityIds": [
+        "university-tuiasi"
+      ],
+      "city": "Iași, Romania",
+      "startDate": "2026-01-26",
+      "endDate": "2026-01-30",
+      "dateLabel": "26–30 January 2026",
+      "status": "past",
+      "themes": [
+        "Research",
+        "Industry",
+        "Innovation"
+      ],
+      "description": "Part of 10 Days of INGENIUM Winter 2026, bringing advanced students and researchers together around science–industry connections.",
+      "source": {
+        "title": "10 Days of INGENIUM Winter 2026",
+        "url": "https://ingenium-university.eu/10-days-of-ingenium-winter-2026/",
+        "kind": "Official INGENIUM event page"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "event-winter-skovde",
+      "type": "event",
+      "name": "Junior Winter School 2026 — Sustainability in Action",
+      "hostId": "university-his",
+      "universityIds": [
+        "university-his"
+      ],
+      "city": "Skövde, Sweden",
+      "startDate": "2026-02-02",
+      "endDate": "2026-02-06",
+      "dateLabel": "2–6 February 2026",
+      "status": "past",
+      "themes": [
+        "Sustainability",
+        "Collaboration",
+        "Student learning"
+      ],
+      "description": "A Junior Winter School focused on practical sustainability, interdisciplinary learning and student collaboration.",
+      "source": {
+        "title": "10 Days of INGENIUM Winter 2026",
+        "url": "https://ingenium-university.eu/10-days-of-ingenium-winter-2026/",
+        "kind": "Official INGENIUM event page"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "event-summer-cork",
+      "type": "event",
+      "name": "Senior Summer School 2026 — Enabling Research for Impact",
+      "hostId": "university-mtu",
+      "universityIds": [
+        "university-mtu"
+      ],
+      "city": "Cork, Ireland",
+      "startDate": "2026-05-25",
+      "endDate": "2026-05-29",
+      "dateLabel": "25–29 May 2026",
+      "status": "past",
+      "themes": [
+        "Research",
+        "Sustainability",
+        "Entrepreneurship"
+      ],
+      "description": "Five days of interdisciplinary workshops and collaboration on sustainable innovation, entrepreneurship and research impact.",
+      "source": {
+        "title": "10 Days of INGENIUM Summer 2026",
+        "url": "https://ingenium-university.eu/10-days-of-ingenium-summer-2026/",
+        "kind": "Official INGENIUM event page"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "event-summer-sofia",
+      "type": "event",
+      "name": "Junior Summer School 2026 — Health Promotion in the New Era",
+      "hostId": "university-mus",
+      "universityIds": [
+        "university-mus"
+      ],
+      "city": "Sofia, Bulgaria",
+      "startDate": "2026-06-01",
+      "endDate": "2026-06-05",
+      "dateLabel": "1–5 June 2026",
+      "status": "past",
+      "themes": [
+        "Health",
+        "Artificial intelligence",
+        "Emergency medicine"
+      ],
+      "description": "A Junior Summer School built around two BIPs: AI and Labour Market Transformation, and Emergency Medicine in a Changing World.",
+      "source": {
+        "title": "10 Days of INGENIUM Summer 2026",
+        "url": "https://ingenium-university.eu/10-days-of-ingenium-summer-2026/",
+        "kind": "Official INGENIUM event page"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "community-student-board",
+      "type": "community",
+      "name": "INGENIUM Student Board",
+      "universityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "access": "Contact your local INGENIUM coordinator",
+      "platform": "Official alliance governance and student network",
+      "themes": [
+        "Student voice",
+        "Governance",
+        "Intercultural learning"
+      ],
+      "description": "The official student voice within INGENIUM, with representation and voting rights in alliance governance. Participation begins through a local INGENIUM coordinator.",
+      "source": {
+        "title": "Students at the Centre: INGENIUM Student Board",
+        "url": "https://ingenium-university.eu/students-at-the-centre/",
+        "kind": "Official INGENIUM feature"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "community-founders-hub",
+      "type": "community",
+      "name": "INGENIUM Founders HUB",
+      "universityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "access": "Use the official project page",
+      "platform": "Student-led entrepreneurship network",
+      "themes": [
+        "Entrepreneurship",
+        "Mentoring",
+        "Collaboration"
+      ],
+      "description": "A student-led entrepreneurship network designed to help students find co-founders, mentors and opportunities across INGENIUM.",
+      "source": {
+        "title": "INGENIUM Founders HUB",
+        "url": "https://ingenium-university.eu/ingenium-student-partnerships/ingenium-founders-hub/",
+        "kind": "Official INGENIUM project page"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "opportunity-european-campus",
+      "type": "opportunity",
+      "subtype": "Service",
+      "name": "INGENIUM European Campus",
+      "universityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "themes": [
+        "European campus",
+        "Study",
+        "Mobility"
+      ],
+      "description": "The alliance-wide route into teaching, research, mobility and collaboration opportunities offered across the ten partner institutions.",
+      "source": {
+        "title": "INGENIUM European Campus",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "opportunity-short-mobility",
+      "type": "opportunity",
+      "subtype": "Mobility",
+      "name": "Short-term Mobility Opportunities",
+      "universityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "themes": [
+        "Mobility",
+        "Junior School",
+        "Senior School"
+      ],
+      "description": "Short international learning routes including Junior and Senior Schools and other intensive alliance activities.",
+      "source": {
+        "title": "Short-term Mobility Opportunities",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "opportunity-long-mobility",
+      "type": "opportunity",
+      "subtype": "Mobility",
+      "name": "Long-term Mobility Opportunities",
+      "universityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "themes": [
+        "Mobility",
+        "Study abroad",
+        "European campus"
+      ],
+      "description": "Semester-scale mobility and flexible alternatives coordinated through each student’s local international office.",
+      "source": {
+        "title": "Long-term Mobility Opportunities",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/student-mobility/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "opportunity-digital-platforms",
+      "type": "opportunity",
+      "subtype": "Digital service",
+      "name": "Digital Student Platforms",
+      "universityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "themes": [
+        "Applications",
+        "Digital learning",
+        "Student services"
+      ],
+      "description": "Official routes for selected student submissions and applications, including alliance schools, hackathons and other calls.",
+      "source": {
+        "title": "Digital Student Platforms",
+        "url": "https://ingenium-university.eu/students/digital-ingenium/digital-student-platforms/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "opportunity-registry",
+      "type": "opportunity",
+      "subtype": "Digital service",
+      "name": "Virtual Student Registry",
+      "universityIds": [
+        "university-uniodv",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-his",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "status": "current",
+      "themes": [
+        "Student services",
+        "Courses",
+        "Digital learning"
+      ],
+      "description": "The developing alliance student-information environment for curriculum, course registration, examinations and student records.",
+      "source": {
+        "title": "Virtual Student Registry",
+        "url": "https://ingenium-university.eu/students/digital-ingenium/virtual-student-registry/",
+        "kind": "Official INGENIUM webpage"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    },
+    {
+      "id": "opportunity-joint-master",
+      "type": "opportunity",
+      "subtype": "Study programme",
+      "name": "Joint Master’s in Chemical and Biochemical Process Technology",
+      "universityIds": [
+        "university-tuiasi",
+        "university-uniodv",
+        "university-urn"
+      ],
+      "hostId": "university-tuiasi",
+      "status": "upcoming",
+      "startDate": "2026-09-01",
+      "dateLabel": "Applications: 6 July–6 September 2026",
+      "applicationDeadline": "2026-09-06",
+      "ects": 120,
+      "themes": [
+        "Chemical engineering",
+        "Biotechnology",
+        "Sustainability"
+      ],
+      "description": "A two-year, 120 ECTS English-language joint programme with a structured study journey across Romania, Spain and France.",
+      "funding": "At least ten scholarships of up to €20,000 are announced for the first cohort, subject to official conditions.",
+      "source": {
+        "title": "Joint Master’s Programme in Chemical and Biochemical Process Technology",
+        "url": "https://ingenium-university.eu/students/ingenium-european-campus/study-programmes/joint-masters-programme-in-chemical-and-biochemical-process-technology/",
+        "kind": "Official programme page"
+      },
+      "lastVerifiedAt": "2026-08-05"
+    }
+  ],
+  "journeys": [
+    {
+      "id": "bip-finder",
+      "name": "Find a BIP",
+      "icon": "✦",
+      "description": "Move from the European campus to real 2026/27 BIPs and their host universities.",
+      "types": [
+        "university",
+        "bip"
+      ],
+      "nodeIds": [
+        "opportunity-european-campus",
+        "bip-academic-communication",
+        "bip-engage-enjoy",
+        "bip-clarity-ai",
+        "bip-ethical-ai-health",
+        "bip-international-project-challenge",
+        "bip-medchem",
+        "bip-digital-health",
+        "bip-nature-wellbeing",
+        "bip-accounting-skills",
+        "bip-community-youth",
+        "bip-seismicx",
+        "bip-sustainable-cosmetics",
+        "bip-corporate-responsibility"
+      ]
+    },
+    {
+      "id": "sustainability",
+      "name": "Sustainability across INGENIUM",
+      "icon": "↗",
+      "description": "Trace sustainable mobility, learning, wellbeing and student-led projects.",
+      "themes": [
+        "Sustainability"
+      ],
+      "nodeIds": [
+        "project-futureproof",
+        "project-ecocommute",
+        "bip-sustainable-cosmetics",
+        "bip-corporate-responsibility",
+        "bip-nature-wellbeing",
+        "event-winter-skovde"
+      ]
+    },
+    {
+      "id": "communities",
+      "name": "Communities and group routes",
+      "icon": "◎",
+      "description": "Find verified student networks without publishing private chats or personal data.",
+      "nodeIds": [
+        "community-student-board",
+        "community-founders-hub",
+        "project-ingenium-platform",
+        "project-ingenium-plus"
+      ]
+    },
+    {
+      "id": "mtu",
+      "name": "Explore MTU’s network",
+      "icon": "⌁",
+      "description": "Follow Cork’s links to BIPs, projects, research and the wider alliance.",
+      "universityId": "university-mtu",
+      "nodeIds": [
+        "university-mtu",
+        "bip-ethical-ai-health",
+        "bip-accounting-skills",
+        "project-infrastructurelink",
+        "project-ingenium-plus",
+        "event-summer-cork"
+      ]
+    },
+    {
+      "id": "my-journey",
+      "name": "My INGENIUM journey",
+      "icon": "◇",
+      "description": "Build a private route from your home university and interests. It stays on this device.",
+      "configurable": true,
+      "nodeIds": []
+    },
+    {
+      "id": "ten-days",
+      "name": "The 10 Days journey",
+      "icon": "◷",
+      "description": "Explore the two-host winter and summer editions of 2026.",
+      "nodeIds": [
+        "event-winter-iasi",
+        "event-winter-skovde",
+        "event-summer-cork",
+        "event-summer-sofia"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "status": "recovered-prototype",
+  "sourcePath": "/Users/adamoneill/Desktop/INGENIUM+/INGENIUM+_1.0",
+  "gitCommit": null,
+  "deploymentUrl": null,
+  "deploymentVersion": null,
+  "researchOrSnapshotDate": null,
+  "archiveFile": "INGENIUM+_v1.0_SOURCE.zip",
+  "archiveSha256": "b940acb1ad4904c29975dda56b37c49c2caafb03c81ae8ee4e517e805d1d475d",
+  "fileCount": 3,
+  "verification": {"sourceInspected": true, "archiveValidated": true, "testsPassed": false, "deploymentVerified": false},
+  "limitations": ["No Git commit or deployment provenance", "Only JavaScript syntax validation available"]
+}

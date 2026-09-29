@@ -1,0 +1,15 @@
+{
+  "version": "1.4",
+  "status": "previous-public",
+  "sourcePath": "Git commit 3dd95690f187f301d45ce28426b718c26de32041",
+  "gitCommit": "3dd95690f187f301d45ce28426b718c26de32041",
+  "deploymentUrl": "https://ingenium-plus-v14.a0n720x.chatgpt.site",
+  "deploymentVersion": 3,
+  "researchOrSnapshotDate": "2026-08-05",
+  "archiveFile": "INGENIUM+_v1.4_SOURCE.zip",
+  "archiveSha256": "5dcdd1a0256771bf3994ea7cf604d40e724139462fe26ce3c2ef8d89ec466fbd",
+  "fileCount": 56,
+  "dataCounts": {"entities": 85, "relationships": 343, "sources": 29, "journeys": 6},
+  "verification": {"sourceInspected": true, "archiveValidated": true, "testsPassed": true, "deploymentVerified": true},
+  "limitations": ["Frozen catalogue snapshot", "Browser-local prototype actions", "Superseded by public v1.5"]
+}

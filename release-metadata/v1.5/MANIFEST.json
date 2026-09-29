@@ -1,0 +1,15 @@
+{
+  "version": "1.5",
+  "status": "current-public",
+  "sourcePath": "Git commit 211482eac37136a627f94643d3d1947c2c121068",
+  "gitCommit": "211482eac37136a627f94643d3d1947c2c121068",
+  "deploymentUrl": "https://ingenium-plus-v14.a0n720x.chatgpt.site",
+  "deploymentVersion": 4,
+  "researchOrSnapshotDate": "2026-09-13",
+  "archiveFile": "INGENIUM+_v1.5_SOURCE.zip",
+  "archiveSha256": "381efeaefe22ac08ae03e931b02c3899f77cd5a875eedcf098e3731724015f03",
+  "fileCount": 73,
+  "dataCounts": {"entities": 85, "relationships": 343, "sources": 29, "journeys": 6},
+  "verification": {"sourceInspected": true, "archiveValidated": true, "testsPassed": true, "lintPassed": false, "deploymentVerified": true},
+  "limitations": ["Browser-local profiles and planning", "One preserved React Compiler lint acceptance gap", "Historical v14 URL slug"]
+}
