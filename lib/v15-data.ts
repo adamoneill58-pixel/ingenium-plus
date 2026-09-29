@@ -7,8 +7,19 @@ import {
   type Relationship,
   type Source,
 } from "./data";
+import {
+  researchRefreshEntities,
+  researchRefreshRelationships,
+  researchRefreshSources,
+} from "./research-refresh-2026-09-24";
+import {
+  researchContinuationEntities,
+  researchContinuationOverrides,
+  researchContinuationRelationships,
+  researchContinuationSources,
+} from "./research-refresh-2026-09-29";
 
-export const V15_RESEARCH_DATE = "2026-09-13";
+export const V15_RESEARCH_DATE = "2026-09-29";
 
 const courseCatalogueUrl = "https://ingenium-university.eu/courses/";
 const autumnCoursesUrl = "https://ingenium-university.eu/expand-your-studies-with-the-ingenium-course-catalogue-apply-for-the-first-online-courses-of-2026-2027/";
@@ -505,9 +516,23 @@ const v15EntityOverrides: Partial<Record<string, Partial<Entity>>> = {
     actionLabel: "View doctoral programme",
     lastVerified: V15_RESEARCH_DATE,
   },
+  "programme-apn": {
+    status: "Ongoing",
+    availability: "The January 2026 application window has closed; the joint programme remains an active INGENIUM study route.",
+    applicationDeadline: "2026-01-21",
+    actionLabel: "View programme details",
+    lastVerified: V15_RESEARCH_DATE,
+    sourceIds: ["advanced-practice-nursing", "fc-apn-application-2026"],
+  },
+  "opportunity-phd-mobility-2026": {
+    status: "Closed",
+    availability: "Applications closed 11 September 2026 at 12:00 CEST",
+    actionLabel: "View the archived scholarship call",
+    lastVerified: V15_RESEARCH_DATE,
+  },
 };
 
-export const records: Entity[] = [
+const recordsBeforeContinuation: Entity[] = [
   ...v14Entities.map((entity) => ({
     ...entity,
     ...v15EntityOverrides[entity.id],
@@ -515,15 +540,32 @@ export const records: Entity[] = [
   })),
   ...learningEntities,
   ...studentEntities,
+  ...researchRefreshEntities,
+];
+
+export const records: Entity[] = [
+  ...recordsBeforeContinuation.map((entity) => ({
+    ...entity,
+    ...researchContinuationOverrides[entity.id],
+    dataClassification: entity.dataClassification ?? "verified" as const,
+  })),
+  ...researchContinuationEntities,
 ];
 
 export const networkRelationships: Relationship[] = [
   ...v14Relationships.map((item) => ({ ...item, dataClassification: item.dataClassification ?? "verified" as const })),
   ...learningRelationships,
   ...studentRelationships,
+  ...researchRefreshRelationships,
+  ...researchContinuationRelationships,
 ];
 
-export const evidenceSources: Source[] = [...v14Sources, ...v15Sources];
+export const evidenceSources: Source[] = [
+  ...v14Sources,
+  ...v15Sources,
+  ...researchRefreshSources,
+  ...researchContinuationSources,
+];
 export const recordById = new Map(records.map((record) => [record.id, record]));
 export const recordBySlug = new Map(records.map((record) => [record.slug, record]));
 export const evidenceById = new Map(evidenceSources.map((source) => [source.id, source]));
