@@ -10,6 +10,7 @@ await server.close();
 const q = (value) => value === undefined || value === null ? "NULL" : `'${String(value).replaceAll("'", "''")}'`;
 const bool = (value) => value ? 1 : 0;
 const statements = ["PRAGMA foreign_keys = ON;", "BEGIN TRANSACTION;"];
+const deploymentMigrationMaxBytes = 200_000;
 
 for (const source of data.evidenceSources) {
   statements.push(`INSERT OR IGNORE INTO evidence_sources (id,title,kind,url,publisher,published_at,verified_at,notes) VALUES (${q(source.id)},${q(source.title)},${q(source.kind)},${q(source.url)},${q(source.publisher)},${q(source.published)},${q(source.verifiedAt)},${q(source.notes)});`);
@@ -40,8 +41,24 @@ statements.push("INSERT OR REPLACE INTO system_state (key,value_json,updated_at)
 statements.push("COMMIT;");
 await mkdir(new URL("../db/seed/", import.meta.url), { recursive: true });
 const generatedSeed = `${statements.join("\n")}\n`;
+const deploymentStatements = statements.slice(2, -1);
+const migrationChunks = [[]];
+let migrationBytes = 0;
+for (const statement of deploymentStatements) {
+  const statementBytes = Buffer.byteLength(`${statement}\n`);
+  if (migrationChunks.at(-1).length && migrationBytes + statementBytes > deploymentMigrationMaxBytes) {
+    migrationChunks.push([]);
+    migrationBytes = 0;
+  }
+  migrationChunks.at(-1).push(statement);
+  migrationBytes += statementBytes;
+}
+const deploymentMigrations = migrationChunks.map((chunk) => `PRAGMA foreign_keys = ON;\nBEGIN TRANSACTION;\n${chunk.join("\n")}\nCOMMIT;\n`);
 await Promise.all([
   writeFile(new URL("../db/seed/v151.sql", import.meta.url), generatedSeed),
-  writeFile(new URL("../drizzle/0001_v151_seed.sql", import.meta.url), generatedSeed),
+  ...deploymentMigrations.map((migration, index) => writeFile(
+    new URL(index === 0 ? "../drizzle/0001_v151_seed.sql" : `../drizzle/${String(index + 1).padStart(4, "0")}_v151_seed_${String(index + 1).padStart(2, "0")}.sql`, import.meta.url),
+    migration,
+  )),
 ]);
-console.log(`Generated seed for ${data.records.length} records, ${data.networkRelationships.length} relationships and ${data.evidenceSources.length} sources.`);
+console.log(`Generated seed for ${data.records.length} records, ${data.networkRelationships.length} relationships and ${data.evidenceSources.length} sources across ${deploymentMigrations.length} deployment migrations.`);
