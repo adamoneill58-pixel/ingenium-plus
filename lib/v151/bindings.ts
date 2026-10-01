@@ -1,6 +1,7 @@
 export interface IngeniumRuntimeBindings {
   DB?: D1Database;
   DOCUMENTS?: R2Bucket;
+  BOOTSTRAP_OWNER_EMAIL?: string;
 }
 
 const BINDINGS_KEY = Symbol.for("ingenium.runtime.bindings");

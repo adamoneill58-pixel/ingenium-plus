@@ -182,7 +182,7 @@ export function recommend(
     const organizationId = item.organizationId;
     if ((organizationCounts.get(organizationId) ?? 0) >= maximum) continue;
     organizationCounts.set(organizationId, (organizationCounts.get(organizationId) ?? 0) + 1);
-    const { organizationId: _organizationId, ...result } = item;
+    const result = Object.fromEntries(Object.entries(item).filter(([key]) => key !== "organizationId")) as unknown as RecommendationResult;
     limited.push(result);
     if (limited.length >= (options.limit ?? 8)) break;
   }

@@ -5,6 +5,7 @@ import { DatabaseSync } from "node:sqlite";
 
 const schema = await readFile(new URL("../drizzle/0000_v151_production.sql", import.meta.url), "utf8");
 const seed = await readFile(new URL("../db/seed/v151.sql", import.meta.url), "utf8");
+const seedMigration = await readFile(new URL("../drizzle/0001_v151_seed.sql", import.meta.url), "utf8");
 
 test("production migration and v1.5 seed apply to a clean SQLite database", () => {
   const database = new DatabaseSync(":memory:");
@@ -15,6 +16,17 @@ test("production migration and v1.5 seed apply to a clean SQLite database", () =
   assert.ok(database.prepare("SELECT COUNT(*) AS count FROM content_records WHERE is_published=1").get().count >= 100);
   assert.equal(database.prepare("SELECT COUNT(*) AS count FROM organizations WHERE kind='university'").get().count, 10);
   assert.ok(database.prepare("SELECT COUNT(*) AS count FROM content_relationships").get().count >= 400);
+  database.close();
+});
+
+test("deployment migrations initialize the complete catalogue without a user session", () => {
+  const database = new DatabaseSync(":memory:");
+  database.exec(schema);
+  database.exec(seedMigration);
+  assert.equal(database.prepare("SELECT COUNT(*) AS count FROM content_records").get().count, 226);
+  assert.equal(database.prepare("SELECT COUNT(*) AS count FROM content_relationships").get().count, 1007);
+  assert.equal(database.prepare("SELECT COUNT(*) AS count FROM evidence_sources").get().count, 159);
+  assert.equal(database.prepare("SELECT json_extract(value_json, '$.version') AS version FROM system_state WHERE key='dataset_version'").get().version, "1.5.1");
   database.close();
 });
 

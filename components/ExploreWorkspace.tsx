@@ -19,10 +19,10 @@ export function ExploreWorkspace({ records, relationships, sources }: { records:
   const [theme, setTheme] = useState("all");
   const [representation, setRepresentation] = useState<Representation>("cards");
 
-  const universities = useMemo(() => records.filter((record) => record.type === "university"), []);
-  const countries = useMemo(() => [...new Set(records.flatMap((record) => record.countries ?? []))].sort(), []);
-  const themes = useMemo(() => [...new Set(records.flatMap((record) => record.themes))].sort(), []);
-  const statuses = useMemo(() => [...new Set(records.map((record) => getComputedStatus(record)))].sort(), []);
+  const universities = useMemo(() => records.filter((record) => record.type === "university"), [records]);
+  const countries = useMemo(() => [...new Set(records.flatMap((record) => record.countries ?? []))].sort(), [records]);
+  const themes = useMemo(() => [...new Set(records.flatMap((record) => record.themes))].sort(), [records]);
+  const statuses = useMemo(() => [...new Set(records.map((record) => getComputedStatus(record)))].sort(), [records]);
   const filtered = useMemo(() => filterRecords(records, {
     query,
     types: type === "all" ? undefined : [type],
@@ -30,7 +30,7 @@ export function ExploreWorkspace({ records, relationships, sources }: { records:
     country,
     status,
     theme,
-  }), [country, query, status, theme, type, universityId]);
+  }), [country, query, records, status, theme, type, universityId]);
   const hasFilters = Boolean(query || type !== "all" || universityId !== "all" || country !== "all" || status !== "all" || theme !== "all");
 
   const clear = () => {

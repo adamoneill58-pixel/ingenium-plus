@@ -23,11 +23,11 @@ Generated on 19 September 2026:
 
 | Collection | Source | Seed target |
 | --- | ---: | ---: |
-| Records | 104 | 104 published content records and initial versions |
-| Relationships | 404 | 404 graph relationships |
-| Evidence sources | 34 | 34 evidence rows |
+| Records | 226 | 226 published content records and initial versions |
+| Relationships | 1,007 | 1,007 graph relationships |
+| Evidence sources | 159 | 159 evidence rows |
 | Partner organisations | 10 | 10 organisation rows |
-| Semantic vectors | 104 | 104 local feature vectors |
+| Semantic vectors | 226 | 226 local feature vectors |
 
 The database test applies both files to a clean SQLite database, verifies the ten organisation anchors, checks minimum record/relationship counts, exercises constraints and confirms audit immutability.
 

@@ -2,11 +2,14 @@
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
 import { setRuntimeBindings } from "../lib/v151/bindings";
+import { chatGPTUserFromHeaders } from "../lib/v151/chatgpt-user";
+import { getOrCreateSession } from "../lib/v151/repository";
 
 interface Env {
   ASSETS: Fetcher;
   DB: D1Database;
   DOCUMENTS: R2Bucket;
+  BOOTSTRAP_OWNER_EMAIL?: string;
   IMAGES: {
     input(stream: ReadableStream): {
       transform(options: Record<string, unknown>): {
@@ -29,7 +32,7 @@ interface ExecutionContext {
 
 const worker = {
   async fetch(request: Request, env: Env | undefined, ctx: ExecutionContext): Promise<Response> {
-    setRuntimeBindings({ DB: env?.DB, DOCUMENTS: env?.DOCUMENTS });
+    setRuntimeBindings({ DB: env?.DB, DOCUMENTS: env?.DOCUMENTS, BOOTSTRAP_OWNER_EMAIL: env?.BOOTSTRAP_OWNER_EMAIL });
     const url = new URL(request.url);
 
     if (url.pathname === "/_vinext/image" && env?.ASSETS && env.IMAGES) {
@@ -43,10 +46,19 @@ const worker = {
       }, allowedWidths);
     }
 
+    // Initialize the owner's profile, roles, and checked-in dataset before the
+    // first private HTML page renders. This removes a first-load race between
+    // the interface and its client-side session request while remaining a
+    // no-op for anonymous or non-owner requests.
+    if (env?.DB && request.method === "GET" && request.headers.get("accept")?.includes("text/html")) {
+      const user = chatGPTUserFromHeaders(request.headers);
+      if (user) await getOrCreateSession(env.DB, user);
+    }
+
     return handler.fetch(request, env, ctx);
   },
   async scheduled(_controller: unknown, env: Env, ctx: ExecutionContext) {
-    setRuntimeBindings({ DB: env.DB, DOCUMENTS: env.DOCUMENTS });
+    setRuntimeBindings({ DB: env.DB, DOCUMENTS: env.DOCUMENTS, BOOTSTRAP_OWNER_EMAIL: env.BOOTSTRAP_OWNER_EMAIL });
     const { runScheduledRefresh } = await import("../lib/v151/refresh-service");
     ctx.waitUntil(runScheduledRefresh(env.DB));
   },

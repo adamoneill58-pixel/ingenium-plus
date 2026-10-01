@@ -25,7 +25,7 @@ This is a material deviation. D1 is SQLite, not PostgreSQL, and has no PostgreSQ
 | --- | --- | --- |
 | 0. Audit | Existing graph, routes, local state, auth scaffold, hosting config and Git state inspected | Baseline test/build passed before changes |
 | 1. Persistence and security | 20-table D1 model, role permissions, D1/R2 bindings and migration | Clean migration tests and security tests |
-| 2. Static migration | Idempotent generator imports 104 records, 404 relationships and 34 sources with provenance and feature vectors | Seed applies twice safely; reconciliation test |
+| 2. Static migration | Idempotent generator imports 226 records, 1,007 relationships and 159 sources with provenance and feature vectors | Seed applies twice safely; reconciliation test |
 | 3. Identity and modes | Authenticated profiles, Student/Staff routes, mode switch and verified memberships | Render, API and role-boundary tests |
 | 4. Contributions | Call/module submission, quarantine upload, own-submission status and human review | Route build plus migration/validation tests |
 | 5. Recommendations | Eligibility-first hybrid engine, four recommendation types, explanations, feedback and persisted runs | Determinism, eligibility, opt-out and metric tests |

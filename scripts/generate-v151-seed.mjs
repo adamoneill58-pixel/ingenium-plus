@@ -39,5 +39,9 @@ for (const source of data.evidenceSources.filter((item) => item.url?.startsWith(
 statements.push("INSERT OR REPLACE INTO system_state (key,value_json,updated_at) VALUES ('dataset_version','{\"version\":\"1.5.1\",\"seed\":\"v1.5-static\"}',CURRENT_TIMESTAMP);");
 statements.push("COMMIT;");
 await mkdir(new URL("../db/seed/", import.meta.url), { recursive: true });
-await writeFile(new URL("../db/seed/v151.sql", import.meta.url), `${statements.join("\n")}\n`);
+const generatedSeed = `${statements.join("\n")}\n`;
+await Promise.all([
+  writeFile(new URL("../db/seed/v151.sql", import.meta.url), generatedSeed),
+  writeFile(new URL("../drizzle/0001_v151_seed.sql", import.meta.url), generatedSeed),
+]);
 console.log(`Generated seed for ${data.records.length} records, ${data.networkRelationships.length} relationships and ${data.evidenceSources.length} sources.`);

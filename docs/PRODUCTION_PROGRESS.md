@@ -6,7 +6,7 @@ Last updated: 20 September 2026. Branch: `v1.5.1`.
 
 - Existing v1.5 graph-first experience and principal routes preserved.
 - Migration-driven D1 schema for organisations, identities, memberships, profiles, graph content/versioning, calls, interest, documents, review, recommendations, refresh and audit.
-- Idempotent seed generator and checked-in seed for 104 records, 404 relationships, 34 sources, 10 universities and 104 semantic feature vectors.
+- Idempotent seed generator and checked-in seed for 226 records, 1,007 relationships, 159 sources, 10 universities and 226 semantic feature vectors.
 - Principal public routes read published D1 rows when bound, with a clearly identified static seed fallback for local rendering/recovery.
 - Student and Staff routes plus visible mode switching that does not grant permissions.
 - Preferred mode persistence, with every protected operation still re-authorised server-side.
@@ -103,7 +103,7 @@ Status meanings: **Verified local**, **Implemented/unverified remote**, **Partia
   - 85 preserved base entities, 343 relationships, 29 sources and 6 journeys validated.
   - Five preserved v1.5 logic tests passed.
   - Ten v1.5.1 database, workflow, security and recommendation tests passed.
-  - Clean migration/seed and non-production restore passed with 104 content records.
+  - Clean migration/seed and non-production restore passed with 226 content records.
   - Strict TypeScript passed.
   - Production Worker build passed with 36 public/API routes.
   - Nineteen server-rendered route checks passed.

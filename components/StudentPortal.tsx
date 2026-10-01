@@ -2,7 +2,7 @@
 
 import { BookOpenCheck, Database, Network, Save, ShieldCheck, Sparkles } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useState, type FormEvent } from "react";
 
 type Recommendation = { id: string; candidateId: string; candidateTitle: string; score: number; label: string; explanations: string[]; components: Record<string, number> };
 const split = (value: FormDataEntryValue | null) => String(value ?? "").split(",").map((item) => item.trim()).filter(Boolean);
@@ -12,15 +12,15 @@ export function StudentPortal() {
   const [message, setMessage] = useState("");
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
 
-  useEffect(() => { void load(); }, []);
-  async function load() {
+  const load = useCallback(async () => {
     const response = await fetch("/api/v151/session", { cache: "no-store" });
     if (response.status === 401) return setState("signed-out");
     if (!response.ok) { setMessage((await response.json().catch(() => ({}))).error ?? "Persistent services are not available in this environment."); return setState("unavailable"); }
     setState("ready");
     const recommendationResponse = await fetch("/api/v151/recommendations?type=student_module", { cache: "no-store" });
     if (recommendationResponse.ok) setRecommendations((await recommendationResponse.json()).results ?? []);
-  }
+  }, []);
+  useEffect(() => { const timer = window.setTimeout(() => { void load(); }, 0); return () => window.clearTimeout(timer); }, [load]);
 
   async function saveProfile(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setMessage("Saving…");
