@@ -17,7 +17,7 @@ This runbook prepares a controlled staging release. It is not authorisation to p
 2. Install from the lockfile and run `npm test`.
 3. Run `npm run recommendations:evaluate` and retain the report.
 4. Back up the target D1 database and record its identity.
-5. Apply `drizzle/0000_v151_production.sql`, then run `db/seed/v151.sql` as the separate idempotent import.
+5. Apply `drizzle/0000_v151_production.sql`. For Sites, set `BOOTSTRAP_OWNER_EMAIL`; the first authenticated owner session applies `db/seed/v151.sql` in bounded idempotent batches. For a non-Sites deployment, run the same seed as a separate import.
 6. Reconcile 226 records, 1,007 relationships, 159 sources, 10 organisations and 226 feature vectors.
 7. Bootstrap the first administrator through the approved control plane/SQL process, never through a browser self-grant.
 8. Build a named staging version from the exact Git commit.

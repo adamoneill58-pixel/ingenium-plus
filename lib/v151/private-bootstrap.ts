@@ -12,9 +12,9 @@ export function seedStatements(sql: string): string[] {
 }
 
 /**
- * A newly provisioned private Site has an empty D1 database after its schema
- * migration. The sole Site owner may initialize the checked-in verified
- * dataset and receives the operational roles needed to exercise Staff mode.
+ * A newly provisioned Site has an empty D1 database after its schema migration.
+ * The configured Site owner initializes the checked-in verified dataset in
+ * bounded batches and receives the roles needed to exercise Staff mode.
  * The owner email lives in the Sites environment, never in source control.
  */
 export async function bootstrapPrivateOwner(

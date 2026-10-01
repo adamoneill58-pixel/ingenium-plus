@@ -10,7 +10,7 @@ The importer reads the validated v1.5 aggregate exported by `lib/v15-data.ts`. T
 npm run db:seed:generate
 ```
 
-This creates `db/seed/v151.sql`. Apply the schema migration first, then run the separate seed/import:
+This creates `db/seed/v151.sql`. Apply the schema migration first, then run the separate seed/import. On Sites, the configured-owner bootstrap performs this import in bounded batches on the owner's first authenticated session:
 
 1. `drizzle/0000_v151_production.sql`
 2. `db/seed/v151.sql` (seed/import; not an automatic schema migration)

@@ -37,7 +37,7 @@ This is a material deviation. D1 is SQLite, not PostgreSQL, and has no PostgreSQ
 
 1. Create separate staging D1 and R2 resources in the approved Cloudflare/Sites account.
 2. Bind D1 as `DB` and R2 as `DOCUMENTS`.
-3. Apply `drizzle/0000_v151_production.sql`, then `drizzle/0001_v151_seed.sql`.
+3. Apply `drizzle/0000_v151_production.sql`, then initialize the generated runtime seed through the configured-owner bootstrap or an equivalent bounded import.
 4. Insert the first administrator membership through an approved out-of-band bootstrap process; there is deliberately no self-promotion endpoint.
 5. Connect an approved malware-scanning service. Until then, uploads remain private with `scan_status=pending`.
 6. Connect an approved extraction service if PDF/Office extraction is required; no confidential document may be sent externally without approval.

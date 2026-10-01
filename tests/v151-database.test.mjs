@@ -1,13 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { readFile, readdir } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import { DatabaseSync } from "node:sqlite";
 
 const schema = await readFile(new URL("../drizzle/0000_v151_production.sql", import.meta.url), "utf8");
 const seed = await readFile(new URL("../db/seed/v151.sql", import.meta.url), "utf8");
-const migrationDirectory = new URL("../drizzle/", import.meta.url);
-const seedMigrationFiles = (await readdir(migrationDirectory)).filter((name) => /^\d{4}_v151_seed.*\.sql$/.test(name)).sort();
-const seedMigrations = await Promise.all(seedMigrationFiles.map((name) => readFile(new URL(name, migrationDirectory), "utf8")));
 
 test("production migration and v1.5 seed apply to a clean SQLite database", () => {
   const database = new DatabaseSync(":memory:");
@@ -21,14 +18,13 @@ test("production migration and v1.5 seed apply to a clean SQLite database", () =
   database.close();
 });
 
-test("deployment migrations initialize the complete catalogue without a user session", () => {
+test("deployment migration creates the schema without an oversized catalogue payload", () => {
   const database = new DatabaseSync(":memory:");
   database.exec(schema);
-  for (const migration of seedMigrations) database.exec(migration);
-  assert.equal(database.prepare("SELECT COUNT(*) AS count FROM content_records").get().count, 226);
-  assert.equal(database.prepare("SELECT COUNT(*) AS count FROM content_relationships").get().count, 1007);
-  assert.equal(database.prepare("SELECT COUNT(*) AS count FROM evidence_sources").get().count, 159);
-  assert.equal(database.prepare("SELECT json_extract(value_json, '$.version') AS version FROM system_state WHERE key='dataset_version'").get().version, "1.5.1");
+  assert.equal(database.prepare("SELECT COUNT(*) AS count FROM content_records").get().count, 0);
+  assert.equal(database.prepare("SELECT COUNT(*) AS count FROM content_relationships").get().count, 0);
+  assert.equal(database.prepare("SELECT COUNT(*) AS count FROM evidence_sources").get().count, 0);
+  assert.equal(database.prepare("SELECT COUNT(*) AS count FROM system_state WHERE key='dataset_version'").get().count, 0);
   database.close();
 });
 

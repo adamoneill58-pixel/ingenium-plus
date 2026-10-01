@@ -32,7 +32,7 @@ v1.5, commit `211482eac37136a627f94643d3d1947c2c121068`, re-centred the product 
 
 ### v1.5.1 — unified public platform
 
-v1.5.1 changes the operating model and consolidates the previously separate discovery and authenticated-workflow builds. The public catalogue remains available to all visitors, while authenticated Student and Staff capabilities use trusted Sites identity and server-enforced roles. The application uses D1 for persistent structured data, private R2 storage for protected documents, governed contribution workflows, refresh schedules and explainable recommendations. The current deployment seed contains 226 content records, 1,007 relationships and 159 sources.
+v1.5.1 changes the operating model and consolidates the previously separate discovery and authenticated-workflow builds. The public catalogue remains available to all visitors, while authenticated Student and Staff capabilities use trusted Sites identity and server-enforced roles. The application uses D1 for persistent structured data, private R2 storage for protected documents, governed contribution workflows, refresh schedules and explainable recommendations. The checked-in runtime seed contains 226 content records, 1,007 relationships and 159 sources and is applied in bounded batches by the configured-owner bootstrap.
 
 ## Architectural transitions
 
