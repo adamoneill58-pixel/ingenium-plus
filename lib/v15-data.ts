@@ -18,6 +18,22 @@ import {
   researchContinuationRelationships,
   researchContinuationSources,
 } from "./research-refresh-2026-09-29";
+import {
+  exhaustiveResearchEntities,
+  exhaustiveResearchOverrides,
+  exhaustiveResearchRelationships,
+  exhaustiveResearchSources,
+} from "./research-exhaustive-2026-09-29";
+import {
+  catalogueResearchEntities,
+  catalogueResearchSources,
+} from "./research-catalogue-2026-10-01";
+import {
+  catalogueEnrichmentEntities,
+  catalogueEnrichmentOverrides,
+  catalogueEnrichmentRelationships,
+  catalogueEnrichmentSources,
+} from "./research-catalogue-enrichment-2026-10-01";
 
 export const V15_RESEARCH_DATE = "2026-09-29";
 
@@ -543,7 +559,7 @@ const recordsBeforeContinuation: Entity[] = [
   ...researchRefreshEntities,
 ];
 
-export const records: Entity[] = [
+const recordsBeforeExhaustiveResearch: Entity[] = [
   ...recordsBeforeContinuation.map((entity) => ({
     ...entity,
     ...researchContinuationOverrides[entity.id],
@@ -552,12 +568,31 @@ export const records: Entity[] = [
   ...researchContinuationEntities,
 ];
 
+const recordsBeforeCatalogueEnrichment: Entity[] = [
+  ...recordsBeforeExhaustiveResearch.map((entity) => ({
+    ...entity,
+    ...exhaustiveResearchOverrides[entity.id],
+    dataClassification: entity.dataClassification ?? "verified" as const,
+  })),
+  ...exhaustiveResearchEntities,
+  ...catalogueResearchEntities,
+  ...catalogueEnrichmentEntities,
+];
+
+export const records: Entity[] = recordsBeforeCatalogueEnrichment.map((entity) => ({
+  ...entity,
+  ...catalogueEnrichmentOverrides[entity.id],
+  dataClassification: entity.dataClassification ?? "verified" as const,
+}));
+
 export const networkRelationships: Relationship[] = [
   ...v14Relationships.map((item) => ({ ...item, dataClassification: item.dataClassification ?? "verified" as const })),
   ...learningRelationships,
   ...studentRelationships,
   ...researchRefreshRelationships,
   ...researchContinuationRelationships,
+  ...exhaustiveResearchRelationships,
+  ...catalogueEnrichmentRelationships,
 ];
 
 export const evidenceSources: Source[] = [
@@ -565,6 +600,9 @@ export const evidenceSources: Source[] = [
   ...v15Sources,
   ...researchRefreshSources,
   ...researchContinuationSources,
+  ...exhaustiveResearchSources,
+  ...catalogueResearchSources,
+  ...catalogueEnrichmentSources,
 ];
 export const recordById = new Map(records.map((record) => [record.id, record]));
 export const recordBySlug = new Map(records.map((record) => [record.slug, record]));

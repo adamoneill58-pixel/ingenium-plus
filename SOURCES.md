@@ -1,8 +1,8 @@
 # Sources
 
-Research freeze: **5 August 2026**
+Research freeze: **1 October 2026**
 
-INGENIUM+ uses first-party evidence only: official INGENIUM pages, official partner-university pages, official alliance platforms and formal INGENIUM deliverables. The product never treats a planned activity, target or hypothetical example as a live opportunity.
+INGENIUM+ prioritises first-party evidence: official INGENIUM pages, official partner-university pages, official alliance platforms, formal INGENIUM deliverables and authoritative EU sources such as CORDIS and European Commission policy pages. Independent evidence is used for context or corroboration, not to override a more current official programme record. The product never treats a planned activity, target or hypothetical example as a live opportunity.
 
 The structured public ledger is in `lib/data.ts` and appears at `/research`. Each entity stores a source ID, last-verified date and internal confidence value.
 
@@ -28,7 +28,11 @@ The supplied filenames are retained in the research working record. The public s
 ## High-value current official sources
 
 - [INGENIUM partner universities](https://ingenium-university.eu/about-us/partners/)
+- [INGENIUM Course Catalogue](https://ingenium-university.eu/courses/)
 - [BIPs 2026/27 catalogue](https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/)
+- [Annual Education Call 2026/27](https://ingenium-university.eu/iec-faculty/ingenium-annual-education-call-2026-2027/)
+- [Course Catalogue Contributions 2026/27](https://ingenium-university.eu/iec-faculty/ingenium-annual-education-call-2026-2027/course-catalogue-contributions-2/)
+- [Academic Communication BIP](https://ingenium-university.eu/event/bip-academic-communication/)
 - [Joint Master’s in Chemical and Biochemical Process Technology](https://ingenium-university.eu/students/ingenium-european-campus/study-programmes/joint-masters-programme-in-chemical-and-biochemical-process-technology/)
 - [Joint Doctoral Programme in Human-Centred AI](https://ingenium-university.eu/research/joint-doctorate-programmes/joint-doctoral-programme-in-human-centred-artificial-intelligence-foundations-and-applications/)
 - [PhD Mobility and Co-Supervision Scholarships](https://ingenium-university.eu/call-for-ingenium-phd-mobility-and-co-supervision-scholarships-is-now-open/)
@@ -42,11 +46,25 @@ The supplied filenames are retained in the research working record. The public s
 - [Summer 10 Days 2026](https://ingenium-university.eu/10-days-of-ingenium-summer-2026/)
 - [INGENIUM Education Platform](https://elearn.ingenium-university.eu/)
 - [Open Data & Open Science Repository](https://opendata.ingenium-university.eu/)
+- [BI4E project reporting on CORDIS](https://cordis.europa.eu/project/id/101071321/reporting)
+- [CONNECT researcher-matching platform](https://connect.unich.it/)
+- [First shared Digital Wellbeing module](https://ingenium-university.eu/the-first-ingenium-shared-module-digital-wellbeing-a-milestone-for-the-alliance/)
+- [First joint INGENIUM microcredential](https://ingenium-university.eu/ingenium-launches-its-first-joint-micro-credential/)
+- [INGENIUM Ambassadors Call 2026/2027](https://ingenium-university.eu/ingenium-ambassadors-call-2026-2027/)
+- [MTU Innovation Challenge 2026 outcome](https://www.mtu.ie/news/2026/innovation-challenge-2026/)
+- [Ud’A LM-37 Languages Pathway](https://www.unich.it/notizie/pathway-ingenium-percorso-accademico-internazionale-gli-studenti-di-lingue-lm37)
+- [FutureProof outcome at the University of Crete](https://www.uoc.gr/en/futureproof-project-ingenium-students-put-sustainability-into-action-at-the-university-of-crete/)
+- [Medical University Sofia joint research-project call](https://mu-sofia.bg/pokana-za-savmestni-proekt-na-izsledovatelski-grupi-v-ramkite-na-ingenium/)
+- [Eco-GENIUM official partner announcement](https://www.tuiasi.ro/news/gheorghe-asachi-technical-university-of-iasi-involved-in-eco-genium-a-new-european-project-for-innovation-and-entrepreneurship-within-the-ingenium-alliance/?lang=en)
+- [Current INGENIUM governance](https://ingenium-university.eu/about-us/governance/)
+- [D3.3 INGENIUM Platforms](https://ingenium-university.eu/wp-content/uploads/2024/12/Deliverable_3.3_Final_v1.7.pdf)
+- [D10.1 INGENIUM Long-term Strategy](https://ingenium-university.eu/wp-content/uploads/2025/12/D10.1-Submitted-November-2025_compressed.pdf)
+- [D10.2 Dissemination and Exploitation Strategy](https://ingenium-university.eu/wp-content/uploads/2025/12/D10.2-INGENIUM-Dissemination-and-Exploitation-Strategy-Revised-October-2025_compressed_compressed.pdf)
 
 ## Confidence model
 
 - **High:** the record’s key claim is stated on a current official page or clearly confirmed by the latest formal deliverable.
-- **Medium:** official evidence exists, but live access, recruitment or implementation could not be confirmed on 5 August 2026.
+- **Medium:** official evidence exists, but live access, recruitment or implementation could not be confirmed on 1 October 2026.
 - **Low:** incomplete, early or conflicting evidence. No low-confidence record is promoted as a current opportunity in v1.4.
 
 ## Map asset
