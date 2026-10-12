@@ -49,8 +49,9 @@ const worker = {
     // Initialize the owner's profile, roles, and checked-in dataset before the
     // first private HTML page renders. This removes a first-load race between
     // the interface and its client-side session request while remaining a
-    // no-op for anonymous or non-owner requests.
-    if (env?.DB && request.method === "GET" && request.headers.get("accept")?.includes("text/html")) {
+    // no-op for anonymous or non-owner requests and avoiding unnecessary DB writes on public pages.
+    const isPrivatePage = url.pathname.startsWith("/student") || url.pathname.startsWith("/staff");
+    if (env?.DB && request.method === "GET" && isPrivatePage && request.headers.get("accept")?.includes("text/html")) {
       const user = chatGPTUserFromHeaders(request.headers);
       if (user) await getOrCreateSession(env.DB, user);
     }

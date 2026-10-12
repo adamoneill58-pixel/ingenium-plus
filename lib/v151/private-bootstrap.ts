@@ -1,7 +1,11 @@
 import type { ChatGPTUser } from "./chatgpt-user";
-import seedSql from "../../db/seed/v151.sql?raw";
 
 const SEED_BATCH_SIZE = 60;
+
+export async function getSeedSql(): Promise<string> {
+  const { default: seedSql } = await import("../../db/seed/v151.sql?raw");
+  return seedSql;
+}
 
 export function seedStatements(sql: string): string[] {
   return sql
@@ -28,11 +32,15 @@ export async function bootstrapPrivateOwner(
 
   const dataset = await database.prepare("SELECT value_json FROM system_state WHERE key='dataset_version'").first<{ value_json: string }>();
   if (!dataset) {
+    const seedSql = await getSeedSql();
     const statements = seedStatements(seedSql);
     for (let offset = 0; offset < statements.length; offset += SEED_BATCH_SIZE) {
       await database.batch(statements.slice(offset, offset + SEED_BATCH_SIZE).map((statement) => database.prepare(statement)));
     }
   }
+
+  const hasAdmin = await database.prepare("SELECT 1 FROM memberships WHERE profile_id=? AND role='administrator' AND status='active'").first();
+  if (dataset && hasAdmin) return;
 
   await database.batch([
     database.prepare("INSERT OR IGNORE INTO memberships (id,profile_id,organization_id,role,status,granted_by) VALUES (?,?,NULL,'staff','active',?)")

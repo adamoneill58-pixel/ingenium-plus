@@ -26,8 +26,9 @@ export async function getOrCreateSession(database: D1Database, user: ChatGPTUser
     ]);
     profile = { id: profileId, authSubject: user.userId, email: user.email, displayName: user.displayName, mode: "student" };
   } else {
-    await database.prepare("UPDATE profiles SET email = ?, display_name = ?, last_seen_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE id = ?")
-      .bind(user.email, user.displayName, profile.id).run();
+    await database.prepare(`UPDATE profiles SET email = ?, display_name = ?, last_seen_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP
+      WHERE id = ? AND (email <> ? OR display_name <> ? OR last_seen_at IS NULL OR last_seen_at < datetime('now', '-15 minutes'))`)
+      .bind(user.email, user.displayName, profile.id, user.email, user.displayName).run();
   }
   await bootstrapPrivateOwner(database, user, profile.id, getRuntimeBindings().BOOTSTRAP_OWNER_EMAIL);
   const currentProfile = await database.prepare("SELECT mode FROM profiles WHERE id = ?").bind(profile.id)
