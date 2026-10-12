@@ -53,14 +53,6 @@ export default defineConfig(async ({ command }) => {
       : null;
 
   return {
-    resolve: {
-      alias: [
-        {
-          find: /^lucide-react$/,
-          replacement: "lucide-react/dist/cjs/lucide-react.js",
-        },
-      ],
-    },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,
