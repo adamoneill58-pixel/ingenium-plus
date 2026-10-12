@@ -25,18 +25,9 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import {
-  journeys,
-  typeColours,
-  typeLabels,
-  type Entity,
-  type EntityStatus,
-  type EntityType,
-  type Relationship,
-} from "@/lib/data";
-import { evidenceSources as staticSources, networkRelationships as staticRelationships, records as staticEntities } from "@/lib/v15-data";
-import type { Source } from "@/lib/data";
-import { getComputedStatus } from "@/lib/v15-logic";
+import type { Entity, EntityStatus, EntityType, Journey, Relationship, Source } from "@/lib/data";
+import { typeColours, typeLabels } from "@/lib/labels";
+import { getComputedStatus } from "@/lib/record-logic";
 import { ClassificationBadge } from "./ClassificationBadge";
 import { StatusBadge } from "./StatusBadge";
 
@@ -217,21 +208,26 @@ function makeIcs(entity: Entity) {
   URL.revokeObjectURL(href);
 }
 
+const noJourneys: Journey[] = [];
+
 export function GraphExplorer({
   allowedEntityIds,
   initialMode = "student",
   showJourneyPicker = true,
-  entities: suppliedEntities = staticEntities,
-  relationships: suppliedRelationships = staticRelationships,
-  sources: suppliedSources = staticSources,
+  entities: suppliedEntities,
+  relationships: suppliedRelationships,
+  sources: suppliedSources,
+  journeys = noJourneys,
 }: {
   allowedEntityIds?: string[];
   initialMode?: ViewMode;
   showJourneyPicker?: boolean;
-  entities?: Entity[];
-  relationships?: Relationship[];
-  sources?: Source[];
-} = {}) {
+  entities: Entity[];
+  relationships: Relationship[];
+  sources: Source[];
+  /** Guided journeys. Passed from the server so the v1.4 dataset stays out of the client bundle. */
+  journeys?: Journey[];
+}) {
   const graphRef = useRef<HTMLDivElement>(null);
   const bgMapRef = useRef<HTMLDivElement>(null);
   const cyRef = useRef<Core | null>(null);
@@ -287,7 +283,7 @@ export function GraphExplorer({
       if (params.get("view") === "list") setListView(true);
     });
     return () => { cancelled = true; };
-  }, [entities, entityById]);
+  }, [entities, entityById, journeys]);
 
   useEffect(() => {
     const listener = () => setSavedIds(readStoredList(SAVED_KEY));

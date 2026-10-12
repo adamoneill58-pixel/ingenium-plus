@@ -1,4 +1,4 @@
-import type { LocalProfile, SemesterItem } from "./v15-logic";
+import type { LocalProfile, SemesterItem } from "./record-logic";
 
 export const PROFILE_KEY = "ingenium-plus-v15-profile";
 export const SEMESTER_KEY = "ingenium-plus-v15-semester";

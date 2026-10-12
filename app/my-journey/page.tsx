@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { MyJourneyManager } from "@/components/MyJourneyManager";
+import { getRuntimeDataset } from "@/lib/v151/runtime-data";
 
 export const metadata: Metadata = {
   title: "My journey | INGENIUM+",
   description: "Organise saved INGENIUM opportunities and next steps locally in your browser.",
 };
 
-export default function MyJourneyPage() {
+export default async function MyJourneyPage() {
+  const dataset = await getRuntimeDataset();
   return (
     <main id="main-content" className="page-shell">
       <section className="page-hero page-hero--compact">
@@ -20,7 +22,7 @@ export default function MyJourneyPage() {
           <span>no account needed</span>
         </div>
       </section>
-      <MyJourneyManager />
+      <MyJourneyManager records={dataset.records} sources={dataset.sources} />
     </main>
   );
 }

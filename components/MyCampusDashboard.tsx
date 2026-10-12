@@ -3,9 +3,8 @@
 import { ArrowRight, Check, Circle, GraduationCap, LockKeyhole, Network, Plus, Save, Sparkles, UserRound } from "lucide-react";
 import Link from "next/link";
 import { useMemo, useState, useSyncExternalStore, type FormEvent } from "react";
-import type { LocalProfile } from "@/lib/v15-logic";
-import type { StudentProfile } from "@/lib/v15-data";
-import { recordById, records, sampleStudents } from "@/lib/v15-data";
+import type { Entity } from "@/lib/data";
+import type { LocalProfile, StudentProfile } from "@/lib/record-logic";
 import {
   CONNECTIONS_KEY,
   emptyProfile,
@@ -22,19 +21,26 @@ import {
   TASKS_KEY,
   writeJson,
 } from "@/lib/local-store";
-import { getMutualConnections, getProfileCompletion, getRecommendationsForProfile, getSharedContexts, getStudentDegree } from "@/lib/v15-logic";
+import { getMutualConnections, getProfileCompletion, getRecommendationsForProfile, getSharedContexts, getStudentDegree } from "@/lib/record-logic";
 import { EntityCard } from "./EntityCard";
 
 interface LocalTask { id: string; label: string; done: boolean }
 
 const splitValues = (value: string) => value.split(",").map((item) => item.trim()).filter(Boolean);
 
-export function MyCampusDashboard() {
+export function MyCampusDashboard({
+  records = [],
+  sampleStudents = [],
+}: {
+  records?: Entity[];
+  sampleStudents?: StudentProfile[];
+} = {}) {
   useSyncExternalStore(subscribeStore, storeSnapshot, () => "");
   const profile = readProfile();
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState<LocalProfile>(profile ?? emptyProfile);
   const [taskLabel, setTaskLabel] = useState("");
+  const recordById = useMemo(() => new Map(records.map((r) => [r.id, r])), [records]);
   const saved = readStringList(SAVED_KEY).map((id) => recordById.get(id)).filter(Boolean);
   const joinedIds = readStringList(JOINED_KEY);
   const joined = joinedIds.map((id) => recordById.get(id)).filter(Boolean);
@@ -45,9 +51,9 @@ export function MyCampusDashboard() {
   const tasks = Array.isArray(taskValue)
     ? taskValue.filter((task): task is LocalTask => Boolean(task) && typeof task === "object" && typeof (task as LocalTask).id === "string" && typeof (task as LocalTask).label === "string" && typeof (task as LocalTask).done === "boolean")
     : [];
-  const universities = useMemo(() => records.filter((record) => record.type === "university"), []);
+  const universities = useMemo(() => records.filter((record) => record.type === "university"), [records]);
   const completion = profile ? getProfileCompletion(profile) : { percentage: 0, missing: [] };
-  const recommendations = profile ? getRecommendationsForProfile(profile).slice(0, 6) : [];
+  const recommendations = useMemo(() => profile ? getRecommendationsForProfile(profile, records).slice(0, 6) : [], [profile, records]);
 
   const localStudent: StudentProfile = {
     id: "student-you",

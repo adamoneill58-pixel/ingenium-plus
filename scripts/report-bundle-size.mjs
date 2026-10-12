@@ -52,3 +52,4 @@ if (process.argv.includes("--json")) {
   console.log("\nLargest server chunks");
   for (const chunk of serverJs.slice(0, 8)) console.log(`${kb(chunk.raw)}${kb(chunk.gzip)}  ${chunk.name}`);
 }
+

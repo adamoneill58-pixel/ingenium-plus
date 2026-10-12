@@ -15,7 +15,7 @@ import {
   subscribeStore,
   writeJson,
 } from "@/lib/local-store";
-import { addSemesterItem, removeSemesterItem } from "@/lib/v15-logic";
+import { addSemesterItem, removeSemesterItem } from "@/lib/record-logic";
 
 const learningTypes = new Set(["module", "course", "microcredential", "learning_resource", "bip", "programme", "pathway"]);
 

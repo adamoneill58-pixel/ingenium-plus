@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Compass, Network, ShieldCheck } from "lucide-react";
 import { EntityCard } from "@/components/EntityCard";
 import { GraphExplorer } from "@/components/GraphExplorer";
+import { journeys } from "@/lib/data";
 import { V15_RESEARCH_DATE } from "@/lib/v15-data";
 import { getActionableRecords, getComputedStatus } from "@/lib/v15-logic";
 import { getRuntimeDataset } from "@/lib/v151/runtime-data";
@@ -58,7 +59,7 @@ export default async function Home() {
             <span><strong>{verifiedCount}</strong> high confidence</span>
           </div>
         </div>
-        <GraphExplorer entities={entities} relationships={relationships} sources={dataset.sources} />
+        <GraphExplorer entities={entities} relationships={relationships} sources={dataset.sources} journeys={journeys} />
       </section>
 
       <section className="home-spotlight" aria-labelledby="spotlight-title">

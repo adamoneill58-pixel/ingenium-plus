@@ -430,21 +430,8 @@ export const learningEntities: Entity[] = [
   }),
 ];
 
-export interface StudentProfile {
-  id: string;
-  displayName: string;
-  sample: boolean;
-  universityId: string;
-  programmeId?: string;
-  studyLevel?: string;
-  year?: string;
-  interests: string[];
-  goals: string[];
-  languages: string[];
-  joinedEntityIds: string[];
-  savedEntityIds: string[];
-  connectionIds: string[];
-}
+import type { StudentProfile } from "./record-logic";
+export type { StudentProfile };
 
 export const sampleStudents: StudentProfile[] = [
   { id: "student-sofia", displayName: "Sofia", sample: true, universityId: "university-hka", studyLevel: "Bachelor", year: "3", interests: ["Artificial intelligence", "Communication"], goals: ["Study abroad"], languages: ["English", "German"], joinedEntityIds: ["bip-academic-communication", "bip-clarity-ai"], savedEntityIds: ["course-innovation-management-entrepreneurship"], connectionIds: ["student-emma", "student-lucas"] },

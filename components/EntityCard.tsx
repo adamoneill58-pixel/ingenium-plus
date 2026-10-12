@@ -4,9 +4,9 @@ import { ArrowUpRight, Bookmark, BookmarkCheck, Building2, CalendarDays, MapPin 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import type { Entity } from "@/lib/data";
-import { typeLabels } from "@/lib/data";
-import { recordById } from "@/lib/v15-data";
-import { getComputedStatus } from "@/lib/v15-logic";
+import { typeLabels } from "@/lib/labels";
+import { getComputedStatus } from "@/lib/record-logic";
+import { universityShortNames } from "@/lib/university-names";
 import { SAVED_KEY, STORE_EVENT } from "@/lib/local-store";
 import { ClassificationBadge } from "./ClassificationBadge";
 import { StatusBadge } from "./StatusBadge";
@@ -40,7 +40,7 @@ function subscribeSaved(callback: () => void) {
 
 export function EntityCard({ entity, compact = false }: { entity: Entity; compact?: boolean }) {
   const saved = parseSaved(useSyncExternalStore(subscribeSaved, savedSnapshot, () => "[]")).includes(entity.id);
-  const host = entity.hostUniversityId ? recordById.get(entity.hostUniversityId) : undefined;
+  const hostName = entity.hostUniversityId ? universityShortNames[entity.hostUniversityId] : undefined;
   const computedStatus = getComputedStatus(entity);
 
   const toggleSaved = () => {
@@ -75,9 +75,9 @@ export function EntityCard({ entity, compact = false }: { entity: Entity; compac
       <p>{entity.studentSummary}</p>
       {!compact && (
         <div className="entity-card__facts">
-          {host && (
+          {hostName && (
             <span>
-              <Building2 aria-hidden="true" /> {host.shortTitle ?? host.title}
+              <Building2 aria-hidden="true" /> {hostName}
             </span>
           )}
           {entity.city && (

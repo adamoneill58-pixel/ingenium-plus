@@ -7,7 +7,7 @@ import { EntityCard } from "@/components/EntityCard";
 import { GraphExplorer } from "@/components/GraphExplorer";
 import { RecordActions } from "@/components/RecordActions";
 import { StatusBadge } from "@/components/StatusBadge";
-import { typeLabels } from "@/lib/data";
+import { typeLabels } from "@/lib/labels";
 import { records, sampleChats, sampleStudents } from "@/lib/v15-data";
 import { getComputedStatus, getNeighbours, getRelationshipsForEntity, getUniversitySubgraph } from "@/lib/v15-logic";
 import { getRuntimeDataset } from "@/lib/v151/runtime-data";

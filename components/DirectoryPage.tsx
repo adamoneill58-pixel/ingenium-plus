@@ -3,8 +3,8 @@
 import { Search, SlidersHorizontal } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { Entity, EntityStatus, EntityType } from "@/lib/data";
-import { typeLabels } from "@/lib/data";
-import { getComputedStatus } from "@/lib/v15-logic";
+import { typeLabels } from "@/lib/labels";
+import { getComputedStatus } from "@/lib/record-logic";
 import { EntityCard } from "./EntityCard";
 
 interface DirectoryPageProps {

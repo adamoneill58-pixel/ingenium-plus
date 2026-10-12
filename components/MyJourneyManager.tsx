@@ -10,8 +10,8 @@ import {
   Trash2,
 } from "lucide-react";
 import Link from "next/link";
-import { useSyncExternalStore } from "react";
-import { entityById, sourceById, type Entity } from "@/lib/data";
+import { useMemo, useSyncExternalStore } from "react";
+import type { Entity, Source } from "@/lib/data";
 import { StatusBadge } from "./StatusBadge";
 
 const SAVED_KEY = "ingenium-plus-v14-saved";
@@ -64,8 +64,16 @@ function emitChange() {
   window.dispatchEvent(new CustomEvent("ingenium-saved-change"));
 }
 
-export function MyJourneyManager() {
+export function MyJourneyManager({
+  records = [],
+  sources = [],
+}: {
+  records?: Entity[];
+  sources?: Source[];
+} = {}) {
   useSyncExternalStore(subscribe, getSnapshot, () => "[]|[]|{}");
+  const entityById = useMemo(() => new Map(records.map((r) => [r.id, r])), [records]);
+  const sourceById = useMemo(() => new Map(sources.map((s) => [s.id, s])), [sources]);
   const journeyIds = readList(JOURNEY_KEY);
   const savedIds = readList(SAVED_KEY);
   const planner = readPlanner();
