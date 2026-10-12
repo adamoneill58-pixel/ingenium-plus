@@ -1,6 +1,6 @@
 "use client";
 
-import cytoscape, { type Core, type ElementDefinition, type EventObject } from "cytoscape";
+import type { Core, ElementDefinition, EventObject } from "cytoscape";
 import {
   ArrowRight,
   Bookmark,
@@ -210,6 +210,16 @@ function makeIcs(entity: Entity) {
 
 const noJourneys: Journey[] = [];
 
+type CytoscapeFactory = typeof import("cytoscape");
+let cytoscapeModule: CytoscapeFactory | null = null;
+async function loadCytoscape(): Promise<CytoscapeFactory> {
+  if (!cytoscapeModule) {
+    const mod = await import("cytoscape");
+    cytoscapeModule = ((mod as unknown as { default?: CytoscapeFactory }).default ?? mod) as CytoscapeFactory;
+  }
+  return cytoscapeModule;
+}
+
 export function GraphExplorer({
   allowedEntityIds,
   initialMode = "student",
@@ -233,6 +243,7 @@ export function GraphExplorer({
   const cyRef = useRef<Core | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const filterCloseButtonRef = useRef<HTMLButtonElement>(null);
+  const [cyReady, setCyReady] = useState(0);
   const [mode, setMode] = useState<ViewMode>(initialMode);
   const [layoutMode, setLayoutMode] = useState<GraphLayoutMode>("geography");
   const [query, setQuery] = useState("");
@@ -375,9 +386,13 @@ export function GraphExplorer({
   }, []);
 
   useEffect(() => {
+    let active = true;
     if (!graphRef.current) return;
-    cyRef.current?.destroy();
-    const cy = cytoscape({
+
+    void loadCytoscape().then((cytoscape) => {
+      if (!active || !graphRef.current) return;
+      cyRef.current?.destroy();
+      const cy = cytoscape({
       container: graphRef.current,
       elements: graphElements,
       layout: layoutMode === "geography"
@@ -586,27 +601,34 @@ export function GraphExplorer({
 
     cy.on("viewport", updateMapTransform);
     updateMapTransform();
-    return () => cy.destroy();
-  }, [graphElements, layoutMode, relationships, selectEntity]);
+    setCyReady((count) => count + 1);
+  });
 
-  useEffect(() => {
-    const cy = cyRef.current;
-    if (!cy) return;
-    cy.edges().removeClass("highlighted");
-    cy.elements().removeClass("context-faded context-secondary");
-    cy.nodes().unselect();
-    if (!selectedId) return;
-    const node = cy.getElementById(selectedId);
-    if (node.nonempty()) {
-      node.select();
-      const edges = node.connectedEdges();
-      const neighbours = edges.connectedNodes();
-      cy.elements().difference(node.union(edges).union(neighbours)).addClass("context-faded");
-      neighbours.addClass("context-secondary");
-      edges.addClass("highlighted");
-      cy.animate({ center: { eles: node }, zoom: Math.max(cy.zoom(), 1.15) }, { duration: 360 });
-    }
-  }, [graphElements, selectedId]);
+  return () => {
+    active = false;
+    cyRef.current?.destroy();
+    cyRef.current = null;
+  };
+}, [graphElements, layoutMode, relationships, selectEntity]);
+
+useEffect(() => {
+  const cy = cyRef.current;
+  if (!cy) return;
+  cy.edges().removeClass("highlighted");
+  cy.elements().removeClass("context-faded context-secondary");
+  cy.nodes().unselect();
+  if (!selectedId) return;
+  const node = cy.getElementById(selectedId);
+  if (node.nonempty()) {
+    node.select();
+    const edges = node.connectedEdges();
+    const neighbours = edges.connectedNodes();
+    cy.elements().difference(node.union(edges).union(neighbours)).addClass("context-faded");
+    neighbours.addClass("context-secondary");
+    edges.addClass("highlighted");
+    cy.animate({ center: { eles: node }, zoom: Math.max(cy.zoom(), 1.15) }, { duration: 360 });
+  }
+}, [graphElements, selectedId, cyReady]);
 
   useEffect(() => {
     if (selectedId || selectedRelationship) closeButtonRef.current?.focus();
