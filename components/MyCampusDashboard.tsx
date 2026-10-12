@@ -29,12 +29,12 @@ interface LocalTask { id: string; label: string; done: boolean }
 const splitValues = (value: string) => value.split(",").map((item) => item.trim()).filter(Boolean);
 
 export function MyCampusDashboard({
-  records = [],
-  sampleStudents = [],
+  records,
+  sampleStudents,
 }: {
-  records?: Entity[];
-  sampleStudents?: StudentProfile[];
-} = {}) {
+  records: Entity[];
+  sampleStudents: StudentProfile[];
+}) {
   useSyncExternalStore(subscribeStore, storeSnapshot, () => "");
   const profile = readProfile();
   const [editing, setEditing] = useState(false);

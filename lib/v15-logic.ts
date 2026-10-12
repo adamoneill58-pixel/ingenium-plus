@@ -5,8 +5,8 @@
  * must import `./record-logic` instead, because this module pulls in the full
  * static catalogue (`./v15-data`).
  */
-import type { Entity, EntityStatus, Relationship } from "./data";
-import { networkRelationships, records, sampleStudents, type StudentProfile } from "./v15-data";
+import type { Entity, Relationship } from "./data";
+import { networkRelationships, records } from "./v15-data";
 import * as pure from "./record-logic";
 import type { LocalProfile, Recommendation, SemesterItem } from "./record-logic";
 
