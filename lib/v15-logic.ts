@@ -23,10 +23,6 @@ export {
   removeSemesterItem,
 } from "./record-logic";
 
-export function getEntityById(id: string): Entity | undefined {
-  return records.find((record) => record.id === id);
-}
-
 export function getRelationshipsForEntity(id: string, source: Relationship[] = networkRelationships): Relationship[] {
   return pure.getRelationshipsForEntity(id, source);
 }
@@ -39,10 +35,6 @@ export function getUniversitySubgraph(universityId: string, source: Entity[] = r
   return pure.getUniversitySubgraph(universityId, source);
 }
 
-export function getEntitiesByStatus(status: EntityStatus, today: Date | string = new Date()): Entity[] {
-  return records.filter((record) => pure.getComputedStatus(record, today) === status);
-}
-
 export function getLearningOpportunities(source: Entity[] = records): Entity[] {
   return pure.getLearningOpportunities(source);
 }
@@ -53,10 +45,6 @@ export function getActionableRecords(today: Date | string = new Date(), source: 
 
 export function getRecommendationsForProfile(profile: LocalProfile, source = records): Recommendation[] {
   return pure.getRecommendationsForProfile(profile, source);
-}
-
-export function getStudentById(id: string): StudentProfile | undefined {
-  return sampleStudents.find((student) => student.id === id);
 }
 
 export function getSemesterECTSTotal(items: SemesterItem[], source: Entity[] = records): number {
