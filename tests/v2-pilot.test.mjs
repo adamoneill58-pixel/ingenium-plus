@@ -404,6 +404,8 @@ test("every legacy API method is paused and unknown APIs are fail-closed", async
       );
   }
   assert.equal(policy.classifyRoute("/api/v2/future", "GET"), "denied");
+  for (const path of ["/staff", "/student", "/pilot-dashboard"])
+    assert.equal(policy.classifyRoute(path, "POST"), "denied");
   assert.equal(policy.classifyRoute("/api/v2/events", "GET"), "denied");
   assert.equal(policy.classifyRoute("/api/v2/dashboard", "GET"), "team");
   const response = await policy.checkRequestPolicy(
@@ -449,7 +451,11 @@ test("Access verifies signature, issuer, audience, time claims; forged identity 
     );
     return data + "." + Buffer.from(sig).toString("base64url");
   }
-  const fetcher = async () => Response.json({ keys: [jwk] });
+  let certificateFetches = 0;
+  const fetcher = async () => {
+    certificateFetches++;
+    return Response.json({ keys: [jwk] });
+  };
   assert.equal(
     (await identity.verifyAccessToken(await token(), config, fetcher, now))
       .userId,
@@ -492,6 +498,17 @@ test("Access verifies signature, issuer, audience, time claims; forged identity 
     await identity.verifyAccessToken(null, config, fetcher, now),
     null,
   );
+  for (const kid of ["unknown-one", "unknown-two"])
+    assert.equal(
+      await identity.verifyAccessToken(
+        await token({}, { alg: "RS256", kid }),
+        config,
+        fetcher,
+        now,
+      ),
+      null,
+    );
+  assert.equal(certificateFetches, 1);
 });
 
 test("multiple imported calendar entries round-trip through the public dataset", async () => {

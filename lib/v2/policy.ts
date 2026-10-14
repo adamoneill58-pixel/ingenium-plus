@@ -27,9 +27,11 @@ export function classifyRoute(
       return "team";
     return path.startsWith("/api/v151/") ? "paused" : "denied";
   }
-  if (path === "/staff" || path === "/student") return "public";
+  if (path === "/staff" || path === "/student")
+    return ["GET", "HEAD"].includes(method) ? "public" : "denied";
   if (path.startsWith("/staff/")) return "paused";
-  if (path === "/pilot-dashboard") return "team";
+  if (path === "/pilot-dashboard")
+    return ["GET", "HEAD"].includes(method) ? "team" : "denied";
   return ["GET", "HEAD"].includes(method) ? "public" : "denied";
 }
 export async function checkRequestPolicy(

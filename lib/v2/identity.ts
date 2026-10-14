@@ -48,11 +48,9 @@ export async function verifyAccessToken(
     )
       return null;
     let cached = keyCache.get(domain);
-    if (
-      !cached ||
-      cached.until <= now ||
-      !cached.keys.some((k) => k.kid === head.kid)
-    ) {
+    // Unknown key IDs fail closed against the cached set. They cannot force
+    // unbounded certificate requests; the set refreshes after five minutes.
+    if (!cached || cached.until <= now) {
       const res = await fetcher(`${issuer}/cdn-cgi/access/certs`, {
         redirect: "error",
         signal: AbortSignal.timeout(5000),
