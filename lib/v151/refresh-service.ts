@@ -1,3 +1,4 @@
+import { boundedText } from "../v2/status-refresh";
 import { sha256Hex } from "./upload-security";
 
 interface RefreshTarget {
@@ -32,20 +33,20 @@ export async function refreshSource(database: D1Database, target: RefreshTarget,
     if (response.status === 304) {
       await database.batch([
         database.prepare("UPDATE refresh_runs SET status='completed',http_status=304,observed_checksum=?,change_detected=0,completed_at=CURRENT_TIMESTAMP,message='Source not modified' WHERE id=?").bind(target.checksum, runId),
-        database.prepare("UPDATE evidence_sources SET verified_at=CURRENT_TIMESTAMP,updated_at=CURRENT_TIMESTAMP WHERE id=?").bind(target.sourceId),
+        database.prepare("UPDATE evidence_sources SET updated_at=CURRENT_TIMESTAMP WHERE id=?").bind(target.sourceId),
         database.prepare("UPDATE refresh_schedules SET last_success_at=CURRENT_TIMESTAMP,next_run_at=datetime('now','+7 days'),failure_count=0,last_error=NULL,updated_at=CURRENT_TIMESTAMP WHERE id=?").bind(target.scheduleId),
       ]);
       return { runId, sourceId: target.sourceId, changed: false, checksum: target.checksum, status: "completed" as const };
     }
     if (!response.ok) throw new Error(`Source returned HTTP ${response.status}`);
-    const bytes = await response.arrayBuffer();
+    const bytes = new TextEncoder().encode(await boundedText(response, 10 * 1024 * 1024)).buffer;
     if (bytes.byteLength > 10 * 1024 * 1024) throw new Error("Source response exceeds the 10 MB refresh limit");
     const checksum = await sha256Hex(bytes);
     const changed = Boolean(target.checksum && target.checksum !== checksum);
     const statements = [
       database.prepare("UPDATE refresh_runs SET status='completed', http_status=?, observed_checksum=?, change_detected=?, completed_at=CURRENT_TIMESTAMP, message=? WHERE id=?")
         .bind(response.status, checksum, changed, changed ? "Change detected; review proposal created" : "No material change detected", runId),
-      database.prepare("UPDATE evidence_sources SET checksum=?, verified_at=CURRENT_TIMESTAMP, updated_at=CURRENT_TIMESTAMP WHERE id=?").bind(checksum, target.sourceId),
+      database.prepare("UPDATE evidence_sources SET checksum=?, updated_at=CURRENT_TIMESTAMP WHERE id=?").bind(checksum, target.sourceId),
       database.prepare("UPDATE refresh_schedules SET last_success_at=CURRENT_TIMESTAMP, next_run_at=datetime('now', '+7 days'), failure_count=0, last_error=NULL, updated_at=CURRENT_TIMESTAMP WHERE id=?").bind(target.scheduleId),
       database.prepare("INSERT OR IGNORE INTO source_snapshots (id,source_id,refresh_run_id,checksum,byte_size,etag,last_modified) VALUES (?,?,?,?,?,?,?)")
         .bind(`snapshot_${crypto.randomUUID()}`, target.sourceId, runId, checksum, bytes.byteLength, response.headers.get("etag"), response.headers.get("last-modified")),

@@ -20,6 +20,10 @@ export function requireDocumentsBucket(): R2Bucket {
 }
 
 export async function requireSession(): Promise<{ database: D1Database; session: SessionContext }> {
+  throw new ApiError("Private profile workflows are paused during the public pilot.", 403);
+}
+
+export async function requireTeamSession(): Promise<{ database: D1Database; session: SessionContext }> {
   const user = await getChatGPTUser();
   if (!user) throw new ApiError("Sign in with ChatGPT to use this feature.", 401);
   const database = requireDatabase();
@@ -56,6 +60,6 @@ export function jsonResponse(value: unknown, status = 200, headers: Record<strin
 
 export function handleApiError(error: unknown) {
   const status = typeof error === "object" && error && "status" in error && typeof error.status === "number" ? error.status : 500;
-  const message = error instanceof Error ? error.message : "Unexpected server error";
+  const message = status >= 500 ? "The service is unavailable. Please try again later." : error instanceof Error ? error.message : "Invalid request";
   return jsonResponse({ error: message }, status);
 }

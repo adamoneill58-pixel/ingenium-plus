@@ -100,7 +100,7 @@ export async function GET(request: Request) {
     candidates.sort((left, right) => left.id.localeCompare(right.id));
     const input = JSON.stringify({ type, profile, candidates, graphAffinity, engineVersion: RECOMMENDATION_ENGINE_VERSION });
     const inputHash = await sha256Hex(new TextEncoder().encode(input).buffer as ArrayBuffer);
-    const existing = await database.prepare("SELECT id FROM recommendation_runs WHERE input_hash=?").bind(inputHash).first<{ id: string }>();
+    const existing = await database.prepare("SELECT id FROM recommendation_runs WHERE input_hash=? AND profile_id=?").bind(inputHash, session.profileId).first<{ id: string }>();
     if (existing) {
       const rows = await database.prepare("SELECT id,candidate_id AS candidateId,candidate_type AS candidateKind,rank,score,label,components_json AS components,explanations_json AS explanations FROM recommendation_results WHERE run_id=? ORDER BY rank").bind(existing.id).all<Record<string, unknown>>();
       return jsonResponse({ runId: existing.id, type, engineVersion: RECOMMENDATION_ENGINE_VERSION, cached: true, results: rows.results.map((row) => ({ ...row, candidateTitle: candidates.find((candidate) => candidate.id === row.candidateId)?.title ?? String(row.candidateId), components: parse<Record<string, number>>(row.components, {}), explanations: parse<string[]>(row.explanations, []) })) });

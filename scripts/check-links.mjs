@@ -1,11 +1,6 @@
 import { readFile } from "node:fs/promises";
-import ts from "typescript";
-
-const source = await readFile(new URL("../lib/data.ts", import.meta.url), "utf8");
-const compiled = ts.transpileModule(source, {
-  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
-}).outputText;
-const data = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString("base64")}`);
+const catalogue=JSON.parse(await readFile(new URL("../data/catalogue/v2.json",import.meta.url),"utf8"));
+const data={sources:catalogue.sources,entities:catalogue.records};
 
 const urls = [...new Set([
   ...data.sources.map((item) => item.url),

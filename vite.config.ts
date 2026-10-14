@@ -48,7 +48,7 @@ export default defineConfig(async ({ command }) => {
     command === "build"
       ? (await import("@cloudflare/vite-plugin")).cloudflare({
           viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
-          config: localBindingConfig,
+          ...(process.env.INGENIUM_DEPLOY_CONFIG ? { configPath: process.env.INGENIUM_DEPLOY_CONFIG } : { config: localBindingConfig }),
         })
       : null;
 

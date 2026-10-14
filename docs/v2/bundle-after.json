@@ -1,0 +1,236 @@
+{
+  "client": {
+    "total": {
+      "raw": 883079,
+      "gzip": 284982
+    },
+    "chunks": [
+      {
+        "name": "cytoscape.esm-XCLWNKUB.js",
+        "raw": 434704,
+        "gzip": 136763
+      },
+      {
+        "name": "framework-BmNOsu3g.js",
+        "raw": 219001,
+        "gzip": 67576
+      },
+      {
+        "name": "index-DgdmEjrB.js",
+        "raw": 85312,
+        "gzip": 25843
+      },
+      {
+        "name": "SiteHeader-DyOaTEBR.js",
+        "raw": 44234,
+        "gzip": 14306
+      },
+      {
+        "name": "link-BaBhvFux.js",
+        "raw": 9631,
+        "gzip": 3731
+      },
+      {
+        "name": "CampusWorkspace-CTOp5vQ0.js",
+        "raw": 9505,
+        "gzip": 3447
+      },
+      {
+        "name": "router-Bwjz6C0r.js",
+        "raw": 9066,
+        "gzip": 3068
+      },
+      {
+        "name": "CalendarWorkspace-CoztXwDF.js",
+        "raw": 7988,
+        "gzip": 3150
+      },
+      {
+        "name": "MyCampusWorkspace-56-ufz4i.js",
+        "raw": 6497,
+        "gzip": 2461
+      },
+      {
+        "name": "PilotDashboard-Dd7M36Kd.js",
+        "raw": 6130,
+        "gzip": 2021
+      },
+      {
+        "name": "CollaborationDemo-DNIo74Xs.js",
+        "raw": 5368,
+        "gzip": 2019
+      },
+      {
+        "name": "ReviewQueue-jiyYE2-j.js",
+        "raw": 4995,
+        "gzip": 1808
+      },
+      {
+        "name": "DataHealthDashboard-DJWY7EgQ.js",
+        "raw": 4798,
+        "gzip": 1629
+      },
+      {
+        "name": "EntityCard-4vKNxC_o.js",
+        "raw": 4130,
+        "gzip": 1738
+      },
+      {
+        "name": "domain-I9v7oZ1a.js",
+        "raw": 3999,
+        "gzip": 1711
+      },
+      {
+        "name": "RecordActions-LMKq5uuH.js",
+        "raw": 3945,
+        "gzip": 1733
+      },
+      {
+        "name": "DirectoryPage-DpzSNB_c.js",
+        "raw": 3804,
+        "gzip": 1383
+      },
+      {
+        "name": "PilotSurvey-B06Pgmvq.js",
+        "raw": 3662,
+        "gzip": 1793
+      },
+      {
+        "name": "NetworkCanvas-DXWqHTXj.js",
+        "raw": 3158,
+        "gzip": 1508
+      },
+      {
+        "name": "OpportunityCard-CAcZ54A5.js",
+        "raw": 2863,
+        "gzip": 1230
+      },
+      {
+        "name": "CampusMap-DYKY_QvO.js",
+        "raw": 2022,
+        "gzip": 1058
+      },
+      {
+        "name": "PilotContext-PM4qqxti.js",
+        "raw": 1612,
+        "gzip": 834
+      },
+      {
+        "name": "local-store-CsQ8W1JC.js",
+        "raw": 1182,
+        "gzip": 618
+      },
+      {
+        "name": "Icon-etcS7sq6.js",
+        "raw": 1082,
+        "gzip": 656
+      },
+      {
+        "name": "record-logic-CJbGqqEG.js",
+        "raw": 873,
+        "gzip": 464
+      },
+      {
+        "name": "rolldown-runtime-hePW80VL.js",
+        "raw": 716,
+        "gzip": 428
+      },
+      {
+        "name": "memory-store-CyGO6PTp.js",
+        "raw": 681,
+        "gzip": 429
+      },
+      {
+        "name": "university-names-UsdavV9G.js",
+        "raw": 656,
+        "gzip": 355
+      },
+      {
+        "name": "createLucideIcon-kpYXx4ES.js",
+        "raw": 558,
+        "gzip": 378
+      },
+      {
+        "name": "layout-segment-context-C3NivpGx.js",
+        "raw": 288,
+        "gzip": 225
+      },
+      {
+        "name": "search-30ed1Z3H.js",
+        "raw": 174,
+        "gzip": 167
+      },
+      {
+        "name": "arrow-up-right-QDznV8k0.js",
+        "raw": 167,
+        "gzip": 160
+      },
+      {
+        "name": "x-DeSLiZ58.js",
+        "raw": 154,
+        "gzip": 152
+      },
+      {
+        "name": "check-DHlEGSUe.js",
+        "raw": 124,
+        "gzip": 140
+      }
+    ]
+  },
+  "worker": {
+    "raw": 945483,
+    "gzip": 210594
+  },
+  "serverLargest": [
+    {
+      "name": "dist/server/index.js",
+      "raw": 945483,
+      "gzip": 210594
+    },
+    {
+      "name": "dist/server/ssr/assets/cytoscape.esm-B17ZghXT.js",
+      "raw": 869342,
+      "gzip": 198385
+    },
+    {
+      "name": "dist/server/assets/v2-BOEpLxjQ.js",
+      "raw": 763540,
+      "gzip": 79920
+    },
+    {
+      "name": "dist/server/ssr/index.js",
+      "raw": 604380,
+      "gzip": 123826
+    },
+    {
+      "name": "dist/server/ssr/assets/SiteHeader-DzUQhBc8.js",
+      "raw": 94267,
+      "gzip": 22223
+    },
+    {
+      "name": "dist/server/ssr/assets/link-DsD0dbzF.js",
+      "raw": 24950,
+      "gzip": 7562
+    },
+    {
+      "name": "dist/server/ssr/assets/router-CIEcKy8U.js",
+      "raw": 23323,
+      "gzip": 6904
+    },
+    {
+      "name": "dist/server/ssr/assets/react-Cl9ynmnM.js",
+      "raw": 17867,
+      "gzip": 4927
+    },
+    {
+      "name": "dist/server/ssr/assets/CampusWorkspace-24aiNdI2.js",
+      "raw": 17159,
+      "gzip": 4288
+    },
+    {
+      "name": "dist/server/ssr/assets/CalendarWorkspace-C_glvxj1.js",
+      "raw": 15391,
+      "gzip": 4195
+    }
+  ]
+}

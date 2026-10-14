@@ -31,67 +31,15 @@ class D1TestDatabase {
   }
 }
 
-test("the configured Site owner initializes the dataset and receives operational roles exactly once", async () => {
-  const sqlite = new DatabaseSync(":memory:");
-  sqlite.exec(schema);
-  sqlite.exec(`INSERT INTO profiles (id,auth_subject,email,display_name) VALUES ('owner','auth-owner','owner@example.invalid','Owner');
-    INSERT INTO memberships (id,profile_id,role,status) VALUES ('member-student','owner','student','active');
-    INSERT INTO student_profiles (profile_id) VALUES ('owner');`);
-  const database = new D1TestDatabase(sqlite);
-  const user = { userId: "auth-owner", email: "owner@example.invalid", displayName: "Owner", fullName: "Owner" };
-
-  await bootstrap.bootstrapPrivateOwner(database, user, "owner", " OWNER@example.invalid ");
-  await bootstrap.bootstrapPrivateOwner(database, user, "owner", "owner@example.invalid");
-
-  assert.equal(sqlite.prepare("SELECT COUNT(*) AS count FROM content_records").get().count, 226);
-  assert.equal(sqlite.prepare("SELECT COUNT(*) AS count FROM memberships WHERE profile_id='owner' AND role='administrator'").get().count, 1);
-  assert.equal(sqlite.prepare("SELECT COUNT(*) AS count FROM memberships WHERE profile_id='owner' AND role='staff'").get().count, 1);
-  assert.equal(sqlite.prepare("SELECT mode FROM profiles WHERE id='owner'").get().mode, "staff");
-  assert.equal(sqlite.prepare("SELECT COUNT(*) AS count FROM audit_events WHERE action='private_owner.bootstrap'").get().count, 1);
-  sqlite.close();
+test("an email match cannot seed data or grant administrator permissions", async () => {
+  const sqlite=new DatabaseSync(":memory:");sqlite.exec(schema);
+  sqlite.exec("INSERT INTO profiles(id,auth_subject,email,display_name) VALUES('owner','auth-owner','owner@example.invalid','Owner')");
+  const database=new D1TestDatabase(sqlite);
+  await bootstrap.bootstrapPrivateOwner(database,{userId:"auth-owner",email:"owner@example.invalid",displayName:"Owner",fullName:null},"owner","owner@example.invalid");
+  const session=await repository.getOrCreateSession(database,{userId:"auth-owner",email:"owner@example.invalid",displayName:"Owner",fullName:null});
+  assert.deepEqual(session.roles,[]);assert.equal(session.mode,"student");
+  assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM content_records").get().n,0);
+  assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM memberships").get().n,0);sqlite.close();
 });
-
-test("a non-owner cannot trigger owner bootstrap", async () => {
-  const sqlite = new DatabaseSync(":memory:");
-  sqlite.exec(schema);
-  sqlite.exec("INSERT INTO profiles (id,auth_subject,email,display_name) VALUES ('visitor','auth-visitor','visitor@example.invalid','Visitor')");
-  const database = new D1TestDatabase(sqlite);
-  await bootstrap.bootstrapPrivateOwner(database, { userId: "auth-visitor", email: "visitor@example.invalid", displayName: "Visitor", fullName: null }, "visitor", "owner@example.invalid");
-  assert.equal(sqlite.prepare("SELECT COUNT(*) AS count FROM content_records").get().count, 0);
-  assert.equal(sqlite.prepare("SELECT COUNT(*) AS count FROM memberships").get().count, 0);
-  sqlite.close();
-});
-
-test("the first owner session is immediately returned in Staff mode", async () => {
-  const sqlite = new DatabaseSync(":memory:");
-  sqlite.exec(schema);
-  const database = new D1TestDatabase(sqlite);
-  bindings.setRuntimeBindings({ DB: database, BOOTSTRAP_OWNER_EMAIL: "owner@example.invalid" });
-
-  const session = await repository.getOrCreateSession(database, {
-    userId: "auth-owner",
-    email: "owner@example.invalid",
-    displayName: "Owner",
-    fullName: "Owner",
-  });
-
-  assert.equal(session.mode, "staff");
-  assert.deepEqual(new Set(session.roles), new Set(["student", "staff", "administrator"]));
-  assert.equal(sqlite.prepare("SELECT COUNT(*) AS count FROM content_records").get().count, 226);
-  sqlite.close();
-});
-
-test("trusted Sites identity headers are parsed without leaking malformed names", () => {
-  const requestHeaders = new Headers({
-    "oai-authenticated-user-id": "auth-owner",
-    "oai-authenticated-user-email": "owner@example.invalid",
-    "oai-authenticated-user-full-name": "Adam%20O%27Neill",
-    "oai-authenticated-user-full-name-encoding": "percent-encoded-utf-8",
-  });
-  assert.deepEqual(chatgptUser.chatGPTUserFromHeaders(requestHeaders), {
-    userId: "auth-owner",
-    email: "owner@example.invalid",
-    displayName: "Adam O'Neill",
-    fullName: "Adam O'Neill",
-  });
-});
+test("unprovisioned identities cannot create profiles during sign-in",async()=>{const sqlite=new DatabaseSync(":memory:");sqlite.exec(schema);bindings.setRuntimeBindings({DB:new D1TestDatabase(sqlite)});await assert.rejects(()=>repository.getOrCreateSession(new D1TestDatabase(sqlite),{userId:"forged",email:"owner@example.invalid",displayName:"Forged",fullName:null}),/provision/);assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM profiles").get().n,0);sqlite.close();});
+test("legacy identity headers are never authentication",()=>{assert.equal(chatgptUser.chatGPTUserFromHeaders(new Headers({"oai-authenticated-user-id":"owner","oai-authenticated-user-email":"owner@example.invalid"})),null);});

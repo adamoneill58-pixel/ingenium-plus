@@ -1,4 +1,5 @@
 "use client";
+import { memoryString, memoryWrite } from "@/lib/v2/memory-store";
 
 import type { Core, ElementDefinition, EventObject } from "cytoscape";
 import {
@@ -66,6 +67,7 @@ const modes: { id: ViewMode; label: string }[] = [
 ];
 
 const typeShapes: Record<EntityType, string> = {
+  calendar_event: "star",
   university: "ellipse",
   bip: "diamond",
   programme: "round-rectangle",
@@ -87,7 +89,7 @@ const typeShapes: Record<EntityType, string> = {
 function readStoredList(key: string): string[] {
   if (typeof window === "undefined") return [];
   try {
-    const parsed = JSON.parse(window.localStorage.getItem(key) ?? "[]");
+    const parsed = JSON.parse((memoryString(key)) ?? "[]");
     return Array.isArray(parsed) ? parsed.filter((value) => typeof value === "string") : [];
   } catch {
     return [];
@@ -689,7 +691,7 @@ useEffect(() => {
     else next.add(id);
     const values = [...next];
     setSavedIds(values);
-    window.localStorage.setItem(SAVED_KEY, JSON.stringify(values));
+    memoryWrite(SAVED_KEY, JSON.stringify(values));
     window.dispatchEvent(new CustomEvent("ingenium-saved-change"));
     setToast(next.has(id) ? "Saved to My journey" : "Removed from My journey");
   };
@@ -697,7 +699,7 @@ useEffect(() => {
   const addJourneyStep = (id: string) => {
     const current = readStoredList(JOURNEY_KEY);
     if (!current.includes(id)) current.push(id);
-    window.localStorage.setItem(JOURNEY_KEY, JSON.stringify(current));
+    memoryWrite(JOURNEY_KEY, JSON.stringify(current));
     window.dispatchEvent(new CustomEvent("ingenium-journey-change"));
     setToast("Added as a journey step");
   };

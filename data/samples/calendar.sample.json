@@ -1,0 +1,47 @@
+[
+  {
+    "id": "sample-online-activity",
+    "recordId": "sample-calendar-course",
+    "title": "Fictional cross-campus climate workshop",
+    "kind": "activity",
+    "start": "2026-11-12",
+    "end": "2026-11-13",
+    "precision": "day",
+    "sourceUrl": "https://example.invalid/sample-calendar",
+    "sample": true,
+    "hostId": "university-mtu"
+  },
+  {
+    "id": "sample-application-deadline",
+    "recordId": "sample-calendar-course",
+    "title": "Fictional workshop application deadline",
+    "kind": "deadline",
+    "start": "2026-11-04",
+    "precision": "day",
+    "sourceUrl": "https://example.invalid/sample-calendar",
+    "sample": true,
+    "hostId": "university-mtu"
+  },
+  {
+    "id": "sample-approximate-window",
+    "recordId": "sample-window",
+    "title": "Fictional mobility call: approximate window",
+    "kind": "application_window",
+    "start": "2026-11",
+    "precision": "approximate",
+    "dateLabel": "Early November \u2013 mid December (illustrative)",
+    "sourceUrl": "https://example.invalid/sample-calendar",
+    "sample": true
+  },
+  {
+    "id": "sample-conflicting-deadline",
+    "recordId": "sample-conflict",
+    "title": "Fictional call with conflicting official dates",
+    "kind": "deadline",
+    "start": "2026-12-01",
+    "precision": "day",
+    "conflict": true,
+    "sourceUrl": "https://example.invalid/sample-calendar",
+    "sample": true
+  }
+]

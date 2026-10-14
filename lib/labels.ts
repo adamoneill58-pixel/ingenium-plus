@@ -5,6 +5,7 @@
 import type { EntityType } from "./data";
 
 export const typeLabels: Record<EntityType, string> = {
+  calendar_event: "Calendar event",
   university: "University",
   bip: "BIP",
   programme: "Programme",
@@ -24,6 +25,7 @@ export const typeLabels: Record<EntityType, string> = {
 };
 
 export const typeColours: Record<EntityType, string> = {
+  calendar_event: "#007b65",
   university: "#293133",
   bip: "#009ee3",
   programme: "#009878",
