@@ -15,7 +15,7 @@ import {
   subscribeStore,
   writeJson,
 } from "@/lib/local-store";
-import { addSemesterItem, removeSemesterItem } from "@/lib/v15-logic";
+import { addSemesterItem, removeSemesterItem } from "@/lib/record-logic";
 
 const learningTypes = new Set(["module", "course", "microcredential", "learning_resource", "bip", "programme", "pathway"]);
 
@@ -54,7 +54,7 @@ export function RecordActions({ entity }: { entity: Entity }) {
     writeJson(REPORTS_KEY, [...reports, `${entity.id}: ${reportText.trim()}`]);
     setReportText("");
     setReportOpen(false);
-    setNotice("Report saved on this device for prototype review")
+    setNotice("Report held in this tab only; it has not been sent")
   };
 
   return (
@@ -69,9 +69,9 @@ export function RecordActions({ entity }: { entity: Entity }) {
         <div className="inline-report" role="dialog" aria-modal="false" aria-labelledby="report-title">
           <button className="icon-button" type="button" aria-label="Close report form" onClick={() => setReportOpen(false)}><X aria-hidden="true" /></button>
           <h2 id="report-title">What looks outdated?</h2>
-          <p>This prototype stores the note only in your browser; it does not send it to INGENIUM.</p>
+          <p>This note is temporary and will be lost on refresh. It is not sent to INGENIUM.</p>
           <label><span>Correction or concern</span><textarea value={reportText} onChange={(event) => setReportText(event.target.value)} rows={4} placeholder="Describe the date, status or link that needs checking." /></label>
-          <button className="button button--primary" type="button" disabled={!reportText.trim()} onClick={submitReport}>Save local report</button>
+          <button className="button button--primary" type="button" disabled={!reportText.trim()} onClick={submitReport}>Keep temporary note</button>
         </div>
       )}
     </div>

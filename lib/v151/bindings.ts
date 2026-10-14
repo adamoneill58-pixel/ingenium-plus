@@ -1,7 +1,16 @@
 export interface IngeniumRuntimeBindings {
   DB?: D1Database;
   DOCUMENTS?: R2Bucket;
-  BOOTSTRAP_OWNER_EMAIL?: string;
+  ACCESS_TEAM_DOMAIN?: string;
+  ACCESS_AUD?: string;
+  ALERT_WEBHOOK_URL?: string;
+  ALLOW_STATIC_FALLBACK?: string;
+  PILOT_ANALYTICS_ENABLED?: string;
+  EDGE_RATE_LIMIT_READY?: string;
+  PILOT_START_DATE?: string;
+  PILOT_DURATION_DAYS?: string;
+  RETENTION_APPROVED?: string;
+  PUBLIC_BASE_URL?: string;
 }
 
 const BINDINGS_KEY = Symbol.for("ingenium.runtime.bindings");

@@ -12,7 +12,7 @@ import {
   getLearningOpportunities,
   getSemesterECTSTotal,
   removeSemesterItem,
-} from "@/lib/v15-logic";
+} from "@/lib/record-logic";
 import { readProfile, readSemester, SEMESTER_KEY, storeSnapshot, subscribeStore, writeJson } from "@/lib/local-store";
 import { ClassificationBadge } from "./ClassificationBadge";
 import { StatusBadge } from "./StatusBadge";
@@ -96,7 +96,7 @@ export function LearningWorkspace({ records }: { records: Entity[] }) {
         <span className="eyebrow">Browser-local planner</span>
         <h2 id="semester-title">My semester</h2>
         <p>Build an advisory plan here, then confirm credit recognition and enrolment with your home university.</p>
-        <div className="semester-total"><strong>{getSemesterECTSTotal(semester)}</strong><span>planned ECTS</span></div>
+        <div className="semester-total"><strong>{getSemesterECTSTotal(semester, records)}</strong><span>planned ECTS</span></div>
         {semester.length ? (
           <ol className="semester-list">
             {semester.map((item, index) => {

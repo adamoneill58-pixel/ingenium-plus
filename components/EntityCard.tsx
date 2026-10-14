@@ -1,15 +1,15 @@
 "use client";
+import { memoryString, memoryWrite } from "@/lib/v2/memory-store";
 
 import { ArrowUpRight, Bookmark, BookmarkCheck, Building2, CalendarDays, MapPin } from "lucide-react";
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import type { Entity } from "@/lib/data";
-import { typeLabels } from "@/lib/data";
-import { recordById } from "@/lib/v15-data";
-import { getComputedStatus } from "@/lib/v15-logic";
+import { typeLabels } from "@/lib/labels";
+import { universityShortNames } from "@/lib/university-names";
 import { SAVED_KEY, STORE_EVENT } from "@/lib/local-store";
 import { ClassificationBadge } from "./ClassificationBadge";
-import { StatusBadge } from "./StatusBadge";
+import { AvailabilityBadge } from "./v2/AvailabilityBadge";
 
 const LEGACY_SAVED_KEY = "ingenium-plus-v14-saved";
 
@@ -24,7 +24,7 @@ function parseSaved(value: string): string[] {
 
 function savedSnapshot() {
   if (typeof window === "undefined") return "[]";
-  return window.localStorage.getItem(SAVED_KEY) ?? window.localStorage.getItem(LEGACY_SAVED_KEY) ?? "[]";
+  return (memoryString(SAVED_KEY)) ?? (memoryString(LEGACY_SAVED_KEY)) ?? "[]";
 }
 
 function subscribeSaved(callback: () => void) {
@@ -40,14 +40,13 @@ function subscribeSaved(callback: () => void) {
 
 export function EntityCard({ entity, compact = false }: { entity: Entity; compact?: boolean }) {
   const saved = parseSaved(useSyncExternalStore(subscribeSaved, savedSnapshot, () => "[]")).includes(entity.id);
-  const host = entity.hostUniversityId ? recordById.get(entity.hostUniversityId) : undefined;
-  const computedStatus = getComputedStatus(entity);
+  const hostName = entity.hostUniversityId ? universityShortNames[entity.hostUniversityId] : undefined;
 
   const toggleSaved = () => {
     const current = new Set(parseSaved(savedSnapshot()));
     if (current.has(entity.id)) current.delete(entity.id);
     else current.add(entity.id);
-    window.localStorage.setItem(SAVED_KEY, JSON.stringify([...current]));
+    memoryWrite(SAVED_KEY, JSON.stringify([...current]));
     window.dispatchEvent(new CustomEvent("ingenium-saved-change"));
     window.dispatchEvent(new CustomEvent(STORE_EVENT));
   };
@@ -68,16 +67,16 @@ export function EntityCard({ entity, compact = false }: { entity: Entity; compac
     <article className={`entity-card entity-card--${entity.type} ${compact ? "entity-card--compact" : ""}`}>
       <div className="entity-card__meta">
         <span>{entity.subtype ?? typeLabels[entity.type]}</span>
-        <StatusBadge status={computedStatus} />
+        <AvailabilityBadge record={entity} />
       </div>
       <ClassificationBadge classification={entity.dataClassification} />
       <h3>{entity.title}</h3>
       <p>{entity.studentSummary}</p>
       {!compact && (
         <div className="entity-card__facts">
-          {host && (
+          {hostName && (
             <span>
-              <Building2 aria-hidden="true" /> {host.shortTitle ?? host.title}
+              <Building2 aria-hidden="true" /> {hostName}
             </span>
           )}
           {entity.city && (

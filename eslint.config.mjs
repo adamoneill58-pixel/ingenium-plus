@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "dist/**",
+    "work/**",
+    "outputs/**",
     "node_modules/**",
     ".vinext/**",
     ".vite-*-cache/**",

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { V15_RESEARCH_DATE } from "@/lib/v15-data";
+const V15_RESEARCH_DATE = "2026-09-29";
 import { getRuntimeDataset } from "@/lib/v151/runtime-data";
 
 export const metadata: Metadata = {

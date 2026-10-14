@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DirectoryPage } from "@/components/DirectoryPage";
 import { type Entity, type EntityStatus } from "@/lib/data";
-import { getComputedStatus } from "@/lib/v15-logic";
+import { getComputedStatus } from "@/lib/record-logic";
 import { getRuntimeDataset } from "@/lib/v151/runtime-data";
 
 export const metadata: Metadata = {

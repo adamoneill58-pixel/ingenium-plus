@@ -3,8 +3,8 @@
 import { Grid2X2, Network, Search, SlidersHorizontal, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { Entity, EntityStatus, EntityType, Relationship, Source } from "@/lib/data";
-import { typeLabels } from "@/lib/data";
-import { filterRecords, getComputedStatus } from "@/lib/v15-logic";
+import { typeLabels } from "@/lib/labels";
+import { filterRecords, getComputedStatus } from "@/lib/record-logic";
 import { EntityCard } from "./EntityCard";
 import { GraphExplorer } from "./GraphExplorer";
 

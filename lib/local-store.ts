@@ -1,4 +1,5 @@
-import type { LocalProfile, SemesterItem } from "./v15-logic";
+import { memoryRead, memoryWrite, memorySnapshot } from "./v2/memory-store";
+import type { LocalProfile, SemesterItem } from "./record-logic";
 
 export const PROFILE_KEY = "ingenium-plus-v15-profile";
 export const SEMESTER_KEY = "ingenium-plus-v15-semester";
@@ -20,7 +21,7 @@ export const emptyProfile: LocalProfile = {
 export function readJson<T>(key: string, fallback: T): T {
   if (typeof window === "undefined") return fallback;
   try {
-    const value = JSON.parse(window.localStorage.getItem(key) ?? "null");
+    const value = memoryRead(key, null);
     return value === null ? fallback : value as T;
   } catch {
     return fallback;
@@ -53,7 +54,7 @@ export function readSemester(): SemesterItem[] {
 }
 
 export function writeJson(key: string, value: unknown): void {
-  window.localStorage.setItem(key, JSON.stringify(value));
+  memoryWrite(key, value);
   window.dispatchEvent(new CustomEvent(STORE_EVENT));
 }
 
@@ -68,7 +69,5 @@ export function subscribeStore(callback: () => void): () => void {
 
 export function storeSnapshot(): string {
   if (typeof window === "undefined") return "{}";
-  return [PROFILE_KEY, SEMESTER_KEY, SAVED_KEY, JOINED_KEY, TASKS_KEY, RECENT_KEY, REPORTS_KEY, CONNECTIONS_KEY]
-    .map((key) => window.localStorage.getItem(key) ?? "")
-    .join("|");
+  return memorySnapshot();
 }

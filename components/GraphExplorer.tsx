@@ -1,6 +1,7 @@
 "use client";
+import { memoryString, memoryWrite } from "@/lib/v2/memory-store";
 
-import cytoscape, { type Core, type ElementDefinition, type EventObject } from "cytoscape";
+import type { Core, ElementDefinition, EventObject } from "cytoscape";
 import {
   ArrowRight,
   Bookmark,
@@ -25,18 +26,9 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import {
-  journeys,
-  typeColours,
-  typeLabels,
-  type Entity,
-  type EntityStatus,
-  type EntityType,
-  type Relationship,
-} from "@/lib/data";
-import { evidenceSources as staticSources, networkRelationships as staticRelationships, records as staticEntities } from "@/lib/v15-data";
-import type { Source } from "@/lib/data";
-import { getComputedStatus } from "@/lib/v15-logic";
+import type { Entity, EntityStatus, EntityType, Journey, Relationship, Source } from "@/lib/data";
+import { typeColours, typeLabels } from "@/lib/labels";
+import { getComputedStatus } from "@/lib/record-logic";
 import { ClassificationBadge } from "./ClassificationBadge";
 import { StatusBadge } from "./StatusBadge";
 
@@ -75,6 +67,7 @@ const modes: { id: ViewMode; label: string }[] = [
 ];
 
 const typeShapes: Record<EntityType, string> = {
+  calendar_event: "star",
   university: "ellipse",
   bip: "diamond",
   programme: "round-rectangle",
@@ -96,7 +89,7 @@ const typeShapes: Record<EntityType, string> = {
 function readStoredList(key: string): string[] {
   if (typeof window === "undefined") return [];
   try {
-    const parsed = JSON.parse(window.localStorage.getItem(key) ?? "[]");
+    const parsed = JSON.parse((memoryString(key)) ?? "[]");
     return Array.isArray(parsed) ? parsed.filter((value) => typeof value === "string") : [];
   } catch {
     return [];
@@ -217,26 +210,42 @@ function makeIcs(entity: Entity) {
   URL.revokeObjectURL(href);
 }
 
+const noJourneys: Journey[] = [];
+
+type CytoscapeFactory = typeof import("cytoscape");
+let cytoscapeModule: CytoscapeFactory | null = null;
+async function loadCytoscape(): Promise<CytoscapeFactory> {
+  if (!cytoscapeModule) {
+    const mod = await import("cytoscape");
+    cytoscapeModule = ((mod as unknown as { default?: CytoscapeFactory }).default ?? mod) as CytoscapeFactory;
+  }
+  return cytoscapeModule;
+}
+
 export function GraphExplorer({
   allowedEntityIds,
   initialMode = "student",
   showJourneyPicker = true,
-  entities: suppliedEntities = staticEntities,
-  relationships: suppliedRelationships = staticRelationships,
-  sources: suppliedSources = staticSources,
+  entities: suppliedEntities,
+  relationships: suppliedRelationships,
+  sources: suppliedSources,
+  journeys = noJourneys,
 }: {
   allowedEntityIds?: string[];
   initialMode?: ViewMode;
   showJourneyPicker?: boolean;
-  entities?: Entity[];
-  relationships?: Relationship[];
-  sources?: Source[];
-} = {}) {
+  entities: Entity[];
+  relationships: Relationship[];
+  sources: Source[];
+  /** Guided journeys. Passed from the server so the v1.4 dataset stays out of the client bundle. */
+  journeys?: Journey[];
+}) {
   const graphRef = useRef<HTMLDivElement>(null);
   const bgMapRef = useRef<HTMLDivElement>(null);
   const cyRef = useRef<Core | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const filterCloseButtonRef = useRef<HTMLButtonElement>(null);
+  const [cyReady, setCyReady] = useState(0);
   const [mode, setMode] = useState<ViewMode>(initialMode);
   const [layoutMode, setLayoutMode] = useState<GraphLayoutMode>("geography");
   const [query, setQuery] = useState("");
@@ -287,7 +296,7 @@ export function GraphExplorer({
       if (params.get("view") === "list") setListView(true);
     });
     return () => { cancelled = true; };
-  }, [entities, entityById]);
+  }, [entities, entityById, journeys]);
 
   useEffect(() => {
     const listener = () => setSavedIds(readStoredList(SAVED_KEY));
@@ -379,9 +388,13 @@ export function GraphExplorer({
   }, []);
 
   useEffect(() => {
+    let active = true;
     if (!graphRef.current) return;
-    cyRef.current?.destroy();
-    const cy = cytoscape({
+
+    void loadCytoscape().then((cytoscape) => {
+      if (!active || !graphRef.current) return;
+      cyRef.current?.destroy();
+      const cy = cytoscape({
       container: graphRef.current,
       elements: graphElements,
       layout: layoutMode === "geography"
@@ -590,27 +603,34 @@ export function GraphExplorer({
 
     cy.on("viewport", updateMapTransform);
     updateMapTransform();
-    return () => cy.destroy();
-  }, [graphElements, layoutMode, relationships, selectEntity]);
+    setCyReady((count) => count + 1);
+  });
 
-  useEffect(() => {
-    const cy = cyRef.current;
-    if (!cy) return;
-    cy.edges().removeClass("highlighted");
-    cy.elements().removeClass("context-faded context-secondary");
-    cy.nodes().unselect();
-    if (!selectedId) return;
-    const node = cy.getElementById(selectedId);
-    if (node.nonempty()) {
-      node.select();
-      const edges = node.connectedEdges();
-      const neighbours = edges.connectedNodes();
-      cy.elements().difference(node.union(edges).union(neighbours)).addClass("context-faded");
-      neighbours.addClass("context-secondary");
-      edges.addClass("highlighted");
-      cy.animate({ center: { eles: node }, zoom: Math.max(cy.zoom(), 1.15) }, { duration: 360 });
-    }
-  }, [graphElements, selectedId]);
+  return () => {
+    active = false;
+    cyRef.current?.destroy();
+    cyRef.current = null;
+  };
+}, [graphElements, layoutMode, relationships, selectEntity]);
+
+useEffect(() => {
+  const cy = cyRef.current;
+  if (!cy) return;
+  cy.edges().removeClass("highlighted");
+  cy.elements().removeClass("context-faded context-secondary");
+  cy.nodes().unselect();
+  if (!selectedId) return;
+  const node = cy.getElementById(selectedId);
+  if (node.nonempty()) {
+    node.select();
+    const edges = node.connectedEdges();
+    const neighbours = edges.connectedNodes();
+    cy.elements().difference(node.union(edges).union(neighbours)).addClass("context-faded");
+    neighbours.addClass("context-secondary");
+    edges.addClass("highlighted");
+    cy.animate({ center: { eles: node }, zoom: Math.max(cy.zoom(), 1.15) }, { duration: 360 });
+  }
+}, [graphElements, selectedId, cyReady]);
 
   useEffect(() => {
     if (selectedId || selectedRelationship) closeButtonRef.current?.focus();
@@ -671,7 +691,7 @@ export function GraphExplorer({
     else next.add(id);
     const values = [...next];
     setSavedIds(values);
-    window.localStorage.setItem(SAVED_KEY, JSON.stringify(values));
+    memoryWrite(SAVED_KEY, JSON.stringify(values));
     window.dispatchEvent(new CustomEvent("ingenium-saved-change"));
     setToast(next.has(id) ? "Saved to My journey" : "Removed from My journey");
   };
@@ -679,7 +699,7 @@ export function GraphExplorer({
   const addJourneyStep = (id: string) => {
     const current = readStoredList(JOURNEY_KEY);
     if (!current.includes(id)) current.push(id);
-    window.localStorage.setItem(JOURNEY_KEY, JSON.stringify(current));
+    memoryWrite(JOURNEY_KEY, JSON.stringify(current));
     window.dispatchEvent(new CustomEvent("ingenium-journey-change"));
     setToast("Added as a journey step");
   };
