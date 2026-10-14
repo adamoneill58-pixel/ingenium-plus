@@ -37,7 +37,7 @@ Measurements use `scripts/report-bundle-size.mjs --json` with Node's gzip and th
 | All client JavaScript, raw | 939591 | 883079 | -6.0% |
 | All client JavaScript, gzip | 297704 | 284982 | -4.3% |
 | Worker entry, raw | 1224154 | 945483 | -22.8% |
-| Worker entry, gzip | 263330 | 210594 | -20.0% |
+| Worker entry, gzip | 263330 | 210592 | -20.0% |
 
 Client totals count every route chunk, including optional Cytoscape; they are not initial-page download sizes. The build guard keeps the research catalogue prose out of routine client assets, caps all client gzip at330,000bytes and checks Cytoscape is not an initial script dependency. Graph rendering remains lazy. These size reductions do not establish an equivalent user-perceived speedup; deployed cold-start/latency/Web Vitals need actual staging measurement.
 

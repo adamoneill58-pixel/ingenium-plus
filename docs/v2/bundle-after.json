@@ -179,13 +179,13 @@
   },
   "worker": {
     "raw": 945483,
-    "gzip": 210594
+    "gzip": 210592
   },
   "serverLargest": [
     {
       "name": "dist/server/index.js",
       "raw": 945483,
-      "gzip": 210594
+      "gzip": 210592
     },
     {
       "name": "dist/server/ssr/assets/cytoscape.esm-B17ZghXT.js",
