@@ -4,14 +4,32 @@ import type { SessionContext } from "./types";
 import { EMBEDDING_DIMENSIONS, EMBEDDING_MODEL, EMBEDDING_PROVIDER, embedText } from "./embeddings";
 import { sha256Hex } from "./upload-security";
 import { AuthorizationError } from "./authorization";
+import { bootstrapPrivateOwner } from "./private-bootstrap";
+import { getRuntimeBindings } from "./bindings";
 
 const id = (prefix: string) => `${prefix}_${crypto.randomUUID()}`;
 const json = (value: unknown) => JSON.stringify(value ?? null);
 
 export async function getOrCreateSession(database: D1Database, user: ChatGPTUser): Promise<SessionContext> {
-  const profile = await database.prepare("SELECT id, auth_subject AS authSubject, email, display_name AS displayName, mode FROM profiles WHERE auth_subject = ?")
+  let profile = await database.prepare("SELECT id, auth_subject AS authSubject, email, display_name AS displayName, mode FROM profiles WHERE auth_subject = ?")
     .bind(user.userId).first<{ id: string; authSubject: string; email: string; displayName: string; mode: "student" | "staff" }>();
-  if (!profile) throw new AuthorizationError("A team administrator must provision your membership before sign-in.");
+  if (!profile) {
+    const profileId = id("profile");
+    await database.batch([
+      database.prepare("INSERT INTO profiles (id, auth_subject, email, display_name, mode, last_seen_at) VALUES (?, ?, ?, ?, 'student', CURRENT_TIMESTAMP)")
+        .bind(profileId, user.userId, user.email, user.displayName),
+      database.prepare("INSERT INTO memberships (id, profile_id, organization_id, role, status) VALUES (?, ?, NULL, 'student', 'active')")
+        .bind(id("membership"), profileId),
+      database.prepare("INSERT INTO student_profiles (profile_id) VALUES (?)").bind(profileId),
+      database.prepare("INSERT INTO audit_events (id, actor_profile_id, action, resource_type, resource_id, metadata_json) VALUES (?, ?, 'profile.created', 'profile', ?, ?)")
+        .bind(id("audit"), profileId, profileId, json({ source: "chatgpt-auth" })),
+    ]);
+    profile = { id: profileId, authSubject: user.userId, email: user.email, displayName: user.displayName, mode: "student" };
+  } else {
+    await database.prepare("UPDATE profiles SET email = ?, display_name = ?, last_seen_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE id = ?")
+      .bind(user.email, user.displayName, profile.id).run();
+  }
+  await bootstrapPrivateOwner(database, user, profile.id, getRuntimeBindings().BOOTSTRAP_OWNER_EMAIL);
   const currentProfile = await database.prepare("SELECT mode FROM profiles WHERE id = ?").bind(profile.id)
     .first<{ mode: "student" | "staff" }>();
   const roleRows = await database.prepare("SELECT role FROM memberships WHERE profile_id = ? AND status = 'active'").bind(profile.id).all<{ role: AppRole }>();
@@ -172,7 +190,7 @@ export async function reviewProposal(database: D1Database, reviewerId: string, p
           json(payload.methodsOffered ?? []), json(payload.methodsSought ?? []), json(payload.facilitiesOffered ?? []), json(payload.facilitiesSought ?? []),
           json(payload.needs ?? []), json(payload.eligibility ?? []), json(payload.languages ?? []), json(payload.countries ?? []),
           payload.deliveryMode ?? null, payload.deadline ?? null, payload.sourceUrl ?? null, proposal.targetId));
-      statements.push(database.prepare("UPDATE call_versions SET is_published=CASE WHEN id=(SELECT id FROM call_versions WHERE call_id=? AND payload_json=? ORDER BY version_number DESC LIMIT 1) THEN 1 ELSE 0 END WHERE call_id=?").bind(proposal.targetId, proposal.payloadJson, proposal.targetId));
+      statements.push(database.prepare("UPDATE call_versions SET is_published=CASE WHEN version_number=(SELECT MAX(version_number) FROM call_versions WHERE call_id=?) THEN 1 ELSE 0 END WHERE call_id=?").bind(proposal.targetId, proposal.targetId));
     } else {
       statements.push(database.prepare("UPDATE collaboration_calls SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?")
         .bind(published ? "published" : decision === "rejected" ? "rejected" : "changes_requested", proposal.targetId));
@@ -186,9 +204,9 @@ export async function reviewProposal(database: D1Database, reviewerId: string, p
       statements.push(database.prepare(`INSERT INTO content_versions (id,record_id,version_number,payload_json,change_summary,created_by)
         VALUES (?, ?, (SELECT COALESCE(MAX(version_number),0)+1 FROM content_versions WHERE record_id=?), ?, 'Reviewed publication', ?)`)
         .bind(versionId, proposal.targetId, proposal.targetId, proposal.payloadJson, reviewerId));
-      statements.push(database.prepare(`UPDATE content_records SET published_version_id=?,title=?,summary=?,status=?,classification=?,confidence=?,
+      statements.push(database.prepare(`UPDATE content_records SET published_version_id=?,title=?,summary=?,status='Open',classification=?,confidence=?,
         owner_organization_id=?,official_url=?,is_published=1,updated_at=CURRENT_TIMESTAMP WHERE id=?`)
-        .bind(versionId, payload.title ?? "Untitled", payload.summary ?? payload.studentSummary ?? "", payload.status ?? "Verification required", payload.dataClassification ?? "verified",
+        .bind(versionId, payload.title ?? "Untitled", payload.summary ?? payload.studentSummary ?? "", payload.dataClassification ?? "verified",
           payload.confidence ?? "Medium", payload.organizationId ?? null, payload.officialUrl ?? null, proposal.targetId));
     } else if (!existing?.isPublished) {
       statements.push(database.prepare("UPDATE content_records SET status = ?, is_published = 0, updated_at = CURRENT_TIMESTAMP WHERE id = ?")

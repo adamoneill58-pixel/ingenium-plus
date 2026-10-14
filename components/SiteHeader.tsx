@@ -1,65 +1,84 @@
 "use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
-const links = [
-  ["/explore", "Discover"],
-  ["/calendar", "Calendar"],
-  ["/my-campus", "My Campus"],
-  ["/collaborate", "Collaborate"],
-  ["/universities", "Universities"],
+import { ModeSwitcher } from "./ModeSwitcher";
+
+const primaryLinks = [
+  { href: "/", label: "Network" },
+  { href: "/explore", label: "Explore" },
+  { href: "/learning", label: "Learning" },
+  { href: "/student", label: "My Campus" },
 ];
+
+const secondaryLinks = [
+  { href: "/build", label: "Build & innovate" },
+  { href: "/opportunities", label: "Opportunities" },
+  { href: "/programmes", label: "Programmes" },
+  { href: "/events", label: "Events & mobility" },
+  { href: "/communities", label: "Communities" },
+  { href: "/platforms", label: "Platforms" },
+  { href: "/universities", label: "Universities" },
+  { href: "/my-journey", label: "My journey" },
+  { href: "/research", label: "Research & sources" },
+  { href: "/about", label: "About" },
+];
+
 export function SiteHeader() {
-  const path = usePathname();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  const active = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+
   return (
-    <header className="site-header campus-header">
+    <header className="site-header">
       <div className="site-header__inner">
         <Link className="brand-lockup" href="/" aria-label="INGENIUM+ home">
-          <Image
-            src="/assets/brand/ingenium-horizontal-colour.svg"
-            width={166}
-            height={66}
-            alt="INGENIUM European University"
-            priority
-          />
-          <span className="plus-wordmark">PLUS</span>
+          {/* The image is an unmodified official INGENIUM media-kit asset. */}
+          <Image src="/assets/brand/ingenium-horizontal-colour.svg" alt="INGENIUM European University" width={219} height={87} priority />
+          <span className="version-chip">PLUS · 1.5.1</span>
         </Link>
+
+        <ModeSwitcher />
+
         <nav className="desktop-nav" aria-label="Main navigation">
-          {links.map(([href, label]) => (
-            <Link
-              key={href}
-              href={href}
-              className={path.startsWith(href) ? "is-active" : ""}
-            >
-              {label}
+          {primaryLinks.map((link) => (
+            <Link key={link.href} className={active(link.href) ? "is-active" : ""} href={link.href} onClick={() => setOpen(false)}>
+              {link.label}
             </Link>
           ))}
+          <details className="more-menu">
+            <summary>More</summary>
+            <div className="more-menu__panel">
+              {secondaryLinks.map((link) => (
+                <Link key={link.href} className={active(link.href) ? "is-active" : ""} href={link.href}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </details>
         </nav>
-        <Link href="/explore" className="header-cta">
-          Explore the campus <ArrowUpRight size={16} />
-        </Link>
+
         <button
           className="menu-button"
+          type="button"
           aria-expanded={open}
-          aria-controls="campus-mobile-nav"
-          aria-label={open ? "Close navigation" : "Open navigation"}
-          onClick={() => setOpen((v) => !v)}
+          aria-controls="mobile-navigation"
+          onClick={() => setOpen((value) => !value)}
         >
-          {open ? <X /> : <Menu />}
+          {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
         </button>
       </div>
+
       {open && (
-        <nav
-          id="campus-mobile-nav"
-          className="mobile-nav"
-          aria-label="Mobile navigation"
-        >
-          {links.map(([href, label]) => (
-            <Link key={href} href={href} onClick={() => setOpen(false)}>
-              {label}
+        <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation">
+          {[...primaryLinks, ...secondaryLinks, { href: "/staff", label: "Staff workspace" }].map((link) => (
+            <Link key={link.href} className={active(link.href) ? "is-active" : ""} href={link.href} onClick={() => setOpen(false)}>
+              {link.label}
             </Link>
           ))}
         </nav>

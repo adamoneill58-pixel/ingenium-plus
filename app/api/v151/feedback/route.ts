@@ -10,8 +10,6 @@ export async function POST(request: Request) {
     requirePermission(session.roles, "feedback:write");
     const input = asObject(await readJson(request));
     const resultId = requiredText(input, "resultId", 180);
-    const own = await database.prepare("SELECT rr.id FROM recommendation_results rr JOIN recommendation_runs run ON run.id=rr.run_id WHERE rr.id=? AND run.profile_id=?").bind(resultId, session.profileId).first();
-    if (!own) return jsonResponse({error:"Recommendation result not found"},404);
     const signal = requiredText(input, "signal", 40);
     if (!["useful", "not_useful", "saved", "dismissed", "contacted", "applied"].includes(signal)) return jsonResponse({ error: "Unsupported feedback signal" }, 400);
     await database.prepare(`INSERT INTO recommendation_feedback (id, result_id, profile_id, signal, comment) VALUES (?, ?, ?, ?, ?)

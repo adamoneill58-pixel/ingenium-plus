@@ -1,5 +1,20 @@
-import { CampusWorkspace } from "@/components/v2/CampusWorkspace";
-import { getDiscoveryData } from "@/lib/v2/catalogue";
-const learning={};
-export const metadata={title:"Learning"};
-export default async function LearningPage(){const d=await getDiscoveryData();return <main id="main-content" className="campus-main inner-campus"><header className="inner-hero"><span className="eyebrow">LEARNING BEYOND YOUR HOME CAMPUS</span><h1>Build a European semester.</h1><p>Explore courses, BIPs and programmes. Save a shortlist in My Campus; universities decide enrolment and credit recognition.</p></header><CampusWorkspace records={d.records.filter(r=>["university","course","module","microcredential","bip","programme","pathway","learning_resource"].includes(r.type))} initialFilters={learning}/></main>;}
+import type { Metadata } from "next";
+import { LearningWorkspace } from "@/components/LearningWorkspace";
+import { getRuntimeDataset } from "@/lib/v151/runtime-data";
+
+export const metadata: Metadata = {
+  title: "Learning",
+  description: "Discover cross-university courses, modules, BIPs, pathways and programmes across INGENIUM.",
+};
+
+export default async function LearningPage() {
+  const dataset = await getRuntimeDataset();
+  return (
+    <main id="main-content" className="page-shell page-shell--wide">
+      <section className="page-hero page-hero--compact">
+        <div><span className="eyebrow">Cross-university learning</span><h1>Build a European semester</h1><p>Discover current modules, courses, BIPs and programmes. Plan locally, understand likely fit and continue through the official delivery route.</p></div>
+      </section>
+      <LearningWorkspace records={dataset.records} />
+    </main>
+  );
+}

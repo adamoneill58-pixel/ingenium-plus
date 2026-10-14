@@ -1,5 +1,5 @@
 import { hasPermission } from "@/lib/v151/authorization";
-import { assertSameOrigin, enforceRateLimit, handleApiError, jsonResponse, requireSession } from "@/lib/v151/api";
+import { assertSameOrigin, enforceRateLimit, handleApiError, jsonResponse, requireDocumentsBucket, requireSession } from "@/lib/v151/api";
 
 export async function GET(_request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
@@ -8,7 +8,9 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
     const document = await database.prepare("SELECT uploaded_by AS uploadedBy,storage_key AS storageKey,original_name AS originalName,mime_type AS mimeType,visibility FROM documents WHERE id=?").bind(id).first<{ uploadedBy: string; storageKey: string; originalName: string; mimeType: string; visibility: string }>();
     if (!document) return jsonResponse({ error: "Document not found" }, 404);
     if (document.uploadedBy !== session.profileId && !hasPermission(session.roles, "document:review")) return jsonResponse({ error: "Document access denied" }, 403);
-    return jsonResponse({ error: "Document bytes remain quarantined until an approved scanning service is configured." }, 423);
+    const object = await requireDocumentsBucket().get(document.storageKey);
+    if (!object) return jsonResponse({ error: "Stored document is unavailable" }, 404);
+    return new Response(object.body, { headers: { "content-type": document.mimeType, "content-disposition": `attachment; filename="${document.originalName.replaceAll('"', "")}"`, "cache-control": "private, no-store", "x-content-type-options": "nosniff" } });
   } catch (error) { return handleApiError(error); }
 }
 

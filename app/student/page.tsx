@@ -1,3 +1,8 @@
-import Link from "next/link";
-import { PAUSED_MESSAGE } from "@/lib/v2/features";
-export default function StudentPage(){return <main id="main-content" className="campus-main inner-campus"><h1>Personal accounts are paused.</h1><p>{PAUSED_MESSAGE}</p><Link href="/my-campus" className="button button--primary">Use the temporary My Campus workspace</Link></main>;}
+import type { Metadata } from "next";
+import { StudentPortal } from "@/components/StudentPortal";
+
+export const metadata: Metadata = { title: "Student mode", description: "Persistent student profile, planning and explainable learning recommendations across INGENIUM." };
+
+export default function StudentPage() {
+  return <main id="main-content" className="page-shell page-shell--wide production-portal"><StudentPortal /></main>;
+}

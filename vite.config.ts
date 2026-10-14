@@ -48,11 +48,19 @@ export default defineConfig(async ({ command }) => {
     command === "build"
       ? (await import("@cloudflare/vite-plugin")).cloudflare({
           viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
-          ...(process.env.INGENIUM_DEPLOY_CONFIG ? { configPath: process.env.INGENIUM_DEPLOY_CONFIG } : { config: localBindingConfig }),
+          config: localBindingConfig,
         })
       : null;
 
   return {
+    resolve: {
+      alias: [
+        {
+          find: /^lucide-react$/,
+          replacement: "lucide-react/dist/cjs/lucide-react.js",
+        },
+      ],
+    },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,
