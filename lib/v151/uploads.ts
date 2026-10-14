@@ -1,5 +1,5 @@
 import { audit } from "./repository";
-import { sha256Hex, validateUploadMetadata, MAX_UPLOAD_BYTES } from "./upload-security";
+import { sha256Hex, validateUploadMetadata } from "./upload-security";
 
 export async function storeQuarantinedUpload(options: {
   database: D1Database;
@@ -10,7 +10,6 @@ export async function storeQuarantinedUpload(options: {
   callId?: string;
   file: File;
 }) {
-  if (options.file.size > MAX_UPLOAD_BYTES) throw Object.assign(new Error("Upload exceeds the size limit"), {status:413});
   const buffer = await options.file.arrayBuffer();
   const metadata = validateUploadMetadata(options.file.name, options.file.type, buffer.byteLength, new Uint8Array(buffer));
   const digest = await sha256Hex(buffer);

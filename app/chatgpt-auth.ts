@@ -1,8 +1,6 @@
-import { verifyAccessToken } from "@/lib/v2/identity";
-import { getRuntimeBindings } from "@/lib/v151/bindings";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { type ChatGPTUser } from "@/lib/v151/chatgpt-user";
+import { chatGPTUserFromHeaders, type ChatGPTUser } from "@/lib/v151/chatgpt-user";
 
 export type { ChatGPTUser } from "@/lib/v151/chatgpt-user";
 const SIGN_IN_PATH = "/signin-with-chatgpt";
@@ -11,7 +9,7 @@ const CALLBACK_PATH = "/callback";
 
 export async function getChatGPTUser(): Promise<ChatGPTUser | null> {
   const requestHeaders = await headers();
-  return verifyAccessToken(requestHeaders.get("Cf-Access-Jwt-Assertion"), getRuntimeBindings());
+  return chatGPTUserFromHeaders(requestHeaders);
 }
 
 export async function requireChatGPTUser(

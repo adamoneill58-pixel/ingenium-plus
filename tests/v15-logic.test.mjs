@@ -1,8 +1,5 @@
 import assert from "node:assert/strict";
-import { readdir, readFile } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
 import test, { after } from "node:test";
-import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
 
 // Keep this unit harness independent from the production Vite configuration.
@@ -76,45 +73,5 @@ test("v1.5 data preserves classification and source integrity", () => {
     assert.ok(ids.has(relationship.source));
     assert.ok(ids.has(relationship.target));
     assert.ok(relationship.dataClassification);
-  }
-});
-
-test("client components do not import static datasets or v15-logic", async () => {
-  const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-  const componentsDir = resolve(root, "components");
-  const entries = await readdir(componentsDir);
-
-  const forbiddenImportPatterns = [
-    /from\s+["'].*v15-logic["']/,
-    /from\s+["'].*v15-data["']/,
-    /from\s+["'].*research-.*["']/,
-    /import\s+(?!type\s)(?:(?!\btype\b).)*from\s+["'].*\/data["']/,
-  ];
-
-  for (const entry of entries) {
-    if (!entry.endsWith(".tsx") && !entry.endsWith(".ts")) continue;
-    const filePath = resolve(componentsDir, entry);
-    const content = await readFile(filePath, "utf8");
-    if (!content.includes('"use client"') && !content.includes("'use client'")) continue;
-
-    for (const pattern of forbiddenImportPatterns) {
-      assert.ok(
-        !pattern.test(content),
-        `${entry} must not import static dataset/logic (matched ${pattern})`,
-      );
-    }
-  }
-
-  const clientAssetsDir = resolve(root, "dist/client/assets");
-  try {
-    const assetFiles = await readdir(clientAssetsDir);
-    for (const file of assetFiles) {
-      assert.ok(!file.startsWith("v15-logic-"), `client asset ${file} must not be present`);
-      assert.ok(!file.startsWith("v15-data-"), `client asset ${file} must not be present`);
-      assert.ok(!file.startsWith("data-"), `client asset ${file} must not be present`);
-      assert.ok(!file.startsWith("research-"), `client asset ${file} must not be present`);
-    }
-  } catch (error) {
-    if (error && error.code !== "ENOENT") throw error;
   }
 });

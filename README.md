@@ -1,27 +1,76 @@
-# INGENIUM+ v2.0
+# INGENIUM+ v1.5.1
 
-A student-led European campus discovery workspace: one catalogue, explained connections, a calendar, temporary planning and an isolated academic collaboration demonstration.
+INGENIUM+ is a graph-first discovery and collaboration platform for the INGENIUM European University. A shared evidence graph supports public discovery, persistent Student Mode and verified Staff Mode.
 
 ## Run locally
 
-Use Node 22 from `.nvmrc`, then `npm ci` and `npm run dev`. Open the URL printed by Vite. No account, cloud credentials or external AI service is required. Local development uses a clearly labelled research snapshot. Production without a configured database shows an unavailable state; it does not pretend to use live data.
+Use Node.js 22 LTS. The checked-in `.nvmrc` selects the verified version when
+`nvm` is installed.
 
-## What is available
+```bash
+nvm install
+nvm use
+npm ci
+npm run dev
+```
 
-- Discover: shared search and filters, List / Network / Map, all ten university anchors, selected-record details and official links. Heavy graph code loads on request.
-- Calendar: agenda, month and upcoming deadlines; separate activity/deadline/nomination/online entries; optional fictional examples; individual `.ics` exports with selected alarms. Conflicting or approximate dates cannot be exported as confirmed. Discovery filters and selection survive the calendar link.
-- My Campus: optional interests, explained suggestions, temporary shortlist, comparison, upcoming actions, advisory credit totals and JSON plan export. State lives in page memory and is lost on refresh; old browser storage is neither read nor deleted.
-- Collaborate: fictional course-to-colleague demonstration with reviewed tags, complementary expertise and a draft expression of interest. No real academic directory or messages.
-- Pilot: three proposed campus landing routes, thirteen-question survey preview and aggregate services. Collection defaults off and requires configured dates and edge controls. Team dashboard, weekly suppressed CSV and source-review tools require verified Access identity plus an explicit database role.
+Open the local URL printed by Vite, normally `http://localhost:3000`. If that port is occupied, Vite selects the next available port.
 
-Real student/staff workflows, profile writes, unscanned downloads and the entire legacy private API are paused in this release. The product is a pilot prototype; no adoption, participant or completed-application claim is made.
+Local development intentionally runs without D1, R2 or trusted deployment
+identity bindings. The public graph uses its labelled verified-seed fallback;
+protected Student and Staff mutations require the provisioned staging runtime.
 
-## Checks
+For a production-equivalent check:
 
-`npm test` runs data integrity, legacy logic/security/workflows, v2 behavioural tests, TypeScript, the production build and rendered routes. `npm run lint` checks source. `npm run check:links` validates public URL syntax; `npm run check:links:live` is an optional external HTTP check. `npm run data:import` validates the canonical v2 dataset and writes an ignored dry-run SQL file. The CI workflow runs lint, tests and URL syntax checks on pull requests; repository rules still need to be enabled by an owner.
+```bash
+npm test
+npm run start
+```
 
-## Handover
+## Product areas
 
-Start with [Delivery and acceptance](docs/v2/DELIVERY.md), [Cloud and maintenance runbook](docs/v2/RUNBOOK.md), and [Pilot evaluation pack](docs/v2/PILOT-PACK.md). [The commissioned specification](docs/v2/SPEC.md) governs scope; [the previous README](docs/v2/LEGACY-README-v151.md) is historical and does not describe active private functionality.
+- `/` — graph-first Network workspace with Geography and Network layouts.
+- `/explore` — cross-dataset search and filters with cards or graph results.
+- `/learning` — learning catalogue and browser-local semester builder.
+- `/records/[slug]` — evidence-rich record pages, connections, history where available, sample people and contextual sample Chats.
+- `/student` — persistent private student profile and database-generated, explained module recommendations.
+- `/staff` — verified academic profile, call/module submission, uploads, staff recommendations and contribution status.
+- `/staff/review` — reviewer proposal and document queue.
+- `/staff/data-health` — operational content, refresh, upload and recommendation evidence.
+- `/my-campus` and `/my-journey` — preserved optional browser-local planning utilities.
+- `/research` — source ledger and freshness model.
 
-This branch is a review candidate. A build, a merged PR, an authorised deployment and a verified public pilot are separate outcomes.
+## Useful commands
+
+- `npm run validate:data` — v1.4 base-archive entity, source, journey and relationship integrity.
+- `npm run test:logic` — v1.5 status, degrees, recommendations, semester and aggregate-data tests.
+- `npm run test:v151` — schema, clean seed, backup/restore, permissions, upload security and recommendation tests.
+- `npm run db:seed:generate` — regenerate the idempotent D1 seed from the typed v1.5 dataset.
+- `npm run recommendations:evaluate` — compare the synthetic hybrid regression fixture with a lexical baseline.
+- `npm run typecheck` — strict TypeScript check.
+- `npm run lint` — React and Next linting.
+- `npm run build` — production Cloudflare Worker build.
+- `npm test` — full data, logic, TypeScript, build and rendered-route regression suite.
+- `npm run check:links:live` — optional live HTTP check for official links.
+
+## Trust and privacy boundaries
+
+- Explicit dates drive statuses when available; stale “open” badges do not override passed deadlines.
+- Conflicting official claims are shown as `Verification required` rather than silently resolved.
+- Every record is classified as verified, INGENIUM+ calculated or sample information.
+- Official application, enrolment, nomination and recognition systems remain authoritative.
+- Student and Staff modes use persistent private profiles when D1 is provisioned. Legacy semester/journey planners remain explicitly browser-local.
+- Staff discovery is opt-in; mode switching never changes a membership or permission.
+- Drafts, unreviewed contributions and uploaded documents are never public.
+- Student profiles and Chats in the public dataset are fictional, visibly labelled samples.
+- The seed evidence refresh date is 13 September 2026; production refresh attempts are stored separately and must not be claimed unless a successful run exists.
+
+## Persistence
+
+The existing native deployment architecture is used: Cloudflare D1 as `DB`, private R2 as `DOCUMENTS`, and trusted ChatGPT authentication headers. Apply `drizzle/0000_v151_production.sql`, then the separate idempotent import at `db/seed/v151.sql`, to a clean staging database. Principal public routes use published D1 data when the binding exists and the verified seed fallback otherwise.
+
+See `docs/VNEXT_PRODUCTION_PLAN.md`, `docs/PRODUCTION_ARCHITECTURE.md` and `docs/PRODUCTION_PROGRESS.md` before provisioning or deployment.
+
+## Deployment
+
+The Sites project link and binding names are stored in `.openai/hosting.json`. Saving or committing does not publish. Production publication, real users and real private documents require explicit approval. Follow `docs/DEPLOYMENT_RUNBOOK.md`; the v1.5.1 commit is staging-ready code, not a production launch.

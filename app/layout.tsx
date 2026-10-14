@@ -1,4 +1,3 @@
-import { pilotWindow } from "@/lib/v2/window";
 import type { Metadata } from "next";
 import "@fontsource/montserrat/400.css";
 import "@fontsource/montserrat/500.css";
@@ -6,16 +5,13 @@ import "@fontsource/montserrat/600.css";
 import "@fontsource/montserrat/700.css";
 import "@fontsource/montserrat/800.css";
 import "./globals.css";
-import "./v2.css";
-import { PilotContext } from "@/components/v2/PilotContext";
-import { getRuntimeBindings } from "@/lib/v151/bindings";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.PUBLIC_BASE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL("https://ingenium-plus.pages.dev"),
   title: {
-    default: "INGENIUM+ — Find your next connection",
+    default: "INGENIUM+ v1.5.1 — Find your path through one European campus",
     template: "%s — INGENIUM+",
   },
   description:
@@ -26,7 +22,7 @@ export const metadata: Metadata = {
     shortcut: "/assets/brand/ingenium-main-colour.svg",
   },
   openGraph: {
-    title: "INGENIUM+ — Find your next connection",
+    title: "INGENIUM+ v1.5.1 — Find your path through one European campus",
     description:
       "Explore verified programmes, mobility, projects, communities and student opportunities across INGENIUM.",
     type: "website",
@@ -48,19 +44,15 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const env=getRuntimeBindings();
-  const pilotEnabled=pilotWindow(env).enabled;
   return (
     <html lang="en-GB">
       <body>
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
-        <PilotContext enabled={pilotEnabled}>
         <SiteHeader />
         {children}
         <SiteFooter />
-        </PilotContext>
       </body>
     </html>
   );

@@ -1,5 +1,4 @@
 "use client";
-import { memoryString, memoryWrite } from "@/lib/v2/memory-store";
 
 import {
   ArrowDown,
@@ -11,8 +10,8 @@ import {
   Trash2,
 } from "lucide-react";
 import Link from "next/link";
-import { useMemo, useSyncExternalStore } from "react";
-import type { Entity, Source } from "@/lib/data";
+import { useSyncExternalStore } from "react";
+import { entityById, sourceById, type Entity } from "@/lib/data";
 import { StatusBadge } from "./StatusBadge";
 
 const SAVED_KEY = "ingenium-plus-v14-saved";
@@ -26,7 +25,7 @@ type PlannerState = Record<string, { state?: StepState; notes?: string }>;
 function readList(key: string): string[] {
   if (typeof window === "undefined") return [];
   try {
-    const value = JSON.parse((memoryString(key)) ?? "[]");
+    const value = JSON.parse(window.localStorage.getItem(key) ?? "[]");
     return Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : [];
   } catch {
     return [];
@@ -36,7 +35,7 @@ function readList(key: string): string[] {
 function readPlanner(): PlannerState {
   if (typeof window === "undefined") return {};
   try {
-    const value = JSON.parse((memoryString(PLANNER_KEY)) ?? "{}");
+    const value = JSON.parse(window.localStorage.getItem(PLANNER_KEY) ?? "{}");
     return value && typeof value === "object" && !Array.isArray(value) ? value : {};
   } catch {
     return {};
@@ -45,7 +44,7 @@ function readPlanner(): PlannerState {
 
 function getSnapshot() {
   if (typeof window === "undefined") return "[]|[]|{}";
-  return `${(memoryString(JOURNEY_KEY)) ?? "[]"}|${(memoryString(SAVED_KEY)) ?? "[]"}|${(memoryString(PLANNER_KEY)) ?? "{}"}`;
+  return `${window.localStorage.getItem(JOURNEY_KEY) ?? "[]"}|${window.localStorage.getItem(SAVED_KEY) ?? "[]"}|${window.localStorage.getItem(PLANNER_KEY) ?? "{}"}`;
 }
 
 function subscribe(callback: () => void) {
@@ -65,16 +64,8 @@ function emitChange() {
   window.dispatchEvent(new CustomEvent("ingenium-saved-change"));
 }
 
-export function MyJourneyManager({
-  records = [],
-  sources = [],
-}: {
-  records?: Entity[];
-  sources?: Source[];
-} = {}) {
+export function MyJourneyManager() {
   useSyncExternalStore(subscribe, getSnapshot, () => "[]|[]|{}");
-  const entityById = useMemo(() => new Map(records.map((r) => [r.id, r])), [records]);
-  const sourceById = useMemo(() => new Map(sources.map((s) => [s.id, s])), [sources]);
   const journeyIds = readList(JOURNEY_KEY);
   const savedIds = readList(SAVED_KEY);
   const planner = readPlanner();
@@ -84,7 +75,7 @@ export function MyJourneyManager({
 
   const updatePlanner = (id: string, patch: Partial<PlannerState[string]>) => {
     const current = readPlanner();
-    memoryWrite(PLANNER_KEY, JSON.stringify({ ...current, [id]: { ...current[id], ...patch } }));
+    window.localStorage.setItem(PLANNER_KEY, JSON.stringify({ ...current, [id]: { ...current[id], ...patch } }));
     emitChange();
   };
 
@@ -94,16 +85,16 @@ export function MyJourneyManager({
     const nextIndex = index + direction;
     if (index < 0 || nextIndex < 0 || nextIndex >= ids.length) return;
     [ids[index], ids[nextIndex]] = [ids[nextIndex], ids[index]];
-    memoryWrite(JOURNEY_KEY, JSON.stringify(ids));
+    window.localStorage.setItem(JOURNEY_KEY, JSON.stringify(ids));
     emitChange();
   };
 
   const remove = (id: string) => {
-    memoryWrite(JOURNEY_KEY, JSON.stringify(readList(JOURNEY_KEY).filter((value) => value !== id)));
-    memoryWrite(SAVED_KEY, JSON.stringify(readList(SAVED_KEY).filter((value) => value !== id)));
+    window.localStorage.setItem(JOURNEY_KEY, JSON.stringify(readList(JOURNEY_KEY).filter((value) => value !== id)));
+    window.localStorage.setItem(SAVED_KEY, JSON.stringify(readList(SAVED_KEY).filter((value) => value !== id)));
     const nextPlanner = readPlanner();
     delete nextPlanner[id];
-    memoryWrite(PLANNER_KEY, JSON.stringify(nextPlanner));
+    window.localStorage.setItem(PLANNER_KEY, JSON.stringify(nextPlanner));
     emitChange();
   };
 
