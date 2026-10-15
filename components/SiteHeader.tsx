@@ -6,10 +6,11 @@ import { useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 const links = [
   ["/explore", "Discover"],
+  ["/learning", "Learn"],
+  ["/community", "Community"],
   ["/calendar", "Calendar"],
   ["/my-campus", "My Campus"],
   ["/collaborate", "Collaborate"],
-  ["/universities", "Universities"],
 ];
 export function SiteHeader() {
   const path = usePathname();

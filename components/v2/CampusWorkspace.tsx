@@ -38,7 +38,7 @@ export function CampusWorkspace({
   initialFilters?: DiscoveryFilters;
 }) {
   const [filters, setFilters] = useState<DiscoveryFilters>(initialFilters);
-  const [view, setView] = useState<View>("list");
+  const [view, setView] = useState<View>("map");
   const [selected, setSelected] = useState("");
   const [ready, setReady] = useState(false);
   const [limit, setLimit] = useState(12);
@@ -52,11 +52,13 @@ export function CampusWorkspace({
       setFilters(f);
       const v = p.get("view");
       setView(
-        v === "network" || v === "map"
+        v === "network" || v === "map" || v === "list"
           ? v
           : p.get("layout") === "network"
             ? "network"
-            : "list",
+            : p.get("layout") === "list"
+              ? "list"
+              : "map",
       );
       setSelected(p.get("node") ?? "");
       setReady(true);
@@ -69,7 +71,7 @@ export function CampusWorkspace({
     if (!ready) return;
     const p = new URLSearchParams();
     for (const k of keys) if (filters[k]) p.set(k, filters[k]!);
-    if (view !== "list") p.set("view", view);
+    if (view !== "map") p.set("view", view);
     if (selected) p.set("node", selected);
     history.replaceState(
       null,
@@ -314,14 +316,15 @@ export function CampusWorkspace({
           <CampusMap
             universities={universities}
             records={results}
+            selected={selected}
+            onSelect={select}
             onCampus={(id) => {
               change("university", id);
-              setView("list");
             }}
           />
         ) : null}
       </Suspense>
-      {current && (
+      {current && view !== "map" && (
         <section className="selected-record" aria-labelledby="selected-title">
           <button
             className="close-selection"

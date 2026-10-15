@@ -211,12 +211,8 @@ test("migration and repeatable import preserve reviewed records, keys and privac
       .get().title,
     "Reviewed title",
   );
-  assert.ok(
-    !db
-      .prepare("PRAGMA table_info(audit_events)")
-      .all()
-      .some((c) => c.name === "ip_hash"),
-  );
+  assert.ok(db.prepare("PRAGMA table_info(audit_events)").all().some((c) => c.name === "ip_hash"), "Upgrade preserves legacy audit data");
+  assert.ok(!db.prepare("PRAGMA table_info(usage_daily_counts)").all().some((c) => /ip|subject|session|user_agent/.test(c.name)), "New pilot aggregates have no identifier fields");
   db.exec(
     "INSERT INTO profiles(id,auth_subject,email,display_name) VALUES('p','p','test@example.invalid','Test')",
   );

@@ -11,6 +11,7 @@ export interface IngeniumRuntimeBindings {
   PILOT_DURATION_DAYS?: string;
   RETENTION_APPROVED?: string;
   PUBLIC_BASE_URL?: string;
+  PUBLIC_CATALOGUE_MODE?: string;
 }
 
 const BINDINGS_KEY = Symbol.for("ingenium.runtime.bindings");

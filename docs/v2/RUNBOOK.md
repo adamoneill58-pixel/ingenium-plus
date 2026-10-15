@@ -8,6 +8,10 @@ Use Node from `.nvmrc` and the lockfile. `npm ci`, `npm run dev`. Local research
 
 Local public discovery needs no identity. Production defaults to `ALLOW_STATIC_FALLBACK=false`; missing bindings or migration failures produce an unavailable/setup state. All `/api/v151/*` routes and private profile workflows remain paused independently of UI mode. No automatic profile/session/administrator bootstrap occurs on a visitor GET.
 
+The connected-campus hosted release explicitly sets `PUBLIC_CATALOGUE_MODE=release-snapshot`. This mode serves the reviewed, public-only v2 catalogue bundled with the Worker, consistently across discovery, details, network and calendar; it performs no request-time seed or database import. Its source label is “Source-backed release snapshot”. Switch back to database mode only after a reviewed import has been applied and verified through the configured database import workflow. The checked-in refresh handler is available, but no recurring hosted source-refresh schedule is activated by this release.
+
+Before the first hosted v2 migration, the live database overview confirmed only the v1 tables: `calendar_events` and pilot tables were absent. The unapplied v2 migration was adjusted to preserve the legacy audit column instead of dropping historical data. All new pilot aggregate tables exclude identifiers, and private account routes remain paused. No existing row or column is removed by the upgrade.
+
 ## Own Cloudflare account, separate staging and production
 
 An authorised operator creates two separate Workers/D1/R2 resource sets and supplies actual names and IDs. Keep buckets private, accounts protected and secrets in the deployment control plane. Use `.env.example` as a list of inputs, not a file to commit with values. The generator requires `INGENIUM_WORKER_NAME`, `INGENIUM_DB_ID`, `INGENIUM_R2_BUCKET`, `PUBLIC_BASE_URL`; Access domain and AUD remain server configuration. Set one environment's values at a time.

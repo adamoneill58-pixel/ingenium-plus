@@ -1,5 +1,32 @@
-import { CampusWorkspace } from "@/components/v2/CampusWorkspace";
+import { LearningHub } from "@/components/v2/LearningHub";
 import { getDiscoveryData } from "@/lib/v2/catalogue";
-const learning={};
-export const metadata={title:"Learning"};
-export default async function LearningPage(){const d=await getDiscoveryData();return <main id="main-content" className="campus-main inner-campus"><header className="inner-hero"><span className="eyebrow">LEARNING BEYOND YOUR HOME CAMPUS</span><h1>Build a European semester.</h1><p>Explore courses, BIPs and programmes. Save a shortlist in My Campus; universities decide enrolment and credit recognition.</p></header><CampusWorkspace records={d.records.filter(r=>["university","course","module","microcredential","bip","programme","pathway","learning_resource"].includes(r.type))} initialFilters={learning}/></main>;}
+
+export const metadata = { title: "Learning" };
+
+const learningTypes = new Set([
+  "course",
+  "module",
+  "microcredential",
+  "bip",
+  "programme",
+  "pathway",
+  "learning_resource",
+]);
+
+export default async function LearningPage() {
+  const data = await getDiscoveryData();
+  const records = data.records.filter((record) => learningTypes.has(record.type));
+  return (
+    <main id="main-content" className="campus-main inner-campus">
+      <header className="inner-hero">
+        <span className="eyebrow">LEARNING BEYOND YOUR HOME CAMPUS</span>
+        <h1>Build a European semester.</h1>
+        <p>
+          Explore real courses, BIPs and programmes, then step into a clearly
+          labelled prototype of the learning experience around them.
+        </p>
+      </header>
+      <LearningHub records={records} />
+    </main>
+  );
+}

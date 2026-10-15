@@ -5,7 +5,7 @@ import { buildImportSql } from "../scripts/import-dataset.mjs";
 import assert from "node:assert/strict";
 import test from "node:test";
 
-async function render(pathname = "/") {
+async function render(pathname = "/", environment = {}) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set(
     "test",
@@ -19,6 +19,7 @@ async function render(pathname = "/") {
     {
       ALLOW_STATIC_FALLBACK: "true",
       ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) },
+      ...environment,
     },
     { waitUntil() {}, passThroughOnException() {} },
   );
@@ -40,6 +41,21 @@ test("server-renders the complete INGENIUM+ homepage", async () => {
   );
 });
 
+test("production snapshot mode serves the reviewed public catalogue without database writes", async () => {
+  const response = await render("/api/v2/catalogue", {
+    ALLOW_STATIC_FALLBACK:"false",
+    PUBLIC_CATALOGUE_MODE:"release-snapshot",
+    DB:{prepare(){throw new Error("Release snapshot must not read or mutate the database");}},
+  });
+  assert.equal(response.status,200);
+  const data = await response.json();
+  assert.equal(data.storage,"release-snapshot");
+  assert.equal(data.records.length,222);
+  assert.ok(data.records.every((record)=>record.type !== "student" && record.dataClassification !== "sample"));
+  const html = await (await render("/",{PUBLIC_CATALOGUE_MODE:"release-snapshot"})).text();
+  assert.match(html,/Source-backed release snapshot/);
+});
+
 for (const [pathname, heading] of [
   ["/opportunities", "Choose your next move"],
   ["/programmes", "Study across one European campus"],
@@ -58,6 +74,8 @@ for (const [pathname, heading] of [
   ["/about-pilot", "About this pilot"],
   ["/pilot/mtu", "A new connection starts here"],
   ["/learning", "Build a European semester"],
+  ["/community", "Find the work"],
+  ["/learn/clarity-ai-studio", "CLARITY-AI studio"],
   ["/my-campus", "Make the campus yours"],
   ["/student", "Personal accounts are paused"],
   ["/staff", "Staff accounts are paused"],

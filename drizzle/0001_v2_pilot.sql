@@ -11,7 +11,8 @@ CREATE TABLE survey_answer_counts(question INTEGER NOT NULL CHECK(question BETWE
 CREATE TABLE survey_free_text(id TEXT PRIMARY KEY,question INTEGER NOT NULL CHECK(question IN (12,13)),iso_week TEXT NOT NULL,text TEXT NOT NULL,flagged INTEGER NOT NULL DEFAULT 1 CHECK(flagged IN (0,1)),reviewed INTEGER NOT NULL DEFAULT 0);
 CREATE TABLE pilot_team_memberships(subject TEXT PRIMARY KEY,role TEXT NOT NULL CHECK(role IN ('pilot_team','administrator')),granted_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
 CREATE TABLE pilot_audit(id TEXT PRIMARY KEY,actor_subject TEXT NOT NULL,action TEXT NOT NULL,target TEXT NOT NULL,created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
-ALTER TABLE audit_events DROP COLUMN ip_hash;
+-- Legacy audit data is retained. New pilot aggregates never write identifiers.
+-- Any historical-data deletion requires a separately approved retention run.
 
 CREATE TRIGGER v2_lock_student_insert BEFORE INSERT ON student_profiles BEGIN SELECT RAISE(ABORT,'Profile writes paused during pilot'); END;
 CREATE TRIGGER v2_lock_student_update BEFORE UPDATE ON student_profiles BEGIN SELECT RAISE(ABORT,'Profile writes paused during pilot'); END;

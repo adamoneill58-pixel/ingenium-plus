@@ -16,7 +16,7 @@ export async function GET() {
     {
       headers: {
         "cache-control":
-          d.storage === "database" ? "public,max-age=30" : "no-store",
+          d.storage === "database" || d.storage === "release-snapshot" ? "public,max-age=30" : "no-store",
       },
     },
   );

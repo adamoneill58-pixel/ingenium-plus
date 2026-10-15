@@ -12,6 +12,9 @@ async function fallback() {
       calendarEvents: [],
       storage: "unavailable" as const,
     };
+  return {...await getPublicReleaseSnapshot(), storage:"static-fallback" as const};
+}
+export async function getPublicReleaseSnapshot(): Promise<{records:Entity[]; relationships:Relationship[]; sources:Source[]; calendarEvents:CalendarEntry[]; storage:"release-snapshot"}> {
   const { default: d } = await import("../../data/catalogue/v2.json");
   const records = (d.records as Entity[]).filter((r) => r.type !== "student");
   const ids = new Set(records.map((r) => r.id));
@@ -27,7 +30,7 @@ async function fallback() {
       void _notes;
       return s;
     }),
-    storage: "static-fallback" as const,
+    storage: "release-snapshot" as const,
   };
 }
 import type { Entity, Relationship, Source } from "@/lib/data";

@@ -25,7 +25,7 @@ export async function GET(request: Request) {
     {
       headers: {
         "cache-control":
-          d.storage === "database"
+          d.storage === "database" || d.storage === "release-snapshot"
             ? "public,max-age=30,stale-while-revalidate=60"
             : "no-store",
       },

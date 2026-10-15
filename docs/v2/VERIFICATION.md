@@ -1,5 +1,17 @@
 # Verification evidence — 14 October 2026
 
+## Connected-campus verification — 15 October 2026
+
+The new connected-campus implementation passed 84 automated tests: 6 logic, 15 existing database/security/workflow, 32 v2 and 31 production Worker/rendered-route checks. TypeScript, production build and ESLint passed. The production-snapshot integration test verifies all 222 public records can be served with database access disabled and that no synthetic people enter the public catalogue.
+
+Additional behavioural tests cover map projection round trips, every multi-campus association, progressive clustering without lost points, and rejected external-embed injection. The shared List URL now survives reload. The interactive map is a small, purpose-built tile map; total client JavaScript gzip is 295,314 bytes, under the unchanged 330,000-byte budget. The map chunk alone is 4,161 bytes gzip. Totals include optional network code and all route chunks.
+
+Browser QA at desktop 1440×1000 and phone 390×844 verified campus focus, cluster expansion, selected evidence panel, List URL restoration, local feed creation, group join/leave, local messaging, course task progress and discussion replies. Checked phone discovery and learning documents had no horizontal overflow. The official INGENIUM YouTube upload stream rendered a real video preview after visitor action. No console errors were observed in those checked desktop journeys.
+
+The current desktop map capture is `screens/connected-map-desktop.jpg`. It demonstrates the map interface, not live participation. The first heavy-library implementation was removed after it failed the established bundle budget; the final implementation passes without increasing the limit.
+
+The hosted release uses the reviewed public catalogue snapshot. The live v1 database overview was inspected before packaging; the unapplied v2 migration now preserves the legacy audit field while new pilot aggregates contain no identifier fields. No live database import or source-refresh schedule is claimed. Native Sites deployment status supplies the final public-release evidence separately.
+
 Verification covers the local review candidate. No staged/public v2 deployment, actual cron run, provider policy, real identity or participant outcome is asserted.
 
 ## Automated checks

@@ -54,7 +54,20 @@ Primary source register: the [Drive specification](https://docs.google.com/docum
 
 ## Design and representative screens
 
-`app/v2.css` contains shared green/teal, paper, accent, spacing and type tokens. Official logo is reused. Navigation centres Discover, Calendar, My Campus, Collaborate and Universities. Cards show availability in text, source freshness, conditional funding and official routes. Heavy network rendering is optional and has an equivalent List view. The map locates university anchors using the existing European projection; host location is not an asserted venue for an online course. See `screens/` for browser captures.
+`app/v2.css` contains shared green/teal, paper, accent, spacing and type tokens. Official logo is reused. Navigation centres Discover, Learn, Community, Calendar, My Campus and Collaborate. Cards show availability in text, source freshness, conditional funding and official routes. Heavy network rendering is optional and has an equivalent List view. A small purpose-built slippy map now supplies the default interactive view, clustering all filtered host-connected records around ten geographic university anchors without adding a large mapping bundle. Host location is not asserted as an opportunity venue. Community and learning screens use persistent demo labels and separate their synthetic activity from real catalogue records. See `screens/` for browser captures; replace the older map capture during final browser verification.
+
+## Connected-campus v2.0 slice
+
+| Capability | Implemented state | Boundary / dependency |
+| --- | --- | --- |
+| Interactive map | Slippy map, pan/zoom, clusters, zoom disclosure, filters, campus focus, record selection, evidence route and List/Network alternatives | OpenStreetMap community tiles suit this prototype; choose an appropriate production tile service for material traffic |
+| Source governance | Registry for the alliance and all ten partners; validation in the data check; source census and review workflow | Automated extraction remains subject to robots, access, translation quality and reviewer capacity |
+| Community | Native feed, demo profiles, groups, join/leave, reactions, saves and local chat linked to real records | Entire social layer is synthetic and page-memory only; no real account, message or participation claim |
+| Learning | Real learning catalogue plus two interactive sample spaces with modules, tasks, progress, discussion and people | No Canvas connection, enrolment, grades or academic record |
+| External content | Click-to-load, sandboxed, provider-specific YouTube/LinkedIn-post/public-calendar embed policy; official INGENIUM YouTube uploads configured | LinkedIn page/profile feeds are linked out; only eligible individual public posts can be embedded |
+| Homepage | Map-first hierarchy, compact utility navigation, real activity and explicitly synthetic community preview | Final acceptance still depends on browser QA and public-site deployment evidence |
+
+The source-backed content counts remain 222 public records, 985 relationships, 163 evidence sources and four explicit calendar events. The richer appearance must not be interpreted as current adoption or live community activity.
 
 ## Prioritised remaining backlog
 

@@ -282,3 +282,29 @@ Report plainly:
 Never call the whole platform complete because the build passes. Code readiness, staging verification, public release, pilot participation and institutional adoption are separate outcomes.
 
 Begin with the source and repository audit. Show the concise findings and first delivery slice, then continue through the work Adam has actually authorised.
+
+## 16. Connected-campus implementation addendum
+
+The commissioned v2.0 implementation extends the public discovery pilot without changing the identity, privacy or adoption boundaries above.
+
+### Functional map
+
+The homepage opens with a lightweight interactive slippy map backed by the same filtered records as List and Network. It uses ten geographic campus anchors, clustered opportunity points, zoom-based disclosure, campus filtering, record selection and an evidence/official-next-step panel. Opportunity positions show host association and are not asserted venues. The static Europe image is no longer the map implementation.
+
+### Real information and provenance
+
+The governed registry in `data/sources/registry.json` covers the alliance and all ten partners. `SOURCE_CENSUS.md` records coverage, gaps, import/review rules, map provenance, reuse limits and external-content policy. Existing D1 import, publication projection, scheduled status refresh, conflict state and reviewer routes remain the controlled publication path.
+
+### Community and learning
+
+The Community route combines real catalogue community records with an interactive synthetic feed, profiles, groups, reactions, saves and local chat. Every fictional surface has a persistent demo boundary; nothing is transmitted or persisted across refresh.
+
+The Learning route combines the real course/BIP/programme catalogue with Canvas-inspired sample spaces containing modules, tasks, progress, discussion and people. The sample spaces do not represent Canvas access, enrolment, grades or participation. A real Canvas connection remains dependent on institutional OAuth/LTI approval, scoped data access and governance.
+
+### External content
+
+The external-content component accepts only provider-specific identifiers and constructs iframe URLs for eligible LinkedIn public posts, YouTube videos/playlists and public Google Calendars. It rejects arbitrary iframe URLs and copied HTML, waits for an explicit visitor action before loading, uses a sandbox and provides a provider link. The current release includes the official INGENIUM YouTube channel upload playlist. LinkedIn profiles and full feeds remain links unless a supported public-post identifier is curated.
+
+### Product character
+
+The visual hierarchy places the map and search above dense text, adds activity and community signals, and keeps List as the accessible detail-heavy view. The overall pattern combines a professional network-style community surface with a learning-management-style course surface while retaining the graph and official-source route as the product’s distinctive core.

@@ -725,6 +725,7 @@ export const auditEvents = sqliteTable(
     action: text("action").notNull(),
     resourceType: text("resource_type").notNull(),
     resourceId: text("resource_id"),
+    ipHash: text("ip_hash"), // Legacy field retained for non-destructive upgrades; pilot writes never use it.
     metadataJson: text("metadata_json").notNull().default("{}"),
     createdAt: text("created_at")
       .notNull()
