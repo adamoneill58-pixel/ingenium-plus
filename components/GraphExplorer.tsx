@@ -83,6 +83,7 @@ const typeShapes: Record<EntityType, string> = {
   course: "round-rectangle",
   microcredential: "hexagon",
   student: "ellipse",
+  person: "ellipse",
   learning_resource: "barrel",
 };
 

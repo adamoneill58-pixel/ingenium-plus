@@ -14,6 +14,9 @@ import { discover, availability, type DiscoveryFilters } from "@/lib/v2/domain";
 import { typeLabels } from "@/lib/labels";
 import { OpportunityCard } from "./OpportunityCard";
 import { usePilotEvent } from "./PilotContext";
+import { useSimulation } from "./SimulationContext";
+import { simulationEntities, simulationHref, simSpaces, spaceEntityId } from "@/lib/v2/campus-simulation";
+import { connectionInfo, prioritiseConnections } from "@/lib/v2/simulation-state";
 const NetworkCanvas = lazy(() => import("./NetworkCanvas"));
 const CampusMap = lazy(() => import("./CampusMap"));
 type View = "list" | "network" | "map";
@@ -42,6 +45,10 @@ export function CampusWorkspace({
   const [selected, setSelected] = useState("");
   const [ready, setReady] = useState(false);
   const [limit, setLimit] = useState(12);
+  const [degree,setDegree]=useState("all");
+  const [showPeople,setShowPeople]=useState(true);
+  const {state,persona,personal}=useSimulation();
+  const allRecords=useMemo(()=>[...records,...simulationEntities(state.mode).filter((record)=>showPeople||record.type!=="person")],[records,state.mode,showPeople]);
   const send = usePilotEvent();
   useEffect(() => {
     const restore = () => {
@@ -61,6 +68,8 @@ export function CampusWorkspace({
               : "map",
       );
       setSelected(p.get("node") ?? "");
+      const d=p.get("degree");setDegree(d&&["1","2","3+"].includes(d)?d:"all");
+      setShowPeople(p.get("people")!=="hide");
       setReady(true);
     };
     queueMicrotask(restore);
@@ -69,16 +78,20 @@ export function CampusWorkspace({
   }, [initialFilters]);
   useEffect(() => {
     if (!ready) return;
-    const p = new URLSearchParams();
+    const p = new URLSearchParams(location.search);
+    for(const key of [...keys,"q","view","node","layout","degree","people"])p.delete(key);
     for (const k of keys) if (filters[k]) p.set(k, filters[k]!);
     if (view !== "map") p.set("view", view);
     if (selected) p.set("node", selected);
+    if(degree!=="all")p.set("degree",degree);
+    if(!showPeople)p.set("people","hide");
+    p.set("mode",state.mode);
     history.replaceState(
       null,
       "",
       `${location.pathname}${p.size ? `?${p}` : ""}`,
     );
-  }, [filters, view, selected, ready]);
+  }, [filters, view, selected, ready,degree,showPeople,state.mode]);
   const universities = useMemo(
     () => records.filter((r) => r.type === "university"),
     [records],
@@ -87,12 +100,12 @@ export function CampusWorkspace({
     () => [...new Set(records.flatMap((r) => r.themes))].sort(),
     [records],
   );
-  const results = useMemo(() => discover(records, filters), [records, filters]);
+  const results = useMemo(() => prioritiseConnections(discover(allRecords, filters),state.mode,personal,degree), [allRecords, filters,state.mode,personal,degree]);
   const networkRecords = useMemo(
     () => [...universities, ...results.filter((r) => r.type !== "university")],
     [universities, results],
   );
-  const current = records.find((r) => r.id === selected);
+  const current = allRecords.find((r) => r.id === selected);
   const select = useCallback((id: string) => setSelected(id), []);
   const change = (key: keyof DiscoveryFilters, value: string) => {
     setFilters((f) => ({ ...f, [key]: value }));
@@ -118,6 +131,8 @@ export function CampusWorkspace({
   }, [filters.query, results.length, ready, send]);
   return (
     <div className="discovery-workspace">
+      <div className="connection-controls"><div><span className="sim-avatar sim-avatar--small">{persona.initials}</span><div><strong>{persona.firstName}’s connection degrees</strong><small>{state.mode==="student"?persona.course:"Teaching, work packages & research"} · participation and connections are simulated</small></div></div><label>Connection degree<select value={degree} onChange={(event)=>{setDegree(event.target.value);setSelected("");setLimit(12);}}><option value="all">All · closest connections first</option><option value="1">1st · joined activities & connected people</option><option value="2">2nd · course / degree / work related</option><option value="3+">3rd+ · through contacts & wider alliance</option></select></label><label className="connection-people-toggle"><input type="checkbox" checked={showPeople} onChange={(event)=>setShowPeople(event.target.checked)}/> Include demo people</label></div>
+      <div className="connection-key"><span className="degree-badge degree-badge--1">1st · Joined / connected</span><span className="degree-badge degree-badge--2">2nd · Degree / work relevance</span><span className="degree-badge degree-badge--3">3rd · Through your network</span><span className="degree-badge degree-badge--4">4th+ · Wider alliance</span></div>
       <form className="discovery-search" onSubmit={(e) => e.preventDefault()}>
         <Search aria-hidden="true" />
         <label className="sr-only" htmlFor="campus-search">
@@ -261,7 +276,7 @@ export function CampusWorkspace({
               : "Find your next connection"}
           </h2>
           <p aria-live="polite">
-            {results.length} matching records · one shared dataset
+            {results.length} matching records · real catalogue + labelled demo people · closest first
           </p>
         </div>
         <div className="view-switch" aria-label="Discovery view">
@@ -334,10 +349,11 @@ export function CampusWorkspace({
             <X />
           </button>
           <span className="eyebrow">
-            Selected connection · {availability(current).label}
+            {connectionInfo(current,state.mode,personal).label} · {current.dataClassification==="sample"?"Synthetic demo":availability(current).label}
           </span>
           <h2 id="selected-title">{current.title}</h2>
           <p>{current.studentSummary}</p>
+          <p>{connectionInfo(current,state.mode,personal).reason}</p>
           <div className="selection-actions">
             <button
               className="button button--primary"
@@ -345,9 +361,10 @@ export function CampusWorkspace({
             >
               See connections
             </button>
-            <Link className="text-link" href={`/records/${current.slug}`}>
-              Read evidence & next steps <ArrowUpRight size={16} />
+            <Link className="text-link" href={current.dataClassification==="sample"?simulationHref(current):`/records/${current.slug}`}>
+              {current.type==="person"?"Open demo profile":"Read evidence & next steps"} <ArrowUpRight size={16} />
             </Link>
+            {simSpaces.filter((space)=>space.mode===state.mode&&spaceEntityId(space)===current.id).map((space)=><Link key={space.id} className="sim-primary" href={`/campus/${space.id}?mode=${state.mode}`}>Open demo workspace →</Link>)}
           </div>
         </section>
       )}
@@ -356,7 +373,7 @@ export function CampusWorkspace({
           <>
             <div className="opportunity-grid">
               {results.slice(0, limit).map((r) => (
-                <OpportunityCard key={r.id} record={r} onSelect={select} />
+                <div key={r.id} className="ranked-opportunity"><span className={`degree-badge degree-badge--${connectionInfo(r,state.mode,personal).degree}`} title={connectionInfo(r,state.mode,personal).reason}>{connectionInfo(r,state.mode,personal).label}</span><OpportunityCard record={r} onSelect={select} /></div>
               ))}
             </div>
             {limit < results.length && (

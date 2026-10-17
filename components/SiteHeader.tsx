@@ -4,17 +4,21 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { ModeSwitcher } from "./ModeSwitcher";
+import { useSimulation } from "./v2/SimulationContext";
 const links = [
   ["/explore", "Discover"],
   ["/learning", "Learn"],
   ["/community", "Community"],
   ["/calendar", "Calendar"],
   ["/my-campus", "My Campus"],
+  ["/messages", "Messages"],
   ["/collaborate", "Collaborate"],
 ];
 export function SiteHeader() {
   const path = usePathname();
   const [open, setOpen] = useState(false);
+  const {state,persona}=useSimulation();
   return (
     <header className="site-header campus-header">
       <div className="site-header__inner">
@@ -39,8 +43,9 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <Link href="/explore" className="header-cta">
-          Explore the campus <ArrowUpRight size={16} />
+        <ModeSwitcher />
+        <Link href={`/campus?mode=${state.mode}`} className="header-persona" aria-label={`Open ${persona.name}'s demo campus`}>
+          <span>{persona.initials}</span><strong>{persona.firstName}<small>Demo campus <ArrowUpRight size={11}/></small></strong>
         </Link>
         <button
           className="menu-button"

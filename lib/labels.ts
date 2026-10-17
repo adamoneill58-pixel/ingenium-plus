@@ -21,6 +21,7 @@ export const typeLabels: Record<EntityType, string> = {
   course: "Course",
   microcredential: "Microcredential",
   student: "Student",
+  person: "Person · demo",
   learning_resource: "Learning resource",
 };
 
@@ -41,6 +42,7 @@ export const typeColours: Record<EntityType, string> = {
   course: "#147e72",
   microcredential: "#9ab300",
   student: "#e5007e",
+  person: "#e5007e",
   learning_resource: "#7763bf",
 };
 

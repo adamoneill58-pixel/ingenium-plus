@@ -1,6 +1,8 @@
 import { CommunityWorkspace } from "@/components/v2/CommunityWorkspace";
 import { OfficialPulse } from "@/components/v2/OfficialPulse";
 import { getDiscoveryData } from "@/lib/v2/catalogue";
+import { CampusActivityFeed, PeopleDirectory } from "@/components/v2/PersonalCampus";
+import { SimulationNotice } from "@/components/v2/SimulationContext";
 
 export const metadata = {
   title: "Community",
@@ -25,7 +27,9 @@ export default async function CommunityPage() {
           community already exists.
         </p>
       </header>
-      <CommunityWorkspace realCommunities={realCommunities} />
+      <SimulationNotice />
+      <div className="community-personal-layout"><CampusActivityFeed/><aside><PeopleDirectory/></aside></div>
+      <details className="legacy-demo-section"><summary>General community sandbox & official community directory</summary><CommunityWorkspace realCommunities={realCommunities} /></details>
       <OfficialPulse />
     </main>
   );

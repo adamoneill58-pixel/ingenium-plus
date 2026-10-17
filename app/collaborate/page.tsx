@@ -1,4 +1,5 @@
 import { CollaborationDemo } from "@/components/v2/CollaborationDemo";
+import { StaffCollaboration } from "@/components/v2/StaffCollaboration";
 export const metadata = { title: "Collaborate" };
 export default function CollaboratePage() {
   return (
@@ -15,7 +16,8 @@ export default function CollaboratePage() {
           collaboration across universities.
         </p>
       </header>
-      <CollaborationDemo />
+      <StaffCollaboration />
+      <details className="legacy-demo-section"><summary>Course-to-colleague matching demo</summary><CollaborationDemo /></details>
     </main>
   );
 }

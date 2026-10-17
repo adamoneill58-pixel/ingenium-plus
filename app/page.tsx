@@ -9,6 +9,7 @@ import {
 import { CampusWorkspace } from "@/components/v2/CampusWorkspace";
 import { getDiscoveryData } from "@/lib/v2/catalogue";
 import { typeLabels } from "@/lib/labels";
+import { PersonaWelcome } from "@/components/v2/PersonalCampus";
 
 const featuredIds = [
   "opportunity-phd-mobility-2026",
@@ -59,6 +60,7 @@ export default async function Home() {
         </div>
       </section>
 
+      <PersonaWelcome />
       <section id="discover" className="discovery-section discovery-section--map-first">
         <div className="section-kicker">
           <div>

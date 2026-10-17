@@ -1,5 +1,7 @@
 # v2.0 delivery and acceptance
 
+17 October extension: [PERSONALISED_CAMPUS.md](PERSONALISED_CAMPUS.md) supersedes the older page-memory-only synthetic-community scope and fixed graph/client-budget limits below. It documents the restored demo modes, six personal workspaces, degree filters and isolated synthetic session state. Real account and pilot boundaries remain unchanged. [GEMINI_REFRESH_HANDOFF.md](GEMINI_REFRESH_HANDOFF.md) prepares the pending data refresh.
+
 Review candidate prepared 14 October 2026. This record supersedes overlapping legacy implementation plans for the commissioned public pilot. [SPEC.md](SPEC.md) preserves the full requirement. No production rollout, pilot recruitment or institutional adoption is claimed.
 
 ## Baseline and scope

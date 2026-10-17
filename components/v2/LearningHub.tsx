@@ -3,6 +3,7 @@ import { ArrowUpRight, BookOpen, CheckCircle2, Clock3 } from "lucide-react";
 import type { Entity } from "@/lib/data";
 import { typeLabels } from "@/lib/labels";
 import { demoCourseSpaces } from "@/lib/v2/demo-community";
+import { PersonalLearning } from "./PersonalCampus";
 
 export function LearningHub({ records }: { records: Entity[] }) {
   const featured = records
@@ -11,6 +12,7 @@ export function LearningHub({ records }: { records: Entity[] }) {
     .slice(0, 6);
   return (
     <>
+      <PersonalLearning />
       <section className="learning-dashboard" aria-labelledby="learning-spaces-title">
         <header>
           <div>

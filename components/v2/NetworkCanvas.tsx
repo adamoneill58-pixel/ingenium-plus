@@ -2,6 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 import type { Core } from "cytoscape";
 import type { Entity } from "@/lib/data";
+import { useSimulation } from "./SimulationContext";
+import { connectionInfo, simulationEdges } from "@/lib/v2/simulation-state";
 interface Edge {
   id: string;
   source: string;
@@ -23,6 +25,7 @@ export default function NetworkCanvas({
   const [error, setError] = useState("");
   const [explanation, setExplanation] = useState("");
   const [depth, setDepth] = useState(1);
+  const {state,personal,persona}=useSimulation();
   useEffect(() => {
     let cancelled = false;
     const controller = new AbortController();
@@ -38,32 +41,33 @@ export default function NetworkCanvas({
       .then(([module, data]) => {
         if (cancelled || !ref.current) return;
         const allowed = new Map(records.map((r) => [r.id, r]));
-        let display = records.slice(0, 60);
+        const relationships=[...data.relationships,...simulationEdges(state.mode,personal)];
+        let display = records;
         if (selected && allowed.has(selected)) {
           const ids = new Set([selected]);
           for (let d = 0; d < depth; d++) {
             const frontier = new Set(ids);
-            for (const e of data.relationships)
+            for (const e of relationships)
               if (frontier.has(e.source) || frontier.has(e.target)) {
                 if (allowed.has(e.source)) ids.add(e.source);
                 if (allowed.has(e.target)) ids.add(e.target);
               }
           }
-          display = records.filter((r) => ids.has(r.id)).slice(0, 80);
+          if(allowed.has(persona.id))ids.add(persona.id);
+          display = records.filter((r) => ids.has(r.id));
         }
         const ids = new Set(display.map((r) => r.id));
         cy.current = module.default({
           container: ref.current,
           elements: [
             ...display.map((r) => ({
-              data: { id: r.id, label: r.shortTitle ?? r.title, kind: r.type },
+              data: { id: r.id, label: r.shortTitle ?? r.title, kind: r.type,degree:r.id===persona.id?0:connectionInfo(r,state.mode,personal).degree,root:r.id===persona.id?1:0 },
             })),
-            ...data.relationships
+            ...relationships
               .filter((e) => ids.has(e.source) && ids.has(e.target))
-              .slice(0, 180)
               .map((e) => ({ data: e })),
           ],
-          layout: { name: "concentric", minNodeSpacing: 35, animate: false },
+          layout: { name: "concentric", concentric:(node)=>6-Number(node.data("degree")),levelWidth:()=>1,minNodeSpacing:35,animate:false },
           style: [
             {
               selector: "node",
@@ -84,6 +88,10 @@ export default function NetworkCanvas({
               selector: 'node[kind="university"]',
               style: { "background-color": "#94d7be", width: 32, height: 32 },
             },
+            {selector:'node[kind="person"]',style:{"background-color":"#df3984","border-width":3,"border-color":"#fff",width:30,height:30}},
+            {selector:'node[degree=1]',style:{"border-width":3,"border-color":"#bbe86a",width:26,height:26}},
+            {selector:'node[degree=2]',style:{"border-width":2,"border-color":"#00a3d7"}},
+            {selector:'node[root=1]',style:{"background-color":"#fff","border-color":"#df3984","border-width":6,color:"#fff",width:56,height:56,"font-size":16}},
             {
               selector: "edge",
               style: {
@@ -122,11 +130,11 @@ export default function NetworkCanvas({
       controller.abort();
       cy.current?.destroy();
     };
-  }, [records, selected, depth, onSelect]);
+  }, [records, selected, depth, onSelect,state.mode,personal,persona.id]);
   return (
     <section className="network-surface">
       <div className="network-tools">
-        <span>Connected campus · up to {selected ? 80 : 60} records</span>
+        <span>{persona.firstName}’s network · people + activities · connection tiers 1–4+</span>
         <div>
           <button
             onClick={() => cy.current?.zoom(cy.current.zoom() * 1.2)}

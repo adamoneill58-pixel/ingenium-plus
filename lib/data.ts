@@ -14,6 +14,7 @@ export type EntityType =
   | "course"
   | "microcredential"
   | "student"
+  | "person"
   | "learning_resource"
   | "calendar_event";
 

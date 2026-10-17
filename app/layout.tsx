@@ -7,6 +7,8 @@ import "@fontsource/montserrat/700.css";
 import "@fontsource/montserrat/800.css";
 import "./globals.css";
 import "./v2.css";
+import "./simulation.css";
+import { SimulationProvider } from "@/components/v2/SimulationContext";
 import { PilotContext } from "@/components/v2/PilotContext";
 import { getRuntimeBindings } from "@/lib/v151/bindings";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -57,9 +59,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Skip to content
         </a>
         <PilotContext enabled={pilotEnabled}>
+        <SimulationProvider>
         <SiteHeader />
         {children}
         <SiteFooter />
+        </SimulationProvider>
         </PilotContext>
       </body>
     </html>

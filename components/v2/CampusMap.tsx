@@ -13,6 +13,9 @@ import Link from "next/link";
 import { ArrowUpRight, LocateFixed, Minus, Plus } from "lucide-react";
 import type { Entity } from "@/lib/data";
 import { typeLabels } from "@/lib/labels";
+import { useSimulation } from "./SimulationContext";
+import { connectionInfo } from "@/lib/v2/simulation-state";
+import { simSpaces, spaceEntityId, simulationHref } from "@/lib/v2/campus-simulation";
 
 import {campusCoordinates, recordCampusIds, recordCoordinate, worldPoint, longitudeLatitude, clusterPositions} from "@/lib/v2/map-geometry";
 
@@ -45,6 +48,7 @@ export default function CampusMap({
   onSelect: (id: string) => void;
   onCampus: (id: string) => void;
 }) {
+  const {state,personal,persona}=useSimulation();
   const viewportRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef<{
     pointerId: number;
@@ -300,7 +304,7 @@ export default function CampusMap({
             <button
               type="button"
               key={`${record.id}-${campusId}`}
-              className={`map-record-marker ${recordColour(record.type)} ${selected === record.id ? "is-selected" : ""}`}
+              className={`map-record-marker ${recordColour(record.type)} degree-marker--${connectionInfo(record,state.mode,personal).degree} ${record.type==="person"?"is-person":""} ${selected === record.id ? "is-selected" : ""}`}
               style={point}
               title={`${typeLabels[record.type]}: ${record.title}`}
               aria-label={`Open ${record.title}`}
@@ -308,7 +312,7 @@ export default function CampusMap({
               onClick={() => onSelect(record.id)}
             >
               <i />
-              {zoom >= 9 && <span>{record.title}</span>}
+              {(zoom >= 9 || record.type==="person") && <span>{record.title}</span>}
             </button>
           )))}
         </div>
@@ -329,17 +333,19 @@ export default function CampusMap({
       <aside className="map-detail" aria-live="polite">
         {selectedRecord ? (
           <>
-            <span className="eyebrow">{typeLabels[selectedRecord.type]} · SOURCE-BACKED RECORD</span>
+            <span className="eyebrow">{typeLabels[selectedRecord.type]} · {selectedRecord.dataClassification==="sample"?"SYNTHETIC DEMO":"SOURCE-BACKED RECORD"}</span>
             <h2>{selectedRecord.title}</h2>
             <p>{selectedRecord.studentSummary}</p>
+            <span className={`degree-badge degree-badge--${connectionInfo(selectedRecord,state.mode,personal).degree}`}>{connectionInfo(selectedRecord,state.mode,personal).label}</span><p>{connectionInfo(selectedRecord,state.mode,personal).reason}</p>
             <div className="topic-chips">{selectedRecord.themes.slice(0, 4).map((theme) => <span key={theme}>{theme}</span>)}</div>
             <dl className="map-facts">
               <div><dt>Host</dt><dd>{universities.find((university) => university.id === selectedRecord.hostUniversityId)?.shortTitle ?? "Alliance-wide"}</dd></div>
-              <div><dt>Format</dt><dd>{selectedRecord.deliveryMode ?? "Check official details"}</dd></div>
-              <div><dt>Evidence checked</dt><dd>{selectedRecord.lastChecked?.slice(0, 10) ?? selectedRecord.lastVerified}</dd></div>
+              {selectedRecord.type!=="person"&&<div><dt>Format</dt><dd>{selectedRecord.deliveryMode ?? "Check official details"}</dd></div>}
+              <div><dt>{selectedRecord.type==="person"?"Profile":"Evidence checked"}</dt><dd>{selectedRecord.lastChecked?.slice(0, 10) ?? selectedRecord.lastVerified}</dd></div>
             </dl>
-            <p className="map-location-note">The opportunity marker shows a published campus association. It is not a claimed venue.</p>
-            <Link className="button button--primary" href={`/records/${selectedRecord.slug}`}>Evidence & official next step <ArrowUpRight size={16} /></Link>
+            <p className="map-location-note">{selectedRecord.type==="person"?"This fictional profile is grouped with its simulated university. The marker does not represent a person's location.":"The opportunity marker shows a published campus association. It is not a claimed venue."}</p>
+            <Link className="button button--primary" href={selectedRecord.dataClassification==="sample"?simulationHref(selectedRecord):`/records/${selectedRecord.slug}`}>{selectedRecord.type==="person"?"Open demo profile":"Evidence & official next step"} <ArrowUpRight size={16} /></Link>
+            {simSpaces.filter((space)=>space.mode===state.mode&&spaceEntityId(space)===selectedRecord.id).map((space)=><Link key={space.id} className="button button--secondary" href={`/campus/${space.id}?mode=${state.mode}`}>Open my demo workspace →</Link>)}
             <button className="map-back" onClick={() => onSelect("")}>Back to campuses</button>
           </>
         ) : matchingClusterRecords.length ? (
@@ -364,6 +370,7 @@ export default function CampusMap({
             <span className="eyebrow">EXPLORE ONE EUROPEAN CAMPUS</span>
             <h2>Zoom from ten campuses into 200+ connections.</h2>
             <p>Choose a campus cluster or zoom into the map. Source-backed courses, mobility, projects, communities and events appear as you move closer.</p>
+            <div className="map-personal-priorities"><strong>{persona.firstName}’s closest connections</strong>{records.filter((record)=>record.type!=="university"&&record.id!==persona.id).slice(0,7).map((record)=><button key={record.id} onClick={()=>{onSelect(record.id);const id=record.hostUniversityId??record.universityIds[0];if(id&&campusCoordinates[id]){setCenter(campusCoordinates[id]);setZoom(7);}}}><span className={`degree-badge degree-badge--${connectionInfo(record,state.mode,personal).degree}`}>{connectionInfo(record,state.mode,personal).degree===1?"1st":"2nd+"}</span><span>{record.shortTitle??record.title}</span></button>)}</div>
             <p className="map-location-note">Campus pins are geographic. Opportunity points show published campus associations because many official pages do not publish a precise venue.</p>
             <div className="map-campus-grid">
               {universities.map((university) => <button key={university.id} onClick={() => focusCampus(university.id)}><strong>{university.shortTitle ?? university.title}</strong><span>{university.countries?.[0]} · {counts[university.id] ?? 0}</span></button>)}

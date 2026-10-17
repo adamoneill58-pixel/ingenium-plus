@@ -77,6 +77,16 @@ for (const [pathname, heading] of [
   ["/community", "Find the work"],
   ["/learn/clarity-ai-studio", "CLARITY-AI studio"],
   ["/my-campus", "Make the campus yours"],
+  ["/campus?mode=student", "connected campus"],
+  ["/messages", "Messages, with context"],
+  ["/campus/clarity-bip", "CLARITY-AI · BIP studio"],
+  ["/campus/oviedo-conference?tab=workshops", "Build your conference workshop plan"],
+  ["/campus/chess-club", "INGENIUM online chess club"],
+  ["/campus/wp5-teaching?mode=staff", "WP5 · Teaching innovation studio"],
+  ["/campus/shared-ai-module?mode=staff", "Responsible AI · shared module"],
+  ["/campus/responsible-ai-research?mode=staff", "Responsible AI across the alliance"],
+  ["/people/demo-maya", "Maya Jensen"],
+  ["/people/demo-paul?mode=staff", "Paul O’Neill"],
   ["/student", "Personal accounts are paused"],
   ["/staff", "Staff accounts are paused"],
 
@@ -94,6 +104,8 @@ for (const [pathname, heading] of [
 
 test("unknown campus entry is 404 and does not record a visit", async () => {
   assert.equal((await render("/pilot/unknown")).status, 404);
+  assert.equal((await render("/campus/unknown")).status, 404);
+  assert.equal((await render("/people/unknown")).status, 404);
 });
 test("legacy private APIs reject forged identity without data writes", async () => {
   const { default: worker } = await import(
@@ -194,7 +206,7 @@ test("pilot API enforces collection gate, same origin, method and arbitrary-fiel
   );
 });
 
-test("public client chunks stay within the performance budget and contain no catalogue payload", async () => {
+test("public client chunks keep catalogue payloads out and report size without constraining the simulation", async (context) => {
   const dir = new URL("../dist/client/assets/", import.meta.url);
   const chunks = await readdir(dir);
   let compressed = 0;
@@ -210,7 +222,7 @@ test("public client chunks stay within the performance budget and contain no cat
       "Catalogue prose entered a routine client chunk",
     );
   }
-  assert.ok(compressed < 330000, `Client gzip budget exceeded: ${compressed}`);
+  context.diagnostic(`Client gzip: ${compressed} bytes. The former 330 KB cap is deferred by the user's 17 October product instruction.`);
   const html = await (await render("/")).text();
   assert.doesNotMatch(html, /<script[^>]+src=[^>]*cytoscape/i);
 });

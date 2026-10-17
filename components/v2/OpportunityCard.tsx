@@ -8,6 +8,7 @@ import { typeLabels } from "@/lib/labels";
 import { universityShortNames } from "@/lib/university-names";
 import { Bookmark, ArrowUpRight, CalendarDays } from "lucide-react";
 import { Useful, usePilotEvent } from "./PilotContext";
+import { simulationHref } from "@/lib/v2/campus-simulation";
 export function OpportunityCard({
   record,
   onSelect,
@@ -28,6 +29,8 @@ export function OpportunityCard({
     record.id,
   );
   const a = availability(record);
+  const synthetic=record.dataClassification==="sample";
+  const href=synthetic?simulationHref(record):`/records/${record.slug}`;
   const send = usePilotEvent();
   function toggle() {
     const ids = new Set(memoryRead<string[]>("ingenium-plus-v15-saved", []));
@@ -47,13 +50,13 @@ export function OpportunityCard({
               : undefined
           }
         >
-          {a.label}
+          {synthetic?"Synthetic demo":a.label}
         </span>
       </div>
       <h3>
         <Link
-          href={`/records/${record.slug}`}
-          onClick={() => send("node_open", record.id)}
+          href={href}
+          onClick={() => !synthetic&&send("node_open", record.id)}
         >
           {record.title}
         </Link>
@@ -99,13 +102,13 @@ export function OpportunityCard({
             className="text-link"
             onClick={() => {
               onSelect(record.id);
-              send("node_open", record.id);
+              if(!synthetic)send("node_open", record.id);
             }}
           >
             View connections <ArrowUpRight size={16} />
           </button>
         ) : (
-          <Link className="text-link" href={`/records/${record.slug}`}>
+          <Link className="text-link" href={href}>
             Explore opportunity <ArrowUpRight size={16} />
           </Link>
         )}
@@ -118,7 +121,7 @@ export function OpportunityCard({
           <Bookmark size={18} fill={saved ? "currentColor" : "none"} />
         </button>
       </div>
-      <Useful id={record.id} />
+      {!synthetic&&<Useful id={record.id} />}
     </article>
   );
 }
