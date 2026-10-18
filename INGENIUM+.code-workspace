@@ -1,0 +1,8 @@
+{
+  "folders": [{ "name": "INGENIUM+ — Vercel", "path": "." }],
+  "settings": {
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "files.exclude": { "**/.nitro": true, "**/.output": true, "**/.vercel": true },
+    "search.exclude": { "**/.nitro": true, "**/.output": true, "**/.vercel": true, "**/dist": true }
+  }
+}

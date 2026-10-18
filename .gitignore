@@ -47,3 +47,5 @@ next-env.d.ts
 /.vite-*-cache/
 /.sites-runtime/
 /.firecrawl/
+/.output/
+/.nitro/

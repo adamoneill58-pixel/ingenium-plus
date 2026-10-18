@@ -5,13 +5,21 @@ import { buildImportSql } from "../scripts/import-dataset.mjs";
 import assert from "node:assert/strict";
 import test from "node:test";
 
-async function render(pathname = "/", environment = {}) {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set(
-    "test",
-    `${process.pid}-${Date.now()}-${pathname}`,
-  );
+async function loadWorker() {
+  const vercel = process.env.INGENIUM_TEST_RUNTIME === "vercel";
+  const workerUrl = new URL(vercel ? "../.vercel/output/functions/__server.func/index.mjs" : "../dist/server/index.js", import.meta.url);
   const { default: worker } = await import(workerUrl.href);
+  if (!vercel) return worker;
+  return {
+    fetch(request, environment, context) {
+      globalThis[Symbol.for("ingenium.runtime.bindings")] = environment;
+      return worker.fetch(request, context);
+    },
+  };
+}
+
+async function render(pathname = "/", environment = {}) {
+  const worker = await loadWorker();
   return worker.fetch(
     new Request(`http://localhost${pathname}`, {
       headers: { accept: "text/html" },
@@ -131,9 +139,7 @@ test("contextual video links select the requested clip and invalid ids fall back
   assert.match(await fallback.text(), /<source[^>]*81e804ed-7d29-4c3f-9ac1-b391e4c04556\.mp4/);
 });
 test("legacy private APIs reject forged identity without data writes", async () => {
-  const { default: worker } = await import(
-    new URL("../dist/server/index.js", import.meta.url)
-  );
+  const worker = await loadWorker();
   let writes = 0;
   const env = {
     DB: {
@@ -188,9 +194,7 @@ test("public catalogue API and calendar downloads work without an identity", asy
   assert.equal((await render("/api/v2/calendar?id=unknown")).status, 404);
 });
 test("pilot API enforces collection gate, same origin, method and arbitrary-field rejection", async () => {
-  const { default: worker } = await import(
-    new URL("../dist/server/index.js", import.meta.url)
-  );
+  const worker = await loadWorker();
   const ctx = { waitUntil() {}, passThroughOnException() {} };
   const request = (
     origin = "http://localhost",
@@ -230,7 +234,7 @@ test("pilot API enforces collection gate, same origin, method and arbitrary-fiel
 });
 
 test("public client chunks keep catalogue payloads out and report size without constraining the simulation", async (context) => {
-  const dir = new URL("../dist/client/assets/", import.meta.url);
+  const dir = new URL(process.env.INGENIUM_TEST_RUNTIME === "vercel" ? "../.vercel/output/static/assets/" : "../dist/client/assets/", import.meta.url);
   const chunks = await readdir(dir);
   let compressed = 0;
   for (const name of chunks.filter((n) => n.endsWith(".js"))) {
@@ -334,9 +338,7 @@ test("signed team identity still requires membership and protects reporting and 
     new TextEncoder().encode(unsigned),
   );
   const token = unsigned + "." + Buffer.from(signature).toString("base64url");
-  const { default: worker } = await import(
-    new URL("../dist/server/index.js", import.meta.url)
-  );
+  const worker = await loadWorker();
   const env = {
     DB: database,
     ACCESS_TEAM_DOMAIN: "route-test.cloudflareaccess.com",

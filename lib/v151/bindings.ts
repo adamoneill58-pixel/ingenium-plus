@@ -31,5 +31,17 @@ export function setRuntimeBindings(bindings: IngeniumRuntimeBindings): void {
 }
 
 export function getRuntimeBindings(): IngeniumRuntimeBindings {
-  return (globalThis as RuntimeGlobal)[BINDINGS_KEY] ?? {};
+  const bindings = (globalThis as RuntimeGlobal)[BINDINGS_KEY];
+  if (bindings) return bindings;
+
+  // Vercel serves the same reviewed public catalogue as the Sites release.
+  // Cloudflare service bindings and private workflows are never fabricated.
+  if (process.env.INGENIUM_HOSTING_TARGET === "vercel") {
+    return {
+      PUBLIC_CATALOGUE_MODE: process.env.PUBLIC_CATALOGUE_MODE ?? "release-snapshot",
+      PUBLIC_BASE_URL: process.env.PUBLIC_BASE_URL,
+      ALLOW_STATIC_FALLBACK: "false",
+    };
+  }
+  return {};
 }
