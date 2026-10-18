@@ -41,12 +41,14 @@ export default function CampusMap({
   selected,
   onSelect,
   onCampus,
+  publicEntry = false,
 }: {
   universities: Entity[];
   records: Entity[];
   selected: string;
   onSelect: (id: string) => void;
   onCampus: (id: string) => void;
+  publicEntry?: boolean;
 }) {
   const {state,personal,persona}=useSimulation();
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -304,7 +306,7 @@ export default function CampusMap({
             <button
               type="button"
               key={`${record.id}-${campusId}`}
-              className={`map-record-marker ${recordColour(record.type)} degree-marker--${connectionInfo(record,state.mode,personal).degree} ${record.type==="person"?"is-person":""} ${selected === record.id ? "is-selected" : ""}`}
+              className={`map-record-marker ${recordColour(record.type)} ${publicEntry?"":`degree-marker--${connectionInfo(record,state.mode,personal).degree}`} ${record.type==="person"?"is-person":""} ${selected === record.id ? "is-selected" : ""}`}
               style={point}
               title={`${typeLabels[record.type]}: ${record.title}`}
               aria-label={`Open ${record.title}`}
@@ -336,7 +338,7 @@ export default function CampusMap({
             <span className="eyebrow">{typeLabels[selectedRecord.type]} · {selectedRecord.dataClassification==="sample"?"SYNTHETIC DEMO":"SOURCE-BACKED RECORD"}</span>
             <h2>{selectedRecord.title}</h2>
             <p>{selectedRecord.studentSummary}</p>
-            <span className={`degree-badge degree-badge--${connectionInfo(selectedRecord,state.mode,personal).degree}`}>{connectionInfo(selectedRecord,state.mode,personal).label}</span><p>{connectionInfo(selectedRecord,state.mode,personal).reason}</p>
+            {!publicEntry&&<><span className={`degree-badge degree-badge--${connectionInfo(selectedRecord,state.mode,personal).degree}`}>{connectionInfo(selectedRecord,state.mode,personal).label}</span><p>{connectionInfo(selectedRecord,state.mode,personal).reason}</p></>}
             <div className="topic-chips">{selectedRecord.themes.slice(0, 4).map((theme) => <span key={theme}>{theme}</span>)}</div>
             <dl className="map-facts">
               <div><dt>Host</dt><dd>{universities.find((university) => university.id === selectedRecord.hostUniversityId)?.shortTitle ?? "Alliance-wide"}</dd></div>
@@ -370,7 +372,7 @@ export default function CampusMap({
             <span className="eyebrow">EXPLORE ONE EUROPEAN CAMPUS</span>
             <h2>Zoom from ten campuses into 200+ connections.</h2>
             <p>Choose a campus cluster or zoom into the map. Source-backed courses, mobility, projects, communities and events appear as you move closer.</p>
-            <div className="map-personal-priorities"><strong>{persona.firstName}’s closest connections</strong>{records.filter((record)=>record.type!=="university"&&record.id!==persona.id).slice(0,7).map((record)=><button key={record.id} onClick={()=>{onSelect(record.id);const id=record.hostUniversityId??record.universityIds[0];if(id&&campusCoordinates[id]){setCenter(campusCoordinates[id]);setZoom(7);}}}><span className={`degree-badge degree-badge--${connectionInfo(record,state.mode,personal).degree}`}>{connectionInfo(record,state.mode,personal).degree===1?"1st":"2nd+"}</span><span>{record.shortTitle??record.title}</span></button>)}</div>
+            <div className="map-personal-priorities"><strong>{publicEntry?"A few places to start":`${persona.firstName}’s closest connections`}</strong>{records.filter((record)=>record.type!=="university"&&record.id!==persona.id).slice(0,7).map((record)=><button key={record.id} onClick={()=>{onSelect(record.id);const id=record.hostUniversityId??record.universityIds[0];if(id&&campusCoordinates[id]){setCenter(campusCoordinates[id]);setZoom(7);}}}>{!publicEntry&&<span className={`degree-badge degree-badge--${connectionInfo(record,state.mode,personal).degree}`}>{connectionInfo(record,state.mode,personal).degree===1?"1st":"2nd+"}</span>}<span>{record.shortTitle??record.title}</span></button>)}</div>
             <p className="map-location-note">Campus pins are geographic. Opportunity points show published campus associations because many official pages do not publish a precise venue.</p>
             <div className="map-campus-grid">
               {universities.map((university) => <button key={university.id} onClick={() => focusCampus(university.id)}><strong>{university.shortTitle ?? university.title}</strong><span>{university.countries?.[0]} · {counts[university.id] ?? 0}</span></button>)}

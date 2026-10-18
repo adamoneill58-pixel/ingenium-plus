@@ -15,10 +15,12 @@ export default function NetworkCanvas({
   records,
   selected,
   onSelect,
+  publicEntry = false,
 }: {
   records: Entity[];
   selected: string;
   onSelect: (id: string) => void;
+  publicEntry?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const cy = useRef<Core | null>(null);
@@ -41,7 +43,7 @@ export default function NetworkCanvas({
       .then(([module, data]) => {
         if (cancelled || !ref.current) return;
         const allowed = new Map(records.map((r) => [r.id, r]));
-        const relationships=[...data.relationships,...simulationEdges(state.mode,personal)];
+        const relationships=publicEntry?data.relationships:[...data.relationships,...simulationEdges(state.mode,personal)];
         let display = records;
         if (selected && allowed.has(selected)) {
           const ids = new Set([selected]);
@@ -61,7 +63,7 @@ export default function NetworkCanvas({
           container: ref.current,
           elements: [
             ...display.map((r) => ({
-              data: { id: r.id, label: r.shortTitle ?? r.title, kind: r.type,degree:r.id===persona.id?0:connectionInfo(r,state.mode,personal).degree,root:r.id===persona.id?1:0 },
+              data: { id: r.id, label: r.shortTitle ?? r.title, kind: r.type,degree:publicEntry?4:r.id===persona.id?0:connectionInfo(r,state.mode,personal).degree,root:!publicEntry&&r.id===persona.id?1:0 },
             })),
             ...relationships
               .filter((e) => ids.has(e.source) && ids.has(e.target))
@@ -130,11 +132,11 @@ export default function NetworkCanvas({
       controller.abort();
       cy.current?.destroy();
     };
-  }, [records, selected, depth, onSelect,state.mode,personal,persona.id]);
+  }, [records, selected, depth, onSelect,state.mode,personal,persona.id,publicEntry]);
   return (
     <section className="network-surface">
       <div className="network-tools">
-        <span>{persona.firstName}’s network · people + activities · connection tiers 1–4+</span>
+        <span>{publicEntry?"Source-backed catalogue · explore the connections":`${persona.firstName}’s network · people + activities · connection tiers 1–4+`}</span>
         <div>
           <button
             onClick={() => cy.current?.zoom(cy.current.zoom() * 1.2)}

@@ -33,6 +33,23 @@ test("the filmed business to MTU to details journey works on the Vercel function
   assert.match(await details.text(), /INGENIUM Business Model Canvas Resource/);
 });
 
+test("the public entry is neutral and all ten campus shortcuts use real university IDs", async () => {
+  const html = await (await request("/")).text();
+  assert.match(html, /STUDENT-BUILT PREVIEW/);
+  assert.match(html, /name="query"/);
+  assert.match(html, /Choose your direction/);
+  assert.match(html, /CAMPUS DEMO/);
+  assert.doesNotMatch(html, /Welcome back, Adam|Adam’s closest connections|Adam’s connection degrees/);
+  const catalogue = await (await request("/api/v2/catalogue")).json();
+  const ids = new Set(catalogue.records.filter((record) => record.type === "university").map((record) => record.id));
+  const links = [...html.matchAll(/href="\/explore\?university=(university-[a-z]+)&amp;view=list/g)].map((match) => match[1]);
+  assert.equal(new Set(links).size, 10);
+  for (const id of links) assert.ok(ids.has(id), id);
+  const privacy = await request("/privacy");
+  assert.equal(privacy.status, 200);
+  assert.match(await privacy.text(), /without creating an account/);
+});
+
 test("the Vercel entrypoint preserves restricted and paused routes", async () => {
   for (const path of ["/pilot-dashboard", "/api/v2/dashboard", "/api/v2/export"]) {
     const response = await request(path, { headers: { "oai-user-id": "forged", "oai-user-email": "owner@example.invalid" } });

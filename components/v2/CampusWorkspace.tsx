@@ -36,9 +36,11 @@ const keys = [
 export function CampusWorkspace({
   records,
   initialFilters = EMPTY_FILTERS,
+  publicEntry = false,
 }: {
   records: Entity[];
   initialFilters?: DiscoveryFilters;
+  publicEntry?: boolean;
 }) {
   const [filters, setFilters] = useState<DiscoveryFilters>(initialFilters);
   const [view, setView] = useState<View>("map");
@@ -46,9 +48,9 @@ export function CampusWorkspace({
   const [ready, setReady] = useState(false);
   const [limit, setLimit] = useState(12);
   const [degree,setDegree]=useState("all");
-  const [showPeople,setShowPeople]=useState(true);
+  const [showPeople,setShowPeople]=useState(!publicEntry);
   const {state,persona,personal}=useSimulation();
-  const allRecords=useMemo(()=>[...records,...simulationEntities(state.mode).filter((record)=>showPeople||record.type!=="person")],[records,state.mode,showPeople]);
+  const allRecords=useMemo(()=>publicEntry?records:[...records,...simulationEntities(state.mode).filter((record)=>showPeople||record.type!=="person")],[records,state.mode,showPeople,publicEntry]);
   const send = usePilotEvent();
   useEffect(() => {
     const restore = () => {
@@ -69,13 +71,13 @@ export function CampusWorkspace({
       );
       setSelected(p.get("node") ?? "");
       const d=p.get("degree");setDegree(d&&["1","2","3+"].includes(d)?d:"all");
-      setShowPeople(p.get("people")!=="hide");
+      setShowPeople(!publicEntry&&p.get("people")!=="hide");
       setReady(true);
     };
     queueMicrotask(restore);
     window.addEventListener("popstate", restore);
     return () => window.removeEventListener("popstate", restore);
-  }, [initialFilters]);
+  }, [initialFilters, publicEntry]);
   useEffect(() => {
     if (!ready) return;
     const p = new URLSearchParams(location.search);
@@ -100,7 +102,7 @@ export function CampusWorkspace({
     () => [...new Set(records.flatMap((r) => r.themes))].sort(),
     [records],
   );
-  const results = useMemo(() => prioritiseConnections(discover(allRecords, filters),state.mode,personal,degree), [allRecords, filters,state.mode,personal,degree]);
+  const results = useMemo(() => publicEntry?discover(allRecords, filters):prioritiseConnections(discover(allRecords, filters),state.mode,personal,degree), [allRecords, filters,state.mode,personal,degree,publicEntry]);
   const networkRecords = useMemo(
     () => [...universities, ...results.filter((r) => r.type !== "university")],
     [universities, results],
@@ -131,8 +133,10 @@ export function CampusWorkspace({
   }, [filters.query, results.length, ready, send]);
   return (
     <div className="discovery-workspace">
+      {!publicEntry&&<>
       <div className="connection-controls"><div><span className="sim-avatar sim-avatar--small">{persona.initials}</span><div><strong>{persona.firstName}’s connection degrees</strong><small>{state.mode==="student"?persona.course:"Teaching, work packages & research"} · participation and connections are simulated</small></div></div><label>Connection degree<select value={degree} onChange={(event)=>{setDegree(event.target.value);setSelected("");setLimit(12);}}><option value="all">All · closest connections first</option><option value="1">1st · joined activities & connected people</option><option value="2">2nd · course / degree / work related</option><option value="3+">3rd+ · through contacts & wider alliance</option></select></label><label className="connection-people-toggle"><input type="checkbox" checked={showPeople} onChange={(event)=>setShowPeople(event.target.checked)}/> Include demo people</label></div>
       <div className="connection-key"><span className="degree-badge degree-badge--1">1st · Joined / connected</span><span className="degree-badge degree-badge--2">2nd · Degree / work relevance</span><span className="degree-badge degree-badge--3">3rd · Through your network</span><span className="degree-badge degree-badge--4">4th+ · Wider alliance</span></div>
+      </>}
       <form className="discovery-search" onSubmit={(e) => e.preventDefault()}>
         <Search aria-hidden="true" />
         <label className="sr-only" htmlFor="campus-search">
@@ -276,7 +280,7 @@ export function CampusWorkspace({
               : "Find your next connection"}
           </h2>
           <p aria-live="polite">
-            {results.length} matching records · real catalogue + labelled demo people · closest first
+            {results.length} matching records · {publicEntry?"source-backed catalogue":"real catalogue + labelled demo people · closest first"}
           </p>
         </div>
         <div className="view-switch" aria-label="Discovery view">
@@ -323,12 +327,14 @@ export function CampusWorkspace({
       >
         {view === "network" ? (
           <NetworkCanvas
+            publicEntry={publicEntry}
             records={networkRecords}
             selected={selected}
             onSelect={select}
           />
         ) : view === "map" ? (
           <CampusMap
+            publicEntry={publicEntry}
             universities={universities}
             records={results}
             selected={selected}
@@ -349,11 +355,11 @@ export function CampusWorkspace({
             <X />
           </button>
           <span className="eyebrow">
-            {connectionInfo(current,state.mode,personal).label} · {current.dataClassification==="sample"?"Synthetic demo":availability(current).label}
+            {!publicEntry&&`${connectionInfo(current,state.mode,personal).label} · `}{current.dataClassification==="sample"?"Synthetic demo":availability(current).label}
           </span>
           <h2 id="selected-title">{current.title}</h2>
           <p>{current.studentSummary}</p>
-          <p>{connectionInfo(current,state.mode,personal).reason}</p>
+          {!publicEntry&&<p>{connectionInfo(current,state.mode,personal).reason}</p>}
           <div className="selection-actions">
             <button
               className="button button--primary"
@@ -373,7 +379,7 @@ export function CampusWorkspace({
           <>
             <div className="opportunity-grid">
               {results.slice(0, limit).map((r) => (
-                <div key={r.id} className="ranked-opportunity"><span className={`degree-badge degree-badge--${connectionInfo(r,state.mode,personal).degree}`} title={connectionInfo(r,state.mode,personal).reason}>{connectionInfo(r,state.mode,personal).label}</span><OpportunityCard record={r} onSelect={select} /></div>
+                <div key={r.id} className="ranked-opportunity">{!publicEntry&&<span className={`degree-badge degree-badge--${connectionInfo(r,state.mode,personal).degree}`} title={connectionInfo(r,state.mode,personal).reason}>{connectionInfo(r,state.mode,personal).label}</span>}<OpportunityCard record={r} onSelect={select} /></div>
               ))}
             </div>
             {limit < results.length && (

@@ -8,6 +8,7 @@ import "@fontsource/montserrat/800.css";
 import "./globals.css";
 import "./v2.css";
 import "./simulation.css";
+import "./engagement.css";
 import { SimulationProvider } from "@/components/v2/SimulationContext";
 import { PilotContext } from "@/components/v2/PilotContext";
 import { getRuntimeBindings } from "@/lib/v151/bindings";
