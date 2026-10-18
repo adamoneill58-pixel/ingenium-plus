@@ -3,6 +3,7 @@ import {
   ArrowUpRight,
   BookOpen,
   CalendarDays,
+  CirclePlay,
   MessageCircle,
   Sparkles,
 } from "lucide-react";
@@ -10,6 +11,7 @@ import { CampusWorkspace } from "@/components/v2/CampusWorkspace";
 import { getDiscoveryData } from "@/lib/v2/catalogue";
 import { typeLabels } from "@/lib/labels";
 import { PersonaWelcome } from "@/components/v2/PersonalCampus";
+import { VideoSpotlight } from "@/components/v2/VideoSpotlight";
 
 const featuredIds = [
   "opportunity-phd-mobility-2026",
@@ -57,6 +59,11 @@ export default async function Home() {
             <span><strong>Meet the community</strong>A clearly labelled social demo</span>
             <ArrowUpRight size={16} />
           </Link>
+          <Link href="/#in-action">
+            <CirclePlay size={19} />
+            <span><strong>See it in action</strong>Eight 15-second feature demos</span>
+            <ArrowUpRight size={16} />
+          </Link>
         </div>
       </section>
 
@@ -79,6 +86,8 @@ export default async function Home() {
         </div>
         <CampusWorkspace records={data.records} />
       </section>
+
+      <VideoSpotlight />
 
       <section className="campus-life" aria-labelledby="campus-life-title">
         <header>

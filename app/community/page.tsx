@@ -3,6 +3,7 @@ import { OfficialPulse } from "@/components/v2/OfficialPulse";
 import { getDiscoveryData } from "@/lib/v2/catalogue";
 import { CampusActivityFeed, PeopleDirectory } from "@/components/v2/PersonalCampus";
 import { SimulationNotice } from "@/components/v2/SimulationContext";
+import { VideoGuideLink } from "@/components/v2/VideoSpotlight";
 
 export const metadata = {
   title: "Community",
@@ -26,6 +27,7 @@ export default async function CommunityPage() {
           and messages could connect people without pretending that a live
           community already exists.
         </p>
+        <VideoGuideLink videoId="before-your-mobility" />
       </header>
       <SimulationNotice />
       <div className="community-personal-layout"><CampusActivityFeed/><aside><PeopleDirectory/></aside></div>

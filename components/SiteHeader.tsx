@@ -14,6 +14,7 @@ const links = [
   ["/my-campus", "My Campus"],
   ["/messages", "Messages"],
   ["/collaborate", "Collaborate"],
+  ["/watch", "Watch"],
 ];
 export function SiteHeader() {
   const path = usePathname();

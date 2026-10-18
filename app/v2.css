@@ -2897,3 +2897,8 @@ summary:focus-visible {
     margin-left: auto;
   }
 }
+
+@media (max-width: 1200px) {
+  .campus-header .desktop-nav { display: none; }
+  .campus-header .menu-button { display: flex; margin-left: auto; }
+}

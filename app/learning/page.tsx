@@ -1,5 +1,6 @@
 import { LearningHub } from "@/components/v2/LearningHub";
 import { getDiscoveryData } from "@/lib/v2/catalogue";
+import { VideoGuideLink } from "@/components/v2/VideoSpotlight";
 
 export const metadata = { title: "Learning" };
 
@@ -25,6 +26,7 @@ export default async function LearningPage() {
           Explore real courses, BIPs and programmes, then step into a clearly
           labelled prototype of the learning experience around them.
         </p>
+        <VideoGuideLink videoId="learn-across-borders" />
       </header>
       <LearningHub records={records} />
     </main>

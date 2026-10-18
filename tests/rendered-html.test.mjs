@@ -74,6 +74,7 @@ for (const [pathname, heading] of [
   ["/about-pilot", "About this pilot"],
   ["/pilot/mtu", "A new connection starts here"],
   ["/learning", "Build a European semester"],
+  ["/watch", "In motion"],
   ["/community", "Find the work"],
   ["/learn/clarity-ai-studio", "CLARITY-AI studio"],
   ["/my-campus", "Make the campus yours"],
@@ -106,6 +107,28 @@ test("unknown campus entry is 404 and does not record a visit", async () => {
   assert.equal((await render("/pilot/unknown")).status, 404);
   assert.equal((await render("/campus/unknown")).status, 404);
   assert.equal((await render("/people/unknown")).status, 404);
+});
+
+test("video collection renders one on-demand player and all eight episode choices", async () => {
+  const response = await render("/watch");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.equal((html.match(/<video\b/g) ?? []).length, 1);
+  assert.equal((html.match(/aria-label="Select [^"]+, 15-second demo"/g) ?? []).length, 8);
+  assert.match(html, /<video[^>]*preload="none"/);
+  assert.doesNotMatch(html, /<video[^>]*autoplay/i);
+  assert.match(html, /\/assets\/video-guides\/01\.vtt/);
+  assert.match(html, /Make the campus yours/);
+});
+
+test("contextual video links select the requested clip and invalid ids fall back safely", async () => {
+  const html = await (await render("/watch?video=before-your-mobility")).text();
+  assert.match(html, /<source[^>]*3dadc3eb-d7fe-4184-ae5e-4f04bb178f83\.mp4/);
+  assert.match(html, /\/assets\/video-guides\/03\.vtt/);
+  assert.match(html, /Meet the demo group/);
+  const fallback = await render("/watch?video=unknown");
+  assert.equal(fallback.status, 200);
+  assert.match(await fallback.text(), /<source[^>]*81e804ed-7d29-4c3f-9ac1-b391e4c04556\.mp4/);
 });
 test("legacy private APIs reject forged identity without data writes", async () => {
   const { default: worker } = await import(
