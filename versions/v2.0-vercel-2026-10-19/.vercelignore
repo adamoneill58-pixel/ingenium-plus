@@ -1,0 +1,14 @@
+.git
+.openai
+.sites-runtime
+.wrangler
+.vscode
+node_modules
+dist
+.output
+work
+outputs
+*.zip
+*.tsbuildinfo
+.env*
+!.env.example

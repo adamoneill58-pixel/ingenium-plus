@@ -1,6 +1,6 @@
 # INGENIUM+ — version history
 
-This repository makes the development of **INGENIUM+** browsable from the earliest recovered prototype through v1.5.1. Each release is preserved in its own folder so the architecture, interface and evidence model can be compared directly over time.
+This repository makes the development of **INGENIUM+** browsable from the earliest recovered prototype through the October 2026 Vercel release. Each release is preserved in its own folder so the architecture, interface and evidence model can be compared directly over time.
 
 INGENIUM+ is a student-led discovery prototype/platform for exploring opportunities, learning, projects, events and connections across the INGENIUM European University alliance. It is not an official INGENIUM or university service. Official institutional systems remain authoritative.
 
@@ -14,14 +14,15 @@ INGENIUM+ is a student-led discovery prototype/platform for exploring opportunit
 | **v1.3** | Multi-page static app, separate data file, source ledger and data verifier. | [`versions/v1.3`](versions/v1.3) |
 | **v1.4** | React/Vinext rebuild with Geography and Network views over a validated catalogue. | [`versions/v1.4`](versions/v1.4) |
 | **v1.5** | Graph workspace, Explore and Learning experiences, richer records, semester planning and explained recommendations. | [`versions/v1.5`](versions/v1.5) |
+| **v2.0 Vercel** | Map-first connected campus, guest discovery, real feature demos and the approved visual redesign. | [`versions/v2.0-vercel-2026-10-19`](versions/v2.0-vercel-2026-10-19) |
 | **v1.5.1** | Private-platform architecture: Student/Staff modes, permissions, review workflows, versioned content, protected documents, audit evidence and data-health tooling. | [`versions/v1.5.1`](versions/v1.5.1) |
 
-The current public release is **v1.5**. The public demonstration is available at [ingenium-plus-v14.a0n720x.chatgpt.site](https://ingenium-plus-v14.a0n720x.chatgpt.site); the older `v14` URL slug is historical and does not identify the deployed release.
+The current public preview is **INGENIUM+ v2.0 on Vercel**, at [ingenium-plus.vercel.app](https://ingenium-plus.vercel.app). Its released interface is preserved in [`versions/v2.0-vercel-2026-10-19`](versions/v2.0-vercel-2026-10-19) from commit `860fdef10faf424e8dc09ade7f5b0f4531e9acd3`. The current development source is on the repository’s [main branch](https://github.com/adamoneill58-pixel/ingenium-plus). Older `chatgpt.site` links inside historical snapshots are retained as provenance.
 
 ## Repository layout
 
 ```text
-versions/          Expanded, browsable source snapshots for v1.0-v1.5.1
+versions/          Expanded, browsable source snapshots for v1.0-v2.0
 release-metadata/  Release notes, manifests and original archive checksums
 docs/              Project history, architecture, provenance and verification notes
 ```

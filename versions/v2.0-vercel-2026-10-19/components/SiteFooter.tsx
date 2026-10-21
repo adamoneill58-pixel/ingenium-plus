@@ -1,0 +1,5 @@
+import Link from "next/link";
+import Image from "next/image";
+export function SiteFooter() {
+  return <footer className="campus-footer"><div><Link className="footer-brand" href="/" aria-label="INGENIUM+ home"><Image src="/assets/brand/ingenium-horizontal-colour.svg" alt="INGENIUM European University" width={200} height={79} /><span>PLUS</span></Link><p>Your campus. Without borders.</p></div><nav aria-label="Footer navigation"><Link href="/learning">Learning & degrees</Link><Link href="/universities">The universities</Link><Link href="/build">Projects & collaboration</Link><Link href="/watch">Watch the demos</Link><Link href="/research">Research & sources</Link><Link href="/about-pilot">About this preview</Link><Link href="/privacy">Privacy</Link><a href="https://www.instagram.com/ingenium__plus/" target="_blank" rel="noopener noreferrer">Feedback on Instagram ↗</a></nav><p className="footer-boundary">A student-built preview. Always check the official university page before applying. Applications, enrolment and credit recognition stay with your university.</p></footer>;
+}

@@ -1,0 +1,10 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "INGENIUM+: develop", "type": "shell", "command": "npm run dev -- --port 3019", "isBackground": true, "problemMatcher": [], "presentation": { "reveal": "always" } },
+    { "label": "INGENIUM+: build for Vercel", "type": "shell", "command": "npm run build", "group": { "kind": "build", "isDefault": true }, "problemMatcher": [] },
+    { "label": "INGENIUM+: test", "type": "shell", "command": "npm test", "group": "test", "problemMatcher": [] },
+    { "label": "INGENIUM+: deploy preview", "type": "shell", "command": "npm run deploy:preview", "problemMatcher": [] },
+    { "label": "INGENIUM+: deploy production", "type": "shell", "command": "npm run deploy", "problemMatcher": [] }
+  ]
+}
