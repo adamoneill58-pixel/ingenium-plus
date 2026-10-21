@@ -2,9 +2,17 @@
 
 A student-led European campus discovery workspace: one catalogue, explained connections, a calendar, temporary planning and an isolated academic collaboration demonstration.
 
+**Live public preview:** https://ingenium-plus.vercel.app
+
+**Current source:** https://github.com/adamoneill58-pixel/ingenium-plus
+
+**Browsable historical versions:** [Version-history archive](https://github.com/adamoneill58-pixel/ingenium-plus/tree/archive/version-history).
+
+The current public interface was released from commit `860fdef10faf424e8dc09ade7f5b0f4531e9acd3` on 19 October 2026. Later documentation and development-tooling updates do not imply a new deployment. The older `chatgpt.site` address is a historical hosting reference.
+
 ## Run locally
 
-Use Node 22 from `.nvmrc`, then `npm ci` and `npm run dev`. Open the URL printed by Vite. No account, cloud credentials or external AI service is required. Local development uses a clearly labelled research snapshot. Production without a configured database shows an unavailable state; it does not pretend to use live data.
+Use Node 22 from `.nvmrc`, then `npm ci` and `npm run dev`. Open the URL printed by Vite. No account, cloud credentials or external AI service is required. The public Vercel runtime uses the reviewed, source-backed release snapshot; it does not claim a live institutional data connection. Open `INGENIUM+.code-workspace` in VS Code and follow [the development and deployment guide](VERCEL_DEVELOPMENT.md).
 
 ## What is available
 
@@ -24,4 +32,4 @@ Real student/staff workflows, profile writes, unscanned downloads and the entire
 
 Start with [Delivery and acceptance](docs/v2/DELIVERY.md), [Cloud and maintenance runbook](docs/v2/RUNBOOK.md), and [Pilot evaluation pack](docs/v2/PILOT-PACK.md). [The commissioned specification](docs/v2/SPEC.md) governs scope; [the previous README](docs/v2/LEGACY-README-v151.md) is historical and does not describe active private functionality.
 
-This branch is a review candidate. A build, a merged PR, an authorised deployment and a verified public pilot are separate outcomes.
+The public site is a student-built preview. Its deployment does not establish a real-user pilot, institutional adoption, enrolment, live chat or booking services. Private and proposed pilot workflows remain gated as described in the handover documents.
