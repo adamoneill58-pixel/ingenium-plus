@@ -15,7 +15,7 @@ test("Vercel serves the reviewed public release without Cloudflare bindings", as
   assert.equal(response.status, 200);
   const data = await response.json();
   assert.equal(data.storage, "release-snapshot");
-  assert.equal(data.records.length, 222);
+  assert.equal(data.records.length, 243);
   assert.ok(data.records.every((record) => record.type !== "student" && record.dataClassification !== "sample"));
   const html = await (await request("/")).text();
   assert.match(html, /Source-backed release snapshot/);

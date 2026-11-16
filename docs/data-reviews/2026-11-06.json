@@ -1,0 +1,2016 @@
+{
+  "reviewDate": "2026-11-06",
+  "scope": "Targeted manual review of the live alliance catalogue, 51 indexed course pages, 13 BIP detail pages, current calls, initiatives and outcome announcements. Historical records and partner-wide inventories were not all revalidated.",
+  "beforeRecords": 222,
+  "afterRecords": 243,
+  "added": 21,
+  "updated": 68,
+  "successfullyFetchedPages": 104,
+  "changes": [
+    {
+      "id": "bip-academic-communication",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "dateLabel",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "startDate"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/bip-academic-communication/",
+        "https://ingenium-university.eu/event/bip-academic-communication/"
+      ]
+    },
+    {
+      "id": "bip-engage-enjoy",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "dateLabel",
+        "endDate",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "startDate"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/ingenium-inclusion-bip/"
+      ]
+    },
+    {
+      "id": "bip-clarity-ai",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "dateLabel",
+        "endDate",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "statusOverride",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/clarity-ai-critical-learning-in-the-technology-age-of-ai/"
+      ]
+    },
+    {
+      "id": "bip-ethical-ai-health",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "dateLabel",
+        "endDate",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/bip-exploring-ethical-effective-and-efficient-uses-of-ai-to-support-health-and-social-sciences-researchers/",
+        "https://ingenium-university.eu/event/bip-exploring-ethical-effective-and-efficient-uses-of-ai-to-support-health-and-social-sciences-researchers/"
+      ]
+    },
+    {
+      "id": "bip-international-project-challenge",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "dateLabel",
+        "endDate",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "startDate"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/bip-international-project-challenge-ipc-an-integrated-cross-sector-and-international-collaborative-initiative/"
+      ]
+    },
+    {
+      "id": "bip-medchem",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "dateLabel",
+        "endDate",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "startDate"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/medchem-bip-exploring-medicinal-chemistry-a-hands-on-journey-for-future-scientists/"
+      ]
+    },
+    {
+      "id": "bip-digital-health",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "confidence",
+        "dateLabel",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceConflict",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "statusOverride"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/bip-multidisciplinary-approaches-to-digital-competence-and-innovation-in-health-care/"
+      ]
+    },
+    {
+      "id": "bip-nature-wellbeing",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "dateLabel",
+        "endDate",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "startDate"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/bip-nature-based-wellbeing-experience/"
+      ]
+    },
+    {
+      "id": "bip-accounting-skills",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "dateLabel",
+        "endDate",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "startDate"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/bip-non-technical-skills-for-accountants/"
+      ]
+    },
+    {
+      "id": "bip-community-youth",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "dateLabel",
+        "endDate",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "startDate"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/school-community-development-and-youth-work-approaches/"
+      ]
+    },
+    {
+      "id": "bip-seismicx",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availabilityStatus",
+        "confidence",
+        "dateLabel",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceConflict",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/bip-seismicx-engineering-structures-for-the-real-world/"
+      ]
+    },
+    {
+      "id": "bip-sustainable-cosmetics",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "dateLabel",
+        "endDate",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/bip-sustainable-cosmetics-entrepreneurship/"
+      ]
+    },
+    {
+      "id": "bip-corporate-responsibility",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "dateLabel",
+        "endDate",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "startDate"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/bip-sustainable-development-and-corporate-responsibility/"
+      ]
+    },
+    {
+      "id": "programme-cbpt",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availabilityStatus",
+        "fullDescription",
+        "history",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/ingeniums-cbpt-joint-masters-set-to-receive-the-joint-european-degree-label/"
+      ]
+    },
+    {
+      "id": "programme-human-centred-ai-doctorate",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/ingenium-launches-its-2026-call-for-joint-phd-programmes/"
+      ]
+    },
+    {
+      "id": "community-sustainability-hub",
+      "change": "updated",
+      "fields": [
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/initiatives/student-sustainability-hub/"
+      ]
+    },
+    {
+      "id": "initiative-bmc",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/business-model-canvas/",
+        "https://ingenium-university.eu/the-business-model-canvas-course-is-now-live-learn-how-to-design-smarter-business-models-with-ingenium/"
+      ]
+    },
+    {
+      "id": "opportunity-phd-mobility-2026",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availabilityStatus",
+        "featured",
+        "fullDescription",
+        "history",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/announcement-of-the-results-of-the-ingenium-phd-mobility-and-co-supervision-scholarships-call/"
+      ]
+    },
+    {
+      "id": "course-sustainable-wellbeing",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/sustainable-wellbeing-in-changing-society/"
+      ]
+    },
+    {
+      "id": "course-ecec-finland",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/early-childhood-education-and-care-ecec-in-finland/"
+      ]
+    },
+    {
+      "id": "course-beginners-finnish-1",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/beginners-finnish-1/"
+      ]
+    },
+    {
+      "id": "course-beginners-finnish-2",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/beginners-finnish-2/"
+      ]
+    },
+    {
+      "id": "course-culture-finland",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/culture-finland/"
+      ]
+    },
+    {
+      "id": "module-acute-care-professional-development",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "deliveryMode",
+        "ects",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/advanced-practice-nursing-and-professional-development-in-acute-care-nursing-2/"
+      ]
+    },
+    {
+      "id": "module-acute-care-research-development",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "deliveryMode",
+        "ects",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/research-and-development-in-acute-care-nursing-2/"
+      ]
+    },
+    {
+      "id": "microcredential-climate-infrastructure",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/climate-adapted-urban-infrastructure/"
+      ]
+    },
+    {
+      "id": "course-innovation-management-entrepreneurship",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/innovation-management-and-entrepreneurship/"
+      ]
+    },
+    {
+      "id": "learning-swedish-culture-language",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/a-taste-of-swedish-culture-and-language/"
+      ]
+    },
+    {
+      "id": "opportunity-annual-education-call-2026",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/iec-faculty/ingenium-annual-education-call-2026-2027/"
+      ]
+    },
+    {
+      "id": "programme-doctorate-wellbeing",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/ingenium-launches-its-2026-call-for-joint-phd-programmes/"
+      ]
+    },
+    {
+      "id": "opportunity-joint-phd-call-2026",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/ingenium-launches-its-2026-call-for-joint-phd-programmes/"
+      ]
+    },
+    {
+      "id": "initiative-staff-academy",
+      "change": "updated",
+      "fields": [
+        "capacity",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/staff-academy/"
+      ]
+    },
+    {
+      "id": "course-rethinking-assessment",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "deliveryMode",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/rethinking-assessment-in-higher-education-inclusive-feedback-rich-and-ai-supported-practices/"
+      ]
+    },
+    {
+      "id": "bip-ingenium-inclusion-2027",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availabilityStatus",
+        "confidence",
+        "featured",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceConflict",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "statusOverride",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/students/ingenium-european-campus/short-term-mobility-opportunities/bips-2026-2027/"
+      ]
+    },
+    {
+      "id": "opportunity-staff-linguistic-tandems-2026",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "featured",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/ingenium-linguistic-tandems-staff-edition/"
+      ]
+    },
+    {
+      "id": "opportunity-uniovi-bip-window-november-2026",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://www.uniovi.es/actualidad/noticias/-/asset_publisher/Ru0cAJNPrm1m/content/id/15214217"
+      ]
+    },
+    {
+      "id": "microcredential-towards-framework-2026",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/towards-ingenium-micro-credentials-framework/"
+      ]
+    },
+    {
+      "id": "microcredential-from-up2green-to-up2learn-a-green-chemistry-learning-lab-for-research-ba",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/from-up2green-to-up2learn-a-green-chemistry-learning-lab-for-research-based-education/"
+      ]
+    },
+    {
+      "id": "course-evidence-based-practice-and-implementation-in-acute-care-nursing",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "deliveryMode",
+        "ects",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/evidence-based-practice-and-implementation-in-acute-care-nursing-2/"
+      ]
+    },
+    {
+      "id": "course-using-wellbeing-skills-to-promote-studying-ability",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/using-wellbeing-skills-to-promote-studying-ability/"
+      ]
+    },
+    {
+      "id": "course-health-promotion-strategies-for-health-professionals",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/health-promotion-strategies-for-health-professionals-2/"
+      ]
+    },
+    {
+      "id": "microcredential-micro-credential-learning-design",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/micro-credential-learning-design/"
+      ]
+    },
+    {
+      "id": "course-education-for-sustainable-development-esd-for-university-staff",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/education-for-sustainable-development-esd-for-university-staff/"
+      ]
+    },
+    {
+      "id": "course-digital-accessibility",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/digital-accessibility/"
+      ]
+    },
+    {
+      "id": "course-gender-scape-a-serious-game-about-gender-equality",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/gender-scape-a-serious-game-about-gender-equality/"
+      ]
+    },
+    {
+      "id": "course-science-meets-industry-driving-innovation-through-industry-challenges",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/science-meets-industry-driving-innovation-through-industry-challenges/"
+      ]
+    },
+    {
+      "id": "course-science-meets-industry-ethical-ai-development",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/science-meets-industry-ethical-ai-development/"
+      ]
+    },
+    {
+      "id": "course-science-meets-industry-creative-convergence-innovating-industries-togeth",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/science-meets-industry-creative-convergence-innovating-industries-together/"
+      ]
+    },
+    {
+      "id": "course-intercultural-team-based-learning",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/intercultural-team-based-learning/"
+      ]
+    },
+    {
+      "id": "course-crystallization-kinetics-and-mechanical-properties-of-phb-plasticized-by",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/crystallization-kinetics-and-mechanical-properties-of-phb-plasticized-by-commercial-and-cardanol-derivatives/"
+      ]
+    },
+    {
+      "id": "course-coil-collaboration-to-promote-technical-language-and-intercultural-compe",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/coil-collaboration-to-promote-technical-language-and-intercultural-competence-technical-english-c1-english-across-the-disciplines/"
+      ]
+    },
+    {
+      "id": "course-international-communication",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/international-communication/"
+      ]
+    },
+    {
+      "id": "course-how-to-become-a-disability-ambassador",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/how-to-become-a-disability-ambassador/"
+      ]
+    },
+    {
+      "id": "course-introduction-to-polymer-characterization",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/introduction-to-polymer-characterization/"
+      ]
+    },
+    {
+      "id": "course-differential-holistic-and-integrative-approach-to-patient-care",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "deliveryMode",
+        "ects",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/differential-holistic-and-integrative-approach-to-patient-care/"
+      ]
+    },
+    {
+      "id": "learning_resource-sustainability-course-materials-for-teaching",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/sustainability-course-material-for-teaching/"
+      ]
+    },
+    {
+      "id": "course-taste-german-culture-and-language",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/a-taste-of-german-culture-and-language/"
+      ]
+    },
+    {
+      "id": "course-taste-romanian-language-and-culture",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/a-taste-of-romanian-language-and-culture/"
+      ]
+    },
+    {
+      "id": "course-taste-italian-culture-and-language",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/a-taste-of-italian-culture-and-language/"
+      ]
+    },
+    {
+      "id": "course-taste-finnish-culture-and-language",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "capacity",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/a-taste-of-finnish-culture-and-language/"
+      ]
+    },
+    {
+      "id": "course-taste-spanish-culture-language",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/a-taste-of-spanish-culture-language/"
+      ]
+    },
+    {
+      "id": "course-taste-french-culture-and-language",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/a-taste-of-french-culture-and-language/"
+      ]
+    },
+    {
+      "id": "course-taste-greek-language-and-culture",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/%ce%b1-taste-of-greek-culture-and-language/"
+      ]
+    },
+    {
+      "id": "opportunity-course-catalogue-contributions-2026",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "fullDescription",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/iec-faculty/ingenium-annual-education-call-2026-2027/"
+      ]
+    },
+    {
+      "id": "opportunity-ingenium-ambassadors-2026",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "featured",
+        "fullDescription",
+        "history",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/ingeniums-first-20-ambassadors-are-here/"
+      ]
+    },
+    {
+      "id": "event-final-student-conference-oviedo-2026",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "featured",
+        "fullDescription",
+        "history",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/50-students-selected-for-the-first-ingenium-student-conference/"
+      ]
+    },
+    {
+      "id": "opportunity-student-tandems-autumn-2026",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "availability",
+        "availabilityStatus",
+        "featured",
+        "lastChecked",
+        "lastVerified",
+        "sourceId",
+        "sourceIds",
+        "status"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/ingenium-linguistic-tandems-student-edition/"
+      ]
+    },
+    {
+      "id": "opportunity-student-partnerships-2627-round1",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "applicationOpenDate",
+        "availability",
+        "availabilityStatus",
+        "confidence",
+        "deadlineTimezone",
+        "endDate",
+        "fullDescription",
+        "history",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "sourceConflict",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "statusOverride",
+        "studentSummary"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/ingenium-student-partnerships2/2026-2027-call/"
+      ]
+    },
+    {
+      "id": "course-irish-culture-language",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "availabilityStatus",
+        "confidence",
+        "dataClassification",
+        "deliveryMode",
+        "ects",
+        "eligibility",
+        "fullDescription",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/a-taste-of-gaelic-culture-and-language/"
+      ]
+    },
+    {
+      "id": "module-clinical-acute-care-simulation",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "availabilityStatus",
+        "confidence",
+        "dataClassification",
+        "fullDescription",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/use-of-simulation-in-ensuring-clinical-acute-care-competence-2/"
+      ]
+    },
+    {
+      "id": "microcredential-climate-health",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "applicationDeadline",
+        "applicationOpenDate",
+        "availability",
+        "availabilityStatus",
+        "capacity",
+        "confidence",
+        "dataClassification",
+        "dateLabel",
+        "deliveryMode",
+        "ects",
+        "eligibility",
+        "endDate",
+        "fullDescription",
+        "funding",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/climate-change-and-environmental-toxicology-implications-for-human-health/"
+      ]
+    },
+    {
+      "id": "microcredential-unmanned-aerial-systems",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "applicationDeadline",
+        "applicationOpenDate",
+        "availability",
+        "availabilityStatus",
+        "capacity",
+        "confidence",
+        "dataClassification",
+        "dateLabel",
+        "deliveryMode",
+        "ects",
+        "eligibility",
+        "endDate",
+        "fullDescription",
+        "funding",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds",
+        "workload"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/unmanned-aerial-systems-uas-and-applications-from-flight-fundamentals-to-data-intelligence/"
+      ]
+    },
+    {
+      "id": "microcredential-school-community",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "applicationDeadline",
+        "applicationOpenDate",
+        "availability",
+        "availabilityStatus",
+        "capacity",
+        "confidence",
+        "dataClassification",
+        "dateLabel",
+        "deliveryMode",
+        "ects",
+        "eligibility",
+        "endDate",
+        "fullDescription",
+        "funding",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/school-community-group-and-peer-relationships-best-practices/"
+      ]
+    },
+    {
+      "id": "microcredential-intercultural-communication",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "applicationDeadline",
+        "applicationOpenDate",
+        "availability",
+        "availabilityStatus",
+        "capacity",
+        "confidence",
+        "dataClassification",
+        "dateLabel",
+        "deliveryMode",
+        "ects",
+        "eligibility",
+        "endDate",
+        "fullDescription",
+        "funding",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/intercultural-communication/"
+      ]
+    },
+    {
+      "id": "microcredential-ecological-sustainability",
+      "change": "added",
+      "fields": [
+        "academicLevel",
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "capacity",
+        "confidence",
+        "countries",
+        "dataClassification",
+        "deliveryMode",
+        "ects",
+        "eligibility",
+        "endDate",
+        "fullDescription",
+        "hostUniversityId",
+        "id",
+        "language",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/ecological-sustainable-development-environmental-perspectives-human-impact-and-sustainable-transitions/"
+      ]
+    },
+    {
+      "id": "microcredential-social-sustainability",
+      "change": "added",
+      "fields": [
+        "academicLevel",
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "capacity",
+        "confidence",
+        "countries",
+        "dataClassification",
+        "deliveryMode",
+        "ects",
+        "eligibility",
+        "endDate",
+        "fullDescription",
+        "hostUniversityId",
+        "id",
+        "language",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/social-sustainable-development-social-justice-inclusion-norms-and-intercultural-collaboration/"
+      ]
+    },
+    {
+      "id": "microcredential-resilient-entrepreneurship",
+      "change": "added",
+      "fields": [
+        "academicLevel",
+        "actionLabel",
+        "activityDatePrecision",
+        "availability",
+        "availabilityStatus",
+        "capacity",
+        "confidence",
+        "countries",
+        "dataClassification",
+        "deliveryMode",
+        "ects",
+        "eligibility",
+        "endDate",
+        "fullDescription",
+        "hostUniversityId",
+        "id",
+        "language",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/sustainable-and-resilient-entrepreneurship-economic-sustainability-entrepreneurship-resilience-and-business-related-sustainability-challenges/"
+      ]
+    },
+    {
+      "id": "opportunity-local-student-events-2026",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "applicationOpenDate",
+        "availability",
+        "availabilityStatus",
+        "confidence",
+        "dataClassification",
+        "eligibility",
+        "fullDescription",
+        "funding",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/students/ingenium-european-campus/ingenium-local-student-events/"
+      ]
+    },
+    {
+      "id": "opportunity-stories-on-screen-2026",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "applicationDeadline",
+        "availabilityStatus",
+        "confidence",
+        "dataClassification",
+        "deadlineTimezone",
+        "eligibility",
+        "fullDescription",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/ingenium-stories-on-screen-community-days-initiative/"
+      ]
+    },
+    {
+      "id": "event-community-days-2026",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availabilityStatus",
+        "confidence",
+        "dataClassification",
+        "deliveryMode",
+        "endDate",
+        "fullDescription",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/ingenium-community-days-2026-strengthening-our-shared-sense-of-belonging/"
+      ]
+    },
+    {
+      "id": "event-student-partnerships-matchmaking-2026",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availabilityStatus",
+        "confidence",
+        "dataClassification",
+        "dateLabel",
+        "deliveryMode",
+        "endDate",
+        "fullDescription",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/online-matchmaking-student-partnerships-2026-2027/"
+      ]
+    },
+    {
+      "id": "event-inclusive-mind-2026",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availabilityStatus",
+        "confidence",
+        "dataClassification",
+        "dateLabel",
+        "deliveryMode",
+        "endDate",
+        "fullDescription",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/how-to-grow-an-inclusive-mind/"
+      ]
+    },
+    {
+      "id": "event-mobility-student-panel-2026",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availabilityStatus",
+        "confidence",
+        "dataClassification",
+        "dateLabel",
+        "deliveryMode",
+        "endDate",
+        "fullDescription",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/mobility-experience-student-panel/"
+      ]
+    },
+    {
+      "id": "event-healthy-campus-webinar-2026",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availabilityStatus",
+        "confidence",
+        "dataClassification",
+        "dateLabel",
+        "deliveryMode",
+        "endDate",
+        "fullDescription",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/webinar-on-ingenium-healthy-campus-research-alliance/"
+      ]
+    },
+    {
+      "id": "event-intersectionality-2026",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availabilityStatus",
+        "confidence",
+        "dataClassification",
+        "dateLabel",
+        "deliveryMode",
+        "endDate",
+        "fullDescription",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/webinar-on-intersectionality/"
+      ]
+    },
+    {
+      "id": "opportunity-education-call-eoi-2026",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "applicationDeadline",
+        "availabilityStatus",
+        "confidence",
+        "dataClassification",
+        "eligibility",
+        "fullDescription",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/iec-faculty/ingenium-annual-education-call-2026-2027/"
+      ]
+    },
+    {
+      "id": "programme-earth-planetary-sciences-phd",
+      "change": "added",
+      "fields": [
+        "academicLevel",
+        "actionLabel",
+        "activityDatePrecision",
+        "applicationDeadline",
+        "availabilityStatus",
+        "confidence",
+        "dataClassification",
+        "dateLabel",
+        "fullDescription",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/ingenium-launches-its-2026-call-for-joint-phd-programmes/"
+      ]
+    },
+    {
+      "id": "initiative-rouen-edi-charter",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "availabilityStatus",
+        "confidence",
+        "dataClassification",
+        "fullDescription",
+        "hostUniversityId",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/from-the-ingenium-alliance-commitment-to-a-local-edi-charter-in-the-university-of-rouen-normandy/"
+      ]
+    },
+    {
+      "id": "event-sustainability-week-2026",
+      "change": "added",
+      "fields": [
+        "actionLabel",
+        "activityDatePrecision",
+        "availabilityStatus",
+        "confidence",
+        "dataClassification",
+        "deliveryMode",
+        "endDate",
+        "fullDescription",
+        "id",
+        "lastChecked",
+        "lastVerified",
+        "officialUrl",
+        "slug",
+        "sourceId",
+        "sourceIds",
+        "startDate",
+        "status",
+        "studentSummary",
+        "themes",
+        "title",
+        "type",
+        "universityIds"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/ingenium-sustainability-week-a-call-for-action/"
+      ]
+    }
+  ],
+  "cautions": [
+    "Four new microcredential course starts differ by one day between the dated announcement and index; announcement dates shown, activity precision approximate.",
+    "Digital Health and SeismicX BIP dates conflict; availability remains unknown.",
+    "Provisional Rouen Inclusion BIP overview links to a different Oviedo programme; Rouen entry requires verification.",
+    "Local event opening date differs within the page; both versions establish the rolling round is open."
+  ]
+}

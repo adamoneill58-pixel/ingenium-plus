@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-const V15_RESEARCH_DATE = "2026-09-29";
+const LATEST_REVIEW_DATE = "2026-11-06";
 import { getRuntimeDataset } from "@/lib/v151/runtime-data";
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default async function ResearchPage() {
           <span className="eyebrow">Evidence ledger</span>
           <h1>See what the network is built on</h1>
           <p>
-            Every INGENIUM+ record is tied to an official alliance page, programme page or deliverable. The current-data refresh was checked on {V15_RESEARCH_DATE}; retained historical sources keep their own dates.
+            Every INGENIUM+ record is tied to an official alliance page, programme page or deliverable. The latest targeted review checked current courses, BIPs, calls and initiative updates on {LATEST_REVIEW_DATE}. Each record shows its own check date; historical material keeps its earlier evidence date.
           </p>
         </div>
         <div className="page-hero__signal" aria-label={`${sources.length} evidence sources`}>

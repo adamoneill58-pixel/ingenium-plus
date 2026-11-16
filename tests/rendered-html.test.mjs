@@ -58,7 +58,7 @@ test("production snapshot mode serves the reviewed public catalogue without data
   assert.equal(response.status,200);
   const data = await response.json();
   assert.equal(data.storage,"release-snapshot");
-  assert.equal(data.records.length,222);
+  assert.equal(data.records.length,243);
   assert.ok(data.records.every((record)=>record.type !== "student" && record.dataClassification !== "sample"));
   const html = await (await render("/",{PUBLIC_CATALOGUE_MODE:"release-snapshot"})).text();
   assert.match(html,/Source-backed release snapshot/);
@@ -189,8 +189,9 @@ test("public catalogue API and calendar downloads work without an identity", asy
         "/api/v2/calendar?id=opportunity-student-partnerships-2627-round1-deadline",
       )
     ).status,
-    422,
+    200,
   );
+  assert.equal((await render("/api/v2/calendar?id=bip-digital-health-activity")).status, 422);
   assert.equal((await render("/api/v2/calendar?id=unknown")).status, 404);
 });
 test("pilot API enforces collection gate, same origin, method and arbitrary-field rejection", async () => {

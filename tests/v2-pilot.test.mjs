@@ -15,6 +15,7 @@ const server = await createServer({
   logLevel: "silent",
 });
 const domain = await server.ssrLoadModule("/lib/v2/domain.ts");
+const { featuredOpportunities } = await server.ssrLoadModule("/lib/v2/featured.ts");
 const ical = await server.ssrLoadModule("/lib/v2/ical.ts");
 const pilot = await server.ssrLoadModule("/lib/v2/pilot.ts");
 const policy = await server.ssrLoadModule("/lib/v2/policy.ts");
@@ -35,6 +36,58 @@ const migration = await readFile(
 const catalogue = JSON.parse(
   await readFile(new URL("../data/catalogue/v2.json", import.meta.url), "utf8"),
 );
+
+test("November calls distinguish upcoming windows, closed selections and confirmed final deadlines", () => {
+  validateDataset(catalogue);
+  const byId = new Map(catalogue.records.map((item) => [item.id, item]));
+  const partnership = byId.get("opportunity-student-partnerships-2627-round1");
+  assert.equal(domain.availability(partnership, "2026-11-06").value, "open");
+  assert.equal(partnership.applicationDeadline, "2026-12-01");
+  assert.equal(domain.availability(partnership, "2026-12-02").value, "closed");
+  const educationEoi = byId.get("opportunity-education-call-eoi-2026");
+  assert.equal(educationEoi.applicationDeadline, "2026-11-18");
+  assert.equal(domain.availability(educationEoi, "2026-11-18").value, "open");
+  assert.equal(domain.availability(educationEoi, "2026-11-19").value, "closed");
+  const uas = byId.get("microcredential-unmanned-aerial-systems");
+  assert.equal(domain.availability(uas, "2026-11-06").value, "unknown");
+  assert.equal(domain.availability(uas, "2026-11-08").value, "open");
+  assert.equal(domain.availability(uas, "2026-11-23").value, "closed");
+  for (const id of ["opportunity-ingenium-ambassadors-2026", "event-final-student-conference-oviedo-2026", "opportunity-student-tandems-autumn-2026"])
+    assert.equal(domain.availability(byId.get(id), "2026-11-06").value, "closed", id);
+  for (const id of ["bip-seismicx", "bip-digital-health", "bip-ingenium-inclusion-2027"])
+    assert.equal(domain.availability(byId.get(id), "2026-11-06").conflict, true, id);
+});
+
+test("homepage discoveries exclude expired calls, source conflicts and sample records as dates advance", () => {
+  for (const day of ["2026-11-06", "2026-11-12", "2026-12-02", "2027-01-01"]) {
+    const featured = featuredOpportunities(catalogue.records, day);
+    assert.equal(featured.length, 3);
+    assert.equal(new Set(featured.map((item) => item.id)).size, 3);
+    for (const item of featured) {
+      assert.equal(domain.availability(item, day).value, "open", `${day}: ${item.id}`);
+      assert.notEqual(item.dataClassification, "sample");
+    }
+  }
+  assert.ok(!featuredOpportunities(catalogue.records, "2026-11-12").some((item) => item.id === "microcredential-climate-health"));
+});
+
+test("November review records retain official provenance and calendar times keep CET", async () => {
+  const report = JSON.parse(await readFile(new URL("../docs/data-reviews/2026-11-06.json", import.meta.url), "utf8"));
+  assert.equal(report.changes.length, 89);
+  const byId = new Map(catalogue.records.map((item) => [item.id, item]));
+  const ids = new Set(catalogue.sources.map((source) => source.id));
+  for (const change of report.changes) {
+    const item = byId.get(change.id);
+    assert.ok(item, change.id);
+    assert.ok(ids.has(item.sourceId), item.id);
+    assert.ok(item.sourceIds.every((id) => ids.has(id)), item.id);
+  }
+  const entries = domain.allCalendarEntries(catalogue.records, catalogue.calendarEvents);
+  const matchmaking = entries.find((item) => item.id === "event-student-partnerships-matchmaking-2026-activity");
+  assert.equal(matchmaking.start, "2026-11-10T13:00:00+01:00");
+  assert.equal(matchmaking.timezone, "Europe/Paris");
+  assert.match(ical.makeCalendar(matchmaking), /20261110T120000Z/);
+});
 class Statement {
   constructor(db, sql, args = []) {
     this.db = db;
@@ -788,10 +841,10 @@ test("legacy date placeholders are not exported as exact activities and BIP comp
       (e) => e.id === "bip-digital-health-activity" && e.start === "2026-10-05",
     ),
   );
-  assert.equal(
-    entries.find((e) => e.id === "bip-digital-health-online_component").end,
-    "2026-10-24",
-  );
+  assert.ok(!entries.some((e) => e.id === "bip-digital-health-online_component"));
+  const digitalHealth = entries.find((e) => e.id === "bip-digital-health-activity");
+  assert.equal(digitalHealth.precision, "approximate");
+  assert.equal(digitalHealth.conflict, true);
   const approx = domain.calendarEntries([
     {
       ...record,

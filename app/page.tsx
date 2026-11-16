@@ -5,6 +5,7 @@ import { CampusConstellation } from "@/components/v2/CampusConstellation";
 import { getDiscoveryData } from "@/lib/v2/catalogue";
 import { VideoSpotlight } from "@/components/v2/VideoSpotlight";
 import { OpportunityCard } from "@/components/v2/OpportunityCard";
+import { featuredOpportunities } from "@/lib/v2/featured";
 
 const pathways = [
   { number: "01", title: "Learn across borders.", detail: "Degrees, courses & BIPs", href: "/learning", Icon: BookOpen, colour: "cyan" },
@@ -12,12 +13,10 @@ const pathways = [
   { number: "03", title: "Build something together.", detail: "Projects & collaboration", href: "/build", Icon: Shapes, colour: "teal" },
   { number: "04", title: "Find your people.", detail: "Explore the community demo", href: "/community", Icon: Users, colour: "pink" },
 ] as const;
-const featuredIds = ["initiative-bmc", "course-sustainable-wellbeing", "initiative-linguistic-tandems-students"];
 
 export default async function Home() {
   const data = await getDiscoveryData();
-  const chosen = featuredIds.flatMap((id) => data.records.find((record) => record.id === id) ?? []);
-  const featured = [...chosen, ...data.records.filter((record) => record.type === "course" && !chosen.some((item) => item.id === record.id))].slice(0, 3);
+  const featured = featuredOpportunities(data.records);
   return (
     <main id="main-content" className="campus-main public-home">
       <section className="discovery-hero" aria-labelledby="home-title">
