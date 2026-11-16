@@ -869,9 +869,9 @@
       "shortTitle": "CBPT",
       "subtype": "Joint Master’s programme",
       "studentSummary": "A joint English-taught Master’s in chemical and biochemical process technology. ARACIS has approved the award of the Joint European Degree Label.",
-      "fullDescription": "The two-year, 120 ECTS programme is delivered by TUIASI, Oviedo and Rouen. On 6 November, INGENIUM announced that the ARACIS Council had approved the award of the Joint European Degree Label. This is programme recognition; it does not reopen the 2026 admissions round.",
+      "fullDescription": "TUIASI, Oviedo and Rouen deliver this two-year, 120 ECTS degree. Rouen confirmed on 12 November that the Romanian quality assurance council approved the Joint European Degree Label. The 2026 Master’s admissions window has closed. Rouen has published a separate application route for a February 2027 taster BIP.",
       "status": "Ongoing",
-      "availability": "Accredited for 2026/27; later official sources report enrolment under way",
+      "availability": "The 2026 Master’s application window has closed.",
       "universityIds": [
         "university-tuiasi",
         "university-uniovi",
@@ -898,26 +898,28 @@
       "eligibility": "EU applicants for the 2026/27 intake; consult the official programme page for full admission conditions",
       "language": "English",
       "funding": "At least ten scholarships of up to €20,000 were announced for the first cohort, subject to official conditions.",
-      "actionLabel": "Read the degree-label update",
-      "officialUrl": "https://www.uniovi.es/actualidad/noticias/-/asset_publisher/Ru0cAJNPrm1m/content/la-alianza-europea-ingenium-pondr%25C3%25A1-en-marcha-el-pr%25C3%25B3ximo-curso-acad%C3%A9mico-su-primer-m%C3%A1ster-oficial",
-      "sourceId": "review-20261106-6d996c32d56c",
+      "actionLabel": "View the official Master’s programme",
+      "officialUrl": "https://ingenium-university.eu/students/ingenium-european-campus/study-programmes/joint-masters-programme-cbpt/",
+      "sourceId": "review-20261116-rouen-cbpt-bip",
       "confidence": "High",
       "featured": true,
       "aliases": [
         "Chemical and Biochemical Process Technologies"
       ],
       "type": "programme",
-      "lastVerified": "2026-11-06",
+      "lastVerified": "2026-11-16",
       "dataClassification": "verified",
       "capacity": "Expected cohort of 10–30 students in the April 2026 approval record",
       "sourceIds": [
+        "review-20261116-rouen-cbpt-bip",
+        "review-20261116-cbpt-programme",
         "review-20261106-6d996c32d56c",
         "fc-full-uniovi-cbpt-master-2026",
         "joint-master-cbpt",
         "fc-full-rouen-council"
       ],
       "availabilityStatus": "closed",
-      "lastChecked": "2026-11-06",
+      "lastChecked": "2026-11-16",
       "history": [
         {
           "label": "Official outcome update",
@@ -2986,25 +2988,22 @@
       "ects": 5,
       "eligibility": "Students at INGENIUM partner universities; confirm local recognition before applying",
       "whyItMatters": "Adds a cross-university social-services perspective to the INGENIUM sustainable-wellbeing pathway.",
-      "actionLabel": "View course and access details",
-      "officialUrl": "https://ingenium-university.eu/courses/sustainable-wellbeing-in-changing-society/",
+      "actionLabel": "Read the autumn 2026 announcement",
+      "officialUrl": "https://ingenium-university.eu/expand-your-studies-with-the-ingenium-course-catalogue-apply-for-the-first-online-courses-of-2026-2027/",
       "featured": true,
-      "sourceId": "review-20261106-2b9249d178d5",
+      "sourceId": "review-20261116-xamk-autumn-archive",
       "sourceIds": [
-        "review-20261106-2b9249d178d5",
-        "autumn-learning-2026",
-        "course-catalogue-2026",
-        "fc29-course-catalogue-autumn",
-        "review-20261106-120a71c0394c"
+        "review-20261116-xamk-autumn-archive",
+        "course-catalogue-2026"
       ],
-      "lastVerified": "2026-11-06",
+      "lastVerified": "2026-11-16",
       "confidence": "High",
       "dataClassification": "verified",
-      "availability": "Registration is closed in the official catalogue.",
+      "availability": "Autumn 2026 enrolment has ended. The official announcement preserves this intake.",
       "capacity": "10",
       "activityDatePrecision": "day",
       "availabilityStatus": "closed",
-      "lastChecked": "2026-11-06"
+      "lastChecked": "2026-11-16"
     },
     {
       "id": "course-basics-media-education",
@@ -3140,24 +3139,21 @@
       "applicationDeadline": "2026-08-30",
       "dateLabel": "14 September 2026–15 February 2027",
       "ects": 2,
-      "actionLabel": "View course and access details",
-      "officialUrl": "https://ingenium-university.eu/courses/beginners-finnish-1/",
-      "sourceId": "review-20261106-4d0b5e81e313",
+      "actionLabel": "Read the autumn 2026 announcement",
+      "officialUrl": "https://ingenium-university.eu/expand-your-studies-with-the-ingenium-course-catalogue-apply-for-the-first-online-courses-of-2026-2027/",
+      "sourceId": "review-20261116-xamk-autumn-archive",
       "sourceIds": [
-        "review-20261106-4d0b5e81e313",
-        "autumn-learning-2026",
-        "course-catalogue-2026",
-        "fc29-course-catalogue-autumn",
-        "review-20261106-120a71c0394c"
+        "review-20261116-xamk-autumn-archive",
+        "course-catalogue-2026"
       ],
-      "lastVerified": "2026-11-06",
+      "lastVerified": "2026-11-16",
       "confidence": "High",
       "dataClassification": "verified",
-      "availability": "Registration is closed in the official catalogue.",
+      "availability": "Autumn 2026 enrolment has ended. The official announcement preserves this intake.",
       "capacity": "50",
       "activityDatePrecision": "day",
       "availabilityStatus": "closed",
-      "lastChecked": "2026-11-06"
+      "lastChecked": "2026-11-16"
     },
     {
       "id": "course-beginners-finnish-2",
@@ -3197,24 +3193,21 @@
       "prerequisites": [
         "Beginners’ Finnish 1 or corresponding skills"
       ],
-      "actionLabel": "View course and access details",
-      "officialUrl": "https://ingenium-university.eu/courses/beginners-finnish-2/",
-      "sourceId": "review-20261106-76fc12522d3c",
+      "actionLabel": "Read the autumn 2026 announcement",
+      "officialUrl": "https://ingenium-university.eu/expand-your-studies-with-the-ingenium-course-catalogue-apply-for-the-first-online-courses-of-2026-2027/",
+      "sourceId": "review-20261116-xamk-autumn-archive",
       "sourceIds": [
-        "review-20261106-76fc12522d3c",
-        "autumn-learning-2026",
-        "course-catalogue-2026",
-        "fc29-course-catalogue-autumn",
-        "review-20261106-120a71c0394c"
+        "review-20261116-xamk-autumn-archive",
+        "course-catalogue-2026"
       ],
-      "lastVerified": "2026-11-06",
+      "lastVerified": "2026-11-16",
       "confidence": "High",
       "dataClassification": "verified",
-      "availability": "Registration is closed in the official catalogue.",
+      "availability": "Autumn 2026 enrolment has ended. The official announcement preserves this intake.",
       "capacity": "50",
       "activityDatePrecision": "day",
       "availabilityStatus": "closed",
-      "lastChecked": "2026-11-06"
+      "lastChecked": "2026-11-16"
     },
     {
       "id": "course-culture-finland",
@@ -3250,24 +3243,21 @@
       "applicationDeadline": "2026-08-30",
       "dateLabel": "14 September 2026–15 February 2027",
       "ects": 3,
-      "actionLabel": "View course and access details",
-      "officialUrl": "https://ingenium-university.eu/courses/culture-finland/",
-      "sourceId": "review-20261106-183430c2433c",
+      "actionLabel": "Read the autumn 2026 announcement",
+      "officialUrl": "https://ingenium-university.eu/expand-your-studies-with-the-ingenium-course-catalogue-apply-for-the-first-online-courses-of-2026-2027/",
+      "sourceId": "review-20261116-xamk-autumn-archive",
       "sourceIds": [
-        "review-20261106-183430c2433c",
-        "autumn-learning-2026",
-        "course-catalogue-2026",
-        "fc29-course-catalogue-autumn",
-        "review-20261106-120a71c0394c"
+        "review-20261116-xamk-autumn-archive",
+        "course-catalogue-2026"
       ],
-      "lastVerified": "2026-11-06",
+      "lastVerified": "2026-11-16",
       "confidence": "High",
       "dataClassification": "verified",
-      "availability": "Registration is closed in the official catalogue.",
+      "availability": "Autumn 2026 enrolment has ended. The official announcement preserves this intake.",
       "capacity": "50",
       "activityDatePrecision": "day",
       "availabilityStatus": "closed",
-      "lastChecked": "2026-11-06"
+      "lastChecked": "2026-11-16"
     },
     {
       "id": "module-acute-care-professional-development",
@@ -5923,8 +5913,8 @@
       "subtype": "Local BIP application route",
       "studentSummary": "A University of Oviedo application window for the International Project Challenge and MedChem BIPs taking place in 2027.",
       "fullDescription": "The official UniOvi notice gives a 2–15 November 2026 local application period. Applicants need B2 English and apply through the SIES route; selection is competitive.",
-      "status": "Open",
-      "availability": "Local UniOvi applications open 2–15 November 2026.",
+      "status": "Closed",
+      "availability": "The University of Oviedo’s 2–15 November application window has closed.",
       "universityIds": [
         "university-uniovi"
       ],
@@ -5944,17 +5934,18 @@
       "funding": "Erasmus+ mobility funding under the local call conditions",
       "actionLabel": "View the UniOvi application route",
       "officialUrl": "https://www.uniovi.es/actualidad/noticias/-/asset_publisher/Ru0cAJNPrm1m/content/id/15214217",
-      "sourceId": "review-20261106-286cad317c7c",
+      "sourceId": "review-20261116-oviedo-nov-window",
       "featured": true,
-      "lastVerified": "2026-11-06",
+      "lastVerified": "2026-11-16",
       "confidence": "High",
       "dataClassification": "verified",
       "sourceIds": [
+        "review-20261116-oviedo-nov-window",
         "review-20261106-286cad317c7c",
         "fc29-uniovi-bip-applications"
       ],
-      "availabilityStatus": "open",
-      "lastChecked": "2026-11-06"
+      "availabilityStatus": "closed",
+      "lastChecked": "2026-11-16"
     },
     {
       "id": "project-bi4e",
@@ -8218,7 +8209,7 @@
       "type": "event",
       "subtype": "Alliance student conference",
       "studentSummary": "Fifty students have been selected for the first INGENIUM Student Conference in Oviedo, 20–25 November 2026.",
-      "fullDescription": "The selected delegations will develop the INGENIUM Student Participation Roadmap 2027–2028. The 6 November announcement confirms 50 students chosen from 169 applications. Attendance is through the selected university delegations; the open application stage has ended.",
+      "fullDescription": "Fifty delegates selected from 169 applications will develop the INGENIUM Student Participation Roadmap 2027–2028. They are scheduled to present it to the Academic Assembly on 24 November and share ideas from the conference at the Final Conference on 25 November. Attendance is through selected university delegations.",
       "status": "Upcoming",
       "availability": "University delegations selected; applications closed.",
       "universityIds": [
@@ -8244,18 +8235,20 @@
       "officialUrl": "https://ingenium-university.eu/50-students-selected-for-the-first-ingenium-student-conference/",
       "sourceId": "review-20261106-a4735ab89576",
       "featured": false,
-      "lastVerified": "2026-11-06",
+      "lastVerified": "2026-11-16",
       "confidence": "High",
       "dataClassification": "verified",
       "sourceIds": [
         "review-20261106-a4735ab89576",
+        "review-20261116-oviedo-student-report",
+        "review-20261116-oviedo-final-programme",
         "v2-official-1",
         "fc-full-final-student-conference"
       ],
       "deliveryMode": "In person",
       "language": "English",
       "availabilityStatus": "closed",
-      "lastChecked": "2026-11-06",
+      "lastChecked": "2026-11-16",
       "activityDatePrecision": "day",
       "history": [
         {
@@ -8416,19 +8409,20 @@
         "Health",
         "Toxicology"
       ],
-      "status": "Open",
-      "availabilityStatus": "open",
+      "status": "Upcoming",
+      "availabilityStatus": "closed",
       "officialUrl": "https://ingenium-university.eu/courses/climate-change-and-environmental-toxicology-implications-for-human-health/",
       "sourceId": "review-20261106-4fb8c7da16e0",
       "sourceIds": [
         "review-20261106-4fb8c7da16e0",
+        "review-20261116-crete-microcredentials",
         "review-20261106-26279b625f89"
       ],
-      "lastChecked": "2026-11-06",
-      "lastVerified": "2026-11-06",
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
       "confidence": "High",
       "dataClassification": "verified",
-      "actionLabel": "View pre-registration details",
+      "actionLabel": "View the official course details",
       "ects": 3,
       "capacity": "30",
       "deliveryMode": "Virtual",
@@ -8436,7 +8430,7 @@
       "applicationDeadline": "2026-11-11",
       "startDate": "2026-12-09",
       "endDate": "2027-03-19",
-      "availability": "Pre-registration 2026-11-02 to 2026-11-11; admission is subject to the course conditions.",
+      "availability": "The 2–11 November pre-registration window has closed.",
       "eligibility": "Applicants with a health, environmental science or related background, including graduates, postgraduate students and professionals; PhD candidates and professionals receive priority.",
       "funding": "€35 enrolment fee, payable after a place is confirmed.",
       "dateLabel": "2026-12-09 to 2027-03-19 — dates in the 4 November announcement; confirm the start date",
@@ -8461,10 +8455,11 @@
       "sourceId": "review-20261106-d86d096a7178",
       "sourceIds": [
         "review-20261106-d86d096a7178",
+        "review-20261116-crete-microcredentials",
         "review-20261106-26279b625f89"
       ],
-      "lastChecked": "2026-11-06",
-      "lastVerified": "2026-11-06",
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
       "confidence": "High",
       "dataClassification": "verified",
       "actionLabel": "View pre-registration details",
@@ -8475,7 +8470,7 @@
       "applicationDeadline": "2026-11-22",
       "startDate": "2026-12-08",
       "endDate": "2027-03-14",
-      "availability": "Pre-registration 2026-11-08 to 2026-11-22; admission is subject to the course conditions.",
+      "availability": "Pre-register by 22 November 2026. Places are limited.",
       "eligibility": "Bachelor, Master and PhD students, professionals and lifelong learners; places allocated in registration order.",
       "funding": "€35 enrolment fee, payable after a place is confirmed.",
       "dateLabel": "2026-12-08 to 2027-03-14 — dates in the 4 November announcement; confirm the start date",
@@ -8501,10 +8496,11 @@
       "sourceId": "review-20261106-d985019b2b2b",
       "sourceIds": [
         "review-20261106-d985019b2b2b",
+        "review-20261116-crete-microcredentials",
         "review-20261106-26279b625f89"
       ],
-      "lastChecked": "2026-11-06",
-      "lastVerified": "2026-11-06",
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
       "confidence": "High",
       "dataClassification": "verified",
       "actionLabel": "View pre-registration details",
@@ -8515,7 +8511,7 @@
       "applicationDeadline": "2026-11-17",
       "startDate": "2026-11-25",
       "endDate": "2027-05-14",
-      "availability": "Pre-registration 2026-11-09 to 2026-11-17; admission is subject to the course conditions.",
+      "availability": "Pre-register by 17 November 2026. Places are limited.",
       "eligibility": "Bachelor-level students across disciplines and lifelong learners; places allocated in registration order.",
       "funding": "€35 enrolment fee, payable after a place is confirmed.",
       "dateLabel": "2026-11-25 to 2027-05-14 — dates in the 4 November announcement; confirm the start date",
@@ -8540,10 +8536,11 @@
       "sourceId": "review-20261106-13774530af23",
       "sourceIds": [
         "review-20261106-13774530af23",
+        "review-20261116-crete-microcredentials",
         "review-20261106-26279b625f89"
       ],
-      "lastChecked": "2026-11-06",
-      "lastVerified": "2026-11-06",
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
       "confidence": "High",
       "dataClassification": "verified",
       "actionLabel": "View pre-registration details",
@@ -8554,7 +8551,7 @@
       "applicationDeadline": "2026-12-10",
       "startDate": "2027-01-11",
       "endDate": "2027-04-23",
-      "availability": "Pre-registration 2026-11-10 to 2026-12-10; admission is subject to the course conditions.",
+      "availability": "Pre-register by 10 December 2026. Places are limited.",
       "eligibility": "University students at all levels, including exchange and Erasmus students; B2 spoken English for English delivery. Local-language delivery may be available.",
       "funding": "€35 enrolment fee, payable after a place is confirmed.",
       "dateLabel": "2027-01-11 to 2027-04-23 — dates in the 4 November announcement; confirm the start date",
@@ -8729,8 +8726,8 @@
       "slug": "stories-on-screen-2026",
       "title": "INGENIUM Stories on Screen — Student Film Call",
       "type": "opportunity",
-      "studentSummary": "Share a short film about inclusion, belonging or European student life. Submit by 30 November, 23:59 CET.",
-      "fullDescription": "Submit an original film or an official film clip of no more than five minutes, with English subtitles where needed. The call forms part of INGENIUM Community Days. Check the official page for submission and reuse conditions.",
+      "studentSummary": "Share a short film or an official film clip about international mobility or living abroad by 30 November, 23:59 CET.",
+      "fullDescription": "Make an original film on your own or in a small group, or share a clip from an official platform. The work must be no more than five minutes including credits. Check the rules for subtitles, submission and permissions. Students without previous mobility experience can also enter.",
       "universityIds": [
         "university-uniovi",
         "university-mus",
@@ -8753,10 +8750,11 @@
       "officialUrl": "https://ingenium-university.eu/ingenium-stories-on-screen-community-days-initiative/",
       "sourceId": "review-20261106-a88d5dd4f108",
       "sourceIds": [
-        "review-20261106-a88d5dd4f108"
+        "review-20261106-a88d5dd4f108",
+        "review-20261116-crete-film-call"
       ],
-      "lastChecked": "2026-11-06",
-      "lastVerified": "2026-11-06",
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
       "confidence": "High",
       "dataClassification": "verified",
       "actionLabel": "Read the film call",
@@ -8770,7 +8768,7 @@
       "title": "INGENIUM Community Days 2026",
       "type": "event",
       "studentSummary": "Join online and campus activities celebrating inclusion, wellbeing and the INGENIUM community across ten universities.",
-      "fullDescription": "Community Days runs from 3 to 20 November 2026. The programme combines local events with alliance-wide online sessions. Follow each event page for its access arrangements.",
+      "fullDescription": "From 3 to 20 November, Community Days combines campus events with alliance-wide online sessions on inclusion, mobility and wellbeing. Check the individual event notice for joining details and local time.",
       "universityIds": [
         "university-uniovi",
         "university-mus",
@@ -8793,10 +8791,12 @@
       "officialUrl": "https://ingenium-university.eu/ingenium-community-days-2026-strengthening-our-shared-sense-of-belonging/",
       "sourceId": "review-20261106-8eae47886fc0",
       "sourceIds": [
-        "review-20261106-8eae47886fc0"
+        "review-20261106-8eae47886fc0",
+        "review-20261116-tuiasi-community",
+        "review-20261116-sofia-community"
       ],
-      "lastChecked": "2026-11-06",
-      "lastVerified": "2026-11-06",
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
       "confidence": "High",
       "dataClassification": "verified",
       "actionLabel": "View official details",
@@ -8915,10 +8915,11 @@
       "officialUrl": "https://ingenium-university.eu/event/mobility-experience-student-panel/",
       "sourceId": "review-20261106-c0b6e312654e",
       "sourceIds": [
-        "review-20261106-c0b6e312654e"
+        "review-20261106-c0b6e312654e",
+        "review-20261116-sofia-mobility-panel"
       ],
-      "lastChecked": "2026-11-06",
-      "lastVerified": "2026-11-06",
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
       "confidence": "High",
       "dataClassification": "verified",
       "actionLabel": "View event and access details",
@@ -9157,6 +9158,342 @@
       "endDate": "2026-10-24",
       "activityDatePrecision": "day",
       "deliveryMode": "Online and campus activities"
+    },
+    {
+      "id": "course-ecec-finland-jan-2027",
+      "slug": "ecec-finland-jan-2027",
+      "title": "Early Childhood Education and Care in Finland — January 2027",
+      "type": "course",
+      "studentSummary": "Study Finland’s early childhood education system and national curriculum in Xamk’s January intake.",
+      "universityIds": [
+        "university-xamk"
+      ],
+      "officialUrl": "https://ingenium-university.eu/courses/early-childhood-education-and-care-ecec-in-finland-2/",
+      "sourceId": "review-20261116-course-ecec-finland-jan-2027",
+      "sourceIds": [
+        "review-20261116-course-ecec-finland-jan-2027",
+        "review-20261116-course-index"
+      ],
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
+      "confidence": "High",
+      "dataClassification": "verified",
+      "hostUniversityId": "university-xamk",
+      "countries": [
+        "Finland"
+      ],
+      "deliveryMode": "Self-learning online",
+      "academicLevel": "Bachelor’s",
+      "studyLevels": [
+        "Bachelor"
+      ],
+      "themes": [
+        "Early childhood education",
+        "Child development"
+      ],
+      "eligibility": "Students in social, psychological and educational fields.",
+      "ects": 3,
+      "status": "Open",
+      "availabilityStatus": "open",
+      "applicationDeadline": "2026-12-16",
+      "availability": "Apply by 16 December 2026 through the official course page.",
+      "startDate": "2027-01-12",
+      "endDate": "2027-05-30",
+      "dateLabel": "12 January–30 May 2027",
+      "activityDatePrecision": "day",
+      "actionLabel": "View course and registration details"
+    },
+    {
+      "id": "course-basics-media-education-jan-2027",
+      "slug": "basics-media-education-jan-2027",
+      "title": "Basics of Media Education — January 2027",
+      "type": "course",
+      "studentSummary": "Build practical media literacy through discussion, analysis and production in Xamk’s January intake.",
+      "universityIds": [
+        "university-xamk"
+      ],
+      "officialUrl": "https://ingenium-university.eu/courses/basics-of-media-education-2/",
+      "sourceId": "review-20261116-course-basics-media-education-jan-2027",
+      "sourceIds": [
+        "review-20261116-course-basics-media-education-jan-2027",
+        "review-20261116-course-index"
+      ],
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
+      "confidence": "High",
+      "dataClassification": "verified",
+      "hostUniversityId": "university-xamk",
+      "countries": [
+        "Finland"
+      ],
+      "deliveryMode": "Online",
+      "academicLevel": "Bachelor’s",
+      "studyLevels": [
+        "Bachelor"
+      ],
+      "themes": [
+        "Media literacy",
+        "Education"
+      ],
+      "eligibility": "Students in social, psychological and educational fields.",
+      "ects": 5,
+      "status": "Open",
+      "availabilityStatus": "open",
+      "applicationDeadline": "2026-12-16",
+      "availability": "Apply by 16 December 2026 through the official course page.",
+      "startDate": "2027-01-14",
+      "endDate": "2027-07-25",
+      "dateLabel": "14 January–25 July 2027",
+      "activityDatePrecision": "day",
+      "actionLabel": "View course and registration details"
+    },
+    {
+      "id": "course-using-wellbeing-skills-to-promote-studying-ability-jan-2027",
+      "slug": "using-wellbeing-skills-to-promote-studying-ability-jan-2027",
+      "title": "Using Wellbeing Skills to Promote Studying Ability — January 2027",
+      "type": "course",
+      "studentSummary": "Develop study habits and resilience through independent reflection and practice in Xamk’s January intake.",
+      "universityIds": [
+        "university-xamk"
+      ],
+      "officialUrl": "https://ingenium-university.eu/courses/using-wellbeing-skills-to-promote-studying-ability-2/",
+      "sourceId": "review-20261116-course-using-wellbeing-skills-to-promote-studying-ability-jan-2027",
+      "sourceIds": [
+        "review-20261116-course-using-wellbeing-skills-to-promote-studying-ability-jan-2027",
+        "review-20261116-course-index"
+      ],
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
+      "confidence": "High",
+      "dataClassification": "verified",
+      "hostUniversityId": "university-xamk",
+      "countries": [
+        "Finland"
+      ],
+      "deliveryMode": "Self-learning online",
+      "academicLevel": "Bachelor’s",
+      "studyLevels": [
+        "Bachelor"
+      ],
+      "themes": [
+        "Wellbeing",
+        "Study skills"
+      ],
+      "eligibility": "Anyone interested in the topic. The official course page lists no prerequisites.",
+      "ects": 2,
+      "status": "Open",
+      "availabilityStatus": "open",
+      "applicationDeadline": "2026-12-16",
+      "availability": "Apply by 16 December 2026 through the official course page.",
+      "startDate": "2027-01-01",
+      "endDate": "2027-05-30",
+      "dateLabel": "1 January–30 May 2027",
+      "activityDatePrecision": "day",
+      "actionLabel": "View course and registration details",
+      "capacity": "20"
+    },
+    {
+      "id": "microcredential-nature-based-social-care",
+      "slug": "nature-based-social-care",
+      "title": "Nature-based Wellbeing in Social Care",
+      "type": "microcredential",
+      "studentSummary": "Learn to design inclusive, sustainable nature-based activities for social care and community settings.",
+      "universityIds": [],
+      "officialUrl": "https://ingenium-university.eu/courses/nature-based-social-care/",
+      "sourceId": "review-20261116-nature-social-care",
+      "sourceIds": [
+        "review-20261116-nature-social-care",
+        "review-20261116-course-index"
+      ],
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
+      "confidence": "High",
+      "dataClassification": "verified",
+      "fullDescription": "This 2 ECTS online microcredential covers nature- and arts-based methods, blue spaces and related approaches to wellbeing. The course page gives a pre-registration window from 14 December 2026 to 18 January 2027.",
+      "status": "Upcoming",
+      "availabilityStatus": "open",
+      "applicationOpenDate": "2026-12-14",
+      "applicationDeadline": "2027-01-18",
+      "availability": "Pre-registration is scheduled for 14 December 2026 to 18 January 2027.",
+      "funding": "Registration fee waived for students at INGENIUM universities. Other participants pay €35 after their place is confirmed.",
+      "deliveryMode": "Virtual",
+      "themes": [
+        "Wellbeing",
+        "Social care",
+        "Sustainability"
+      ],
+      "academicLevel": "EQF levels 6–7 and lifelong learners",
+      "ects": 2,
+      "capacity": "50",
+      "eligibility": "Higher education students at EQF levels 6–7 and professionals or lifelong learners in social care and community work.",
+      "startDate": "2027-01-31",
+      "endDate": "2027-03-12",
+      "dateLabel": "31 January–12 March 2027 (official course index)",
+      "activityDatePrecision": "day",
+      "actionLabel": "Check pre-registration dates and conditions"
+    },
+    {
+      "id": "bip-cbpt-iasi-2027",
+      "slug": "cbpt-bip-iasi-2027",
+      "title": "CBPT Taster BIP — Iași 2027",
+      "type": "bip",
+      "studentSummary": "Explore chemical and biochemical process technology through labs, industry visits and team projects at TUIASI.",
+      "universityIds": [
+        "university-tuiasi",
+        "university-urn",
+        "university-uniovi"
+      ],
+      "officialUrl": "https://www.univ-rouen.fr/actualites/label-europeen-de-diplome-conjoint-pour-le-master-cbpt-dingenium/",
+      "sourceId": "review-20261116-rouen-cbpt-bip",
+      "sourceIds": [
+        "review-20261116-rouen-cbpt-bip",
+        "review-20261116-cbpt-programme"
+      ],
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
+      "confidence": "High",
+      "dataClassification": "verified",
+      "hostUniversityId": "university-tuiasi",
+      "countries": [
+        "Romania"
+      ],
+      "city": "Iași",
+      "language": "English",
+      "ects": 3,
+      "deliveryMode": "Blended",
+      "startDate": "2027-02-22",
+      "endDate": "2027-02-26",
+      "dateLabel": "22–26 February 2027 in Iași, with two days of online preparation beforehand",
+      "activityDatePrecision": "day",
+      "status": "Open",
+      "availabilityStatus": "open",
+      "applicationDeadline": "2026-12-01",
+      "availability": "Rouen asks for applications before 2 December. Submit by 1 December as the last full day before that date.",
+      "eligibility": "The published application route is via the University of Rouen Normandy. Students at other partners should check their home university’s nomination arrangements.",
+      "funding": "Rouen says participation costs are covered for its published intake. Check local funding arrangements if applying through another partner.",
+      "fullDescription": "The programme includes two days of online preparation followed by a week at TUIASI. Rouen asks applicants to send a CV and a motivation letter in English. See the official notice for the contact and application requirements.",
+      "themes": [
+        "Chemical engineering",
+        "Biotechnology",
+        "Mobility"
+      ],
+      "actionLabel": "Read the Rouen application instructions"
+    },
+    {
+      "id": "event-community-days-stereotypes-2026",
+      "slug": "community-days-stereotypes-2026",
+      "title": "Community Days — Intercultural Workshop on Stereotypes",
+      "type": "event",
+      "studentSummary": "A TUIASI-led online workshop on how stereotypes shape intercultural encounters.",
+      "universityIds": [
+        "university-tuiasi",
+        "university-mtu",
+        "university-urn"
+      ],
+      "officialUrl": "https://ingenium-university.eu/event/online-intercultural-workshop-on-stereotypes/",
+      "sourceId": "review-20261116-stereotypes-workshop",
+      "sourceIds": [
+        "review-20261116-stereotypes-workshop",
+        "review-20261116-tuiasi-community"
+      ],
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
+      "confidence": "High",
+      "dataClassification": "verified",
+      "hostUniversityId": "university-tuiasi",
+      "status": "Past",
+      "availabilityStatus": "closed",
+      "startDate": "2026-11-09",
+      "endDate": "2026-11-09",
+      "dateLabel": "9 November 2026, 12:00–13:00 CET",
+      "deliveryMode": "Online",
+      "themes": [
+        "Intercultural learning",
+        "Inclusion"
+      ],
+      "actionLabel": "View the official event listing"
+    },
+    {
+      "id": "event-ingenium-final-conference-2026",
+      "slug": "ingenium-final-conference-oviedo-2026",
+      "title": "INGENIUM Final Conference — Oviedo 2026",
+      "type": "event",
+      "studentSummary": "The alliance brings its 2023–2026 funding phase to a close with panels, breakout sessions and a report from student delegates.",
+      "universityIds": [
+        "university-uniovi"
+      ],
+      "officialUrl": "https://ingenium-university.eu/events/month/2026-11/",
+      "sourceId": "review-20261116-oviedo-final-programme",
+      "sourceIds": [
+        "review-20261116-oviedo-final-programme",
+        "review-20261116-oviedo-student-report",
+        "review-20261106-a4735ab89576"
+      ],
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
+      "confidence": "High",
+      "dataClassification": "verified",
+      "hostUniversityId": "university-uniovi",
+      "countries": [
+        "Spain"
+      ],
+      "city": "Oviedo",
+      "deliveryMode": "In person",
+      "startDate": "2026-11-25",
+      "endDate": "2026-11-25",
+      "dateLabel": "25 November 2026, University of Oviedo Historic Building",
+      "activityDatePrecision": "day",
+      "status": "Upcoming",
+      "availabilityStatus": "unknown",
+      "eligibility": "The published timetable does not give general registration arrangements. Check with the organiser before planning to attend.",
+      "fullDescription": "The programme covers joint education, mobility and the alliance’s next phase. The student engagement report follows the separate 20–25 November student conference. See the official calendar for session details.",
+      "themes": [
+        "Student participation",
+        "European universities",
+        "Joint education"
+      ],
+      "actionLabel": "View the official timetable"
+    },
+    {
+      "id": "event-ingenium-chess-tournament-november-2026",
+      "slug": "ingenium-chess-tournament-november-2026",
+      "title": "INGENIUM Chess Tournament — November 2026",
+      "type": "event",
+      "studentSummary": "The second alliance tournament listed an online opening round on 6 November and finals on 13 November.",
+      "universityIds": [
+        "university-uniovi",
+        "university-mus",
+        "university-uoc",
+        "university-hka",
+        "university-xamk",
+        "university-uda",
+        "university-hs",
+        "university-mtu",
+        "university-urn",
+        "university-tuiasi"
+      ],
+      "officialUrl": "https://campus.tuiasi.ro/04/11/2026/ingenium-chess-tournament-concurs-online-de-sah-intre-10-universitati-din-europa-editia-a-ii-a/",
+      "sourceId": "review-20261116-tuiasi-chess",
+      "sourceIds": [
+        "review-20261116-tuiasi-chess"
+      ],
+      "lastChecked": "2026-11-16",
+      "lastVerified": "2026-11-16",
+      "confidence": "High",
+      "dataClassification": "verified",
+      "hostUniversityId": "university-tuiasi",
+      "deliveryMode": "Online",
+      "themes": [
+        "Chess",
+        "Community"
+      ],
+      "startDate": "2026-11-06",
+      "endDate": "2026-11-13",
+      "dateLabel": "6 and 13 November 2026",
+      "status": "Past",
+      "availabilityStatus": "closed",
+      "eligibility": "The opening round was for the INGENIUM community. The top eight qualified for the final rounds.",
+      "actionLabel": "Read the official tournament notice"
     }
   ],
   "relationships": [
@@ -21213,6 +21550,249 @@
       "label": "Associated with",
       "explanation": "INGENIUM Sustainability Week 2026 is associated with this INGENIUM partner through its published participation or delivery scope.",
       "dataClassification": "verified"
+    },
+    {
+      "id": "rel-course-ecec-finland-jan-2027-university-xamk",
+      "source": "course-ecec-finland-jan-2027",
+      "target": "university-xamk",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-course-ecec-finland-jan-2027-course-ecec-finland",
+      "source": "course-ecec-finland-jan-2027",
+      "target": "course-ecec-finland",
+      "type": "associated_with",
+      "label": "Previous intake",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-course-basics-media-education-jan-2027-university-xamk",
+      "source": "course-basics-media-education-jan-2027",
+      "target": "university-xamk",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-course-basics-media-education-jan-2027-course-basics-media-education",
+      "source": "course-basics-media-education-jan-2027",
+      "target": "course-basics-media-education",
+      "type": "associated_with",
+      "label": "Previous intake",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-course-using-wellbeing-skills-to-promote-studying-ability-jan-2027-university-xamk",
+      "source": "course-using-wellbeing-skills-to-promote-studying-ability-jan-2027",
+      "target": "university-xamk",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-course-using-wellbeing-skills-to-promote-studying-ability-jan-2027-course-using-wellbeing-skills-to-promote-studying-ability",
+      "source": "course-using-wellbeing-skills-to-promote-studying-ability-jan-2027",
+      "target": "course-using-wellbeing-skills-to-promote-studying-ability",
+      "type": "associated_with",
+      "label": "Previous intake",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-bip-cbpt-iasi-2027-university-tuiasi",
+      "source": "bip-cbpt-iasi-2027",
+      "target": "university-tuiasi",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-bip-cbpt-iasi-2027-university-urn",
+      "source": "bip-cbpt-iasi-2027",
+      "target": "university-urn",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-bip-cbpt-iasi-2027-university-uniovi",
+      "source": "bip-cbpt-iasi-2027",
+      "target": "university-uniovi",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-bip-cbpt-iasi-2027-programme-cbpt",
+      "source": "bip-cbpt-iasi-2027",
+      "target": "programme-cbpt",
+      "type": "associated_with",
+      "label": "Related Master’s programme",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-community-days-stereotypes-2026-university-tuiasi",
+      "source": "event-community-days-stereotypes-2026",
+      "target": "university-tuiasi",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-community-days-stereotypes-2026-university-mtu",
+      "source": "event-community-days-stereotypes-2026",
+      "target": "university-mtu",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-community-days-stereotypes-2026-university-urn",
+      "source": "event-community-days-stereotypes-2026",
+      "target": "university-urn",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-community-days-stereotypes-2026-event-community-days-2026",
+      "source": "event-community-days-stereotypes-2026",
+      "target": "event-community-days-2026",
+      "type": "associated_with",
+      "label": "Part of Community Days",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-ingenium-final-conference-2026-university-uniovi",
+      "source": "event-ingenium-final-conference-2026",
+      "target": "university-uniovi",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-ingenium-final-conference-2026-event-final-student-conference-oviedo-2026",
+      "source": "event-ingenium-final-conference-2026",
+      "target": "event-final-student-conference-oviedo-2026",
+      "type": "associated_with",
+      "label": "Includes a report from the Student Conference",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-ingenium-chess-tournament-november-2026-university-uniovi",
+      "source": "event-ingenium-chess-tournament-november-2026",
+      "target": "university-uniovi",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-ingenium-chess-tournament-november-2026-university-mus",
+      "source": "event-ingenium-chess-tournament-november-2026",
+      "target": "university-mus",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-ingenium-chess-tournament-november-2026-university-uoc",
+      "source": "event-ingenium-chess-tournament-november-2026",
+      "target": "university-uoc",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-ingenium-chess-tournament-november-2026-university-hka",
+      "source": "event-ingenium-chess-tournament-november-2026",
+      "target": "university-hka",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-ingenium-chess-tournament-november-2026-university-xamk",
+      "source": "event-ingenium-chess-tournament-november-2026",
+      "target": "university-xamk",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-ingenium-chess-tournament-november-2026-university-uda",
+      "source": "event-ingenium-chess-tournament-november-2026",
+      "target": "university-uda",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-ingenium-chess-tournament-november-2026-university-hs",
+      "source": "event-ingenium-chess-tournament-november-2026",
+      "target": "university-hs",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-ingenium-chess-tournament-november-2026-university-mtu",
+      "source": "event-ingenium-chess-tournament-november-2026",
+      "target": "university-mtu",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-ingenium-chess-tournament-november-2026-university-urn",
+      "source": "event-ingenium-chess-tournament-november-2026",
+      "target": "university-urn",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-ingenium-chess-tournament-november-2026-university-tuiasi",
+      "source": "event-ingenium-chess-tournament-november-2026",
+      "target": "university-tuiasi",
+      "type": "associated_with",
+      "label": "Associated with",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
+    },
+    {
+      "id": "rel-event-ingenium-chess-tournament-november-2026-community-ingenium-chess-club",
+      "source": "event-ingenium-chess-tournament-november-2026",
+      "target": "community-ingenium-chess-club",
+      "type": "associated_with",
+      "label": "Organised through the INGENIUM Chess Club",
+      "explanation": "The official source identifies this connection.",
+      "dataClassification": "verified"
     }
   ],
   "sources": [
@@ -22871,42 +23451,10 @@
       "verifiedAt": "2026-11-06"
     },
     {
-      "id": "review-20261106-2b9249d178d5",
-      "title": "Sustainable Wellbeing in Changing Society",
-      "kind": "Official INGENIUM webpage",
-      "url": "https://ingenium-university.eu/courses/sustainable-wellbeing-in-changing-society/",
-      "publisher": "INGENIUM European University",
-      "verifiedAt": "2026-11-06"
-    },
-    {
       "id": "review-20261106-a4a60545da79",
       "title": "Early Childhood Education and Care (ECEC) in Finland",
       "kind": "Official INGENIUM webpage",
       "url": "https://ingenium-university.eu/courses/early-childhood-education-and-care-ecec-in-finland/",
-      "publisher": "INGENIUM European University",
-      "verifiedAt": "2026-11-06"
-    },
-    {
-      "id": "review-20261106-76fc12522d3c",
-      "title": "Beginners’ Finnish 2",
-      "kind": "Official INGENIUM webpage",
-      "url": "https://ingenium-university.eu/courses/beginners-finnish-2/",
-      "publisher": "INGENIUM European University",
-      "verifiedAt": "2026-11-06"
-    },
-    {
-      "id": "review-20261106-4d0b5e81e313",
-      "title": "Beginners’ Finnish 1",
-      "kind": "Official INGENIUM webpage",
-      "url": "https://ingenium-university.eu/courses/beginners-finnish-1/",
-      "publisher": "INGENIUM European University",
-      "verifiedAt": "2026-11-06"
-    },
-    {
-      "id": "review-20261106-183430c2433c",
-      "title": "Culture Finland",
-      "kind": "Official INGENIUM webpage",
-      "url": "https://ingenium-university.eu/courses/culture-finland/",
       "publisher": "INGENIUM European University",
       "verifiedAt": "2026-11-06"
     },
@@ -23310,6 +23858,153 @@
       "publisher": "INGENIUM European University",
       "verifiedAt": "2026-11-16",
       "notes": "The current call timeline gives 18 November for expressions of interest and 18 December for full proposals. The earlier 6 November news article gives 13 November for expressions of interest."
+    },
+    {
+      "id": "review-20261116-course-index",
+      "title": "INGENIUM Course Catalogue — November review",
+      "kind": "Official webpage",
+      "url": "https://ingenium-university.eu/courses/",
+      "publisher": "INGENIUM European University",
+      "verifiedAt": "2026-11-16",
+      "notes": "The nine index pages list 49 courses and teaching resources. Course detail pages establish application requirements and deadlines."
+    },
+    {
+      "id": "review-20261116-xamk-autumn-archive",
+      "title": "First INGENIUM online courses of 2026/2027",
+      "kind": "Official webpage",
+      "url": "https://ingenium-university.eu/expand-your-studies-with-the-ingenium-course-catalogue-apply-for-the-first-online-courses-of-2026-2027/",
+      "publisher": "INGENIUM European University",
+      "verifiedAt": "2026-11-16",
+      "notes": "The alliance announcement preserves the autumn offer after four individual course pages were removed."
+    },
+    {
+      "id": "review-20261116-course-ecec-finland-jan-2027",
+      "title": "Early Childhood Education and Care in Finland — January 2027 course details",
+      "kind": "Official webpage",
+      "url": "https://ingenium-university.eu/courses/early-childhood-education-and-care-ecec-in-finland-2/",
+      "publisher": "INGENIUM European University",
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "review-20261116-course-basics-media-education-jan-2027",
+      "title": "Basics of Media Education — January 2027 course details",
+      "kind": "Official webpage",
+      "url": "https://ingenium-university.eu/courses/basics-of-media-education-2/",
+      "publisher": "INGENIUM European University",
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "review-20261116-course-using-wellbeing-skills-to-promote-studying-ability-jan-2027",
+      "title": "Using Wellbeing Skills to Promote Studying Ability — January 2027 course details",
+      "kind": "Official webpage",
+      "url": "https://ingenium-university.eu/courses/using-wellbeing-skills-to-promote-studying-ability-2/",
+      "publisher": "INGENIUM European University",
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "review-20261116-nature-social-care",
+      "title": "Nature-based Social Care — course and pre-registration",
+      "kind": "Official webpage",
+      "url": "https://ingenium-university.eu/courses/nature-based-social-care/",
+      "publisher": "INGENIUM European University",
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "review-20261116-rouen-cbpt-bip",
+      "title": "Rouen confirms the CBPT degree label and announces the Iași BIP",
+      "kind": "Official webpage",
+      "url": "https://www.univ-rouen.fr/actualites/label-europeen-de-diplome-conjoint-pour-le-master-cbpt-dingenium/",
+      "publisher": "Université de Rouen Normandie",
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "review-20261116-cbpt-programme",
+      "title": "Joint Master’s in Chemical and Biochemical Process Technology",
+      "kind": "Official webpage",
+      "url": "https://ingenium-university.eu/students/ingenium-european-campus/study-programmes/joint-masters-programme-cbpt/",
+      "publisher": "INGENIUM European University",
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "review-20261116-crete-microcredentials",
+      "title": "INGENIUM microcredentials and November pre-registration deadlines",
+      "kind": "Official webpage",
+      "url": "https://www.uoc.gr/en/new-learning-opportunities-ingenium-microcredentials-now-open-for-pre-registration/",
+      "publisher": "University of Crete",
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "review-20261116-oviedo-nov-window",
+      "title": "University of Oviedo BIP mobility call — second application window",
+      "kind": "Official webpage",
+      "url": "https://www.uniovi.es/actualidad/noticias/-/asset_publisher/Ru0cAJNPrm1m/content/id/15214217",
+      "publisher": "University of Oviedo",
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "review-20261116-crete-film-call",
+      "title": "Stories on Screen — student film submissions",
+      "kind": "Official webpage",
+      "url": "https://www.uoc.gr/en/ingenium-stories-on-screen-share-your-story-of-international-mobility/",
+      "publisher": "University of Crete",
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "review-20261116-tuiasi-community",
+      "title": "Community Days 2026 — TUIASI programme",
+      "kind": "Official webpage",
+      "url": "https://www.tuiasi.ro/evenimente/universitatea-tehnica-gheorghe-asachi-din-iasi-va-invita-la-seria-de-evenimente-ingenium-community-days-2026-organizate-online-si-onsite-in-perioada-3-20-noiembrie/",
+      "publisher": "TUIASI",
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "review-20261116-sofia-community",
+      "title": "INGENIUM Community Days 2026 — Sofia notice",
+      "kind": "Official webpage",
+      "url": "https://mu-sofia.bg/dni-na-obsnostta-ingenium/",
+      "publisher": "Medical University of Sofia",
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "review-20261116-sofia-mobility-panel",
+      "title": "Student mobility experience panel — Sofia notice",
+      "kind": "Official webpage",
+      "url": "https://mu-sofia.bg/studentski-panel-opit-ot-mobilnostta/",
+      "publisher": "Medical University of Sofia",
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "review-20261116-stereotypes-workshop",
+      "title": "Online Intercultural Workshop on Stereotypes",
+      "kind": "Official webpage",
+      "url": "https://ingenium-university.eu/event/online-intercultural-workshop-on-stereotypes/",
+      "publisher": "INGENIUM European University",
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "review-20261116-oviedo-final-programme",
+      "title": "Official INGENIUM November calendar — Final Conference programme",
+      "kind": "Official webpage",
+      "url": "https://ingenium-university.eu/events/month/2026-11/",
+      "publisher": "INGENIUM European University",
+      "verifiedAt": "2026-11-16",
+      "notes": "The calendar lists the 25 November timetable in CET. Event descriptions contain inconsistent timezone labels, so the catalogue uses the calendar and flags that visitors should check session details."
+    },
+    {
+      "id": "review-20261116-oviedo-student-report",
+      "title": "The future of student engagement in INGENIUM — official programme item",
+      "kind": "Official webpage",
+      "url": "https://ingenium-university.eu/event/the-future-of-student-engagement-in-ingenium-ideas-from-the-ingenium-student-conference/",
+      "publisher": "INGENIUM European University",
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "review-20261116-tuiasi-chess",
+      "title": "Second INGENIUM Online Chess Tournament",
+      "kind": "Official webpage",
+      "url": "https://campus.tuiasi.ro/04/11/2026/ingenium-chess-tournament-concurs-online-de-sah-intre-10-universitati-din-europa-editia-a-ii-a/",
+      "publisher": "TUIASI student campus",
+      "verifiedAt": "2026-11-16"
     }
   ],
   "calendarEvents": [
@@ -23448,6 +24143,40 @@
       "sourceUrl": "https://ingenium-university.eu/event/webinar-on-intersectionality/",
       "end": "2026-11-19T14:00:00+01:00",
       "timezone": "Europe/Paris"
+    },
+    {
+      "id": "event-community-days-stereotypes-2026-activity",
+      "recordId": "event-community-days-stereotypes-2026",
+      "title": "Community Days — Intercultural Workshop on Stereotypes",
+      "kind": "activity",
+      "start": "2026-11-09T12:00:00+01:00",
+      "end": "2026-11-09T13:00:00+01:00",
+      "precision": "instant",
+      "timezone": "Europe/Paris",
+      "sourceUrl": "https://ingenium-university.eu/event/online-intercultural-workshop-on-stereotypes/",
+      "hostId": "university-tuiasi"
+    },
+    {
+      "id": "event-ingenium-chess-tournament-november-2026-2026-11-06",
+      "recordId": "event-ingenium-chess-tournament-november-2026",
+      "title": "INGENIUM Chess Tournament — Opening round",
+      "kind": "activity",
+      "start": "2026-11-06T18:00:00+02:00",
+      "precision": "instant",
+      "timezone": "Europe/Bucharest",
+      "sourceUrl": "https://campus.tuiasi.ro/04/11/2026/ingenium-chess-tournament-concurs-online-de-sah-intre-10-universitati-din-europa-editia-a-ii-a/",
+      "hostId": "university-tuiasi"
+    },
+    {
+      "id": "event-ingenium-chess-tournament-november-2026-2026-11-13",
+      "recordId": "event-ingenium-chess-tournament-november-2026",
+      "title": "INGENIUM Chess Tournament — Semi-finals and final",
+      "kind": "activity",
+      "start": "2026-11-13T18:00:00+02:00",
+      "precision": "instant",
+      "timezone": "Europe/Bucharest",
+      "sourceUrl": "https://campus.tuiasi.ro/04/11/2026/ingenium-chess-tournament-concurs-online-de-sah-intre-10-universitati-din-europa-editia-a-ii-a/",
+      "hostId": "university-tuiasi"
     }
   ]
 }

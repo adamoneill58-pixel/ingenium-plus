@@ -15,10 +15,13 @@ test("Vercel serves the reviewed public release without Cloudflare bindings", as
   assert.equal(response.status, 200);
   const data = await response.json();
   assert.equal(data.storage, "release-snapshot");
-  assert.equal(data.records.length, 243);
+  assert.equal(data.records.length, 251);
   assert.ok(data.records.every((record) => record.type !== "student" && record.dataClassification !== "sample"));
   const html = await (await request("/")).text();
   assert.match(html, /Source-backed release snapshot/);
+  assert.match(html, /Basics of Media Education — January 2027/);
+  const reviewHtml = await (await request("/research")).text();
+  assert.match(reviewHtml, /on <!-- -->2026-11-16|on 2026-11-16/);
   assert.doesNotMatch(html, /Database setup required/);
 });
 

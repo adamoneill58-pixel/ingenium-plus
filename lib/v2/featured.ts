@@ -4,7 +4,7 @@ import { availability } from "./domain";
 const preferredIds = [
   "opportunity-student-partnerships-2627-round1",
   "opportunity-local-student-events-2026",
-  "microcredential-climate-health",
+  "course-basics-media-education-jan-2027",
   "initiative-bmc",
 ];
 

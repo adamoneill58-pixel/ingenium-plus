@@ -58,7 +58,7 @@ test("production snapshot mode serves the reviewed public catalogue without data
   assert.equal(response.status,200);
   const data = await response.json();
   assert.equal(data.storage,"release-snapshot");
-  assert.equal(data.records.length,243);
+  assert.equal(data.records.length,251);
   assert.ok(data.records.every((record)=>record.type !== "student" && record.dataClassification !== "sample"));
   const html = await (await render("/",{PUBLIC_CATALOGUE_MODE:"release-snapshot"})).text();
   assert.match(html,/Source-backed release snapshot/);

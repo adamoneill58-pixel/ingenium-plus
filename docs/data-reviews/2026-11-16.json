@@ -1,0 +1,534 @@
+{
+  "reviewDate": "2026-11-16",
+  "scope": "Alliance news and published events, nine course index pages and 49 detail pages, targeted opportunity checks and all ten partners’ public search results. Historical records were retained.",
+  "beforeRecords": 243,
+  "afterRecords": 251,
+  "added": 8,
+  "updated": 14,
+  "courseIndexPages": 9,
+  "courseDetailPages": 49,
+  "officialCalendarEvents": 20,
+  "changes": [
+    {
+      "id": "bip-cbpt-iasi-2027",
+      "change": "added",
+      "fields": [
+        "id",
+        "slug",
+        "title",
+        "type",
+        "studentSummary",
+        "universityIds",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "lastChecked",
+        "lastVerified",
+        "confidence",
+        "dataClassification",
+        "hostUniversityId",
+        "countries",
+        "city",
+        "language",
+        "ects",
+        "deliveryMode",
+        "startDate",
+        "endDate",
+        "dateLabel",
+        "activityDatePrecision",
+        "status",
+        "availabilityStatus",
+        "applicationDeadline",
+        "availability",
+        "eligibility",
+        "funding",
+        "fullDescription",
+        "themes",
+        "actionLabel"
+      ],
+      "sources": [
+        "https://www.univ-rouen.fr/actualites/label-europeen-de-diplome-conjoint-pour-le-master-cbpt-dingenium/",
+        "https://ingenium-university.eu/students/ingenium-european-campus/study-programmes/joint-masters-programme-cbpt/"
+      ]
+    },
+    {
+      "id": "course-basics-media-education-jan-2027",
+      "change": "added",
+      "fields": [
+        "id",
+        "slug",
+        "title",
+        "type",
+        "studentSummary",
+        "universityIds",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "lastChecked",
+        "lastVerified",
+        "confidence",
+        "dataClassification",
+        "hostUniversityId",
+        "countries",
+        "deliveryMode",
+        "academicLevel",
+        "studyLevels",
+        "themes",
+        "eligibility",
+        "ects",
+        "status",
+        "availabilityStatus",
+        "applicationDeadline",
+        "availability",
+        "startDate",
+        "endDate",
+        "dateLabel",
+        "activityDatePrecision",
+        "actionLabel"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/basics-of-media-education-2/",
+        "https://ingenium-university.eu/courses/"
+      ]
+    },
+    {
+      "id": "course-beginners-finnish-1",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "lastVerified",
+        "availability",
+        "lastChecked"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/expand-your-studies-with-the-ingenium-course-catalogue-apply-for-the-first-online-courses-of-2026-2027/"
+      ]
+    },
+    {
+      "id": "course-beginners-finnish-2",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "lastVerified",
+        "availability",
+        "lastChecked"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/expand-your-studies-with-the-ingenium-course-catalogue-apply-for-the-first-online-courses-of-2026-2027/"
+      ]
+    },
+    {
+      "id": "course-culture-finland",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "lastVerified",
+        "availability",
+        "lastChecked"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/expand-your-studies-with-the-ingenium-course-catalogue-apply-for-the-first-online-courses-of-2026-2027/"
+      ]
+    },
+    {
+      "id": "course-ecec-finland-jan-2027",
+      "change": "added",
+      "fields": [
+        "id",
+        "slug",
+        "title",
+        "type",
+        "studentSummary",
+        "universityIds",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "lastChecked",
+        "lastVerified",
+        "confidence",
+        "dataClassification",
+        "hostUniversityId",
+        "countries",
+        "deliveryMode",
+        "academicLevel",
+        "studyLevels",
+        "themes",
+        "eligibility",
+        "ects",
+        "status",
+        "availabilityStatus",
+        "applicationDeadline",
+        "availability",
+        "startDate",
+        "endDate",
+        "dateLabel",
+        "activityDatePrecision",
+        "actionLabel"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/early-childhood-education-and-care-ecec-in-finland-2/",
+        "https://ingenium-university.eu/courses/"
+      ]
+    },
+    {
+      "id": "course-sustainable-wellbeing",
+      "change": "updated",
+      "fields": [
+        "actionLabel",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "lastVerified",
+        "availability",
+        "lastChecked"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/expand-your-studies-with-the-ingenium-course-catalogue-apply-for-the-first-online-courses-of-2026-2027/"
+      ]
+    },
+    {
+      "id": "course-using-wellbeing-skills-to-promote-studying-ability-jan-2027",
+      "change": "added",
+      "fields": [
+        "id",
+        "slug",
+        "title",
+        "type",
+        "studentSummary",
+        "universityIds",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "lastChecked",
+        "lastVerified",
+        "confidence",
+        "dataClassification",
+        "hostUniversityId",
+        "countries",
+        "deliveryMode",
+        "academicLevel",
+        "studyLevels",
+        "themes",
+        "eligibility",
+        "ects",
+        "status",
+        "availabilityStatus",
+        "applicationDeadline",
+        "availability",
+        "startDate",
+        "endDate",
+        "dateLabel",
+        "activityDatePrecision",
+        "actionLabel",
+        "capacity"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/using-wellbeing-skills-to-promote-studying-ability-2/",
+        "https://ingenium-university.eu/courses/"
+      ]
+    },
+    {
+      "id": "event-community-days-2026",
+      "change": "updated",
+      "fields": [
+        "fullDescription",
+        "sourceIds",
+        "lastChecked",
+        "lastVerified"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/ingenium-community-days-2026-strengthening-our-shared-sense-of-belonging/",
+        "https://www.tuiasi.ro/evenimente/universitatea-tehnica-gheorghe-asachi-din-iasi-va-invita-la-seria-de-evenimente-ingenium-community-days-2026-organizate-online-si-onsite-in-perioada-3-20-noiembrie/",
+        "https://mu-sofia.bg/dni-na-obsnostta-ingenium/"
+      ]
+    },
+    {
+      "id": "event-community-days-stereotypes-2026",
+      "change": "added",
+      "fields": [
+        "id",
+        "slug",
+        "title",
+        "type",
+        "studentSummary",
+        "universityIds",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "lastChecked",
+        "lastVerified",
+        "confidence",
+        "dataClassification",
+        "hostUniversityId",
+        "status",
+        "availabilityStatus",
+        "startDate",
+        "endDate",
+        "dateLabel",
+        "deliveryMode",
+        "themes",
+        "actionLabel"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/online-intercultural-workshop-on-stereotypes/",
+        "https://www.tuiasi.ro/evenimente/universitatea-tehnica-gheorghe-asachi-din-iasi-va-invita-la-seria-de-evenimente-ingenium-community-days-2026-organizate-online-si-onsite-in-perioada-3-20-noiembrie/"
+      ]
+    },
+    {
+      "id": "event-final-student-conference-oviedo-2026",
+      "change": "updated",
+      "fields": [
+        "fullDescription",
+        "lastVerified",
+        "sourceIds",
+        "lastChecked"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/50-students-selected-for-the-first-ingenium-student-conference/",
+        "https://ingenium-university.eu/event/the-future-of-student-engagement-in-ingenium-ideas-from-the-ingenium-student-conference/",
+        "https://ingenium-university.eu/events/month/2026-11/"
+      ]
+    },
+    {
+      "id": "event-ingenium-chess-tournament-november-2026",
+      "change": "added",
+      "fields": [
+        "id",
+        "slug",
+        "title",
+        "type",
+        "studentSummary",
+        "universityIds",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "lastChecked",
+        "lastVerified",
+        "confidence",
+        "dataClassification",
+        "hostUniversityId",
+        "deliveryMode",
+        "themes",
+        "startDate",
+        "endDate",
+        "dateLabel",
+        "status",
+        "availabilityStatus",
+        "eligibility",
+        "actionLabel"
+      ],
+      "sources": [
+        "https://campus.tuiasi.ro/04/11/2026/ingenium-chess-tournament-concurs-online-de-sah-intre-10-universitati-din-europa-editia-a-ii-a/"
+      ]
+    },
+    {
+      "id": "event-ingenium-final-conference-2026",
+      "change": "added",
+      "fields": [
+        "id",
+        "slug",
+        "title",
+        "type",
+        "studentSummary",
+        "universityIds",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "lastChecked",
+        "lastVerified",
+        "confidence",
+        "dataClassification",
+        "hostUniversityId",
+        "countries",
+        "city",
+        "deliveryMode",
+        "startDate",
+        "endDate",
+        "dateLabel",
+        "activityDatePrecision",
+        "status",
+        "availabilityStatus",
+        "eligibility",
+        "fullDescription",
+        "themes",
+        "actionLabel"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/events/month/2026-11/",
+        "https://ingenium-university.eu/event/the-future-of-student-engagement-in-ingenium-ideas-from-the-ingenium-student-conference/",
+        "https://ingenium-university.eu/50-students-selected-for-the-first-ingenium-student-conference/"
+      ]
+    },
+    {
+      "id": "event-mobility-student-panel-2026",
+      "change": "updated",
+      "fields": [
+        "sourceIds",
+        "lastChecked",
+        "lastVerified"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/event/mobility-experience-student-panel/",
+        "https://mu-sofia.bg/studentski-panel-opit-ot-mobilnostta/"
+      ]
+    },
+    {
+      "id": "microcredential-climate-health",
+      "change": "updated",
+      "fields": [
+        "status",
+        "availabilityStatus",
+        "sourceIds",
+        "lastChecked",
+        "lastVerified",
+        "actionLabel",
+        "availability"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/climate-change-and-environmental-toxicology-implications-for-human-health/",
+        "https://www.uoc.gr/en/new-learning-opportunities-ingenium-microcredentials-now-open-for-pre-registration/"
+      ]
+    },
+    {
+      "id": "microcredential-intercultural-communication",
+      "change": "updated",
+      "fields": [
+        "sourceIds",
+        "lastChecked",
+        "lastVerified",
+        "availability"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/intercultural-communication/",
+        "https://www.uoc.gr/en/new-learning-opportunities-ingenium-microcredentials-now-open-for-pre-registration/"
+      ]
+    },
+    {
+      "id": "microcredential-nature-based-social-care",
+      "change": "added",
+      "fields": [
+        "id",
+        "slug",
+        "title",
+        "type",
+        "studentSummary",
+        "universityIds",
+        "officialUrl",
+        "sourceId",
+        "sourceIds",
+        "lastChecked",
+        "lastVerified",
+        "confidence",
+        "dataClassification",
+        "fullDescription",
+        "status",
+        "availabilityStatus",
+        "applicationOpenDate",
+        "applicationDeadline",
+        "availability",
+        "funding",
+        "deliveryMode",
+        "themes",
+        "academicLevel",
+        "ects",
+        "capacity",
+        "eligibility",
+        "startDate",
+        "endDate",
+        "dateLabel",
+        "activityDatePrecision",
+        "actionLabel"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/nature-based-social-care/",
+        "https://ingenium-university.eu/courses/"
+      ]
+    },
+    {
+      "id": "microcredential-school-community",
+      "change": "updated",
+      "fields": [
+        "sourceIds",
+        "lastChecked",
+        "lastVerified",
+        "availability"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/school-community-group-and-peer-relationships-best-practices/",
+        "https://www.uoc.gr/en/new-learning-opportunities-ingenium-microcredentials-now-open-for-pre-registration/"
+      ]
+    },
+    {
+      "id": "microcredential-unmanned-aerial-systems",
+      "change": "updated",
+      "fields": [
+        "sourceIds",
+        "lastChecked",
+        "lastVerified",
+        "availability"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/courses/unmanned-aerial-systems-uas-and-applications-from-flight-fundamentals-to-data-intelligence/",
+        "https://www.uoc.gr/en/new-learning-opportunities-ingenium-microcredentials-now-open-for-pre-registration/"
+      ]
+    },
+    {
+      "id": "opportunity-stories-on-screen-2026",
+      "change": "updated",
+      "fields": [
+        "studentSummary",
+        "fullDescription",
+        "sourceIds",
+        "lastChecked",
+        "lastVerified"
+      ],
+      "sources": [
+        "https://ingenium-university.eu/ingenium-stories-on-screen-community-days-initiative/",
+        "https://www.uoc.gr/en/ingenium-stories-on-screen-share-your-story-of-international-mobility/"
+      ]
+    },
+    {
+      "id": "opportunity-uniovi-bip-window-november-2026",
+      "change": "updated",
+      "fields": [
+        "status",
+        "availability",
+        "sourceId",
+        "lastVerified",
+        "sourceIds",
+        "availabilityStatus",
+        "lastChecked"
+      ],
+      "sources": [
+        "https://www.uniovi.es/actualidad/noticias/-/asset_publisher/Ru0cAJNPrm1m/content/id/15214217"
+      ]
+    },
+    {
+      "id": "programme-cbpt",
+      "change": "updated",
+      "fields": [
+        "fullDescription",
+        "availability",
+        "actionLabel",
+        "officialUrl",
+        "sourceId",
+        "lastVerified",
+        "sourceIds",
+        "lastChecked"
+      ],
+      "sources": [
+        "https://www.univ-rouen.fr/actualites/label-europeen-de-diplome-conjoint-pour-le-master-cbpt-dingenium/",
+        "https://ingenium-university.eu/students/ingenium-european-campus/study-programmes/joint-masters-programme-cbpt/"
+      ]
+    }
+  ]
+}

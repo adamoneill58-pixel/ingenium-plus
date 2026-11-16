@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-const LATEST_REVIEW_DATE = "2026-11-06";
 import { getRuntimeDataset } from "@/lib/v151/runtime-data";
+
+const LATEST_REVIEW_DATE = "2026-11-16";
 
 export const metadata: Metadata = {
   title: "Research & sources | INGENIUM+",

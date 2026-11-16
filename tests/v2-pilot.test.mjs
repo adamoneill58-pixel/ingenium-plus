@@ -48,6 +48,20 @@ test("November calls distinguish upcoming windows, closed selections and confirm
   assert.equal(educationEoi.applicationDeadline, "2026-11-18");
   assert.equal(domain.availability(educationEoi, "2026-11-18").value, "open");
   assert.equal(domain.availability(educationEoi, "2026-11-19").value, "closed");
+  for (const id of [
+    "course-ecec-finland-jan-2027",
+    "course-basics-media-education-jan-2027",
+    "course-using-wellbeing-skills-to-promote-studying-ability-jan-2027",
+  ]) {
+    const course = byId.get(id);
+    assert.equal(course.applicationDeadline, "2026-12-16", id);
+    assert.equal(domain.availability(course, "2026-11-16").value, "open", id);
+    assert.equal(domain.availability(course, "2026-12-17").value, "closed", id);
+  }
+  const nature = byId.get("microcredential-nature-based-social-care");
+  assert.equal(domain.availability(nature, "2026-12-13").value, "unknown");
+  assert.equal(domain.availability(nature, "2026-12-14").value, "open");
+  assert.equal(domain.availability(nature, "2027-01-19").value, "closed");
   const uas = byId.get("microcredential-unmanned-aerial-systems");
   assert.equal(domain.availability(uas, "2026-11-06").value, "unknown");
   assert.equal(domain.availability(uas, "2026-11-08").value, "open");

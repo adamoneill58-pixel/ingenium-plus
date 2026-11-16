@@ -148,7 +148,7 @@ export function CampusWorkspace({
           value={filters.query ?? ""}
           onChange={(e) => change("query", e.target.value)}
         />
-        <span className="search-count">{results.length} results</span>
+        <span className="search-count">{results.length} {results.length === 1 ? "result" : "results"}</span>
       </form>
       <div className="discovery-filters">
         <label>
@@ -280,7 +280,7 @@ export function CampusWorkspace({
               : "Find your next connection"}
           </h2>
           <p aria-live="polite">
-            {results.length} matching records · {publicEntry?"source-backed catalogue":"real catalogue + labelled demo people · closest first"}
+            {results.length} matching {results.length === 1 ? "record" : "records"} · {publicEntry?"source-backed catalogue":"real catalogue + labelled demo people · closest first"}
           </p>
         </div>
         <div className="view-switch" aria-label="Discovery view">
